@@ -24,6 +24,8 @@ Wildcards are special characters used to perform pattern matching when working w
 - Ensure that your script is well-documented and easy to understand.
 - To submit your entry, create a GitHub repository and commit your script to it.
 
+## Submitted Tasks to the repository:
+- [Submission Repository](https://github.com/mayankpandeymg9/90DAYSOFEVOPS_SOLNS/tree/main/DAY08)
 **Good luck with Day 8 of the Bash Scripting Challenge! Tomorrow, the difficulty will increase as we move on to more advanced concepts. Happy scripting!**
 
 [← Previous Day](../day07/README.md) | [Next Day →](../day09/README.md)
