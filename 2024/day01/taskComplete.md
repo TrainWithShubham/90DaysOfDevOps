@@ -52,8 +52,8 @@ DevOps is a cultural movement and practice that brings together development and 
 [Link to your LinkedIn post/article would be placed here]
 
 ### 🔗 Resources:
-- [DevOps Roadmap Video](https://www.youtube.com/watch?v=7l_n97Mt0ko)
-- [#90DaysOfDevOps Repository](https://github.com/MichaelCade/90DaysOfDevOps)
+- [DevOps Roadmap Video](https://www.youtube.com/watch?v=g_QHuGq3E2Y)
+- [#90DaysOfDevOps Repository](https://github.com/rd1855/90DaysOfDevOps)
 - [DevOps Documentation](https://aws.amazon.com/devops/what-is-devops/)
 
 ### 🎯 Tomorrow's Preview:
@@ -62,9 +62,8 @@ Looking forward to Day 2 where we'll dive deeper into core DevOps concepts and t
 ---
 
 ### 📞 Connect with Me:
-- LinkedIn: [Your LinkedIn Profile]
-- Twitter: [Your Twitter Handle]
-- Blog: [Your Blog URL]
+- LinkedIn: [https://www.linkedin.com/in/rohit-desai-69786826b/]
+- Blog: [https://www.linkedin.com/posts/rohit-desai-69786826b_devops-activity-7376250456244699137-m6Pv?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEIoL9MBMZvPsJ3ZP9XQhNjkKuDYw4X9Crs]
 
 **Tags:** #90DaysOfDevOps #TrainWithShubham #DevOps #Day1 #Automation #Scaling #Infrastructure
 
