@@ -42,7 +42,7 @@ add one of these lines at the end:
 
 It means only the user ubuntu is allowed to log in via SSH, and all other users are automatically denied SSH access.
 
-                                       OR
+                                                       OR
 
 **DenyUsers devops_user**
 
