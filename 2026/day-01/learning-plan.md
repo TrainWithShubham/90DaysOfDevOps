@@ -14,8 +14,6 @@ Cloud Engineering provides the **infrastructure and services** needed to build, 
 
 Together, DevOps and Cloud Engineering enable **continuous integration, continuous delivery (CI/CD), automation, and scalability**.
 
----
-
 ## Why am I starting to learn DevOps & Cloud?
 
 I am starting to learn DevOps and Cloud because:
@@ -25,8 +23,6 @@ I am starting to learn DevOps and Cloud because:
 - It offers strong **career growth and job opportunities**  
 - I want to build practical, real-world skills  
 - My goal is to **get a job as a DevOps/Cloud Engineer**
-
----
 
 ## Where do I want to reach?
 
@@ -40,8 +36,6 @@ Specifically, I want to:
 - Become job-ready within 90 days  
 - Start my career as a **DevOps Engineer**
 
----
-
 ## How will I stay consistent every single day?
 
 To stay consistent, I will:
@@ -53,8 +47,6 @@ To stay consistent, I will:
 - Stay disciplined and trust the 90-day learning process  
 
 Consistency, practice, and discipline will be my keys to success.
-
----
 
 **This 90-day plan is my career execution blueprint.**
 
