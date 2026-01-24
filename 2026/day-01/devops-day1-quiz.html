@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DevOps Day 1 MCQ Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      line-height: 1.5;
+      background: #f6f7fb;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      padding: 18px;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+    h1 { margin-top: 0; }
+    .question {
+      padding: 14px;
+      margin: 12px 0;
+      border: 1px solid #e6e6e6;
+      border-radius: 10px;
+      background: #fafafa;
+    }
+    .question p { margin: 0 0 10px; }
+    label { display: block; margin: 6px 0; cursor: pointer; }
+    .btns {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+    button {
+      padding: 10px 16px;
+      border: 0;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    #submitBtn { background: #2563eb; color: white; }
+    #resetBtn  { background: #e5e7eb; color: #111827; }
+    #result {
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 10px;
+      background: #eef2ff;
+      border: 1px solid #c7d2fe;
+      display: none;
+    }
+    .correct { border-color: #22c55e; background: #ecfdf5; }
+    .wrong   { border-color: #ef4444; background: #fef2f2; }
+    .answer-line {
+      margin-top: 8px;
+      font-size: 0.95rem;
+    }
+    .muted { color: #6b7280; }
+    .note { margin-top: 6px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>DevOps Basics – Day 1 Quiz</h1>
+    <p class="muted">Select one option for each question, then click <b>Submit</b>.</p>
+
+    <form id="quizForm">
+      <!-- Questions injected by JS -->
+    </form>
+
+    <div class="btns">
+      <button id="submitBtn" type="button" onclick="gradeQuiz()">Submit</button>
+      <button id="resetBtn" type="button" onclick="resetQuiz()">Reset</button>
+    </div>
+
+    <div id="result"></div>
+
+    <p class="note muted">Tip: You can edit questions/answers in the <b>questions</b> array inside the code.</p>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        text: "1. What is DevOps mainly focused on?",
+        options: [
+          "Only development",
+          "Only operations",
+          "Collaboration between development and operations",
+          "Software testing only"
+        ],
+        correctIndex: 2
+      },
+      {
+        text: "2. DevOps helps to reduce:",
+        options: [
+          "Application performance",
+          "Time to market",
+          "Team collaboration",
+          "Automation"
+        ],
+        correctIndex: 1
+      },
+      {
+        text: "3. DevOps is best described as:",
+        options: [
+          "A programming language",
+          "A tool",
+          "A culture and mindset",
+          "A database"
+        ],
+        correctIndex: 2
+      },
+      {
+        text: "4. Which of the following is a key benefit of DevOps?",
+        options: [
+          "Manual work increases",
+          "Slower deployments",
+          "Automation of repetitive tasks",
+          "Less collaboration"
+        ],
+        correctIndex: 2
+      },
+      {
+        text: "5. Cloud Engineering mainly provides:",
+        options: [
+          "Application UI design",
+          "Physical servers only",
+          "Scalable infrastructure and services",
+          "Manual deployments"
+        ],
+        correctIndex: 2
+      },
+      {
+        text: "6. Why are many people learning DevOps today?",
+        options: [
+          "DevOps is outdated",
+          "No jobs available",
+          "DevOps is in high demand",
+          "It is only for testing"
+        ],
+        correctIndex: 2
+      },
+      {
+        text: "7. What is the purpose of a DevOps learning roadmap?",
+        options: [
+          "To learn everything in one day",
+          "To avoid practice",
+          "To provide a clear learning path",
+          "To skip basics"
+        ],
+        correctIndex: 2
+      },
+      {
+        text: "8. Which habit is most important for a 90-day learning challenge?",
+        options: [
+          "Learning randomly",
+          "Studying once a week",
+          "Daily consistent practice",
+          "Skipping revisions"
+        ],
+        correctIndex: 2
+      },
+      {
+        text: "9. Helping classmates during learning helps to:",
+        options: [
+          "Waste time",
+          "Reduce knowledge",
+          "Improve understanding",
+          "Slow progress"
+        ],
+        correctIndex: 2
+      },
+      {
+        text: "10. Studying DevOps daily for fixed hours helps build:",
+        options: [
+          "Confusion",
+          "Discipline and consistency",
+          "Stress only",
+          "No improvement"
+        ],
+        correctIndex: 1
+      }
+    ];
+
+    const quizForm = document.getElementById("quizForm");
+
+    // Render questions
+    questions.forEach((q, qi) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.id = `qbox-${qi}`;
+
+      const p = document.createElement("p");
+      p.innerHTML = `<b>${q.text}</b>`;
+      div.appendChild(p);
+
+      q.options.forEach((opt, oi) => {
+        const label = document.createElement("label");
+        label.innerHTML = `
+          <input type="radio" name="q${qi}" value="${oi}" />
+          ${opt}
+        `;
+        div.appendChild(label);
+      });
+
+      const info = document.createElement("div");
+      info.className = "answer-line muted";
+      info.id = `info-${qi}`;
+      div.appendChild(info);
+
+      quizForm.appendChild(div);
+    });
+
+    function gradeQuiz() {
+      let score = 0;
+      let answered = 0;
+
+      questions.forEach((q, qi) => {
+        const selected = document.querySelector(`input[name="q${qi}"]:checked`);
+        const qbox = document.getElementById(`qbox-${qi}`);
+        const info = document.getElementById(`info-${qi}`);
+
+        // Clear old styles
+        qbox.classList.remove("correct", "wrong");
+
+        if (selected) {
+          answered++;
+          const userAnswer = parseInt(selected.value, 10);
+          const correct = q.correctIndex;
+
+          if (userAnswer === correct) {
+            score++;
+            qbox.classList.add("correct");
+          } else {
+            qbox.classList.add("wrong");
+          }
+
+          info.innerHTML = `
+            <span><b>Your answer:</b> ${q.options[userAnswer]}</span><br>
+            <span><b>Correct answer:</b> ${q.options[correct]}</span>
+          `;
+        } else {
+          info.innerHTML = `<span><b>Your answer:</b> Not answered</span><br>
+                            <span><b>Correct answer:</b> ${q.options[q.correctIndex]}</span>`;
+          qbox.classList.add("wrong");
+        }
+      });
+
+      const result = document.getElementById("result");
+      result.style.display = "block";
+      result.innerHTML = `
+        <h2>Result</h2>
+        <p><b>Score:</b> ${score} / ${questions.length}</p>
+        <p><b>Answered:</b> ${answered} / ${questions.length}</p>
+        <p class="muted">Keep going 🚀 Consistency + practice = progress.</p>
+      `;
+
+      // Scroll to result
+      result.scrollIntoView({ behavior: "smooth" });
+    }
+
+    function resetQuiz() {
+      document.getElementById("quizForm").reset();
+      document.getElementById("result").style.display = "none";
+
+      questions.forEach((q, qi) => {
+        const qbox = document.getElementById(`qbox-${qi}`);
+        const info = document.getElementById(`info-${qi}`);
+        qbox.classList.remove("correct", "wrong");
+        info.innerHTML = "";
+      });
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  </script>
+</body>
+</html>
