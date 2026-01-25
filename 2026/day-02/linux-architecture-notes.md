@@ -1,4 +1,4 @@
-Linux Architecture – Core Understanding for DevOps
+**Linux Architecture – Core Understanding for DevOps**
 
 Linux is not a tool you memorize.
 It is a system you learn to reason about under pressure.
