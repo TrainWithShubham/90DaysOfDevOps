@@ -1,5 +1,7 @@
 # Linux Commands Cheatsheet
-## Linux Commands with Usage of commands
+----
+## Linux Commands list & Networking Commands
+----
 | Commands | Description |
 | ---------| ----------- |
 | `pwd` | It shows the present working directory |
@@ -30,7 +32,7 @@
 | Commands | Description | Example |
 | ---------| ----------- | ----------- |
 | `useradd` | It use for add new useraccount in your system. | `useradd sumit` |
-| `cat /etc/passwd \| grep sumit` | It show you the information of useraccount on your shell | `cat /etc/passwd | grep sumit` |
+| `cat /etc/passwd \| grep sumit` | It show you the information of useraccount on your shell | `cat /etc/passwd \| grep sumit` |
 | `userdel` | It use for deleting an existing useraccount from your system | `userdel sumit` |
 | `users` | It use for showing name of current active logged-In Users | `users` |
 | `who` | It use for showing information about current logged-In User | `who` |
@@ -43,7 +45,7 @@
 | `gpasswd -a` | It use for manage group members and group passwords | `gpasswd -a sumit Jai` |
 | `grpck` | It use for check group configuration files for errors | `grpck` |
 
-
+----
 
 
 
