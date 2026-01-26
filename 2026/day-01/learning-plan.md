@@ -10,7 +10,7 @@
 ---
 ## Core DevOps Skills
 1. Linux and Networking
-2. Git & Docker 
+2. Git & Docker, Kubernetes 
 3. Understand how to debug the problems and finding a reason behind the problem why it's occur?.
 
 ---
