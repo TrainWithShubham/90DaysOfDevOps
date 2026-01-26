@@ -71,6 +71,7 @@
 | `man ls` | Help for ls command. |
 | `reboot` | Restart computer. |
 | `shutdown now` | Turn off computer. |
+| `ctrl+k` | realtime search from history. |
 
 ---
 - Be a good DevOps engineer
