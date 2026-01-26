@@ -1,4 +1,6 @@
-# Current Level - Fresher in DevOps (Ex Electrical Maintenance Engineer of Tata Steel with 5 year Experience){Unemployeed}.
+# Current Level - Fresher in DevOps
+(Ex- Electrical Maintenance Engineer of Tata Steel with 5 year Experience).
+
 ---
 ## Goals of 90 Days of DevOps
 1. learning a Basics of DevOps.
