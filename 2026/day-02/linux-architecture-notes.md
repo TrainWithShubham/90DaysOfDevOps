@@ -99,11 +99,11 @@ The states that a Process enters in working from start till end are known as Pro
 ---
 
 ## Commands in daily use
-1. pwd
-2. ls
-3. cd
-4. mkdir
-5. touch
+1. `pwd`
+2. `ls`
+3. `cd`
+4. `mkdir`
+5. `touch`
 
 ---
 
