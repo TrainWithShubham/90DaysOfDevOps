@@ -1,66 +1,130 @@
-# #90DaysOfDevOps Challenge
+# 🚀 90DaysOfDevOps
+### Learn • Build • Practice • Become Job-Ready
 
-## Learn, Upskill, Grow with the Community
+Welcome to **90DaysOfDevOps**, a structured and hands-on DevOps challenge by **TrainWithShubham**.
 
-Join our DevOps community challenge and embark on a 90-day journey to become a better DevOps practitioner. This repository serves as an open invitation to all DevOps enthusiasts who are looking to enhance their skills and knowledge. By participating in this challenge, you will have the opportunity to learn from others in the community, collaborate with like-minded individuals, and ultimately strengthen your DevOps abilities.
+This repository is designed to help you **build real DevOps skills step by step in 90 days** — not by watching endless videos, but by **doing daily tasks**, building projects, and thinking like a **production-ready DevOps engineer**.
 
-Let's come together to grow and achieve new heights in DevOps!
+This is not a theory-heavy course.  
+This is a **discipline + execution challenge**.
 
-📖 **Discover More in Our Detailed Table of Contents!** Explore the richness of our content and find what you're looking for efficiently. Check out our [TOC here](./TOC.md).
+---
 
-## Steps:
+## 🎯 What is #90DaysOfDevOps?
 
-- Fork[https://github.com/LondheShubham153/90DaysOfDevOps/fork] the Repo.
-- Learn Everyday and add your learnings in the day wise folders.
-- Check out what others are Learning and help/learn from them.
-- Showcase your learnings on LinkedIn
+**#90DaysOfDevOps** is a **day-wise DevOps learning challenge** where:
 
-## These are our community Links
-  <a href="https://discord.com/channels/824622549182185493/824622550327623692">
-    <img width="30px" src="https://www.vectorlogo.zone/logos/discordapp/discordapp-tile.svg" />
-  </a>&ensp;
-    <a href="https://t.me/trainwithshubham">
-    <img width="30px" src="https://www.vectorlogo.zone/logos/telegram/telegram-icon.svg" />
-  </a> 
-  </a>&ensp;
+- Every day has **one clear task**
+- Every task has a **real-world DevOps outcome**
+- Every learner builds a **public GitHub proof of work**
+- Every concept is reinforced through **hands-on practice**
+- Learning is aligned with **live classes and recordings**
 
-  <a href="https://www.linkedin.com/in/shubhamlondhe1996/">
-    <img width="30px" src="https://www.vectorlogo.zone/logos/linkedin/linkedin-icon.svg" />
-  </a>&ensp;
+By the end of 90 days, you will have:
+- Strong DevOps fundamentals
+- Multiple mini-projects
+- One end-to-end DevOps capstone project
+- A GitHub profile that clearly shows consistency
+- Confidence to handle DevOps interviews and production systems
 
- <a href="https://www.youtube.com/@TrainWithShubham">
-  <img width="30px" src="https://i.pinimg.com/originals/46/02/cb/4602cbc18967da9c1eba7452905cd99b.png" />
-  </a>&ensp;
+---
 
-  <a href="https://chat.whatsapp.com/FvRlAAZVxUhCUSZ0Y1s7KY">
-  <img width="30px" src="https://www.vectorlogo.zone/logos/whatsapp/whatsapp-icon.svg" />
-</a>&ensp;
+## 🧠 Who Is This For?
 
+This challenge is ideal for:
 
-<a href="https://www.trainwithshubham.com/">
-  <img width="30px" src="https://media.licdn.com/dms/image/C4D0BAQGokBZsFEUWHw/company-logo_200_200/0/1677354328695?e=1700092800&v=beta&t=3bw7W2tQEpn023Slj_PacUZflE-OyYpBU-9juiJNJVY" />
-</a>&ensp;
+- Students and freshers entering DevOps or Cloud
+- Working professionals switching to DevOps / SRE / Cloud roles
+- Developers who want to understand infrastructure and CI/CD
+- Anyone who believes **consistency beats talent**
 
-## Events
+No prior DevOps experience is required.  
+**Commitment is mandatory.**
 
-### YouTube Live Announcement:
-<a href="https://youtu.be/rO5Rllir-LM">
-  <img width="30px" src="https://i.pinimg.com/originals/46/02/cb/4602cbc18967da9c1eba7452905cd99b.png" />
-  </a>&ensp;
+---
 
-### YouTube Playlist for DevOps:
-<a href="https://youtube.com/playlist?list=PLlfy9GnSVerRqYJgVYO0UiExj5byjrW8u
-">
-  <img width="30px" src="https://i.pinimg.com/originals/46/02/cb/4602cbc18967da9c1eba7452905cd99b.png" />
-  </a>&ensp;
+## 🗂 Repository Structure
 
-### DevOps Course:
-<a href="https://bit.ly/devops-batch-7">
-  <img width="30px" src="https://media.licdn.com/dms/image/C4D0BAQGokBZsFEUWHw/company-logo_200_200/0/1677354328695?e=1700092800&v=beta&t=3bw7W2tQEpn023Slj_PacUZflE-OyYpBU-9juiJNJVY" />
-</a>&ensp;
+```
+90DaysOfDevOps/
+│
+├── README.md
+├── CONTRIBUTING.md
+├── LICENSE
+├── .gitignore
+│
+├── scripts/
+│   └── helper-scripts.sh
+│
+├── day-01/
+│   └── README.md
+├── day-02/
+│   └── README.md
+├── ...
+├── day-90/
+│   └── README.md
+```
 
-## Thanks to all contributors ❤
+---
 
- <a href = "https://github.com/LondheShubham153/90DaysOfDevOps/graphs/contributors">
-   <img src = "https://contrib.rocks/image?repo=LondheShubham153/90DaysOfDevOps"/>
- </a>
+## 📅 How the Challenge Works
+
+- **One day = one task**
+- Tasks are aligned with **live classes**
+- Live class days focus on **core concepts**
+- Weekdays focus on **practice and reinforcement**
+- Daily commits are encouraged
+
+Even **30–60 minutes per day** is enough if done honestly.
+
+---
+
+## 🛠 What You Will Learn
+
+- Linux fundamentals and troubleshooting
+- Shell scripting and automation
+- Networking basics for DevOps
+- Git and GitHub workflows
+- Docker and containerization
+- AWS core and advanced services
+- CI/CD using Jenkins, GitHub Actions, GitLab
+- DevSecOps fundamentals
+- Kubernetes, Helm, ArgoCD
+- Terraform and Ansible
+- Observability with Grafana, Prometheus, OpenTelemetry
+- End-to-end DevOps project
+
+---
+
+## 📦 How to Participate
+
+1. Fork this repository
+2. Clone your fork
+3. Navigate to the current `day-XX` folder
+4. Complete the task
+5. Commit and push your work
+
+---
+
+## 🌍 Learn in Public
+
+Share your progress on LinkedIn:
+
+```
+#90DaysOfDevOps
+#DevOpsKaJosh
+#TrainWithShubham
+```
+
+---
+
+## ❤️ Final Note
+
+DevOps is not about tools.  
+It is about **ownership, reliability, and consistency**.
+
+One day at a time.  
+One commit at a time.
+
+Happy Learning  
+**TrainWithShubham**
