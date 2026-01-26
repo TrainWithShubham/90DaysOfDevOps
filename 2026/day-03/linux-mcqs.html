@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Linux MCQs Quiz</title>
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; margin: 20px; line-height: 1.4; }
+    .card { max-width: 900px; margin: 0 auto; padding: 18px; border: 1px solid #ddd; border-radius: 12px; }
+    h1 { margin: 0 0 6px; }
+    .muted { color: #666; margin: 0 0 16px; }
+    .q { padding: 14px 0; border-top: 1px solid #eee; }
+    .q:first-of-type { border-top: 0; }
+    .q h3 { margin: 0 0 10px; font-size: 16px; }
+    label { display: block; padding: 6px 10px; border-radius: 10px; cursor: pointer; }
+    label:hover { background: #f7f7f7; }
+    .controls { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+    button { padding: 10px 14px; border: 1px solid #ccc; background: #fff; border-radius: 10px; cursor: pointer; }
+    button:hover { background: #f3f3f3; }
+    .result { margin-top: 14px; padding: 12px; border-radius: 12px; background: #f7faff; border: 1px solid #d6e8ff; }
+    .ok { background: #f1fff4; border-color: #bde5c5; }
+    .bad { background: #fff5f5; border-color: #ffd0d0; }
+    .key { margin-top: 10px; font-size: 14px; color: #444; }
+    .small { font-size: 13px; color: #666; }
+    .pill { display: inline-block; padding: 2px 8px; border-radius: 999px; border: 1px solid #ddd; font-size: 12px; margin-left: 6px; color: #555; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>🔥 Linux MCQs Quiz</h1>
+    <p class="muted">Answer all questions, then click <b>Submit</b>. (No internet needed.)</p>
+
+    <form id="quiz"></form>
+
+    <div class="controls">
+      <button type="button" onclick="submitQuiz()">Submit</button>
+      <button type="button" onclick="resetQuiz()">Reset</button>
+      <button type="button" onclick="showAnswers()">Show Answers</button>
+      <button type="button" onclick="hideAnswers()">Hide Answers</button>
+    </div>
+
+    <div id="output" class="result" style="display:none;"></div>
+    <div id="answerKey" class="key" style="display:none;"></div>
+
+    <p class="small">Tip: Save this file as <b>linux-mcqs.html</b> and open in any browser.</p>
+  </div>
+
+<script>
+const questions = [
+  {
+    q: "1) Which command prints the current working directory?",
+    options: ["cwd", "pwd", "whereami", "path"],
+    answer: 1,
+    why: "pwd = print working directory"
+  },
+  {
+    q: "2) Which command lists files including hidden files?",
+    options: ["ls -h", "ls -a", "ls -x", "ls -p"],
+    answer: 1,
+    why: "ls -a shows hidden files (dotfiles)"
+  },
+  {
+    q: "3) Which permission set corresponds to 755?",
+    options: ["rwxr-xr-x", "rw-r--r--", "rwx------", "rw-rw-r--"],
+    answer: 0,
+    why: "7=rwx, 5=r-x, 5=r-x"
+  },
+  {
+    q: "4) What does `chmod 644 file` set?",
+    options: ["Owner rw, group r, others r", "Owner rwx, group r, others r", "Owner r, group w, others x", "Owner rw, group rw, others rw"],
+    answer: 0,
+    why: "6=rw-, 4=r--, 4=r--"
+  },
+  {
+    q: "5) Which command changes file owner?",
+    options: ["chmod", "chown", "chgrp", "own"],
+    answer: 1,
+    why: "chown changes owner (and optionally group)"
+  },
+  {
+    q: "6) Which command shows disk free space by filesystem?",
+    options: ["du", "df", "free", "lsblk"],
+    answer: 1,
+    why: "df shows filesystem disk usage"
+  },
+  {
+    q: "7) Which command shows size of a directory (summary)?",
+    options: ["df -h", "du -sh", "ls -l", "stat -d"],
+    answer: 1,
+    why: "du -sh summarizes directory size"
+  },
+  {
+    q: "8) Which command searches text inside files?",
+    options: ["find", "grep", "locate", "whereis"],
+    answer: 1,
+    why: "grep searches patterns in text"
+  },
+  {
+    q: "9) Which command finds files by name in a directory tree?",
+    options: ["find", "grep", "tail", "nano"],
+    answer: 0,
+    why: "find searches filesystem by conditions"
+  },
+  {
+    q: "10) What does `ln -s` create?",
+    options: ["Hard link", "Symbolic link", "Encrypted link", "Mount point"],
+    answer: 1,
+    why: "-s means symbolic (soft) link"
+  },
+  {
+    q: "11) Which is TRUE about hard links?",
+    options: ["Can cross filesystems", "Points to inode", "Breaks if original is deleted", "Only for directories"],
+    answer: 1,
+    why: "Hard links reference the same inode; generally cannot cross filesystems"
+  },
+  {
+    q: "12) Which file commonly stores static mount configuration?",
+    options: ["/etc/fstab", "/etc/hosts", "/etc/passwd", "/var/log/syslog"],
+    answer: 0,
+    why: "/etc/fstab contains filesystem mount entries"
+  },
+  {
+    q: "13) Which command shows running processes in real time?",
+    options: ["ps", "top", "cat", "who"],
+    answer: 1,
+    why: "top updates continuously"
+  },
+  {
+    q: "14) Which command shows detailed file metadata (size, inode, perms, times)?",
+    options: ["file", "stat", "info", "meta"],
+    answer: 1,
+    why: "stat shows rich metadata"
+  },
+  {
+    q: "15) Which directory contains system-wide configuration files?",
+    options: ["/bin", "/etc", "/tmp", "/proc"],
+    answer: 1,
+    why: "/etc stores configuration"
+  },
+  {
+    q: "16) What does `rm -r dir` do?",
+    options: ["Removes empty dir only", "Removes dir recursively", "Renames dir", "Moves dir to trash"],
+    answer: 1,
+    why: "-r = recursive"
+  },
+  {
+    q: "17) Which command displays the last 20 lines of a file?",
+    options: ["head -20", "tail -20", "less -20", "cat -20"],
+    answer: 1,
+    why: "tail shows end of file"
+  },
+  {
+    q: "18) Which command manages services in systemd-based systems?",
+    options: ["service", "systemctl", "initctl", "daemonctl"],
+    answer: 1,
+    why: "systemctl controls systemd services"
+  },
+  {
+    q: "19) Which command schedules recurring jobs?",
+    options: ["cron", "crontab", "at", "nice"],
+    answer: 1,
+    why: "crontab edits cron schedules"
+  },
+  {
+    q: "20) What does `umask` control?",
+    options: ["Default file creation permissions", "CPU priority", "Network mask only", "Disk partitions"],
+    answer: 0,
+    why: "umask subtracts permissions for new files/dirs"
+  }
+];
+
+function render() {
+  const form = document.getElementById("quiz");
+  form.innerHTML = "";
+  questions.forEach((item, idx) => {
+    const div = document.createElement("div");
+    div.className = "q";
+    div.innerHTML = `<h3>${item.q} <span class="pill">Q${idx+1}</span></h3>`;
+    item.options.forEach((opt, i) => {
+      const id = `q${idx}_o${i}`;
+      const label = document.createElement("label");
+      label.innerHTML = `
+        <input type="radio" name="q${idx}" id="${id}" value="${i}" />
+        ${opt}
+      `;
+      div.appendChild(label);
+    });
+    form.appendChild(div);
+  });
+}
+
+function submitQuiz() {
+  let score = 0;
+  let attempted = 0;
+
+  questions.forEach((item, idx) => {
+    const chosen = document.querySelector(`input[name="q${idx}"]:checked`);
+    if (chosen) {
+      attempted++;
+      if (Number(chosen.value) === item.answer) score++;
+    }
+  });
+
+  const out = document.getElementById("output");
+  out.style.display = "block";
+  const percent = Math.round((score / questions.length) * 100);
+
+  out.className = "result " + (percent >= 70 ? "ok" : "bad");
+  out.innerHTML = `
+    <b>Result:</b> ${score} / ${questions.length} (${percent}%)
+    <div class="small">Attempted: ${attempted} / ${questions.length}</div>
+    <div class="small">${percent >= 70 ? "✅ Good! Keep going." : "⚠️ Review basics and retry."}</div>
+  `;
+}
+
+function resetQuiz() {
+  document.getElementById("quiz").reset();
+  document.getElementById("output").style.display = "none";
+  hideAnswers();
+}
+
+function showAnswers() {
+  const key = document.getElementById("answerKey");
+  key.style.display = "block";
+  key.innerHTML = "<b>Answer Key:</b><br><ol>" + questions.map(q =>
+    `<li><b>${q.options[q.answer]}</b> <span class="small">— ${q.why}</span></li>`
+  ).join("") + "</ol>";
+}
+
+function hideAnswers() {
+  const key = document.getElementById("answerKey");
+  key.style.display = "none";
+  key.innerHTML = "";
+}
+
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Linux Networking Troubleshooting MCQs</title>
+  <style>
+    :root { --fg:#111; --muted:#666; --card:#f6f7f8; --ok:#0a7a2f; --bad:#b00020; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; color: var(--fg); background:#fff; }
+    header { padding: 20px 16px; border-bottom: 1px solid #e6e6e6; }
+    h1 { margin: 0 0 6px; font-size: 20px; }
+    .sub { color: var(--muted); font-size: 13px; }
+    main { padding: 16px; max-width: 980px; margin: 0 auto; }
+    .controls { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin: 10px 0 18px; }
+    button { border:1px solid #ddd; background:#fff; padding:10px 12px; border-radius: 10px; cursor:pointer; }
+    button:hover { background:#fafafa; }
+    .pill { font-size:12px; color:var(--muted); padding:6px 10px; border:1px solid #e6e6e6; border-radius:999px; }
+    .q { background: var(--card); border:1px solid #eaeaea; border-radius: 14px; padding: 14px; margin: 12px 0; }
+    .q h3 { margin: 0 0 10px; font-size: 15px; }
+    .opt { display:flex; gap:10px; align-items:flex-start; padding: 8px 10px; border-radius: 10px; }
+    .opt:hover { background: #fff; }
+    .opt input { margin-top: 3px; }
+    .result { margin-top: 10px; font-size: 13px; }
+    .ok { color: var(--ok); font-weight: 600; }
+    .bad { color: var(--bad); font-weight: 600; }
+    .explain { color: var(--muted); margin-top: 6px; }
+    footer { padding: 16px; border-top:1px solid #e6e6e6; color:var(--muted); font-size: 12px; }
+    .hidden { display:none; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Linux Networking Troubleshooting — MCQs</h1>
+    <div class="sub">Practice interview-style questions on commands, DNS, routing, ports, firewall, and packet capture.</div>
+  </header>
+
+  <main>
+    <div class="controls">
+      <button id="checkBtn">Check Answers</button>
+      <button id="resetBtn">Reset</button>
+      <button id="shuffleBtn">Shuffle Questions</button>
+      <span class="pill" id="scorePill">Score: —</span>
+    </div>
+
+    <div id="quiz"></div>
+  </main>
+
+  <footer>
+    Tip: If <b>ping by IP works</b> but <b>ping by name fails</b>, it’s usually a <b>DNS</b> issue.
+  </footer>
+
+  <script>
+    const QUESTIONS = [
+      {
+        q: "Which command shows IP addresses assigned to all interfaces (modern replacement for ifconfig)?",
+        options: ["ip addr", "ip route", "ss -tulnp", "dig google.com"],
+        answer: 0,
+        note: "ip addr displays interface IPs, masks, and status."
+      },
+      {
+        q: "Which command is best to view the routing table and default gateway?",
+        options: ["ip route", "hostname -I", "lsof -i :80", "iftop"],
+        answer: 0,
+        note: "ip route shows routes; look for 'default via <gateway>'."
+      },
+      {
+        q: "A user can ping 8.8.8.8 but cannot ping google.com. What is the most likely issue?",
+        options: ["DNS resolution problem", "Interface is down", "No default route", "Kernel TCP/IP stack broken"],
+        answer: 0,
+        note: "IP works but hostname fails → DNS issue."
+      },
+      {
+        q: "Which command provides detailed DNS query output (preferred for troubleshooting)?",
+        options: ["dig google.com", "ping google.com", "ss -tan", "ip -s link"],
+        answer: 0,
+        note: "dig shows query/response, records, TTLs, and servers."
+      },
+      {
+        q: "Which file commonly lists configured DNS resolvers (classic Linux setup)?",
+        options: ["/etc/resolv.conf", "/etc/hosts", "/etc/passwd", "/var/log/syslog"],
+        answer: 0,
+        note: "/etc/resolv.conf contains nameserver lines (may be managed by systemd/NetworkManager)."
+      },
+      {
+        q: "Which command lists listening TCP/UDP ports with process names and PIDs?",
+        options: ["ss -tulnp", "ip link", "arp -a", "tracepath"],
+        answer: 0,
+        note: "ss is the modern tool; -p shows process, -n numeric."
+      },
+      {
+        q: "Which command tests whether a remote TCP port is reachable/open (quick check)?",
+        options: ["nc -zv host port", "ip neigh", "nload", "resolvectl status"],
+        answer: 0,
+        note: "nc (netcat) in zero-I/O mode probes a port; -v prints result."
+      },
+      {
+        q: "Which command shows per-interface packet drops/errors and TX/RX stats?",
+        options: ["ip -s link", "hostname -I", "dig +short", "brctl show"],
+        answer: 0,
+        note: "ip -s link includes counters; look for drops/errors increasing."
+      },
+      {
+        q: "Which tool is best for live path + loss analysis over time (ping + traceroute combined)?",
+        options: ["mtr", "arp -a", "ufw status", "nmcli dev status"],
+        answer: 0,
+        note: "mtr helps find where latency/loss occurs along the route."
+      },
+      {
+        q: "Which command captures packets on interface eth0 (deep debugging)?",
+        options: ["tcpdump -i eth0", "ss -tulnp", "ip route", "nslookup"],
+        answer: 0,
+        note: "tcpdump is the go-to for packet capture on Linux."
+      },
+      {
+        q: "Which command checks firewalld active rules and zone configuration?",
+        options: ["firewall-cmd --list-all", "iptables -L -n -v", "ufw status", "nft list ruleset"],
+        answer: 0,
+        note: "firewall-cmd is for firewalld; iptables/nft are different backends."
+      },
+      {
+        q: "If an interface has no IP from DHCP, which command is commonly used to request/renew a lease?",
+        options: ["dhclient -v eth0", "ip neigh", "tracepath google.com", "lsof -i :22"],
+        answer: 0,
+        note: "dhclient requests a DHCP lease; -v shows negotiation details."
+      }
+    ];
+
+    const quizEl = document.getElementById("quiz");
+    const scorePill = document.getElementById("scorePill");
+    const checkBtn = document.getElementById("checkBtn");
+    const resetBtn = document.getElementById("resetBtn");
+    const shuffleBtn = document.getElementById("shuffleBtn");
+
+    let state = { questions: structuredClone(QUESTIONS) };
+
+    function render() {
+      quizEl.innerHTML = "";
+      state.questions.forEach((item, idx) => {
+        const card = document.createElement("div");
+        card.className = "q";
+        card.dataset.index = idx;
+
+        const title = document.createElement("h3");
+        title.textContent = `${idx + 1}. ${item.q}`;
+        card.appendChild(title);
+
+        item.options.forEach((opt, j) => {
+          const label = document.createElement("label");
+          label.className = "opt";
+
+          const input = document.createElement("input");
+          input.type = "radio";
+          input.name = `q${idx}`;
+          input.value = j;
+
+          const span = document.createElement("span");
+          span.textContent = opt;
+
+          label.appendChild(input);
+          label.appendChild(span);
+          card.appendChild(label);
+        });
+
+        const res = document.createElement("div");
+        res.className = "result hidden";
+        res.innerHTML = `<div class="verdict"></div><div class="explain"></div>`;
+        card.appendChild(res);
+
+        quizEl.appendChild(card);
+      });
+
+      scorePill.textContent = "Score: —";
+    }
+
+    function checkAnswers() {
+      let correct = 0;
+      state.questions.forEach((item, idx) => {
+        const card = quizEl.querySelector(`.q[data-index="${idx}"]`);
+        const picked = card.querySelector(`input[name="q${idx}"]:checked`);
+        const res = card.querySelector(".result");
+        const verdict = card.querySelector(".verdict");
+        const explain = card.querySelector(".explain");
+
+        res.classList.remove("hidden");
+
+        if (!picked) {
+          verdict.innerHTML = `<span class="bad">Not answered.</span> Correct: <b>${item.options[item.answer]}</b>`;
+          explain.textContent = item.note;
+          return;
+        }
+
+        const val = Number(picked.value);
+        if (val === item.answer) {
+          correct++;
+          verdict.innerHTML = `<span class="ok">Correct ✅</span>`;
+        } else {
+          verdict.innerHTML = `<span class="bad">Wrong ❌</span> Correct: <b>${item.options[item.answer]}</b>`;
+        }
+        explain.textContent = item.note;
+      });
+
+      scorePill.textContent = `Score: ${correct} / ${state.questions.length}`;
+      // Scroll to top so score is visible
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function resetQuiz() {
+      render();
+    }
+
+    function shuffleQuestions() {
+      // Fisher–Yates
+      for (let i = state.questions.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [state.questions[i], state.questions[j]] = [state.questions[j], state.questions[i]];
+      }
+      render();
+    }
+
+    checkBtn.addEventListener("click", checkAnswers);
+    resetBtn.addEventListener("click", resetQuiz);
+    shuffleBtn.addEventListener("click", shuffleQuestions);
+
+    render();
+  </script>
+</body>
+</html>

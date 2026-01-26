@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Linux Process Management MCQs</title>
+  <style>
+    :root { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height: 1.35; }
+    body { margin: 0; background: #f6f7fb; color: #111; }
+    header { background: #111827; color: #fff; padding: 20px 16px; }
+    header h1 { margin: 0 0 6px 0; font-size: 20px; }
+    header p { margin: 0; opacity: .9; font-size: 14px; }
+    main { max-width: 920px; margin: 18px auto; padding: 0 12px 40px; }
+    .card { background: #fff; border-radius: 14px; padding: 14px 14px 10px; box-shadow: 0 8px 24px rgba(17,24,39,.08); margin: 12px 0; }
+    .qhead { display:flex; gap:10px; align-items: baseline; }
+    .qnum { font-weight: 700; color: #2563eb; min-width: 34px; }
+    .qtext { font-weight: 650; }
+    .opts { margin: 10px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+    label { display:block; padding: 10px 10px; border: 1px solid #e5e7eb; border-radius: 12px; cursor: pointer; }
+    input[type="radio"] { margin-right: 8px; }
+    .actions { display:flex; gap:10px; flex-wrap: wrap; margin: 14px 0; }
+    button { border: 0; border-radius: 12px; padding: 10px 14px; cursor: pointer; font-weight: 650; }
+    .primary { background: #2563eb; color: #fff; }
+    .secondary { background: #e5e7eb; color: #111; }
+    .result { font-weight: 700; }
+    .muted { color:#6b7280; font-size: 13px; margin-top: 6px; }
+    .ok { border-color: #22c55e !important; background: #f0fdf4; }
+    .bad { border-color: #ef4444 !important; background: #fef2f2; }
+    .note { font-size: 13px; color:#374151; margin-top: 8px; }
+    footer { text-align:center; color:#6b7280; font-size: 12px; margin-top: 24px; }
+    code { background:#f3f4f6; padding: 0 6px; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Linux Process Management — MCQs</h1>
+    <p>Answer the questions, then click <b>Submit</b> to see your score.</p>
+  </header>
+
+  <main>
+    <div class="actions">
+      <button class="primary" id="submitBtn">Submit</button>
+      <button class="secondary" id="resetBtn">Reset</button>
+      <span class="result" id="scoreOut"></span>
+    </div>
+    <div class="muted">Tip: These MCQs focus on <code>ps</code>, <code>top</code>, <code>kill</code>, job control, signals, and priority.</div>
+
+    <form id="quiz"></form>
+
+    <footer>Built for quick revision • Linux process management</footer>
+  </main>
+
+<script>
+const QUESTIONS = [
+  { q: "Which command shows processes for the current terminal/session (basic listing)?",
+    opts: ["ps", "top", "jobs", "nice"], ans: 0, exp: "Use ps for a basic snapshot of processes." },
+
+  { q: "Which command provides a real-time, continuously updating view of processes?",
+    opts: ["ps aux", "top", "pidof", "pstree"], ans: 1, exp: "top updates in real time." },
+
+  { q: "What does the PID represent?",
+    opts: ["Process Internet Device", "Program Internal Data", "Process ID", "Priority ID"], ans: 2, exp: "PID = Process ID." },
+
+  { q: "Which command lists all processes in full-format style on many Linux systems?",
+    opts: ["ps -ef", "ps", "bg", "fg"], ans: 0, exp: "ps -ef shows all processes in full format." },
+
+  { q: "Which command is commonly used to list all processes with CPU and memory usage columns?",
+    opts: ["ps aux", "uptime", "watch", "killall"], ans: 0, exp: "ps aux is the classic BSD-style listing." },
+
+  { q: "Default signal sent by `kill PID` (when no signal is specified) is usually:",
+    opts: ["SIGKILL (9)", "SIGTERM (15)", "SIGSTOP (19)", "SIGHUP (1)"], ans: 1, exp: "kill defaults to SIGTERM on Linux." },
+
+  { q: "Which command force-terminates a process immediately?",
+    opts: ["kill -9 PID", "kill PID", "nice -n 10 cmd", "fg %1"], ans: 0, exp: "SIGKILL (9) cannot be caught or ignored." },
+
+  { q: "Which command kills a process by name (pattern) rather than PID?",
+    opts: ["pidof", "pkill", "ps -ef", "pstree"], ans: 1, exp: "pkill matches by process name/pattern." },
+
+  { q: "Which command shows background jobs in the current shell?",
+    opts: ["jobs", "ps", "killall", "watch"], ans: 0, exp: "jobs shows shell-managed background jobs." },
+
+  { q: "What does `command &` do?",
+    opts: ["Runs command with highest priority", "Runs command in background", "Stops the command", "Runs command as root"], ans: 1, exp: "Appending & sends it to background." },
+
+  { q: "Which command brings a background job to the foreground?",
+    opts: ["bg", "fg", "renice", "pidof"], ans: 1, exp: "fg brings job to foreground." },
+
+  { q: "Which command resumes a stopped job in the background?",
+    opts: ["bg", "fg", "top", "ps -ef"], ans: 0, exp: "bg resumes job in background." },
+
+  { q: "Which command displays processes in a parent-child tree format?",
+    opts: ["pstree", "pgrep", "uptime", "kill"], ans: 0, exp: "pstree shows hierarchy." },
+
+  { q: "Which command finds process IDs by name/pattern?",
+    opts: ["pgrep", "ps -ef", "kill -9", "jobs"], ans: 0, exp: "pgrep searches PIDs by name/pattern." },
+
+  { q: "Which command returns the PID of a running program (often exact name match)?",
+    opts: ["pidof", "ps aux", "nice", "watch"], ans: 0, exp: "pidof prints PID(s) for the program." },
+
+  { q: "Which command runs another command repeatedly at fixed intervals?",
+    opts: ["watch", "time", "uptime", "killall"], ans: 0, exp: "watch refreshes output every few seconds." },
+
+  { q: "What is the nice value range on Linux?",
+    opts: ["0 to 100", "-20 to 19", "-9 to 9", "1 to 10"], ans: 1, exp: "Lower is higher priority: -20..19." },
+
+  { q: "Which command starts a new process with a specified priority?",
+    opts: ["nice -n value command", "renice value PID", "kill PID", "ps -ef"], ans: 0, exp: "nice sets priority when launching." },
+
+  { q: "Which command changes the priority of an already running process?",
+    opts: ["renice", "nice", "jobs", "pstree"], ans: 0, exp: "renice adjusts a running process." },
+
+  { q: "A zombie process is best described as:",
+    opts: ["A process running with 100% CPU", "A process that finished but still has an entry in the process table",
+           "A process with no parent", "A background service started by systemd"], ans: 1,
+    exp: "Zombie = terminated, but not fully reaped by parent." },
+
+  { q: "An orphan process is:",
+    opts: ["A process that cannot be killed", "A process whose parent has terminated", "A process in Z state", "A kernel thread"], ans: 1,
+    exp: "Orphans get adopted by init/systemd." },
+
+  { q: "Which process state letter commonly indicates a zombie in `ps` output?",
+    opts: ["R", "S", "Z", "T"], ans: 2, exp: "Z indicates zombie." },
+
+  { q: "Which command shows system uptime and load average?",
+    opts: ["uptime", "time", "ps", "kill"], ans: 0, exp: "uptime includes load average values." },
+
+  { q: "What is a daemon (in Linux context)?",
+    opts: ["A process that runs in the background, typically a service",
+           "A process that cannot be stopped",
+           "A process that always runs in foreground",
+           "A command to list jobs"], ans: 0,
+    exp: "Daemon = background service process." },
+
+  { q: "Which `systemctl` command shows whether a service is running and its recent logs/status?",
+    opts: ["systemctl status service", "systemctl stop service", "systemctl start service", "systemctl enable service"], ans: 0,
+    exp: "status shows state and details." }
+];
+
+const quiz = document.getElementById("quiz");
+const scoreOut = document.getElementById("scoreOut");
+
+function render() {
+  quiz.innerHTML = "";
+  QUESTIONS.forEach((item, i) => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.dataset.index = i;
+
+    const head = document.createElement("div");
+    head.className = "qhead";
+    head.innerHTML = `<div class="qnum">Q${i+1}.</div><div class="qtext">${item.q}</div>`;
+    card.appendChild(head);
+
+    const ul = document.createElement("ul");
+    ul.className = "opts";
+
+    item.opts.forEach((opt, j) => {
+      const li = document.createElement("li");
+      const id = `q${i}_opt${j}`;
+      li.innerHTML = `
+        <label for="${id}">
+          <input type="radio" name="q${i}" id="${id}" value="${j}" />
+          ${opt}
+        </label>`;
+      ul.appendChild(li);
+    });
+
+    const note = document.createElement("div");
+    note.className = "note";
+    note.style.display = "none";
+    note.innerHTML = `<b>Explanation:</b> ${item.exp}`;
+    card.appendChild(ul);
+    card.appendChild(note);
+
+    quiz.appendChild(card);
+  });
+}
+
+function resetStyles() {
+  document.querySelectorAll(".card label").forEach(l => l.classList.remove("ok","bad"));
+  document.querySelectorAll(".card .note").forEach(n => { n.style.display = "none"; });
+  scoreOut.textContent = "";
+}
+
+function grade() {
+  resetStyles();
+  let score = 0;
+
+  QUESTIONS.forEach((item, i) => {
+    const chosen = document.querySelector(`input[name="q${i}"]:checked`);
+    const correct = item.ans;
+
+    // mark options
+    const labels = Array.from(document.querySelectorAll(`[name="q${i}"]`)).map(inp => inp.closest("label"));
+    labels.forEach((lab, idx) => {
+      if (idx === correct) lab.classList.add("ok");
+    });
+
+    if (chosen) {
+      const val = Number(chosen.value);
+      if (val === correct) score += 1;
+      else chosen.closest("label").classList.add("bad");
+    }
+    // show explanation
+    const card = document.querySelector(`.card[data-index="${i}"]`);
+    card.querySelector(".note").style.display = "block";
+  });
+
+  scoreOut.textContent = `Score: ${score} / ${QUESTIONS.length}`;
+  // scroll to top result
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+document.getElementById("submitBtn").addEventListener("click", (e) => { e.preventDefault(); grade(); });
+document.getElementById("resetBtn").addEventListener("click", (e) => { e.preventDefault(); quiz.reset(); resetStyles(); });
+
+render();
+</script>
+</body>
+</html>
