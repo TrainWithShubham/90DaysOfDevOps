@@ -1,12 +1,4 @@
 # 🐧 Linux Commands Cheat Sheet (Day 03)
-*Explained like I’m a kid learning Linux*
-
-This cheat sheet helps me understand my computer like a toy box:
-- Look at files
-- Watch running programs
-- Check the internet connection
-
----
 
 ## 📁 File System Commands (Files & Folders)
 
@@ -81,14 +73,6 @@ This cheat sheet helps me understand my computer like a toy box:
 | `shutdown now` | Turn off computer. |
 
 ---
-
-## 🎯 Why This Matters for DevOps
-
-These commands help me:
-- Fix broken services
-- Read logs
-- Check network
-- Save time
 - Be a good DevOps engineer
 
 ---
