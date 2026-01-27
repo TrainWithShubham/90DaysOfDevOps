@@ -34,7 +34,6 @@ Follow these rules while creating your practice note:
 - Include **2 service commands** (`systemctl status`, `systemctl list-units`, etc.)
 - Include **2 log commands** (`journalctl -u <service>`, `tail -n 50`, etc.)
 - Pick **one service on your system** (example: `ssh`, `cron`, `docker`) and inspect it
-- Add **one mini troubleshooting scenario** and the exact steps you would take
 - Keep it **simple and actionable**
 
 Suggested structure for `linux-practice.md`:
