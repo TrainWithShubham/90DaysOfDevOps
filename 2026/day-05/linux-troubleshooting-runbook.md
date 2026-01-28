@@ -29,7 +29,7 @@ root@TWS-BATCH-10-SERVER:~# systemctl list-units --type=service
   snapd.apparmor.service                         loaded active exited  Load AppArmor profiles managed internally by sna>
   snapd.seeded.service                           loaded active exited  Wait until snapd is fully seeded
 
-  checking the status of jenkins
+checking the status of jenkins
 
 root@TWS-BATCH-10-SERVER:~# systemctl status jenkins
 ● jenkins.service - Jenkins Continuous Integration Server
@@ -54,12 +54,14 @@ Jan 28 14:46:52 TWS-BATCH-10-SERVER jenkins[750]: 2026-01-28 14:46:52.174+0000 [
 Jan 28 14:46:52 TWS-BATCH-10-SERVER systemd[1]: Started jenkins.service - Jenkins Continuous Integration Server.
 lines 1-20/20 (END)
 
+
 finding the PID of jenkins
 
 root@TWS-BATCH-10-SERVER:~# ps aux | grep jenkins
 jenkins      750  6.0  9.7 3724660 391264 ?      Ssl  14:46   1:41 /usr/bin/java -Djava.awt.headless=true -jar /usr/share/java/jenkins.war --webroot=/var/cache/jenkins/war --httpPort=8080
 root        1800  0.0  0.0   7076  2048 pts/0    S+   15:14   0:00 grep --color=auto jenkins
 root@TWS-BATCH-10-SERVER:~#
+
 
 checking PID, memory cpu command
 root@TWS-BATCH-10-SERVER:~# ps -o pid,comm,%mem,%cpu -p 750
@@ -134,10 +136,4 @@ Jan 28 14:46:52 TWS-BATCH-10-SERVER jenkins[750]: 2026-01-28 14:46:52.171+0000 [
 Jan 28 14:46:52 TWS-BATCH-10-SERVER jenkins[750]: 2026-01-28 14:46:52.174+0000 [id=30]        INFO        hudson.lifecy>
 Jan 28 14:46:52 TWS-BATCH-10-SERVER systemd[1]: Started jenkins.service - Jenkins Continuous Integration Server.
 lines 1-27/27 (END)
-
-
-
-
-
-
 
