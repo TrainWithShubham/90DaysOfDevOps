@@ -99,3 +99,43 @@
 | `fg` | It will run process in forground which is stopped.| `fg %id_of_job &` |
 
 -----------
+# system Management Commands
+
+**1. `systemctl`** It controls system startup, and manages background services.
+* `systemctl start apache` start the service of apache with this command. *
+* `systemctl stop apache` stop the service of apache with this command. *
+* `systemctl status ssh` show status of ssh service with this command. *
+* `sudo systemctl enable apache2` It Enables the Apache web server to start automatically at system boot. *
+* `sudo systemctl disable apache2` It Disables the Apache web server, preventing it from starting automatically at boot. *
+* `sudo systemctl status apache2` It Displays the "current status" of Apache (whether it’s _active_, _inactive_, _running_, or _failed_). *
+* `sudo systemctl restart apache2` It Restarts the Apache web server, applying any configuration or update changes. *
+* `sudo systemctl reload apache2` It Reloads Apache configuration without completely stopping the service, useful after minor config edits. *
+* `sudo systemctl mask apache2` It Prevents the Apache service from being started manually or automatically, even if required by other services. *
+* `sudo systemctl unmask apache2` It Allows the Apache service to be started or enabled again. *
+* `sudo systemctl set-default graphical.target` It Sets the system to boot into the graphical (GUI) mode by default instead of command-line mode. *
+* `systemctl list-unit-files` It Lists all available unit files on the system, showing which are enabled, disabled, or static. *
+
+----------
+
+# Logging and Monitoring Commands
+
+**1. `journalctl`** It command is used to view logs collected by the systemd journal.
+* `journalctl -xe` This shows detailed error logs and recent system messages. *
+* `last` The last command displays the login and logout history of users. *
+* `history` The history command shows previously executed commands by the user. *
+* `sar -u` The sar command collects and reports system performance statistics. *
+* `script session.log` The script command records all terminal activity in a file. *
+* `scriptreplay timing.log session.log` The scriptreplay command replays a terminal session recorded using the script command. *
+------
+
+
+
+
+
+
+
+
+
+
+
+
