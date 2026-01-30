@@ -10,4 +10,4 @@ Define 3 core DevOps skills you want to build
 Docker,Linux,K8s
 
 Allocate a weekly time budget
-2 hrs daily weekly 4 hrs
+2 hrs daily weekly 4 hrs and all take place,.
