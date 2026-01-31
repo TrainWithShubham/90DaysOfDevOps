@@ -177,11 +177,6 @@ Jan 28 10:15:23 server systemd[1]: Started OpenBSD Secure Shell server.
 - **CGroup**: Process hierarchy
 - Recent log entries shown at bottom
 
-**Color coding (in terminal):**
-- 🟢 Green dot = active (running)
-- 🔴 Red dot = failed
-- ⚪ White dot = inactive (stopped)
-
 ---
 
 ### Command 6: `systemctl list-units` - List All Services
