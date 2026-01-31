@@ -4,7 +4,7 @@ Today's task is about popular linux commands which we used in production enviorn
 
 1. Process Management Commands
 . Command	Usage
-- ps	           = Show running processes
+- ps             = Show running processes
 - ps aux	       = Show all running processes
 - top	           = Real-time process monitoring
 - htop	         = Enhanced process viewer
@@ -15,6 +15,19 @@ Today's task is about popular linux commands which we used in production enviorn
 - uptime	       = Show system running time
 - free -h	       = Show memory usage
 - watch command	 = Run command repeatedly
+
+printf "ps\t\t= Show running processes\n"
+printf "ps aux\t\t= Show all running processes\n"
+printf "top\t\t= Real-time process monitoring\n"
+printf "htop\t\t= Enhanced process viewer\n"
+printf "pidof process\t= Get process ID\n"
+printf "kill PID\t= Kill process by PID\n"
+printf "kill -9 PID\t= Force kill process\n"
+printf "pkill name\t= Kill process by name\n"
+printf "uptime\t\t= Show system running time\n"
+printf "free -h\t\t= Show memory usage\n"
+printf "watch command\t= Run command repeatedly\n"
+
 
 2. 🗂️ File System Commands
 . Command	Usage
