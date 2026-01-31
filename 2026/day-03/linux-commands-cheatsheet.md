@@ -1,4 +1,4 @@
-# Linux Commands Cheat Sheet for DevOps Engineers
+# Day-03: Linux Commands Cheat Sheet
 
 ## Process Management
 
@@ -278,19 +278,3 @@ journalctl -xe
 
 ---
 
-## Pro Tips
-
-1. **Combine commands with pipes**: `ps aux | grep nginx | grep -v grep`
-2. **Use aliases**: Add to `~/.bashrc`:
-   ```bash
-   alias ll='ls -lah'
-   alias ports='ss -tulpn'
-   alias meminfo='free -h && echo && ps aux --sort=-%mem | head -10'
-   ```
-3. **Use watch for monitoring**: `watch -n 2 'df -h'`
-4. **Use history**: `history | grep command`
-5. **Ctrl+R**: Reverse search through command history
-
----
-
-**Remember**: Always test destructive commands in a safe environment first!
