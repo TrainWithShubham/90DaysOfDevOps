@@ -2,19 +2,20 @@ Today is Day 03 of #90DaysOfDevOpsChallenge
 
 Today's task is about popular linux commands which we used in production enviornment 
 
-| Command        | Usage |
-|---------------|------|
-| ps            | Show running processes |
-| ps aux        | Show all running processes |
-| top           | Real-time process monitoring |
-| htop          | Enhanced process viewer |
-| pidof process | Get process ID |
-| kill PID      | Kill process by PID |
-| kill -9 PID   | Force kill process |
-| pkill name    | Kill process by name |
-| uptime        | Show system running time |
-| free -h       | Show memory usage |
-| watch command | Run command repeatedly |
+```
+ps              = Show running processes
+ps aux          = Show all running processes
+top             = Real-time process monitoring
+htop            = Enhanced process viewer
+pidof process   = Get process ID
+kill PID        = Kill process by PID
+kill -9 PID     = Force kill process
+pkill name      = Kill process by name
+uptime          = Show system running time
+free -h         = Show memory usage
+watch command   = Run command repeatedly
+```
+
 
 
 
