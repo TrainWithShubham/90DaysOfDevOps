@@ -71,11 +71,11 @@ Jan 18 09:12:40 LAPTOP-6F2K1CME systemd[1]: Started nginx.service - A high perfo
 4. Mini troubleshooting steps
 - Scenario: NGINX service is down or website not loading
 
-- Step 1: Check service status
+Step 1. Check service status
 - systemctl status nginx
 
 
-- Step 2: Check nginx logs
+Step 2. Check nginx logs
 - journalctl -u nginx | tail -n 5
 - tail -n 5 /var/log/nginx/error.log
 
