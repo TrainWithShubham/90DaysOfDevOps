@@ -1,0 +1,2 @@
+Line 9: This demonstrates tee without append (overwrites)
+Line 10: Tee can also append with -a flag
