@@ -40,8 +40,8 @@ drwxrwxrwt  1 root root    4096 Jan 31 19:41 tmp
 **Files/Folders observed:**
 ```bash
 ls -la /home
-drwxr-xr-x 1 root   root   4096 Nov 21 01:53 claude
-drwxr-x--- 2 ubuntu ubuntu  100 Oct 13 14:09 ubuntu
+drwxr-xr-x 1 root   root   4096 Nov 21 01:53 rameez
+drwxr-x--- 2 ubuntu ubuntu  100 Oct 13 14:09 ahmed
 ```
 
 **I would use this when:**
@@ -49,7 +49,7 @@ drwxr-x--- 2 ubuntu ubuntu  100 Oct 13 14:09 ubuntu
 - Managing user documents, scripts, or personal configs
 - Setting up development environments for specific users
 
-**Real-world example:** `/home/ubuntu/.bashrc` for user-specific shell configuration
+**Real-world example:** `/home/rameez/.bashrc` for user-specific shell configuration
 
 ---
 
@@ -134,8 +134,6 @@ du -sh /var/log/* 2>/dev/null | sort -h | tail -5
 - Debugging deployment issues
 - Checking authentication attempts (`/var/log/auth.log`)
 
-**DevOps critical:** First place to look when something goes wrong!
-
 ---
 
 #### 6. `/tmp` - Temporary Files
@@ -168,8 +166,6 @@ drwxr-xr-x 2 root root 4096 Jan 31 19:41 runbook-demo
 ls -l /bin
 lrwxrwxrwx 1 root root 7 Apr 22  2024 /bin -> usr/bin
 ```
-
-**Modern note:** On Ubuntu 24.04, `/bin` is a symbolic link to `/usr/bin`
 
 **I would use this when:**
 - Locating basic commands like `ls`, `cat`, `cp`, `grep`
@@ -221,18 +217,18 @@ drwxr-xr-x 6 root root  120 Nov 21 01:59 pw-browsers
 
 ### Additional Important Directories (Quick Reference)
 
-| Directory | Purpose | Use Case |
-|-----------|---------|----------|
-| `/var` | Variable data files | Logs, databases, email, print queues |
-| `/usr` | User programs and data | Installed applications, libraries |
-| `/dev` | Device files | Hardware devices (disks, terminals) |
-| `/proc` | Process information | Virtual filesystem for kernel/process info |
-| `/sys` | System information | Kernel and hardware configuration |
-| `/boot` | Boot loader files | Kernel, initrd, bootloader config |
-| `/lib` | Essential libraries | Shared libraries for /bin and /sbin |
-| `/mnt` | Mount points | Temporary mount points for filesystems |
-| `/media` | Removable media | USB drives, CD-ROMs auto-mounted here |
-| `/srv` | Service data | Data for services (web, FTP) |
+| Directory | Purpose                | Use Case                                   |
+| --------- | ---------------------- | ------------------------------------------ |
+| `/var`    | Variable data files    | Logs, databases, email, print queues       |
+| `/usr`    | User programs and data | Installed applications, libraries          |
+| `/dev`    | Device files           | Hardware devices (disks, terminals)        |
+| `/proc`   | Process information    | Virtual filesystem for kernel/process info |
+| `/sys`    | System information     | Kernel and hardware configuration          |
+| `/boot`   | Boot loader files      | Kernel, initrd, bootloader config          |
+| `/lib`    | Essential libraries    | Shared libraries for /bin and /sbin        |
+| `/mnt`    | Mount points           | Temporary mount points for filesystems     |
+| `/media`  | Removable media        | USB drives, CD-ROMs auto-mounted here      |
+| `/srv`    | Service data           | Data for services (web, FTP)               |
 
 ---
 
@@ -302,7 +298,7 @@ Always check status first, then investigate based on what you see. Status comman
 
 **Step 1: Check if service is running or failed**
 ```bash
-systemctl status myapp
+systemctl status ssh
 ```
 **Why:** Shows current state (active/failed/inactive) and recent log entries  
 **Look for:** Exit codes, error messages in the status output
@@ -311,7 +307,7 @@ systemctl status myapp
 
 **Step 2: Check if service is enabled on boot**
 ```bash
-systemctl is-enabled myapp
+systemctl is-enabled ssh
 ```
 **Why:** Determines if service will auto-start after reboot  
 **If disabled:** Service won't start automatically - this might be the issue!
@@ -320,7 +316,7 @@ systemctl is-enabled myapp
 
 **Step 3: View recent logs for error messages**
 ```bash
-journalctl -u myapp -n 50
+journalctl -u ssh -n 50
 ```
 **Why:** Shows last 50 log entries to identify error messages  
 **Look for:** Stack traces, "failed to start", permission errors, port conflicts
@@ -329,7 +325,7 @@ journalctl -u myapp -n 50
 
 **Step 4: View logs with explanatory text**
 ```bash
-journalctl -u myapp -xe
+journalctl -u ssh -xe
 ```
 **Why:** `-x` adds explanatory help text, `-e` jumps to end of logs  
 **Helps:** Understand systemd-specific errors
@@ -338,7 +334,7 @@ journalctl -u myapp -xe
 
 **Step 5: If service is disabled, enable and start it**
 ```bash
-systemctl enable --now myapp
+systemctl enable --now ssh
 ```
 **Why:** Enables service for boot AND starts it immediately  
 **Verify with:** `systemctl status myapp`
@@ -348,7 +344,7 @@ systemctl enable --now myapp
 **Additional troubleshooting commands:**
 ```bash
 # Check service file for misconfiguration
-systemctl cat myapp
+systemctl cat ssh
 
 # Reload systemd if you edited the service file
 systemctl daemon-reload
@@ -505,13 +501,13 @@ journalctl -k
 
 ### Scenario 4: File Permissions Issue
 
-**Problem:** A script at `/home/claude/backup.sh` is not executing. When you run `./backup.sh`, you get "Permission denied". What commands would you use to fix this?
+**Problem:** A script at `/home/ahmed/backup.sh` is not executing. When you run `./backup.sh`, you get "Permission denied". What commands would you use to fix this?
 
 #### Solution (PRACTICAL DEMONSTRATION):
 
 **Step 1: Check current permissions**
 ```bash
-ls -l /home/claude/backup.sh
+ls -l /home/ahmed/backup.sh
 ```
 **Output:**
 ```
@@ -595,28 +591,6 @@ chmod 644 config.txt  # Owner: rw-, Others: r--
 
 ---
 
-## 🎓 Key Takeaways from Scenarios
-
-### Troubleshooting Mindset:
-
-1. **Always start with status/observation**
-   - Don't jump to fixes
-   - Gather information first
-
-2. **Check logs early and often**
-   - Logs tell you what happened
-   - Use timestamps to correlate events
-
-3. **Verify your fixes**
-   - Don't assume it worked
-   - Test and confirm
-
-4. **Document what you did**
-   - Future you will thank you
-   - Helps team members
-
----
-
 ### Common Command Patterns:
 
 | Task | Primary Command | Alternative |
@@ -628,76 +602,3 @@ chmod 644 config.txt  # Owner: rw-, Others: r--
 | Fix permissions | `chmod +x <file>` | `chmod 755 <file>` |
 
 ---
-
-## 🚀 Why This Matters for DevOps
-
-### Understanding the Filesystem:
-- **Faster troubleshooting:** Know where to look immediately
-- **Better scripts:** Use correct paths in automation
-- **Security awareness:** Understand which directories are sensitive
-- **Compliance:** Know where logs/configs are for audits
-
-### Scenario-Based Skills:
-- **Production incidents:** These scenarios happen daily in production
-- **Interview preparation:** Common DevOps interview questions
-- **On-call readiness:** Quick response when systems fail
-- **Team collaboration:** Share troubleshooting approaches
-
----
-
-## 📚 Interview Preparation
-
-### Questions You'll Face:
-
-1. **"Where would you find application logs?"**
-   - Answer: `/var/log` or `journalctl -u <service>`
-
-2. **"A service won't start after reboot. What do you check?"**
-   - Answer: `systemctl is-enabled <service>`, then enable if needed
-
-3. **"Server is slow. How do you find the cause?"**
-   - Answer: Start with `top`, check CPU/memory, investigate top processes
-
-4. **"What's the difference between /bin and /usr/bin?"**
-   - Answer: `/bin` has essential binaries for boot/single-user mode; `/usr/bin` has user applications (though they're often merged now)
-
----
-
-## ✅ Completion Checklist
-
-### Part 1: File System Hierarchy
-- [x] Documented 9 essential directories
-- [x] Ran `ls -l` on each directory
-- [x] Noted actual files/folders observed
-- [x] Wrote "I would use this when..." for each
-- [x] Found largest log files with `du -sh /var/log/*`
-- [x] Viewed config files in `/etc`
-- [x] Checked home directory contents
-
-### Part 2: Scenario Practice
-- [x] Understood the troubleshooting flow
-- [x] Solved Example Scenario (nginx service check)
-- [x] Scenario 1: Service not starting (5 steps)
-- [x] Scenario 2: High CPU usage (5 steps)
-- [x] Scenario 3: Finding service logs (5 steps)
-- [x] Scenario 4: File permissions (5 steps with practical demo)
-- [x] Documented all commands with explanations
-- [x] Created actual script and fixed permissions
-
----
-
-**Status:** ✅ COMPLETED  
-**Time Invested:** 70 minutes  
-**Next:** Day 08 - Advanced Linux Commands & Automation
-
----
-
-## 🎯 Next Steps
-
-1. **Practice these scenarios on a real system**
-2. **Create your own troubleshooting scenarios**
-3. **Set up a test VM to break things and fix them**
-4. **Study systemd service management in depth**
-5. **Learn about file system types and mounting**
-
-**Remember:** The best way to learn is by doing. Break things in a safe environment and fix them!
