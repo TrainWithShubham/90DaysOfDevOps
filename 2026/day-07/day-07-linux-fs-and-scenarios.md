@@ -1,9 +1,7 @@
 # Day 07 – Linux File System Hierarchy & Scenario-Based Practice
 
 **Date:** 2026-02-01  
-**Goal:** Understand Linux filesystem structure and practice real-world troubleshooting  
-**Duration:** 70 minutes  
-**Difficulty:** Intermediate
+**Goal:** Understand Linux filesystem structure and practice real-world troubleshooting 
 
 ---
 
