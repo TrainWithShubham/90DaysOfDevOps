@@ -31,8 +31,8 @@ uname -a
 cat /etc/os-release
 ```
 ### Interpretation
-Identifies Linux distribution and version.
-Important for Nginx package paths and service behavior.
+- Identifies Linux distribution and version.
+- Important for Nginx package paths and service behavior.
 ---
 ## Filesystem Sanity
 ### Step 3: Basic Filesystem Check
@@ -177,3 +177,4 @@ Quick Findings
 - Never reload Nginx without nginx -t
 - Treat 502/504 as upstream issues first
 - Keep this runbook updated after incidents
+
