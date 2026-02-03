@@ -83,7 +83,7 @@ newgrp docker
 - `sudo tail -n 20 /var/log/nginx/access.log`
 - `sudo tail -n 20 /var/log/nginx/error.log`
 - Create log file:
-  - `sudo bash -c '{ echo "===== ACCESS LOG (last 200 lines) ====="; tail -n 200 /var/log/nginx/access.log; echo ""; echo "===== ERROR LOG (last 200 lines) ====="; tail -n 200 /var/log/nginx/error.log; } > /home/$SUDO_USER/nginx-logs.txt'`
+  - `sudo bash -c '{ echo "===== ACCESS LOG (last 20 lines) ====="; tail -n 20 /var/log/nginx/access.log; echo ""; echo "===== ERROR LOG (last 20 lines) ====="; tail -n 20 /var/log/nginx/error.log; } > /home/$SUDO_USER/nginx-logs.txt'`
 - Verify:
   - `head -n 20 ~/nginx-logs.txt`
   - `tail -n 20 ~/nginx-logs.txt`
@@ -129,3 +129,4 @@ http://3.144.217.64/downloads/nginx-logs.txt
 - Where Nginx stores access/error logs and how to extract them for debugging
 
 - How to expose and download static files using Nginx for verification purposes
+
