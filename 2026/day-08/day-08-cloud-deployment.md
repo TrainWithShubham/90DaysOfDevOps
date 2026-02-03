@@ -77,8 +77,8 @@ See https://ubuntu.com/esm or run: sudo pro status
 Last login: Mon Feb  2 08:11:31 2026 from 71.194.37.152
 ubuntu@ip-172-31-22-213:~$ cat /etc/os-release
 ```
-`![SSH Connection](screenshots/ssh-login.png)`
-<img src="screenshots/ssh-login.png" width="600">
+![SSH Connection](screenshots/ssh-login.png)
+`<img src="screenshots/ssh-login.png" width="600">`
 ### System Update
 - `sudo apt update -y`
 - `sudo apt upgrade -y`
