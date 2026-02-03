@@ -25,7 +25,7 @@ cat /etc/passwd | grep -E 'tokyo|berlin|professor'
 ls /home/
 ```
 #### Users' Verification Screenshot
-![Users' verification](screenshots/users)
+![Users' verification](screenshots/users.png)
 ---
 ## Group Assignments
 - tokyo → developers, project-team
@@ -41,7 +41,7 @@ sudo groupadd developers
 sudo groupadd admins
 ```
 #### Groups' Verification Screenshot
-![Groups' Verification](screenshots/groups)
+![Groups' Verification](screenshots/groups.png)
 
 Task 3: Assign Users to Groups
 - Assign group memberships
@@ -51,7 +51,7 @@ sudo usermod -aG developers,admins berlin
 sudo usermod -aG admins professor
 sudo usermod -aG project-team tokyo
 ```
-![Users' Groups](screenshots/users-group)
+![Users' Groups](screenshots/users-group.png)
 ## Directories Created
 - /opt/dev-project → group: developers, permissions: 775
 - /opt/team-workspace → group: project-team, permissions: 775
