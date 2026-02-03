@@ -34,7 +34,6 @@ ssh -i "DevOps.pem" ubuntu@ec2-52-15-57-252.us-east-2.compute.amazonaws.com
 ```
 ## SSH Connection Screenshot
 ![SSH Connection](screenshots/ssh-login.png)
-### Markdown doesn’t support resizing natively, but HTML works:
 `<img src="screenshots/ssh-login.png" width="600">`
 ### System Update
 - `sudo apt update -y`
@@ -117,7 +116,6 @@ http://3.144.217.64/downloads/nginx-logs.txt
 ---
 
 ## Challenges Faced
-## Challenges Faced
 - Initially attempted to access the Nginx page using HTTPS instead of HTTP.
 - Realized that Nginx was configured to serve traffic on port 80 using HTTP.
 - Resolved the issue by accessing the service via `http://<public-ip>`, after which the Nginx welcome page loaded successfully.
@@ -129,4 +127,5 @@ http://3.144.217.64/downloads/nginx-logs.txt
 - How to install and manage services using `systemctl`
 - How security groups/firewalls control public access to ports like 80/22
 - Where Nginx stores access/error logs and how to extract them for debugging
+
 - How to expose and download static files using Nginx for verification purposes
