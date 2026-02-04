@@ -24,11 +24,11 @@
 
 | Files/Directory | Before Change| After Change |
 | ----------------------------- | ----------------------------- | ----------------------------- |
-| app-logs | drwxrwxr-x 2 berlin    heist-team 4096 Feb  4 09:46 app-logs | drwxrwxr-x 2 berlin    heist-team 4096 Feb  4 09:46 app-logs  |
-| bank-heist | drwxrwxr-x 2 ubuntu    ubuntu     4096 Feb  4 09:58 bank-heist | drwxrwxr-x 2 ubuntu    ubuntu     4096 Feb  4 09:58 bank-heist |
+| /app-logs | drwxrwxr-x 2 berlin    heist-team 4096 Feb  4 09:46 app-logs | drwxrwxr-x 2 berlin    heist-team 4096 Feb  4 09:46 app-logs  |
+| /bank-heist | drwxrwxr-x 2 ubuntu    ubuntu     4096 Feb  4 09:58 bank-heist | drwxrwxr-x 2 ubuntu    ubuntu     4096 Feb  4 09:58 bank-heist |
 | devops-file.txt | -rw-rw-r-- 1 ubuntu  ubuntu   13 Feb  4 09:09 devops-file.txt | -rw-rw-r-- 1 tokyo  ubuntu  13 Feb  4 09:09 devops-file.txt |
 | devops-file.txt | -rw-rw-r-- 1 berlin  ubuntu   13 Feb  4 09:32 devops-file.txt | -rw-rw-r-- 1 berlin    heist-team   13 Feb  4 09:32 devops-file.txt |
-| heist-project | drwxrwxr-x 4 ubuntu ubuntu   4096 Feb  4 09:48 heist-project | drwxrwxr-x 4 professor planners   4096 Feb  4 09:48 heist-project |
+| /heist-project | drwxrwxr-x 4 ubuntu ubuntu   4096 Feb  4 09:48 heist-project | drwxrwxr-x 4 professor planners   4096 Feb  4 09:48 heist-project |
 | project-config.yaml | -rw-rw-r-- 1 ubuntu ubuntu  0 Feb  4 09:41 project-config.yaml | -rw-rw-r-- 1 professor heist-team    0 Feb  4 09:41 project-config.yaml |
 | team-notes.txt | -rw-rw-r-- 1 ubuntu    heist-team    0 Feb  4 09:37 team-notes.txt | -rw-rw-r-- 1 ubuntu    heist-team    0 Feb  4 09:37 team-notes.txt |
 | /bank-heist/access-codes.txt | --rw-rw-r-- 1 ubuntu  ubuntu 0 Feb  4 09:58 /bank-heist/access-codes.txt | --rw-rw-r-- 1 tokyo   vault-team 0 Feb  4 09:58 /bank-heist/access-codes.txt |
