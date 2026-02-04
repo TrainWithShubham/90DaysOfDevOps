@@ -1,5 +1,5 @@
 # Day 7 Task: Understanding package manager and systemctl
-
+#Please Do the task properly
 ### What is a package manager in Linux?
 
 In simpler words, a package manager is a tool that allows users to install, remove, upgrade, configure and manage software packages on an operating system. The package manager can be a graphical application like a software center or a command line tool like apt-get or pacman.
