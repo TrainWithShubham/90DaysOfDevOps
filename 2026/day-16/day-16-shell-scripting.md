@@ -6,7 +6,7 @@
 Starting 16 days task
 --------------------------------------------
 
-## Task 1:  Your First Script
+## Task 1:   First Script
 
 
  1.  Create a file  `hello.sh`
@@ -14,7 +14,7 @@ Starting 16 days task
 3.  Print  `Hello, DevOps!`  using  `echo`
 4.  Make it executable and run it
 
-
+2026/Capture.PNG
 
 
 
