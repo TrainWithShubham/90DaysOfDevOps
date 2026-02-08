@@ -42,3 +42,10 @@ Some commands needed to be run on the EC2 server, while others (like scp) had to
 I
 - learned how to install and verify Nginx on an EC2 server, how to check and understand access logs, and how to download logs securely using SSH and SCP.
 - During this, I faced issues with IP addresses, SSH keys, and file permissions, and I learned how to troubleshoot them step by step instead of guessing.
+
+
+
+---
+
+
+
