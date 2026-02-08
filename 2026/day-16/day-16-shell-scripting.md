@@ -14,7 +14,7 @@ Starting 16 days task
 3.  Print  `Hello, DevOps!`  using  `echo`
 4.  Make it executable and run it
 
-2026/Capture.PNG
+2026/day-16/Capture.PNG
 
 
 
