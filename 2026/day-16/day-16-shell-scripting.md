@@ -9,7 +9,6 @@ vim hello.sh
 ```bash
 #!/bin/bash
 echo "Hello, DevOps!"
-:wq
 ```
 ![hello.sh](screenshots/d-16-1-hello.png)
 
@@ -32,7 +31,6 @@ echo "Hello, I am $NAME and I am a $ROLE"
 
 echo 'Single quotes do not expand: $NAME'
 echo "Double quotes expand: $NAME"
-:x
 ```
 ![single/double quote](screenshots/d-16-2-sing-doub-quote.png)
 ### Observation: Single quotes print variables literally, while double quotes expand variables.
@@ -44,7 +42,6 @@ echo "Double quotes expand: $NAME"
 read -p "Enter your name: " name
 read -p "Enter your favourite tool: " tool
 echo "Hello $name, your favourite tool is $tool"
-:x
 ```
 ![greet](screenshots/d-16-3-greet.png)
 
@@ -64,7 +61,6 @@ elif (( n < 0 )); then
 else
   echo "Zero"
 fi
-:x
 ```
 ![chk-num](screenshots/d-16-4-chk-num.png)
 
@@ -85,7 +81,6 @@ else
   echo "File not found. Searching in home directory..."
   find "$HOME" -type f -name "$file_name" 2>/dev/null
 fi
-:x
 ```
 
 ---
