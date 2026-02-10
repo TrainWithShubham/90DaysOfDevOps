@@ -1,21 +1,50 @@
-20 comamnd
-ls - to list the file/directory in current path
-mkdir - to make the dirctory
-mv - to rename the file
-cp - used to copy the file withing the servers
-top - to check the server cpu/memory status
-htop - to check the cpu/mem in graphical manner
-cd - to change the directory
-cd - : to go previos directory
-ping - used to check the reachability
-netstat - used to check the network status 
-curl - it is used to send the request and check the response from the server
-ifconfig - to get the details of the system IP
-nslookup - it us used for DNS resoultion basically means to check DNS is resoluting to which IP
-scp - to copy file between the servers
-ssh is used to connect to another server from one server
-hostname - to check the hostname of the server
-telnet - used to check if server is able to connect on mention port
-touch - used to creat a file
-vi - to edit the file
-less - to read the file in readablle mode
+**File System Commands**
+------------------------
+
+ls – List files and directories in the current path
+
+mkdir – Create a new directory
+
+cd – Change the current directory
+
+cd - – Switch back to the previous directory
+
+cp – Copy files or directories within the system
+
+mv – Move or rename files and directories
+
+touch – Create an empty file
+
+vi – Edit files using the vi editor
+
+less – View file contents in a readable, paginated format
+
+** Process & System Monitoring**
+-------------------------------
+
+top – Display real-time CPU and memory usage
+
+htop – Enhanced, interactive process viewer (graphical)
+
+hostname – Display the system hostname
+
+** Networking & Connectivity**
+------------------------------
+ping – Check network reachability of a host
+
+netstat – Display network connections, routing tables, and ports
+
+ifconfig – Show network interface and IP address details
+
+nslookup – Perform DNS resolution to find IP addresses
+
+curl – Send HTTP requests and inspect server responses
+
+telnet – Test connectivity to a specific host and port
+
+**Remote Access & File Transfer**
+-------------------------------
+
+ssh – Connect securely to a remote server
+
+scp – Copy files securely between servers
