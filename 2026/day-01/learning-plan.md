@@ -3,6 +3,7 @@ HI Bhaiya/Team,
 - Working professional with ~5 years experience in middleware administration
 - Career objective: transition into a DevOps-focused role
 - Primary skill focus areas:
+  - docker
   - Kubernetes (K8s)
   - CI/CD pipelines
   - Shell scripting
