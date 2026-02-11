@@ -1,6 +1,6 @@
 # Day 16 – Shell Scripting Basics
 
-## Task 1: Your First Script (hello.sh)
+## Task 1: First Script (hello.sh)
 
 ```bash
 vim hello.sh
