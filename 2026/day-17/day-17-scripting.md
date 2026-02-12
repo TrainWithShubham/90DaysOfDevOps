@@ -142,7 +142,7 @@ done
 
 # Install all missing packages in one go
 if (( ${#missing_pkgs[@]} > 0 )); then
-  echo "⬇️ Installing: ${missing_pkgs[*]}"   # Print as one string
+  echo "Installing: ${missing_pkgs[*]}"   # Print as one string
   apt-get install -y "${missing_pkgs[@]}"   # Install as separate args
   echo "Installation complete."
 else
@@ -242,6 +242,7 @@ What I learned:
 ---
 My scripts' folder link:
 [Shell Scripts Folder](./day-17-shell-scripts/)
+
 
 
 
