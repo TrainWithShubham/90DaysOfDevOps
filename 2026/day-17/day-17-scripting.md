@@ -243,7 +243,8 @@ What I learned:
 My scripts' folder link:
 [Shell Scripts Folder](./day-17-shell-scripts/)
 
-[Take Quiz about this Project:](day-17-quiz.html)
+[Take Quiz about this Project: Just Download and Run it.](day-17-quiz.html)
+
 
 
 
