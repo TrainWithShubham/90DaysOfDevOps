@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DevOps MCQ Quiz (25 Q) — Timer + Explanations</title>
+  <style>
+    :root{
+      --ok:#16a34a; --bad:#dc2626; --muted:#94a3b8; --line:#243046;
+      --bg:#0b1220; --card:#111827; --btn:#0f172a; --btnHover:#111e36;
+      --blue:#3b82f6;
+    }
+    *{ box-sizing:border-box; }
+    body{ margin:0; font-family:system-ui,Segoe UI,Roboto,Arial; background:var(--bg); color:#e5e7eb; }
+    header{
+      position:sticky; top:0; z-index:10;
+      background:rgba(11,18,32,.95); backdrop-filter: blur(8px);
+      border-bottom:1px solid var(--line);
+    }
+    .wrap{ max-width:980px; margin:0 auto; padding:14px 16px; }
+    .row{ display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+    .title{ font-size:18px; font-weight:800; }
+    .pill{ border:1px solid var(--line); border-radius:999px; padding:6px 10px; color:#cbd5e1; }
+    .pill strong{ color:#fff; }
+    button{
+      cursor:pointer; border:1px solid var(--line);
+      background:var(--btn); color:#fff; padding:10px 12px; border-radius:10px; font-weight:700;
+    }
+    button:hover{ background:var(--btnHover); }
+    button:disabled{ opacity:.55; cursor:not-allowed; }
+    main .wrap{ padding-top: 18px; padding-bottom: 40px; }
+
+    .card{
+      border:1px solid var(--line); border-radius:16px; padding:14px;
+      background: rgba(17,24,39,.75);
+    }
+    .grid{ display:grid; gap:14px; }
+    .qhead{ display:flex; justify-content:space-between; gap:12px; align-items:flex-start; }
+    .qtitle{ font-size:16px; font-weight:800; margin:0; }
+    .qmeta{ color:var(--muted); font-size:12px; line-height:1.3; }
+    .tag{ font-size:12px; color:#cbd5e1; }
+    .opts{ margin-top:10px; display:grid; gap:10px; }
+
+    label.opt{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:10px; border:1px solid var(--line); border-radius:12px; background:#0c1630;
+      cursor:pointer;
+      user-select:none;
+    }
+    label.opt:hover{ border-color:var(--blue); }
+    input[type="radio"]{ margin-top:2px; cursor:pointer; }
+
+    .explain{
+      margin-top:10px; padding:10px; border-radius:12px;
+      background:#0b142a; border:1px dashed var(--line);
+      display:none;
+    }
+    .explain .hd{ font-weight:800; margin-bottom:6px; }
+
+    .ok{ border-color: rgba(22,163,74,.75) !important; background: rgba(22,163,74,.14) !important; }
+    .bad{ border-color: rgba(220,38,38,.75) !important; background: rgba(220,38,38,.14) !important; }
+
+    .muted{ color:var(--muted); }
+    code{ background:#0b142a; border:1px solid var(--line); padding:2px 6px; border-radius:8px; }
+    .topnote{ margin-top:8px; color:var(--muted); font-size:13px; }
+    .summary{ display:none; margin-bottom:14px; }
+    .progress{
+      height:10px; background:#0c1630; border:1px solid var(--line); border-radius:999px;
+      overflow:hidden; width:220px;
+    }
+    .bar{ height:100%; width:0%; background:var(--blue); }
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="row">
+      <div class="title">DevOps MCQ Quiz (25 Questions)</div>
+
+      <div class="pill">Time left: <strong id="timeLeft">10:00</strong></div>
+      <div class="pill">Attempted: <strong id="attempted">0</strong>/<strong id="qCount">0</strong></div>
+
+      <div class="progress" title="Timer progress">
+        <div class="bar" id="timeBar"></div>
+      </div>
+
+      <div style="flex:1"></div>
+      <button id="startBtn">Start</button>
+      <button id="submitBtn" disabled>Submit</button>
+      <button id="resetBtn">Reset</button>
+    </div>
+    <div class="topnote">
+      Start to enable selection. After submit: correct answers turn <span style="color:var(--ok);font-weight:800;">green</span>,
+      your wrong choice turns <span style="color:var(--bad);font-weight:800;">red</span>, and explanations appear.
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div id="summary" class="card summary"></div>
+    <div id="quiz" class="grid"></div>
+  </div>
+</main>
+
+<script>
+  // =======================
+  // 25 QUESTIONS (EDIT HERE)
+  // correct = index (0-based)
+  // =======================
+  const QUESTIONS = [
+    {topic:"Loops", q:"What does this print?  for i in {1..3}; do echo $i; done",
+      options:["1 2 3 (each on new line)","0 1 2 3","1..3 literally","Nothing"],
+      correct:0, exp:"Brace expansion {1..3} generates 1 2 3, loop echoes each value."},
+
+    {topic:"Loops", q:"Which loop is best for counting down from n to 0?",
+      options:["for ((i=0;i<n;i++))","while (( n >= 0 ))","until (( n >= 0 ))","select loop"],
+      correct:1, exp:"A while loop works naturally: while n >= 0, echo and decrement."},
+
+    {topic:"Loops", q:"In Bash arrays, what does ${arr[@]} expand to (when quoted)?",
+      options:["All items as one string","Each item as separate argument","Only first item","Array length"],
+      correct:1, exp:'"${arr[@]}" preserves each element as its own argument (safe for commands).'},
+
+    {topic:"Loops", q:"In Bash arrays, what is ${#arr[@]}?",
+      options:["Last element","Array length","First element","Array name"],
+      correct:1, exp:"${#arr[@]} returns the number of elements in the array."},
+
+    {topic:"Arguments", q:"Which variable gives the number of command-line arguments?",
+      options:["$0","$1","$#","$@"],
+      correct:2, exp:"$# is the argument count. $0 is script name, $1 first arg, $@ all args."},
+
+    {topic:"Arguments", q:"What does $0 usually contain?",
+      options:["Exit code","Script name/path","All args","Current directory"],
+      correct:1, exp:"$0 expands to the script name (or the path used to run it)."},
+
+    {topic:"Arguments", q:"Which expands to all args as separate words when quoted?",
+      options:['"$*"','"$@"',"$#","$?"],
+      correct:1, exp:'"$@" keeps argument boundaries; "$*" merges into one string.'},
+
+    {topic:"Arguments", q:"A usage message should be printed to:",
+      options:["stdout (fd 1)","stderr (fd 2)","stdin (fd 0)","a random fd"],
+      correct:1, exp:"Usage/errors should go to stderr so normal output can be redirected separately."},
+
+    {topic:"Redirection", q:"What does `echo 'Usage' >&2` do?",
+      options:["Writes to a file named 2","Sends output to stderr","Runs in background","Suppresses output"],
+      correct:1, exp:">&2 redirects echo output to file descriptor 2 (stderr)."},
+
+    {topic:"Error Handling", q:"What does `set -e` do?",
+      options:["Print every command","Exit script on first failing command","Ignore all errors","Enable strict typing"],
+      correct:1, exp:"set -e makes the script exit when a command returns non-zero (with some exceptions)."},
+
+    {topic:"Error Handling", q:"What does `cmd1 || cmd2` mean?",
+      options:["Run both always","Run cmd2 only if cmd1 fails","Run cmd2 only if cmd1 succeeds","Run cmd1 in background"],
+      correct:1, exp:"|| is OR chaining: right side runs only if left side fails (non-zero)."},
+
+    {topic:"Error Handling", q:"In safe_script.sh, why use `{ ...; exit 1; }` after `||`?",
+      options:["To group multiple commands as one block","To speed up script","To hide output","To run in parallel"],
+      correct:0, exp:"{ } groups multiple commands so you can echo an error and exit in one fallback block."},
+
+    {topic:"Privileges", q:"What does `if (( EUID != 0 )); then ...` check?",
+      options:["If network is up","If running as root","If bash version is new","If disk is full"],
+      correct:1, exp:"EUID is Effective UID. Root is 0. If not 0, user isn't root."},
+
+    {topic:"Packages", q:"On Ubuntu/Debian, what does `dpkg -s nginx` help you check?",
+      options:["If nginx package is installed","If nginx service is running","If port 80 is open","If DNS resolves nginx"],
+      correct:0, exp:"dpkg -s queries package status/metadata; not service runtime state."},
+
+    {topic:"Packages", q:"Why is it better to run `apt-get update` once (outside the loop)?",
+      options:["It installs packages automatically","It reduces repeated metadata downloads","It disables prompts","It enables systemctl"],
+      correct:1, exp:"Running update once avoids repeated repo refreshes and speeds up the script."},
+
+    {topic:"Packages", q:"Best way to install multiple missing packages stored in array missing_pkgs is:",
+      options:['apt-get install -y "${missing_pkgs[*]}"','apt-get install -y "${missing_pkgs[@]}"','apt-get install -y "$missing_pkgs"',"Not possible"],
+      correct:1, exp:'Use "${missing_pkgs[@]}" so each package is passed as separate argument.'},
+
+    {topic:"Systemctl", q:"Which command is best in scripts to check if a service is running?",
+      options:["systemctl status","systemctl is-active --quiet","systemctl list-unit-files","systemctl cat"],
+      correct:1, exp:"is-active --quiet is script-friendly: uses exit code and minimal output."},
+
+    {topic:"Systemctl", q:"How do you check whether a service unit exists (installed)?",
+      options:["systemctl is-active","systemctl list-unit-files --type=service","ping service","curl service"],
+      correct:1, exp:"list-unit-files shows installed unit files even if not running."},
+
+    {topic:"Networking", q:"`ping trainwithshubham` failed with 'Temporary failure in name resolution'. Which layer is failing first?",
+      options:["Transport (TCP)","Network (IP)","Application (DNS)","Physical (Cable)"],
+      correct:2, exp:"Name resolution is DNS (application layer in TCP/IP model)."},
+
+    {topic:"Networking", q:"What does TTL in a `dig` A record output represent?",
+      options:["Packet hop limit","DNS cache lifetime","TLS certificate expiry","TCP retransmit time"],
+      correct:1, exp:"DNS TTL is how long resolvers/caches may keep that record before re-querying."},
+
+    {topic:"Bash", q:"Why quote variables in `[ -f \"$file\" ]`?",
+      options:["Makes it faster","Prevents issues with spaces/empty values","For colors","Required by bash always"],
+      correct:1, exp:"Quoting prevents word splitting/globbing and handles empty variables safely."},
+
+    {topic:"Git", q:"LF vs CRLF warnings in Windows Git usually relate to:",
+      options:["Branch protection","Line endings conversion settings","Remote repository size","SSH keys"],
+      correct:1, exp:"core.autocrlf and .gitattributes control LF/CRLF conversions."},
+
+    {topic:"Git", q:"What does `.gitattributes` rule `*.sh text eol=lf` do?",
+      options:["Encrypts scripts","Forces LF line endings for .sh files","Makes scripts executable","Ignores .sh files"],
+      correct:1, exp:"It forces LF endings for shell scripts, preventing /bin/bash^M issues on Linux."},
+
+    {topic:"Bash", q:"Which is correct arithmetic comparison syntax inside (( ))?",
+      options:["-ge / -le","-gt / -lt",">= / <=","eq / ne"],
+      correct:2, exp:"Inside (( )), use arithmetic operators like >= <= > <, not -ge/-le."},
+  ];
+
+  // =======================
+  // TIMER SETTINGS
+  // =======================
+  const TOTAL_SECONDS = 10 * 60; // 10 minutes for 25 questions
+  let secondsLeft = TOTAL_SECONDS;
+  let timerId = null;
+  let started = false;
+  let submitted = false;
+  let startedAt = null;
+
+  const els = {
+    quiz: document.getElementById("quiz"),
+    timeLeft: document.getElementById("timeLeft"),
+    qCount: document.getElementById("qCount"),
+    attempted: document.getElementById("attempted"),
+    startBtn: document.getElementById("startBtn"),
+    submitBtn: document.getElementById("submitBtn"),
+    resetBtn: document.getElementById("resetBtn"),
+    summary: document.getElementById("summary"),
+    timeBar: document.getElementById("timeBar"),
+  };
+
+  function fmtTime(s){
+    const mm = String(Math.floor(s/60)).padStart(2,"0");
+    const ss = String(s%60).padStart(2,"0");
+    return `${mm}:${ss}`;
+  }
+
+  function render(){
+    els.quiz.innerHTML = "";
+    els.qCount.textContent = String(QUESTIONS.length);
+
+    QUESTIONS.forEach((item, idx) => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.dataset.qindex = idx;
+
+      const head = document.createElement("div");
+      head.className = "qhead";
+      head.innerHTML = `
+        <div>
+          <p class="qtitle">Q${idx+1}. ${item.q}</p>
+          <div class="qmeta"><span class="tag">Topic:</span> ${item.topic}</div>
+        </div>
+        <div class="qmeta">+1 correct</div>
+      `;
+      card.appendChild(head);
+
+      const opts = document.createElement("div");
+      opts.className = "opts";
+
+      item.options.forEach((optText, oIdx) => {
+        const id = `q${idx}_o${oIdx}`;
+        const label = document.createElement("label");
+        label.className = "opt";
+        label.setAttribute("for", id);
+
+        label.innerHTML = `
+          <input type="radio" name="q${idx}" id="${id}" value="${oIdx}">
+          <div>${optText}</div>
+        `;
+        opts.appendChild(label);
+      });
+
+      card.appendChild(opts);
+
+      const exp = document.createElement("div");
+      exp.className = "explain";
+      exp.innerHTML = `<div class="hd">Explanation</div><div>${item.exp}</div>`;
+      card.appendChild(exp);
+
+      els.quiz.appendChild(card);
+    });
+
+    // After render, apply enabled/disabled state
+    setInputsEnabled(started && !submitted);
+    updateAttempted();
+  }
+
+  function updateAttempted(){
+    let a = 0;
+    for (let i=0;i<QUESTIONS.length;i++){
+      const checked = document.querySelector(`input[name="q${i}"]:checked`);
+      if (checked) a++;
+    }
+    els.attempted.textContent = String(a);
+  }
+
+  function setInputsEnabled(enabled){
+    for (let i=0;i<QUESTIONS.length;i++){
+      document.querySelectorAll(`input[name="q${i}"]`).forEach(r => {
+        r.disabled = !enabled;
+      });
+    }
+  }
+
+  function start(){
+    if (started) return;
+    started = true;
+    submitted = false;
+    secondsLeft = TOTAL_SECONDS;
+    startedAt = Date.now();
+
+    els.summary.style.display = "none";
+    els.submitBtn.disabled = false;
+    els.startBtn.disabled = true;
+
+    setInputsEnabled(true);
+    paintTimer();
+
+    timerId = setInterval(() => {
+      secondsLeft--;
+      paintTimer();
+      if (secondsLeft <= 0){
+        clearInterval(timerId);
+        timerId = null;
+        submit(true);
+      }
+    }, 1000);
+  }
+
+  function paintTimer(){
+    els.timeLeft.textContent = fmtTime(Math.max(0, secondsLeft));
+    const used = TOTAL_SECONDS - Math.max(0, secondsLeft);
+    const pct = Math.min(100, Math.round((used / TOTAL_SECONDS) * 100));
+    els.timeBar.style.width = `${pct}%`;
+  }
+
+  function submit(auto=false){
+    if (submitted) return;
+    submitted = true;
+
+    if (timerId){ clearInterval(timerId); timerId = null; }
+
+    setInputsEnabled(false);
+    els.submitBtn.disabled = true;
+    els.startBtn.disabled = true;
+
+    let score = 0;
+    let attempted = 0;
+
+    for (let qi=0; qi<QUESTIONS.length; qi++){
+      const q = QUESTIONS[qi];
+      const card = document.querySelector(`.card[data-qindex="${qi}"]`);
+      const selected = document.querySelector(`input[name="q${qi}"]:checked`);
+      if (selected) attempted++;
+
+      const correctIndex = q.correct;
+      const labels = Array.from(card.querySelectorAll("label.opt"));
+
+      // Clear old markings
+      labels.forEach(l => l.classList.remove("ok","bad"));
+
+      // Mark correct option green
+      if (labels[correctIndex]) labels[correctIndex].classList.add("ok");
+
+      // If user selected wrong, mark their selection red
+      if (selected){
+        const selIndex = Number(selected.value);
+        if (selIndex === correctIndex) score++;
+        else if (labels[selIndex]) labels[selIndex].classList.add("bad");
+      }
+
+      // Show explanation
+      const exp = card.querySelector(".explain");
+      exp.style.display = "block";
+    }
+
+    const timeUsed = startedAt ? Math.round((Date.now() - startedAt)/1000) : (TOTAL_SECONDS - secondsLeft);
+    els.summary.style.display = "block";
+    els.summary.innerHTML = `
+      <div class="row" style="justify-content:space-between;">
+        <div>
+          <div style="font-size:18px;font-weight:900;">Result</div>
+          <div class="muted" style="margin-top:6px;">
+            Score: <strong style="color:var(--ok)">${score}</strong> / ${QUESTIONS.length}
+            &nbsp; | Attempted: <strong>${attempted}</strong>
+            &nbsp; | Time used: <strong>${fmtTime(timeUsed)}</strong>
+            ${auto ? "<span class='muted'>(Auto-submitted)</span>" : ""}
+          </div>
+        </div>
+        <div class="pill">
+          Tip: use <code>${"${array[@]}"}</code> for commands and <code>${"${array[*]}"}</code> for printing.
+        </div>
+      </div>
+    `;
+  }
+
+  function reset(){
+    started = false;
+    submitted = false;
+    startedAt = null;
+
+    if (timerId){ clearInterval(timerId); timerId = null; }
+
+    secondsLeft = TOTAL_SECONDS;
+    els.startBtn.disabled = false;
+    els.submitBtn.disabled = true;
+
+    els.summary.style.display = "none";
+    paintTimer();
+
+    // Clear selections + styling + explanations
+    for (let i=0;i<QUESTIONS.length;i++){
+      document.querySelectorAll(`input[name="q${i}"]`).forEach(r => r.checked = false);
+    }
+    document.querySelectorAll("label.opt").forEach(l => l.classList.remove("ok","bad"));
+    document.querySelectorAll(".explain").forEach(e => e.style.display = "none");
+
+    setInputsEnabled(false);
+    updateAttempted();
+  }
+
+  // Update attempted count on change
+  document.addEventListener("change", (e) => {
+    if (e.target && e.target.matches('input[type="radio"]')) updateAttempted();
+  });
+
+  // Buttons
+  els.startBtn.addEventListener("click", start);
+  els.submitBtn.addEventListener("click", () => submit(false));
+  els.resetBtn.addEventListener("click", reset);
+
+  // Initial
+  render();
+  reset();
+</script>
+</body>
+</html>
