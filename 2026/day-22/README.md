@@ -91,6 +91,7 @@ Answer these questions in your own words (add them to a `day-22-notes.md` file):
 1. Share a screenshot of your `git log --oneline` output showing multiple commits
 2. Add your `day-22-notes.md` to `2026/day-22/`
 3. Commit and push to your fork
+4. Add your submission for Community Builder of the week on discord
 
 ---
 
