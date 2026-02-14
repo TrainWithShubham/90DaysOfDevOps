@@ -1,0 +1,35 @@
+----------------------Log Analysis-----------------------
+Date of Analysis: 2026-02-14
+Log File: /consdata2/logs/app_log/app.log
+Total Lines processed: 100
+Total Error Count: 23
+ 
+------------------- TOP 5 ERROR MESSAGES -------------------
+     10    Out of memory
+      5    Disk full
+      3    Invalid input
+      3    Failed to connect
+      2    Segmentation fault
+ 
+------------------- CRITICAL-EVENTS-------------------
+Line 3: 2026-02-14 10:47:57 [CRITICAL]  - 6643
+Line 4: 2026-02-14 10:47:57 [CRITICAL]  - 10030
+Line 9: 2026-02-14 10:47:57 [CRITICAL]  - 20949
+Line 13: 2026-02-14 10:47:57 [CRITICAL]  - 12194
+Line 17: 2026-02-14 10:47:57 [CRITICAL]  - 19912
+Line 21: 2026-02-14 10:47:57 [CRITICAL]  - 10330
+Line 23: 2026-02-14 10:47:57 [CRITICAL]  - 25013
+Line 24: 2026-02-14 10:47:57 [CRITICAL]  - 1709
+Line 28: 2026-02-14 10:47:57 [CRITICAL]  - 31607
+Line 29: 2026-02-14 10:47:57 [CRITICAL]  - 26942
+Line 30: 2026-02-14 10:47:57 [CRITICAL]  - 16282
+Line 36: 2026-02-14 10:47:57 [CRITICAL]  - 20160
+Line 59: 2026-02-14 10:47:57 [CRITICAL]  - 11511
+Line 62: 2026-02-14 10:47:57 [CRITICAL]  - 23003
+Line 73: 2026-02-14 10:47:57 [CRITICAL]  - 14863
+Line 75: 2026-02-14 10:47:57 [CRITICAL]  - 25139
+Line 80: 2026-02-14 10:47:57 [CRITICAL]  - 4389
+Line 88: 2026-02-14 10:47:57 [CRITICAL]  - 21226
+Line 93: 2026-02-14 10:47:57 [CRITICAL]  - 2433
+Line 95: 2026-02-14 10:47:57 [CRITICAL]  - 18540
+Line 97: 2026-02-14 10:47:57 [CRITICAL]  - 17406
