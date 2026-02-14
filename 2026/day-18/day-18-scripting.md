@@ -1,23 +1,5 @@
 # Day 18 – Shell Scripting: Functions & Slightly Advanced Concepts
 
-## Task
-Write cleaner, reusable scripts — learn functions, strict mode, and real-world patterns.
-
-You will:
-- Write and call **functions**
-- Use **`set -euo pipefail`** for safer scripts
-- Work with **return values** and **local variables**
-- Build a slightly advanced script
-
----
-
-## Expected Output
-- A markdown file: `day-18-scripting.md`
-- All scripts you write during the tasks
-
----
-
-## Challenge Tasks
 
 ### Task 1: Basic Functions
 1. Create `functions.sh` with:
@@ -25,7 +7,18 @@ You will:
    - A function `add` that takes two numbers and prints their sum
    - Call both functions from the script
 
----
+```bash
+#!/bin/bash
+
+greet() {
+    read -p "Enter the name: " name
+    read -p "Enter the first-number: " a
+    read -p "Enter the second-number: " b
+    echo "sum of two number $((a+b))"   
+}
+
+greet
+```
 
 ### Task 2: Functions with Return Values
 1. Create `disk_check.sh` with:
@@ -33,7 +26,23 @@ You will:
    - A function `check_memory` that checks free memory using `free -h`
    - A main section that calls both and prints the results
 
----
+```bash
+
+#!/bin/bash
+
+check_disk() {
+    echo "Disk Usage Report"
+    df -h /
+
+}
+check_memory() {
+    echo "Memory Usage Report"
+    free -h
+
+}
+check_disk
+check_memory
+```
 
 ### Task 3: Strict Mode — `set -euo pipefail`
 1. Create `strict_demo.sh` with `set -euo pipefail` at the top
@@ -54,7 +63,6 @@ You will:
 
 - `set -o pipefail` →Returns a failure status if any command in a pipeline fails, not just the last command.
 
----
 
 ### Task 4: Local Variables
 1. Create `local_demo.sh` with:
@@ -62,7 +70,35 @@ You will:
    - Show that `local` variables don't leak outside the function
    - Compare with a function that uses regular variables
 
----
+```bash
+--------------------------LOCAL----------------------------------
+INPUT:
+#!/bin/bash
+my_function() {
+    name="Om"
+    echo "Inside function: $name"
+}
+my_function
+echo "Outside function: $name"
+OUTPUT:
+Inside function: Om
+Outside function: Om
+
+-----------------------GLOBAL------------------------------------
+INPUT:
+#!/bin/bash
+my_function() {
+    local name="Om"
+    echo "Inside function: $name"
+}
+my_function
+echo "Outside function: $name"
+OUTPUT:
+Inside function: Om
+Outside function:Nothing will print
+
+```
+
 
 ### Task 5: Build a Script — System Info Reporter
 Create `system_info.sh` that uses functions for everything:
@@ -74,39 +110,3 @@ Create `system_info.sh` that uses functions for everything:
 6. A `main` function that calls all of the above with section headers
 7. Use `set -euo pipefail` at the top
 
-Output should look clean and readable.
-
----
-
-## Hints
-- Function syntax: `function_name() { ... }`
-- Local vars: `local MY_VAR="value"`
-- Strict mode: `set -euo pipefail` as first line after shebang
-- Pass args to functions: `greet "Shubham"` → access as `$1` inside
-- `$?` gives the exit code of last command
-
----
-
-## Documentation
-
-Create `day-18-scripting.md` with:
-- Each script's code and output
-- Explanation of `set -euo pipefail`
-- What you learned (3 key points)
-
----
-
-## Submission
-1. Add your scripts and `day-18-scripting.md` to `2026/day-18/`
-2. Commit and push to your fork
-
----
-
-## Learn in Public
-
-Share what you learned about shell functions and strict mode on LinkedIn.
-
-`#90DaysOfDevOps` `#DevOpsKaJosh` `#TrainWithShubham`
-
-Happy Learning!
-**TrainWithShubham**
