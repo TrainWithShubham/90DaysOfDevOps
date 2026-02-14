@@ -318,4 +318,4 @@ main "$@"
 ---
 [day-18 scripts link:](day-18-scripts)
 
-[day-18-MCQS-download it and solve]
+[day-18-MCQS-download it and solve](day-18-mcq.html)
