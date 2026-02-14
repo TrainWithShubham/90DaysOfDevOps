@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Day 18 MCQs — Bash Functions, Strict Mode, Locals</title>
+  <style>
+    :root{
+      --ok:#16a34a; --bad:#dc2626; --muted:#94a3b8; --line:#243046;
+      --bg:#0b1220; --card:#111827; --btn:#0f172a; --btnHover:#111e36;
+      --blue:#3b82f6;
+    }
+    *{ box-sizing:border-box; }
+    body{ margin:0; font-family:system-ui,Segoe UI,Roboto,Arial; background:var(--bg); color:#e5e7eb; }
+    header{
+      position:sticky; top:0; z-index:10;
+      background:rgba(11,18,32,.95); backdrop-filter: blur(8px);
+      border-bottom:1px solid var(--line);
+    }
+    .wrap{ max-width:1020px; margin:0 auto; padding:14px 16px; }
+    .row{ display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+    .title{ font-size:18px; font-weight:900; }
+    .pill{ border:1px solid var(--line); border-radius:999px; padding:6px 10px; color:#cbd5e1; }
+    .pill strong{ color:#fff; }
+    button{
+      cursor:pointer; border:1px solid var(--line);
+      background:var(--btn); color:#fff; padding:10px 12px; border-radius:10px; font-weight:800;
+    }
+    button:hover{ background:var(--btnHover); }
+    button:disabled{ opacity:.55; cursor:not-allowed; }
+    main .wrap{ padding-top: 18px; padding-bottom: 40px; }
+
+    .card{
+      border:1px solid var(--line); border-radius:16px; padding:14px;
+      background: rgba(17,24,39,.75);
+    }
+    .grid{ display:grid; gap:14px; }
+    .qhead{ display:flex; justify-content:space-between; gap:12px; align-items:flex-start; }
+    .qtitle{ font-size:16px; font-weight:900; margin:0; }
+    .qmeta{ color:var(--muted); font-size:12px; line-height:1.3; }
+    .tag{ font-size:12px; color:#cbd5e1; }
+    .opts{ margin-top:10px; display:grid; gap:10px; }
+
+    label.opt{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:10px; border:1px solid var(--line); border-radius:12px; background:#0c1630;
+      cursor:pointer;
+      user-select:none;
+    }
+    label.opt:hover{ border-color:var(--blue); }
+    input[type="radio"]{ margin-top:2px; cursor:pointer; }
+
+    .explain{
+      margin-top:10px; padding:10px; border-radius:12px;
+      background:#0b142a; border:1px dashed var(--line);
+      display:none;
+    }
+    .explain .hd{ font-weight:900; margin-bottom:6px; }
+
+    .ok{ border-color: rgba(22,163,74,.75) !important; background: rgba(22,163,74,.14) !important; }
+    .bad{ border-color: rgba(220,38,38,.75) !important; background: rgba(220,38,38,.14) !important; }
+
+    .muted{ color:var(--muted); }
+    code{ background:#0b142a; border:1px solid var(--line); padding:2px 6px; border-radius:8px; }
+
+    .topnote{ margin-top:8px; color:var(--muted); font-size:13px; }
+    .summary{ display:none; margin-bottom:14px; }
+    .progress{
+      height:10px; background:#0c1630; border:1px solid var(--line); border-radius:999px;
+      overflow:hidden; width:240px;
+    }
+    .bar{ height:100%; width:0%; background:var(--blue); }
+
+    .hintbox{
+      margin-top:10px; border:1px solid var(--line); border-radius:14px; padding:10px;
+      background: rgba(12,22,48,.7); color:#cbd5e1; font-size:13px;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="row">
+      <div class="title">Day 18 MCQs — Bash Functions, Strict Mode, Locals</div>
+
+      <div class="pill">Time left: <strong id="timeLeft">10:00</strong></div>
+      <div class="pill">Attempted: <strong id="attempted">0</strong>/<strong id="qCount">0</strong></div>
+
+      <div class="progress" title="Timer progress">
+        <div class="bar" id="timeBar"></div>
+      </div>
+
+      <div style="flex:1"></div>
+      <button id="startBtn">Start</button>
+      <button id="submitBtn" disabled>Submit</button>
+      <button id="resetBtn">Reset</button>
+    </div>
+
+    <div class="topnote">
+      Click <b>Start</b> to enable selections. After submit: correct answers turn
+      <span style="color:var(--ok);font-weight:900;">green</span>, your wrong choice turns
+      <span style="color:var(--bad);font-weight:900;">red</span>, and explanations appear.
+    </div>
+
+    <div class="hintbox">
+      Want to add more questions? Scroll to the <code>QUESTIONS</code> array in the script and append a new object:
+      <code>{topic:"...", q:"...", options:["A","B","C","D"], correct:0, exp:"..."}</code>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div id="summary" class="card summary"></div>
+    <div id="quiz" class="grid"></div>
+  </div>
+</main>
+
+<script>
+  // =======================
+  // QUESTIONS (Day 18 Focus)
+  // correct = index (0-based)
+  // Add more by appending objects below.
+  // =======================
+  const QUESTIONS = [
+    {topic:"Functions", q:"Which is a valid Bash function definition?",
+      options:["function greet { echo hi; }","greet() { echo hi; }","def greet(): echo hi","greet => { echo hi }"],
+      correct:1, exp:"In Bash, the common form is: name() { commands; } (the 'function' keyword is optional in many shells, but this exact syntax is correct)."},
+    {topic:"Functions", q:"Inside a function, what does $1 refer to?",
+      options:["First argument passed to the script","First argument passed to the function","Script name","Exit code"],
+      correct:1, exp:"Inside a function, $1 refers to the first positional parameter passed to that function call."},
+    {topic:"Functions", q:"How do you call a function named greet with argument 'Ali'?",
+      options:["call greet('Ali')","greet('Ali')","greet Ali","./greet Ali"],
+      correct:2, exp:"Bash function call is just its name followed by args: greet Ali"},
+    {topic:"Functions", q:"What does `return 1` do inside a function?",
+      options:["Prints 1 to stdout","Returns an exit status code 1 from the function","Exits the whole script always","Returns a string '1'"],
+      correct:1, exp:"return sets the function’s exit status (like a command). It does not return strings."},
+    {topic:"Functions", q:"How do you capture a function’s printed output into a variable?",
+      options:["out=func()","out=$(func)","out=${func}","func > out"],
+      correct:1, exp:"Command substitution captures stdout: out=$(func)"},
+    {topic:"Functions", q:"In Bash, what is the best way to 'return' a string from a function?",
+      options:["return 'hello'","echo 'hello' and capture it","RET='hello' always","exit 'hello'"],
+      correct:1, exp:"Bash return is numeric only. For strings, echo and capture via $(...)."},
+    {topic:"Local Variables", q:"What does `local x=5` do inside a function?",
+      options:["Creates a global variable x","Creates variable x only visible inside the function","Creates x in another file","Exports x to environment"],
+      correct:1, exp:"local limits scope to the function so it won’t leak outside."},
+    {topic:"Local Variables", q:"What happens if you assign `x=10` inside a function without `local` (and x was unset)?",
+      options:["It becomes a global variable","It becomes read-only","It’s deleted on function exit","It causes syntax error"],
+      correct:0, exp:"Without local, assignment creates/overwrites a global shell variable."},
+    {topic:"Strict Mode", q:"What does `set -e` do?",
+      options:["Exit script when any command fails (non-zero)","Echo commands before running","Treat unset vars as errors","Fail pipelines if any part fails"],
+      correct:0, exp:"set -e stops the script on the first unhandled non-zero exit status."},
+    {topic:"Strict Mode", q:"What does `set -u` do?",
+      options:["Unset all variables","Error on using an undefined variable","Update packages","Enable debugging"],
+      correct:1, exp:"set -u treats undefined variables as an error (unbound variable) and exits."},
+    {topic:"Strict Mode", q:"What does `set -o pipefail` do?",
+      options:["Makes pipes faster","Pipeline fails if any command in pipe fails","Ignores pipe errors","Only checks last command"],
+      correct:1, exp:"With pipefail, a pipeline returns failure if any component fails, not only the last one."},
+    {topic:"Strict Mode", q:"Which is the common 'strict mode' line?",
+      options:["set -eux pipefail","set -euo pipefail","set -uo -e pipefail","set -p e u"],
+      correct:1, exp:"The standard strict mode is: set -euo pipefail"},
+    {topic:"Strict Mode", q:"With `set -u`, what happens when you run: echo \"$NOT_SET\" ?",
+      options:["Prints empty string","Prints NOT_SET","Script errors and exits","Sets NOT_SET automatically"],
+      correct:2, exp:"Using an unset variable triggers an 'unbound variable' error with set -u."},
+    {topic:"Error Handling", q:"Which is safer for scripts: `systemctl status ssh` or `systemctl is-active --quiet ssh`?",
+      options:["status is safer","is-active --quiet is safer","Both identical","Neither works in scripts"],
+      correct:1, exp:"is-active --quiet is script-friendly (exit code + no noisy output)."},
+    {topic:"Return Codes", q:"What does `$?` store?",
+      options:["PID of last background job","Exit code of last command","Number of arguments","Current username"],
+      correct:1, exp:"$? is the exit status of the most recently executed command/function."},
+    {topic:"Return Codes", q:"Which exit code generally means success in Unix?",
+      options:["1","0","255","100"],
+      correct:1, exp:"Exit code 0 means success; non-zero indicates failure."},
+    {topic:"Functions", q:"In Bash, positional parameters inside a function are:",
+      options:["Shared with script forever","Local to the function call (during execution)","Always empty","Only available with export"],
+      correct:1, exp:"When a function is called, $1..$n refer to its args during execution."},
+    {topic:"Quoting", q:"Why is quoting important like: [[ -z \"$name\" ]] ?",
+      options:["Makes it faster","Prevents word splitting and issues with spaces/empty","Required for all commands","Enables pipefail"],
+      correct:1, exp:"Quotes prevent word splitting/globbing and keep tests safe when variables are empty or contain spaces."},
+    {topic:"OS Info", q:"Where is OS distribution info commonly stored (Ubuntu)?",
+      options:["/etc/passwd","/etc/os-release","/var/log/os","/bin/os-release"],
+      correct:1, exp:"/etc/os-release contains fields like PRETTY_NAME on most modern distros."},
+    {topic:"Disk Check", q:"Which command shows disk usage for filesystem / in human readable form?",
+      options:["df -h /","du -h /","free -h /","ps -h /"],
+      correct:0, exp:"df reports filesystem usage; du reports directory sizes."},
+    {topic:"Memory Check", q:"Which command shows memory usage in human readable format?",
+      options:["free -h","df -h","top -h","dig -h"],
+      correct:0, exp:"free -h shows RAM and swap usage in human-readable format."},
+    {topic:"Processes", q:"Which command lists top CPU-consuming processes (simple)?",
+      options:["ps -eo pid,%cpu,comm --sort=-%cpu | head","df -h | sort","free -h | head","du -h / | sort"],
+      correct:0, exp:"ps with sort by -%cpu is a common quick way to see top CPU processes."},
+    {topic:"Disk Top 5", q:"Why might `du -xh /` show missing directories unless run as root?",
+      options:["du requires internet","Permissions prevent reading some directories","pipefail disables output","df is required first"],
+      correct:1, exp:"Without root, some directories can’t be accessed, so du may skip or error (often sent to stderr)."},
+    {topic:"Pipefail", q:"Why is `set -o pipefail` useful with something like: cmd1 | cmd2 | cmd3 ?",
+      options:["It makes cmd3 run faster","It reports failure if cmd1 or cmd2 fails too","It disables pipes","It changes quoting rules"],
+      correct:1, exp:"Without pipefail, pipeline exit code is often the last command only; pipefail catches earlier failures."},
+    {topic:"Main Pattern", q:"Why do many scripts use a main() function and call main at the end?",
+      options:["It’s required by bash","It improves readability and structure","It speeds execution","It enables sudo"],
+      correct:1, exp:"Using main() keeps scripts organized, readable, and easier to test/extend."},
+    {topic:"Scope", q:"If you set `local x=1` in a function and later echo $x outside, what happens?",
+      options:["x is 1","x is empty/unset (or previous global value)","Script crashes always","x becomes exported"],
+      correct:1, exp:"local variables don’t leak; outside the function x remains unset or whatever the global value was."},
+    {topic:"Strict Mode", q:"Which line prevents silent bugs from typos like $memroy instead of $memory?",
+      options:["set -e","set -u","set -o pipefail","set +x"],
+      correct:1, exp:"set -u errors on unset variables, catching typos early."},
+  ];
+
+  // =======================
+  // TIMER SETTINGS (EDIT)
+  // =======================
+  const TOTAL_SECONDS = 10 * 60; // 10 minutes (change this if you want)
+  let secondsLeft = TOTAL_SECONDS;
+  let timerId = null;
+  let started = false;
+  let submitted = false;
+  let startedAt = null;
+
+  const els = {
+    quiz: document.getElementById("quiz"),
+    timeLeft: document.getElementById("timeLeft"),
+    qCount: document.getElementById("qCount"),
+    attempted: document.getElementById("attempted"),
+    startBtn: document.getElementById("startBtn"),
+    submitBtn: document.getElementById("submitBtn"),
+    resetBtn: document.getElementById("resetBtn"),
+    summary: document.getElementById("summary"),
+    timeBar: document.getElementById("timeBar"),
+  };
+
+  function fmtTime(s){
+    const mm = String(Math.floor(s/60)).padStart(2,"0");
+    const ss = String(s%60).padStart(2,"0");
+    return `${mm}:${ss}`;
+  }
+
+  function setInputsEnabled(enabled){
+    for (let i=0;i<QUESTIONS.length;i++){
+      document.querySelectorAll(`input[name="q${i}"]`).forEach(r => r.disabled = !enabled);
+    }
+  }
+
+  function updateAttempted(){
+    let a = 0;
+    for (let i=0;i<QUESTIONS.length;i++){
+      const checked = document.querySelector(`input[name="q${i}"]:checked`);
+      if (checked) a++;
+    }
+    els.attempted.textContent = String(a);
+  }
+
+  function paintTimer(){
+    els.timeLeft.textContent = fmtTime(Math.max(0, secondsLeft));
+    const used = TOTAL_SECONDS - Math.max(0, secondsLeft);
+    const pct = Math.min(100, Math.round((used / TOTAL_SECONDS) * 100));
+    els.timeBar.style.width = `${pct}%`;
+  }
+
+  function render(){
+    els.quiz.innerHTML = "";
+    els.qCount.textContent = String(QUESTIONS.length);
+
+    QUESTIONS.forEach((item, idx) => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.dataset.qindex = idx;
+
+      const head = document.createElement("div");
+      head.className = "qhead";
+      head.innerHTML = `
+        <div>
+          <p class="qtitle">Q${idx+1}. ${item.q}</p>
+          <div class="qmeta"><span class="tag">Topic:</span> ${item.topic}</div>
+        </div>
+        <div class="qmeta">+1 correct</div>
+      `;
+      card.appendChild(head);
+
+      const opts = document.createElement("div");
+      opts.className = "opts";
+
+      item.options.forEach((optText, oIdx) => {
+        const id = `q${idx}_o${oIdx}`;
+        const label = document.createElement("label");
+        label.className = "opt";
+        label.setAttribute("for", id);
+
+        label.innerHTML = `
+          <input type="radio" name="q${idx}" id="${id}" value="${oIdx}">
+          <div>${optText}</div>
+        `;
+        opts.appendChild(label);
+      });
+
+      card.appendChild(opts);
+
+      const exp = document.createElement("div");
+      exp.className = "explain";
+      exp.innerHTML = `<div class="hd">Explanation</div><div>${item.exp}</div>`;
+      card.appendChild(exp);
+
+      els.quiz.appendChild(card);
+    });
+
+    setInputsEnabled(started && !submitted);
+    updateAttempted();
+  }
+
+  function start(){
+    if (started) return;
+    started = true;
+    submitted = false;
+    secondsLeft = TOTAL_SECONDS;
+    startedAt = Date.now();
+
+    els.summary.style.display = "none";
+    els.submitBtn.disabled = false;
+    els.startBtn.disabled = true;
+
+    setInputsEnabled(true);
+    paintTimer();
+
+    timerId = setInterval(() => {
+      secondsLeft--;
+      paintTimer();
+      if (secondsLeft <= 0){
+        clearInterval(timerId);
+        timerId = null;
+        submit(true);
+      }
+    }, 1000);
+  }
+
+  function submit(auto=false){
+    if (submitted) return;
+    submitted = true;
+
+    if (timerId){ clearInterval(timerId); timerId = null; }
+
+    setInputsEnabled(false);
+    els.submitBtn.disabled = true;
+    els.startBtn.disabled = true;
+
+    let score = 0;
+    let attempted = 0;
+
+    for (let qi=0; qi<QUESTIONS.length; qi++){
+      const q = QUESTIONS[qi];
+      const card = document.querySelector(`.card[data-qindex="${qi}"]`);
+      const selected = document.querySelector(`input[name="q${qi}"]:checked`);
+      if (selected) attempted++;
+
+      const correctIndex = q.correct;
+      const labels = Array.from(card.querySelectorAll("label.opt"));
+      labels.forEach(l => l.classList.remove("ok","bad"));
+
+      if (labels[correctIndex]) labels[correctIndex].classList.add("ok");
+
+      if (selected){
+        const selIndex = Number(selected.value);
+        if (selIndex === correctIndex) score++;
+        else if (labels[selIndex]) labels[selIndex].classList.add("bad");
+      }
+
+      const exp = card.querySelector(".explain");
+      exp.style.display = "block";
+    }
+
+    const timeUsed = startedAt ? Math.round((Date.now() - startedAt)/1000) : (TOTAL_SECONDS - secondsLeft);
+    els.summary.style.display = "block";
+    els.summary.classList.add("summary");
+    els.summary.innerHTML = `
+      <div class="row" style="justify-content:space-between;">
+        <div>
+          <div style="font-size:18px;font-weight:950;">Result</div>
+          <div class="muted" style="margin-top:6px;">
+            Score: <strong style="color:var(--ok)">${score}</strong> / ${QUESTIONS.length}
+            &nbsp; | Attempted: <strong>${attempted}</strong>
+            &nbsp; | Time used: <strong>${fmtTime(timeUsed)}</strong>
+            ${auto ? "<span class='muted'>(Auto-submitted)</span>" : ""}
+          </div>
+        </div>
+        <div class="pill">
+          Tip: strict mode <code>set -euo pipefail</code> catches bugs early.
+        </div>
+      </div>
+    `;
+  }
+
+  function reset(){
+    started = false;
+    submitted = false;
+    startedAt = null;
+
+    if (timerId){ clearInterval(timerId); timerId = null; }
+
+    secondsLeft = TOTAL_SECONDS;
+    els.startBtn.disabled = false;
+    els.submitBtn.disabled = true;
+
+    els.summary.style.display = "none";
+    paintTimer();
+
+    for (let i=0;i<QUESTIONS.length;i++){
+      document.querySelectorAll(`input[name="q${i}"]`).forEach(r => r.checked = false);
+    }
+    document.querySelectorAll("label.opt").forEach(l => l.classList.remove("ok","bad"));
+    document.querySelectorAll(".explain").forEach(e => e.style.display = "none");
+
+    setInputsEnabled(false);
+    updateAttempted();
+  }
+
+  document.addEventListener("change", (e) => {
+    if (e.target && e.target.matches('input[type="radio"]')) updateAttempted();
+  });
+
+  els.startBtn.addEventListener("click", start);
+  els.submitBtn.addEventListener("click", () => submit(false));
+  els.resetBtn.addEventListener("click", reset);
+
+  // Initial
+  render();
+  reset();
+</script>
+</body>
+</html>
