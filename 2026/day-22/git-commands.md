@@ -60,9 +60,10 @@ Example:
 ```bash
 git log --oneline
 ```
+
 ### git add
-What it does: It moves the changes from current working directory to staging.
-Example:
+What it does: It moves the changes from working directory to staging. 
+Example: 
 ```bash
 git add filename
 ```
@@ -80,6 +81,7 @@ Example:
 ```bash
 git diff
 ```
+
 ### git show
 What it does: It shows the last commit details along with the changes related to that commit
 Example:
@@ -93,3 +95,18 @@ Example:
 ```bash
 git branch
 ```
+
+### git switch
+What it does: It switches the branch
+Example:
+```bash
+git switch <branch-name>
+```
+
+### git pull
+What it does: It pulls the contents of the branch from the remote repository
+Example:
+```bash
+git pull origin feature-1
+```
+
