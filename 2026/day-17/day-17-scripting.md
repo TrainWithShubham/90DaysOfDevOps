@@ -46,6 +46,25 @@ echo "Done!"
 <img width="733" height="227" alt="image" src="https://github.com/user-attachments/assets/1e9c1489-c774-4a84-bdbc-1a0a5dfa6f88" />
 
 
+## Task3:
+1.
+set -euo pipefail
+
+if [ -z "$1" ]; then
+        echo "Usage: $0"
+        exit 1
+fi
+
+
+
+echo "Hello, $1! "
+
+<img width="537" height="144" alt="image" src="https://github.com/user-attachments/assets/e6a0d692-0e90-4146-8798-cd3acec466a3" />
+
+
+
+
+
 
 
 
