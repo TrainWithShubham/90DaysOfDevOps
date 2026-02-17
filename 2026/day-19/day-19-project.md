@@ -319,3 +319,9 @@ Meaning:
 - Automation Requires Logging
     - Proper logging with timestamps is essential for debugging and production monitoring.
 
+---
+
+[day-19-scripts](day-19-shell-scripts)
+
+[MCQS-day-19-Download and Solve](day-19-mcqs.html)
+
