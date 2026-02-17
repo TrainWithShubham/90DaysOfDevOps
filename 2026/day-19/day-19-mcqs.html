@@ -1,0 +1,1327 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Day-19 MCQs — Timed Quiz (Bash, find, tar, cron)</title>
+  <style>
+    :root{
+      /* Dark (default) */
+      --bg: #0b1220;
+      --bg2:#0e1730;
+      --card: rgba(17,26,46,.88);
+      --panel: rgba(9,14,28,.45);
+      --text: #e8eefc;
+      --muted:#9fb0d0;
+      --line: rgba(159,176,208,.18);
+      --accent:#6ea8fe;
+      --accent2:#9b7bff;
+      --good:#3ddc97;
+      --bad:#ff6b6b;
+      --warn:#ffd166;
+      --shadow: 0 12px 30px rgba(0,0,0,.25);
+    }
+
+    /* Light theme overrides */
+    [data-theme="light"]{
+      --bg:#f6f8ff;
+      --bg2:#eef3ff;
+      --card: rgba(255,255,255,.92);
+      --panel: rgba(240,245,255,.85);
+      --text:#0b1220;
+      --muted:#4b5a7a;
+      --line: rgba(20,30,55,.16);
+      --accent:#2f6fed;
+      --accent2:#6b4dff;
+      --shadow: 0 10px 26px rgba(20,30,55,.10);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 20% 10%, var(--bg2) 0%, var(--bg) 55%);
+    }
+    header{
+      padding:16px;
+      border-bottom:1px solid var(--line);
+      background: var(--card);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top:0;
+      z-index: 20;
+      box-shadow: var(--shadow);
+    }
+    .wrap{max-width:1200px;margin:0 auto}
+    .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+    h1{font-size:18px;margin:0;letter-spacing:.2px}
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 12px;border-radius:999px;
+      background: rgba(110,168,254,.12);
+      border:1px solid rgba(110,168,254,.28);
+      color: var(--text);
+      font-weight:700;
+    }
+    .pill small{color:var(--muted);font-weight:600}
+    main{padding:16px}
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 320px;
+      gap:14px;
+      align-items:start;
+    }
+    @media (max-width: 980px){
+      .grid{grid-template-columns: 1fr}
+    }
+    .card{
+      background: var(--card);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:16px;
+      box-shadow: var(--shadow);
+    }
+    .panel{
+      background: var(--card);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:14px;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 86px;
+      max-height: calc(100vh - 110px);
+      overflow:auto;
+    }
+    .controls{
+      display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;
+      margin-top:10px;
+    }
+    .btn{
+      cursor:pointer;
+      border:none;
+      border-radius:12px;
+      padding:10px 14px;
+      font-weight:800;
+      color:var(--text);
+      background: rgba(110,168,254,.18);
+      border:1px solid rgba(110,168,254,.35);
+    }
+    .btn:hover{filter:brightness(1.06)}
+    .btn.secondary{
+      background: rgba(159,176,208,.12);
+      border-color: rgba(159,176,208,.25);
+      color: var(--text);
+    }
+    .btn.danger{
+      background: rgba(255,107,107,.12);
+      border-color: rgba(255,107,107,.35);
+    }
+    .btn:disabled{opacity:.5;cursor:not-allowed}
+    .meta{
+      color:var(--muted);
+      display:flex;gap:12px;flex-wrap:wrap;align-items:center
+    }
+    .progress{
+      width: 260px; max-width: 100%;
+      height: 10px; border-radius: 999px;
+      background: rgba(159,176,208,.12);
+      border: 1px solid rgba(159,176,208,.18);
+      overflow:hidden;
+    }
+    .bar{height:100%;width:0%;background: linear-gradient(90deg, var(--accent), var(--accent2))}
+    .tag{
+      font-size:12px;
+      padding:4px 8px;border-radius:999px;
+      border:1px solid var(--line);
+      color: var(--muted);
+      background: rgba(159,176,208,.08);
+      white-space:nowrap;
+      font-weight:700;
+    }
+    .q{
+      margin-top:14px;
+      padding:14px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: var(--panel);
+      scroll-margin-top: 92px;
+    }
+    .qhead{display:flex;gap:10px;align-items:flex-start;justify-content:space-between}
+    .qnum{
+      min-width:36px;height:36px;border-radius:10px;
+      display:grid;place-items:center;
+      background: rgba(110,168,254,.14);
+      border:1px solid rgba(110,168,254,.28);
+      font-weight:900;
+      color: var(--text);
+    }
+    .qtitle{font-weight:900;margin:0 0 8px;font-size:16px}
+    .opts{display:grid;gap:8px;margin-top:10px}
+    label.opt{
+      display:flex;gap:10px;align-items:flex-start;
+      padding:10px 12px;border-radius:12px;
+      border:1px solid var(--line);
+      background: rgba(17,26,46,.18);
+      cursor:pointer;
+      user-select:none;
+    }
+    [data-theme="light"] label.opt{background: rgba(255,255,255,.65)}
+    label.opt:hover{border-color: rgba(110,168,254,.45)}
+    input[type="radio"]{margin-top:2px}
+    code,kbd{background: rgba(159,176,208,.1); padding:2px 6px;border-radius:8px;border:1px solid var(--line)}
+    .result{
+      margin-top:16px;
+      padding:14px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(17,26,46,.28);
+    }
+    [data-theme="light"] .result{background: rgba(255,255,255,.70)}
+    .score{
+      display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between
+    }
+    .big{font-size:22px;font-weight:1000}
+    .mini{font-size:12px;color:var(--muted);line-height:1.4}
+    .statusBadge{
+      font-size:12px;
+      padding:4px 8px;border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(159,176,208,.08);
+      color: var(--muted);
+      font-weight:800;
+    }
+    .statusBadge.good{border-color: rgba(61,220,151,.35); background: rgba(61,220,151,.10); color: var(--good);}
+    .statusBadge.bad{border-color: rgba(255,107,107,.35); background: rgba(255,107,107,.10); color: var(--bad);}
+    .statusBadge.warn{border-color: rgba(255,209,102,.35); background: rgba(255,209,102,.10); color: var(--warn);}
+    .explain{margin-top:12px;display:none}
+    .explain.show{display:block}
+    .exItem{
+      padding:12px;border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(9,14,28,.35);
+      margin-top:10px;
+    }
+    [data-theme="light"] .exItem{background: rgba(245,248,255,.95)}
+    .exItem h3{margin:0 0 6px;font-size:14px}
+    .navHeader{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      margin-bottom:10px;
+    }
+    .navGrid{
+      display:grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap:8px;
+    }
+    .navBtn{
+      cursor:pointer;
+      padding:8px 0;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background: rgba(159,176,208,.08);
+      color: var(--text);
+      font-weight:900;
+      text-align:center;
+    }
+    .navBtn:hover{border-color: rgba(110,168,254,.45)}
+    .navBtn.answered{border-color: rgba(61,220,151,.40); background: rgba(61,220,151,.10)}
+    .navBtn.current{outline:2px solid rgba(110,168,254,.55)}
+    .navBtn.locked{opacity:.55;cursor:not-allowed}
+    .panelBlock{border-top:1px solid var(--line);padding-top:12px;margin-top:12px}
+    .field{
+      display:flex;gap:8px;align-items:center;flex-wrap:wrap;
+      margin: 8px 0;
+    }
+    .input{
+      flex:1;
+      min-width: 180px;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background: rgba(159,176,208,.08);
+      color: var(--text);
+      font-weight:700;
+      outline:none;
+    }
+    [data-theme="light"] .input{background: rgba(255,255,255,.85)}
+    .certBox{
+      margin-top:10px;
+      padding:12px;
+      border-radius:14px;
+      border:1px dashed rgba(110,168,254,.55);
+      background: rgba(110,168,254,.10);
+      display:none;
+    }
+    .certBox.show{display:block}
+    footer{padding:18px 16px;color:var(--muted);text-align:center}
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="wrap row">
+    <h1>Day-19 MCQs — Bash Scripting, <code>find</code>, <code>tar</code>, Cron</h1>
+
+    <div class="row" style="gap:10px">
+      <div class="pill" id="timerPill" title="Time remaining">
+        ⏱ <span id="timeLeft">--:--</span>
+        <small id="timerNote">set</small>
+      </div>
+
+      <div class="pill" title="Progress">
+        📋 <span id="answeredCount">0</span>/<span id="totalCount">0</span>
+        <small>answered</small>
+      </div>
+
+      <button class="btn secondary" id="themeBtn" type="button" title="Toggle dark/light">Toggle Theme</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap grid">
+
+    <!-- Main quiz column -->
+    <div class="card">
+      <div class="row">
+        <div class="meta">
+          <div><strong>Instructions:</strong> Select one option per question. Submit before time ends. Auto-submit at 0.</div>
+          <div class="mini">Progress is saved locally in your browser (localStorage).</div>
+        </div>
+        <div class="meta">
+          <div class="progress" aria-label="progress bar"><div class="bar" id="bar"></div></div>
+          <span class="tag" id="modeTag">Mode: Timed</span>
+          <span class="tag" id="shuffleTag">Shuffle: On</span>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="row" style="gap:10px">
+          <button class="btn secondary" id="toggleShuffleBtn" type="button">Toggle Shuffle</button>
+          <button class="btn secondary" id="toggleExplanationsBtn" type="button" disabled>Show Explanations</button>
+          <button class="btn danger" id="clearSaveBtn" type="button">Clear Saved Progress</button>
+        </div>
+
+        <div class="row" style="gap:10px">
+          <label class="mini">Timer (minutes):
+            <select id="minutesSelect">
+              <option value="10">10</option>
+              <option value="15" selected>15</option>
+              <option value="20">20</option>
+              <option value="25">25</option>
+            </select>
+          </label>
+          <button class="btn" id="startBtn" type="button">Start</button>
+          <button class="btn danger" id="submitBtn" type="button" disabled>Submit</button>
+        </div>
+      </div>
+
+      <div id="quiz"></div>
+
+      <div class="result" id="result" style="display:none">
+        <div class="score">
+          <div>
+            <div class="big">Score: <span id="scoreNum"></span> / <span id="scoreDen"></span></div>
+            <div class="mini" id="scoreMeta"></div>
+          </div>
+          <div class="row" style="gap:10px">
+            <span class="statusBadge" id="timeUsedBadge">Time used: --</span>
+            <span class="statusBadge" id="accuracyBadge">Accuracy: --</span>
+          </div>
+        </div>
+
+        <div class="certBox" id="certBox">
+          <div class="mini"><strong>Certificate unlocked (80%+)</strong>. Enter your name and generate a certificate.</div>
+          <div class="field">
+            <input class="input" id="certName" placeholder="Your name (e.g., Bhai)" />
+            <button class="btn" id="certBtn" type="button">Generate Certificate (PNG)</button>
+          </div>
+          <div class="mini">Tip: The certificate downloads as a PNG image.</div>
+        </div>
+
+        <div class="explain" id="explain"></div>
+      </div>
+    </div>
+
+    <!-- Navigation panel -->
+    <aside class="panel" aria-label="Question navigation panel">
+      <div class="navHeader">
+        <div>
+          <div style="font-weight:1000">Question Panel</div>
+          <div class="mini">Jump to any question</div>
+        </div>
+        <span class="tag" id="savedTag">Saved: Yes</span>
+      </div>
+
+      <div class="navGrid" id="navGrid"></div>
+
+      <div class="panelBlock">
+        <div class="mini"><strong>Tip:</strong> Cron runs with minimal environment. Use full paths and redirect output to logs.</div>
+      </div>
+
+      <div class="panelBlock">
+        <div class="mini"><strong>Local Save:</strong> Your answers + timer state are saved automatically.</div>
+        <div class="mini">If you refresh the page, the quiz resumes from where you left.</div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer>
+  Day-19 Topics: Bash strict mode, find/mtime/exec, gzip/tar, cron syntax, automation logging.
+</footer>
+
+<script>
+(() => {
+  // -----------------------
+  // Storage keys
+  // -----------------------
+  const LS_KEY = "day19_mcq_state_v2";
+  const LS_THEME = "day19_mcq_theme_v2";
+
+  // -----------------------
+  // Question Bank (30 questions)
+  // -----------------------
+  const QUESTION_BANK = [
+    { q: "What does <code>set -euo pipefail</code> primarily help with in Bash scripts?",
+      options: [
+        "It makes scripts run faster by enabling compiler optimizations",
+        "It improves reliability by failing on errors, unset vars, and pipeline failures",
+        "It enables root access automatically",
+        "It forces interactive prompts for dangerous commands"
+      ],
+      answer: 1,
+      exp: "Strict mode: <code>-e</code> exits on non-zero status, <code>-u</code> errors on unset variables, and <code>pipefail</code> catches failures in pipelines."
+    },
+    { q: "In <code>find</code>, what does <code>-mtime +7</code> mean?",
+      options: [
+        "Files modified exactly 7 days ago",
+        "Files modified less than 7 days ago",
+        "Files modified more than 7 days ago",
+        "Files modified in the last 7 hours"
+      ],
+      answer: 2,
+      exp: "<code>-mtime +7</code> matches files with modification time strictly greater than 7 days."
+    },
+    { q: "Why is <code>[[ -d \"$DIR\" ]]</code> used before rotating logs?",
+      options: [
+        "To check if the variable is numeric",
+        "To check if the path exists and is a directory",
+        "To check if the path is a regular file",
+        "To check if the directory is empty"
+      ],
+      answer: 1,
+      exp: "<code>-d</code> returns true if the path exists and is a directory; helps fail fast for bad inputs."
+    },
+    { q: "Which test checks that a file exists and is NOT empty?",
+      options: ["<code>-e</code>", "<code>-f</code>", "<code>-s</code>", "<code>-x</code>"],
+      answer: 2,
+      exp: "<code>-s</code> is true if the file exists and size is greater than 0."
+    },
+    { q: "What does <code>find \"$LOG_DIR\" -type f -name \"*.log\"</code> do?",
+      options: [
+        "Finds directories ending with .log",
+        "Finds regular files ending with .log under LOG_DIR",
+        "Finds files that contain the text .log",
+        "Finds only hidden .log files"
+      ],
+      answer: 1,
+      exp: "<code>-type f</code> filters regular files; <code>-name</code> matches filename patterns."
+    },
+    { q: "In <code>find</code>, what is the benefit of <code>-exec ... {} +</code> vs <code>-exec ... {} \\;</code>?",
+      options: [
+        "It disables errors",
+        "It runs the command once per file only",
+        "It batches multiple files per command invocation for efficiency",
+        "It only works for directories"
+      ],
+      answer: 2,
+      exp: "<code>+</code> groups many paths into fewer command executions, improving performance."
+    },
+    { q: "What does <code>gzip</code> do to a file like <code>app.log</code> by default?",
+      options: [
+        "Creates <code>app.log.zip</code> and keeps original",
+        "Replaces it with <code>app.log.gz</code>",
+        "Encrypts the file",
+        "Moves it to /tmp"
+      ],
+      answer: 1,
+      exp: "Default gzip replaces the original file with a <code>.gz</code> compressed file."
+    },
+    { q: "Why is <code>rm -f</code> often used in automated cleanup scripts?",
+      options: [
+        "It makes rm faster by using multithreading",
+        "It avoids failures if files are missing and suppresses prompts",
+        "It encrypts deleted files",
+        "It only deletes empty files"
+      ],
+      answer: 1,
+      exp: "<code>rm -f</code> avoids prompts and prevents failures if a file disappears between <code>find</code> and deletion (race conditions)."
+    },
+    { q: "In cron syntax, which field represents the 'day of week'?",
+      options: [
+        "First field (minute)",
+        "Second field (hour)",
+        "Fourth field (month)",
+        "Fifth field (day of week)"
+      ],
+      answer: 3,
+      exp: "Cron format: minute hour day-of-month month day-of-week."
+    },
+    { q: "Which cron entry runs a command every day at 2 AM?",
+      options: [
+        "<code>2 0 * * * cmd</code>",
+        "<code>0 2 * * * cmd</code>",
+        "<code>* 2 * * * cmd</code>",
+        "<code>0 * 2 * * cmd</code>"
+      ],
+      answer: 1,
+      exp: "Minute 0, hour 2, every day/month/dow."
+    },
+    { q: "Which cron entry runs every 5 minutes?",
+      options: [
+        "<code>*/5 * * * * cmd</code>",
+        "<code>5 * * * * cmd</code>",
+        "<code>* */5 * * * cmd</code>",
+        "<code>0/5 0 * * * cmd</code>"
+      ],
+      answer: 0,
+      exp: "<code>*/5</code> in the minute field means every 5 minutes."
+    },
+    { q: "Which cron entry runs every Sunday at 3 AM?",
+      options: [
+        "<code>0 3 * * 0 cmd</code>",
+        "<code>3 0 * * 0 cmd</code>",
+        "<code>0 0 3 * 0 cmd</code>",
+        "<code>0 3 0 * * cmd</code>"
+      ],
+      answer: 0,
+      exp: "Minute 0, hour 3, day-of-week 0 (Sunday)."
+    },
+    { q: "Why should you use full paths in cron jobs?",
+      options: [
+        "Cron does not support relative paths",
+        "Cron runs with a minimal PATH/environment so commands may not be found",
+        "Cron always runs as root",
+        "Cron only runs commands in /usr/bin"
+      ],
+      answer: 1,
+      exp: "Cron has a reduced environment. Using full paths avoids 'command not found' issues."
+    },
+    { q: "What does <code>crontab -l</code> do?",
+      options: [
+        "Edits the system-wide cron file",
+        "Lists current user’s scheduled cron jobs",
+        "Deletes all cron jobs",
+        "Starts the cron daemon"
+      ],
+      answer: 1,
+      exp: "<code>crontab -l</code> prints the current user’s crontab entries."
+    },
+    { q: "Which tar flags create a gzip-compressed archive file?",
+      options: ["<code>tar -xvf</code>", "<code>tar -czf</code>", "<code>tar -tvf</code>", "<code>tar -rf</code>"],
+      answer: 1,
+      exp: "<code>-c</code> create, <code>-z</code> gzip, <code>-f</code> filename."
+    },
+    { q: "Why is <code>-C</code> useful in tar backup commands?",
+      options: [
+        "It converts tar to zip",
+        "It changes directory before adding files, producing clean relative paths",
+        "It encrypts the archive",
+        "It forces cron to run"
+      ],
+      answer: 1,
+      exp: "<code>-C</code> changes directory before archiving so the archive does not store messy absolute paths."
+    },
+    { q: "What does <code>tar -tzf file.tar.gz</code> do?",
+      options: [
+        "Extracts the archive",
+        "Lists the contents of a gzip-compressed tar archive",
+        "Deletes the archive",
+        "Tests network connectivity"
+      ],
+      answer: 1,
+      exp: "<code>-t</code> lists contents; useful to verify backup integrity without extracting."
+    },
+    { q: "What is the purpose of <code>> /path/log 2>&1</code> in cron?",
+      options: [
+        "Redirect only errors to terminal",
+        "Append both stdout and stderr to a log file",
+        "Overwrite the cron schedule",
+        "Change file permissions"
+      ],
+      answer: 1,
+      exp: "<code>> </code> appends stdout; <code>2>&1</code> sends stderr to the same log file."
+    },
+    { q: "Why count matches using <code>-print | wc -l</code> in a rotate script?",
+      options: [
+        "Because gzip changes extensions so counting after may miss originals",
+        "Because wc -l only works on .gz files",
+        "Because find can’t run without wc",
+        "Because printing disables deletion"
+      ],
+      answer: 0,
+      exp: "Compression changes filenames. Counting what matched before actions ensures accurate numbers."
+    },
+    { q: "What does <code>[[ $# -ne 1 ]]</code> check?",
+      options: [
+        "Whether $1 is empty",
+        "Whether the script has exactly one argument",
+        "Whether the number of arguments is not equal to 1",
+        "Whether the directory has one file"
+      ],
+      answer: 2,
+      exp: "<code>$#</code> is arg count; <code>-ne</code> means not equal."
+    },
+    { q: "What does a <code>usage()</code> function pattern help with?",
+      options: [
+        "Creating GUI windows",
+        "Standardizing help/error output for incorrect arguments",
+        "Encrypting logs",
+        "Running scripts in parallel"
+      ],
+      answer: 1,
+      exp: "It provides consistent instructions and exit behavior for invalid invocation."
+    },
+    { q: "Why might a script fail writing to <code>/var/log/maintenance.log</code>?",
+      options: [
+        "Bash blocks writing to /var/log by design",
+        "Normal users usually lack write permissions in /var/log",
+        "Cron deletes /var/log daily",
+        "tar forbids logging"
+      ],
+      answer: 1,
+      exp: "<code>/var/log</code> is typically owned by root; writing requires root or adjusted permissions."
+    },
+    { q: "What’s a good practice in wrapper scripts like <code>maintenance.sh</code>?",
+      options: [
+        "Hardcode relative script paths",
+        "Log start/end markers and redirect sub-script outputs",
+        "Disable error handling",
+        "Run only on weekends"
+      ],
+      answer: 1,
+      exp: "Wrapper scripts should be observable: timestamps, start/end markers, and captured stdout/stderr."
+    },
+    { q: "What does <code>pipefail</code> change compared to default pipeline behavior?",
+      options: [
+        "A pipeline fails only if the last command fails",
+        "A pipeline fails if any command in it fails",
+        "Pipelines are disabled",
+        "It forces output to /dev/null"
+      ],
+      answer: 1,
+      exp: "With <code>pipefail</code>, the pipeline status reflects failures from any stage."
+    },
+    { q: "If you use <code>find ... | wc -l</code>, what does <code>wc -l</code> count?",
+      options: ["Characters", "Words", "Lines (typically one per match)", "File sizes"],
+      answer: 2,
+      exp: "<code>wc -l</code> counts lines; find prints one match per line by default."
+    },
+    { q: "Which test checks if a path exists (file or directory)?",
+      options: ["<code>-z</code>", "<code>-e</code>", "<code>-n</code>", "<code>-p</code>"],
+      answer: 1,
+      exp: "<code>-e</code> is true if the path exists (file/dir/link)."
+    },
+    { q: "Why is quoting variables like <code>\"$LOG_DIR\"</code> important?",
+      options: [
+        "It increases compression ratio",
+        "It prevents word splitting and issues with spaces in paths",
+        "It makes cron run faster",
+        "It converts strings to integers"
+      ],
+      answer: 1,
+      exp: "Quotes protect spaces/newlines and prevent unexpected globbing/word splitting."
+    },
+    { q: "What does <code>bash -x script.sh</code> do?",
+      options: [
+        "Runs script in safe mode only",
+        "Prints each command before executing (trace/debug)",
+        "Compiles script to binary",
+        "Runs script in background"
+      ],
+      answer: 1,
+      exp: "<code>-x</code> enables execution tracing to debug scripts."
+    },
+    { q: "In <code>find</code>, what does <code>-type f</code> ensure?",
+      options: [
+        "Only directories are matched",
+        "Only regular files are matched",
+        "Only symlinks are matched",
+        "Only hidden files are matched"
+      ],
+      answer: 1,
+      exp: "<code>-type f</code> filters results to regular files only."
+    },
+    { q: "Which is safest for cron jobs: relative or absolute script paths?",
+      options: [
+        "Relative paths (cron always runs in your home)",
+        "Absolute paths (cron environment is minimal)",
+        "Either is always identical",
+        "Only relative paths are allowed"
+      ],
+      answer: 1,
+      exp: "Use absolute paths for predictability in cron’s minimal environment."
+    }
+  ];
+
+  // -----------------------
+  // DOM
+  // -----------------------
+  const elQuiz = document.getElementById("quiz");
+  const elNavGrid = document.getElementById("navGrid");
+  const elStart = document.getElementById("startBtn");
+  const elSubmit = document.getElementById("submitBtn");
+  const elToggleShuffle = document.getElementById("toggleShuffleBtn");
+  const elToggleExplain = document.getElementById("toggleExplanationsBtn");
+  const elClearSave = document.getElementById("clearSaveBtn");
+  const elMinutes = document.getElementById("minutesSelect");
+  const elTimeLeft = document.getElementById("timeLeft");
+  const elTimerNote = document.getElementById("timerNote");
+  const elAnswered = document.getElementById("answeredCount");
+  const elTotal = document.getElementById("totalCount");
+  const elBar = document.getElementById("bar");
+  const elShuffleTag = document.getElementById("shuffleTag");
+  const elSavedTag = document.getElementById("savedTag");
+
+  const elResult = document.getElementById("result");
+  const elScoreNum = document.getElementById("scoreNum");
+  const elScoreDen = document.getElementById("scoreDen");
+  const elScoreMeta = document.getElementById("scoreMeta");
+  const elExplain = document.getElementById("explain");
+  const elTimeUsedBadge = document.getElementById("timeUsedBadge");
+  const elAccuracyBadge = document.getElementById("accuracyBadge");
+
+  const elThemeBtn = document.getElementById("themeBtn");
+  const elCertBox = document.getElementById("certBox");
+  const elCertName = document.getElementById("certName");
+  const elCertBtn = document.getElementById("certBtn");
+
+  // -----------------------
+  // State
+  // -----------------------
+  let questions = [];
+  let started = false;
+  let submitted = false;
+  let shuffle = true;
+  let timerId = null;
+
+  let startTimeMs = null;             // epoch ms when started
+  let remainingSeconds = 15 * 60;     // countdown
+  let lastScrollIdx = 0;              // for nav highlight
+
+  // answersByIndex = number or null (index of option)
+  let answersByIndex = [];
+
+  // -----------------------
+  // Utilities
+  // -----------------------
+  const deepCopy = (o) => JSON.parse(JSON.stringify(o));
+
+  function shuffleArray(a){
+    for(let i=a.length-1;i>0;i--){
+      const j = Math.floor(Math.random()*(i+1));
+      [a[i],a[j]] = [a[j],a[i]];
+    }
+    return a;
+  }
+
+  function formatTime(sec){
+    const m = Math.max(0, Math.floor(sec/60));
+    const s = Math.max(0, sec%60);
+    return String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
+  }
+
+  function setTimer(sec){
+    remainingSeconds = Math.max(0, sec);
+    elTimeLeft.textContent = formatTime(remainingSeconds);
+    elTimerNote.textContent = started ? "remaining" : "set";
+    const pill = document.getElementById("timerPill");
+    pill.style.borderColor = remainingSeconds <= 60 ? "rgba(255,209,102,.55)" : "rgba(110,168,254,.28)";
+  }
+
+  function escapeHtml(str){
+    return String(str)
+      .replaceAll("&","&amp;")
+      .replaceAll("<","&lt;")
+      .replaceAll(">","&gt;");
+  }
+
+  // -----------------------
+  // LocalStorage Save/Load
+  // -----------------------
+  function saveState(){
+    const payload = {
+      version: 2,
+      shuffle,
+      started,
+      submitted,
+      remainingSeconds,
+      startTimeMs,
+      minutesSelect: elMinutes.value,
+      answersByIndex,
+      // Persist question order by storing ids (index from original bank)
+      order: questions.map(q => q._id),
+      lastScrollIdx
+    };
+    localStorage.setItem(LS_KEY, JSON.stringify(payload));
+    elSavedTag.textContent = "Saved: Yes";
+  }
+
+  function clearSaved(){
+    localStorage.removeItem(LS_KEY);
+    elSavedTag.textContent = "Saved: No";
+  }
+
+  function loadState(){
+    const raw = localStorage.getItem(LS_KEY);
+    if(!raw) return null;
+    try{
+      const s = JSON.parse(raw);
+      if(!s || s.version !== 2) return null;
+      return s;
+    }catch{
+      return null;
+    }
+  }
+
+  // -----------------------
+  // Theme
+  // -----------------------
+  function applyTheme(theme){
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem(LS_THEME, theme);
+  }
+  function initTheme(){
+    const saved = localStorage.getItem(LS_THEME);
+    applyTheme(saved === "light" ? "light" : "dark");
+  }
+
+  // -----------------------
+  // Rendering
+  // -----------------------
+  function updateProgress(){
+    const total = questions.length;
+    const answeredCount = answersByIndex.filter(v => v !== null && v !== undefined).length;
+    elAnswered.textContent = answeredCount;
+    elTotal.textContent = total;
+    elBar.style.width = total ? `${Math.round((answeredCount/total)*100)}%` : "0%";
+    updateNav();
+  }
+
+  function renderQuestions(){
+    elQuiz.innerHTML = "";
+    questions.forEach((qObj, idx) => {
+      const section = document.createElement("section");
+      section.className = "q";
+      section.id = `q${idx}`;
+
+      section.innerHTML = `
+        <div class="qhead">
+          <div style="display:flex;gap:10px;align-items:flex-start">
+            <div class="qnum">${idx+1}</div>
+            <div>
+              <p class="qtitle">${qObj.q}</p>
+              <div class="mini">Choose one answer</div>
+            </div>
+          </div>
+          <span class="tag">Day-19</span>
+        </div>
+
+        <div class="opts" role="radiogroup" aria-label="Question ${idx+1}">
+          ${qObj.options.map((opt, j) => {
+            const checked = answersByIndex[idx] === j ? "checked" : "";
+            const disabled = (!started || submitted) ? "disabled" : "";
+            return `
+              <label class="opt">
+                <input type="radio" name="q${idx}" value="${j}" ${checked} ${disabled}>
+                <div>${opt}</div>
+              </label>
+            `;
+          }).join("")}
+        </div>
+      `;
+
+      elQuiz.appendChild(section);
+    });
+
+    elQuiz.querySelectorAll('input[type="radio"]').forEach(input => {
+      input.addEventListener("change", (e) => {
+        const name = e.target.name;     // q{idx}
+        const idx = parseInt(name.slice(1), 10);
+        const val = parseInt(e.target.value, 10);
+        answersByIndex[idx] = val;
+        updateProgress();
+        saveState();
+      });
+    });
+
+    updateProgress();
+  }
+
+  function renderNav(){
+    elNavGrid.innerHTML = "";
+    questions.forEach((_, idx) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "navBtn";
+      btn.textContent = String(idx+1);
+
+      btn.addEventListener("click", () => {
+        if(!document.getElementById(`q${idx}`)) return;
+        document.getElementById(`q${idx}`).scrollIntoView({behavior:"smooth", block:"start"});
+        lastScrollIdx = idx;
+        saveState();
+        updateNav();
+      });
+
+      elNavGrid.appendChild(btn);
+    });
+    updateNav();
+  }
+
+  function updateNav(){
+    const navButtons = Array.from(elNavGrid.querySelectorAll(".navBtn"));
+    navButtons.forEach((btn, idx) => {
+      btn.classList.toggle("answered", answersByIndex[idx] !== null && answersByIndex[idx] !== undefined);
+      btn.classList.toggle("current", idx === lastScrollIdx);
+      btn.classList.toggle("locked", !started); // lock before start (still clickable? we keep clickable but dim)
+    });
+  }
+
+  function attachScrollSpy(){
+    const onScroll = () => {
+      // find nearest visible question top
+      const tops = questions.map((_, idx) => {
+        const el = document.getElementById(`q${idx}`);
+        if(!el) return {idx, dist: Infinity};
+        const rect = el.getBoundingClientRect();
+        return {idx, dist: Math.abs(rect.top - 100)};
+      });
+      tops.sort((a,b)=>a.dist-b.dist);
+      if(tops[0] && tops[0].idx !== lastScrollIdx){
+        lastScrollIdx = tops[0].idx;
+        updateNav();
+        saveState();
+      }
+    };
+    window.addEventListener("scroll", onScroll, {passive:true});
+  }
+
+  // -----------------------
+  // Quiz Lifecycle
+  // -----------------------
+  function loadQuestions(orderIds=null){
+    // attach stable ids from original bank index
+    const base = deepCopy(QUESTION_BANK).map((q, i) => ({...q, _id: i}));
+    if(orderIds && Array.isArray(orderIds) && orderIds.length === base.length){
+      const map = new Map(base.map(q => [q._id, q]));
+      questions = orderIds.map(id => map.get(id)).filter(Boolean);
+    } else {
+      questions = base;
+      if(shuffle) shuffleArray(questions);
+    }
+    answersByIndex = new Array(questions.length).fill(null);
+  }
+
+  function start(){
+    if(started) return;
+    started = true;
+    submitted = false;
+    startTimeMs = Date.now();
+
+    // enable radios
+    elQuiz.querySelectorAll('input[type="radio"]').forEach(r => r.disabled = false);
+
+    elStart.disabled = true;
+    elSubmit.disabled = false;
+    elToggleExplain.disabled = true;
+
+    elTimerNote.textContent = "remaining";
+
+    if(timerId) clearInterval(timerId);
+    timerId = setInterval(tick, 1000);
+
+    saveState();
+  }
+
+  function tick(){
+    remainingSeconds -= 1;
+    setTimer(remainingSeconds);
+    saveState();
+    if(remainingSeconds <= 0){
+      clearInterval(timerId);
+      timerId = null;
+      if(!submitted) submit(true);
+    }
+  }
+
+  function submit(auto=false){
+    if(submitted) return;
+    submitted = true;
+
+    // disable inputs
+    elQuiz.querySelectorAll('input[type="radio"]').forEach(r => r.disabled = true);
+    elSubmit.disabled = true;
+    elStart.disabled = true;
+    elToggleExplain.disabled = false;
+
+    if(timerId){
+      clearInterval(timerId);
+      timerId = null;
+    }
+
+    const total = questions.length;
+    let correct = 0, wrong = 0, blank = 0;
+
+    const explanations = [];
+    questions.forEach((qObj, idx) => {
+      const chosen = answersByIndex[idx];
+      const isBlank = chosen === null || chosen === undefined;
+      const isCorrect = chosen === qObj.answer;
+
+      if(isBlank) blank++;
+      else if(isCorrect) correct++;
+      else wrong++;
+
+      explanations.push({
+        idx,
+        question: qObj.q,
+        chosen,
+        correct: qObj.answer,
+        options: qObj.options,
+        status: isBlank ? "Unanswered" : (isCorrect ? "Correct" : "Incorrect"),
+        exp: qObj.exp
+      });
+    });
+
+    const elapsedSec = startTimeMs ? Math.round((Date.now() - startTimeMs)/1000) : 0;
+    const acc = total ? Math.round((correct/total)*100) : 0;
+
+    elResult.style.display = "block";
+    elScoreNum.textContent = correct;
+    elScoreDen.textContent = total;
+    elScoreMeta.textContent = `${correct} correct • ${wrong} wrong • ${blank} unanswered${auto ? " • auto-submitted" : ""}`;
+    elTimeUsedBadge.textContent = `Time used: ${formatTime(elapsedSec)}`;
+    elAccuracyBadge.textContent = `Accuracy: ${acc}%`;
+    elAccuracyBadge.className = "statusBadge " + (acc >= 80 ? "good" : acc >= 50 ? "warn" : "bad");
+
+    // Certificate unlock
+    const passed = (correct/total) >= 0.80;
+    elCertBox.classList.toggle("show", passed);
+    elCertName.value = localStorage.getItem("day19_cert_name") || "";
+    if(passed && !elCertName.value) elCertName.focus();
+
+    // Build explanations (hidden by default)
+    elExplain.classList.remove("show");
+    elToggleExplain.textContent = "Show Explanations";
+
+    elExplain.innerHTML = `<div class="mini">Review answers and explanations below.</div>`;
+    explanations.forEach(item => {
+      const chosenText = (item.chosen === null || item.chosen === undefined) ? "—" : item.options[item.chosen];
+      const correctText = item.options[item.correct];
+      const badgeClass = item.status === "Correct" ? "good" : item.status === "Incorrect" ? "bad" : "warn";
+
+      const div = document.createElement("div");
+      div.className = "exItem";
+      div.innerHTML = `
+        <div class="row" style="justify-content:space-between;gap:10px">
+          <h3>Q${item.idx+1}. ${item.status}</h3>
+          <span class="statusBadge ${badgeClass}">${item.status}</span>
+        </div>
+        <div class="mini" style="margin-top:6px">${item.question}</div>
+        <p><strong>Your answer:</strong> ${escapeHtml(chosenText)}</p>
+        <p><strong>Correct answer:</strong> ${escapeHtml(correctText)}</p>
+        <p><strong>Explanation:</strong> ${item.exp}</p>
+      `;
+      elExplain.appendChild(div);
+    });
+
+    saveState();
+  }
+
+  function setShuffle(newVal){
+    if(started && !submitted){
+      alert("Toggle shuffle only before starting or after submitting. Clear progress to reshuffle.");
+      return;
+    }
+    shuffle = newVal;
+    elShuffleTag.textContent = `Shuffle: ${shuffle ? "On" : "Off"}`;
+    // rebuild questions fresh
+    clearSaved();
+    init(); // re-init from scratch
+  }
+
+  function clearProgress(){
+    if(confirm("Clear saved progress and reset quiz?")){
+      clearSaved();
+      init();
+    }
+  }
+
+  // -----------------------
+  // Certificate generation (PNG)
+  // -----------------------
+  function generateCertificatePNG(){
+    const name = (elCertName.value || "").trim();
+    if(!name){
+      alert("Please enter your name for the certificate.");
+      elCertName.focus();
+      return;
+    }
+    localStorage.setItem("day19_cert_name", name);
+
+    // compute score from UI
+    const score = parseInt(elScoreNum.textContent, 10);
+    const total = parseInt(elScoreDen.textContent, 10);
+    const percent = Math.round((score/total)*100);
+
+    const canvas = document.createElement("canvas");
+    const W = 1600, H = 1100;
+    canvas.width = W;
+    canvas.height = H;
+    const ctx = canvas.getContext("2d");
+
+    // Background
+    ctx.fillStyle = "#0b1220";
+    ctx.fillRect(0,0,W,H);
+
+    // Gradient band
+    const g = ctx.createLinearGradient(0,0,W,0);
+    g.addColorStop(0, "#2f6fed");
+    g.addColorStop(1, "#9b7bff");
+    ctx.fillStyle = g;
+    ctx.fillRect(0,0,W,140);
+
+    // Card
+    ctx.fillStyle = "#111a2e";
+    roundRect(ctx, 120, 190, W-240, H-310, 26, true, false);
+
+    // Border
+    ctx.strokeStyle = "rgba(110,168,254,.55)";
+    ctx.lineWidth = 6;
+    roundRect(ctx, 120, 190, W-240, H-310, 26, false, true);
+
+    // Title
+    ctx.fillStyle = "#e8eefc";
+    ctx.font = "bold 64px system-ui, -apple-system, Segoe UI, Roboto, Arial";
+    ctx.fillText("Certificate of Completion", 220, 310);
+
+    // Subtitle
+    ctx.fillStyle = "rgba(159,176,208,.95)";
+    ctx.font = "600 28px system-ui, -apple-system, Segoe UI, Roboto, Arial";
+    ctx.fillText("This certifies that", 220, 380);
+
+    // Name
+    ctx.fillStyle = "#e8eefc";
+    ctx.font = "900 72px system-ui, -apple-system, Segoe UI, Roboto, Arial";
+    ctx.fillText(name, 220, 470);
+
+    // Course line
+    ctx.fillStyle = "rgba(159,176,208,.95)";
+    ctx.font = "600 28px system-ui, -apple-system, Segoe UI, Roboto, Arial";
+    ctx.fillText("has successfully passed the Day-19 MCQs quiz on:", 220, 545);
+
+    ctx.fillStyle = "#e8eefc";
+    ctx.font = "800 34px system-ui, -apple-system, Segoe UI, Roboto, Arial";
+    ctx.fillText("Bash Scripting • find • tar • Cron", 220, 595);
+
+    // Score
+    ctx.fillStyle = "rgba(159,176,208,.95)";
+    ctx.font = "600 28px system-ui, -apple-system, Segoe UI, Roboto, Arial";
+    ctx.fillText(`Score: ${score}/${total} (${percent}%)`, 220, 670);
+
+    // Date
+    const dateStr = new Date().toLocaleString();
+    ctx.fillStyle = "rgba(159,176,208,.9)";
+    ctx.font = "600 22px system-ui, -apple-system, Segoe UI, Roboto, Arial";
+    ctx.fillText(`Issued: ${dateStr}`, 220, 720);
+
+    // Signature box
+    ctx.strokeStyle = "rgba(159,176,208,.35)";
+    ctx.lineWidth = 3;
+    roundRect(ctx, 1000, 760, 420, 190, 18, false, true);
+    ctx.fillStyle = "rgba(159,176,208,.9)";
+    ctx.font = "700 20px system-ui, -apple-system, Segoe UI, Roboto, Arial";
+    ctx.fillText("Instructor / Platform", 1040, 920);
+
+    // Badge
+    ctx.fillStyle = "rgba(61,220,151,.18)";
+    roundRect(ctx, 220, 760, 300, 80, 18, true, false);
+    ctx.strokeStyle = "rgba(61,220,151,.45)";
+    ctx.lineWidth = 3;
+    roundRect(ctx, 220, 760, 300, 80, 18, false, true);
+    ctx.fillStyle = "#3ddc97";
+    ctx.font = "900 28px system-ui, -apple-system, Segoe UI, Roboto, Arial";
+    ctx.fillText("PASSED (80%+)", 255, 812);
+
+    // Download
+    const a = document.createElement("a");
+    a.download = `Day-19-Certificate-${name.replace(/\s+/g,'_')}.png`;
+    a.href = canvas.toDataURL("image/png");
+    a.click();
+  }
+
+  function roundRect(ctx, x, y, w, h, r, fill, stroke){
+    if (w < 2*r) r = w/2;
+    if (h < 2*r) r = h/2;
+    ctx.beginPath();
+    ctx.moveTo(x+r, y);
+    ctx.arcTo(x+w, y, x+w, y+h, r);
+    ctx.arcTo(x+w, y+h, x, y+h, r);
+    ctx.arcTo(x, y+h, x, y, r);
+    ctx.arcTo(x, y, x+w, y, r);
+    ctx.closePath();
+    if(fill) ctx.fill();
+    if(stroke) ctx.stroke();
+  }
+
+  // -----------------------
+  // Init / Restore
+  // -----------------------
+  function init(){
+    // reset UI state
+    started = false;
+    submitted = false;
+    startTimeMs = null;
+    lastScrollIdx = 0;
+
+    if(timerId){
+      clearInterval(timerId);
+      timerId = null;
+    }
+
+    // Determine minutes default
+    const minutes = parseInt(elMinutes.value, 10);
+    setTimer(minutes * 60);
+
+    // Load saved state if present
+    const saved = loadState();
+    if(saved){
+      shuffle = !!saved.shuffle;
+      elShuffleTag.textContent = `Shuffle: ${shuffle ? "On" : "Off"}`;
+
+      // Rebuild questions in the same order
+      loadQuestions(saved.order);
+      renderNav();
+
+      // Restore answers
+      answersByIndex = Array.isArray(saved.answersByIndex)
+        ? saved.answersByIndex.slice(0, questions.length).map(v => (v === null || v === undefined) ? null : Number(v))
+        : new Array(questions.length).fill(null);
+
+      // Restore timer setting + remaining time
+      if(saved.minutesSelect) elMinutes.value = saved.minutesSelect;
+      setTimer(Number(saved.remainingSeconds ?? parseInt(elMinutes.value,10)*60));
+
+      started = !!saved.started;
+      submitted = !!saved.submitted;
+      startTimeMs = saved.startTimeMs || null;
+      lastScrollIdx = Number(saved.lastScrollIdx ?? 0);
+
+      // Render questions with restored selections
+      renderQuestions();
+
+      // Restore controls
+      elStart.disabled = started || submitted;
+      elSubmit.disabled = !started || submitted;
+      elToggleExplain.disabled = !submitted;
+
+      if(started && !submitted){
+        // resume timer
+        elTimerNote.textContent = "remaining";
+        if(timerId) clearInterval(timerId);
+        timerId = setInterval(tick, 1000);
+      }
+
+      // If already submitted, show result again (re-grade quickly)
+      if(submitted){
+        // temporarily stop timer
+        if(timerId){ clearInterval(timerId); timerId = null; }
+        submit(false); // will re-render result & explanations
+      }
+
+      // Scroll to last viewed question
+      setTimeout(() => {
+        const target = document.getElementById(`q${Math.min(lastScrollIdx, questions.length-1)}`);
+        if(target) target.scrollIntoView({behavior:"auto", block:"start"});
+        updateNav();
+      }, 50);
+
+      elSavedTag.textContent = "Saved: Yes";
+      return;
+    }
+
+    // Fresh init (no saved state)
+    shuffle = true;
+    elShuffleTag.textContent = "Shuffle: On";
+    loadQuestions(null);
+    renderNav();
+    renderQuestions();
+
+    elStart.disabled = false;
+    elSubmit.disabled = true;
+    elToggleExplain.disabled = true;
+    elResult.style.display = "none";
+    elExplain.classList.remove("show");
+    elExplain.innerHTML = "";
+    elCertBox.classList.remove("show");
+    elSavedTag.textContent = "Saved: No";
+
+    saveState(); // create initial saved state
+  }
+
+  // -----------------------
+  // Events
+  // -----------------------
+  elStart.addEventListener("click", () => {
+    start();
+    // visually unlock nav
+    updateNav();
+  });
+
+  elSubmit.addEventListener("click", () => submit(false));
+
+  elToggleShuffle.addEventListener("click", () => setShuffle(!shuffle));
+
+  elToggleExplain.addEventListener("click", () => {
+    elExplain.classList.toggle("show");
+    elToggleExplain.textContent = elExplain.classList.contains("show") ? "Hide Explanations" : "Show Explanations";
+  });
+
+  elMinutes.addEventListener("change", () => {
+    if(started && !submitted){
+      alert("Timer can be changed only before starting. Clear saved progress to apply.");
+      // revert to saved minutes in storage
+      const saved = loadState();
+      if(saved?.minutesSelect) elMinutes.value = saved.minutesSelect;
+      return;
+    }
+    setTimer(parseInt(elMinutes.value,10)*60);
+    saveState();
+  });
+
+  elClearSave.addEventListener("click", clearProgress);
+
+  elThemeBtn.addEventListener("click", () => {
+    const cur = document.documentElement.getAttribute("data-theme") || "dark";
+    applyTheme(cur === "dark" ? "light" : "dark");
+  });
+
+  elCertBtn.addEventListener("click", generateCertificatePNG);
+
+  elCertName.addEventListener("input", () => {
+    localStorage.setItem("day19_cert_name", elCertName.value);
+  });
+
+  // -----------------------
+  // Boot
+  // -----------------------
+  initTheme();
+  attachScrollSpy();
+  init();
+})();
+</script>
+</body>
+</html>
