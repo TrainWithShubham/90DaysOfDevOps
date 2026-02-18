@@ -90,7 +90,7 @@ systemctl status <service> → Check service health
 
 kill <PID> → Stop a process
 
-free -h → Check memory usage
+free -h → Check memory  usage
 
 ## Why This Matters in DevOps
 
