@@ -15,7 +15,7 @@ DevOps is a culture and set of practices that combines Development and Operation
 - Master Linux fundamentals
 - Learn Git & GitHub properly
 - Understand CI/CD with Jenkins
-- Work with Docker & Kubernetes
+- Work with Docker &  Kubernetes
 - Deploy applications on AWS
 - Build real-world DevOps projects
 
