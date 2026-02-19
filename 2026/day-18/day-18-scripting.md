@@ -110,3 +110,60 @@ Create `system_info.sh` that uses functions for everything:
 6. A `main` function that calls all of the above with section headers
 7. Use `set -euo pipefail` at the top
 
+```bash
+#!/bin/bash
+set -euo pipefail
+
+# 1. Hostname and OS info
+system_info() {
+    echo "Hostname: $(hostname)"
+    echo "Operating System: $(uname)"
+}
+
+# 2. Uptime
+show_uptime() {
+    uptime
+}
+
+# 3. Disk usage (Top 5)
+disk_usage() {
+    df -h | head -n 6
+}
+
+# 4. Memory usage
+memory_usage() {
+    free -h
+}
+
+# 5. Top CPU processes
+top_cpu() {
+    ps aux --sort=-%cpu | head -n 6
+}
+
+# 6. Main function
+main() {
+
+    echo "===== SYSTEM INFO ====="
+    system_info
+    echo
+
+    echo "===== UPTIME ====="
+    show_uptime
+    echo
+
+    echo "===== DISK USAGE ====="
+    disk_usage
+    echo
+
+    echo "===== MEMORY USAGE ====="
+    memory_usage
+    echo
+
+    echo "===== TOP CPU PROCESSES ====="
+    top_cpu
+    echo
+}
+
+# Run program
+main
+```
