@@ -1,0 +1,8 @@
+Line 1: This is the first line written with > redirection
+Line 2: This line is appended with >> redirection
+Line 3: Added using tee command (writes and displays)
+Line 4: DevOps engineers work with config files daily
+Line 5: Logs are critical for troubleshooting issues
+Line 6: Scripts automate repetitive tasks
+Line 7: Understanding file I/O is fundamental
+Line 8: Master these basics before advanced topics
