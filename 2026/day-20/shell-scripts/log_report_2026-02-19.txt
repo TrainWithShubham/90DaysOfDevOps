@@ -1,0 +1,25 @@
+==========================================
+          Daily Log Summary Report
+==========================================
+Date of analysis      : 2026-02-19
+Log file name         : app.log
+Log file path         : ./app.log
+Total lines processed : 37
+Total error count     : 16
+
+
+------- Task 4: Top 5 Error Messages -------
+--- Top 5 Error Messages ---
+4 Timeout while calling upstream service
+3 Database connection failed
+3 Authentication failed for user admin
+2 Unable to write to log file
+2 Payment processing failed
+
+------- Task 3: Critical Events -------
+--- Critical Events ---
+Line 17: 2026-02-18 09:07:55 critical CPU overheating
+Line 18: 2026-02-18 09:08:44 CRITICAL Disk failure detected
+Line 34: 2026-02-18 09:14:22 CRITICAL Kernel panic occurred
+Line 35: 2026-02-18 09:15:55 CRITICAL Security breach detected
+==========================================
