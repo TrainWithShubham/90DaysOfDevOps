@@ -27,6 +27,7 @@ Create three users with home directories and passwords:
 - `tokyo`
 - `berlin`
 - `professor`
+- <img width="1014" height="724" alt="image" src="https://github.com/user-attachments/assets/8474f414-3485-49b0-8623-0680c9fc364e" />
 
 **Verify:** Check `/etc/passwd` and `/home/` directory
 
