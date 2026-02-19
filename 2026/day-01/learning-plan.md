@@ -1,0 +1,2 @@
+in simple understanding devops means complete end to end process desigining and deploying applications.consists of two words dev +ops 
+dev means development in which code ,plan and features are included but in operations (ops) the code si deployed on servers where continous monitoring happens
