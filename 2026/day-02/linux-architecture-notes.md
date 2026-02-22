@@ -1,89 +1,171 @@
-Linux Architecture, Processes and systemd
+# Linux Architecture, Processes and systemd
 
-The core concepts of Linux- 
+---
 
-Linux works on ASKH principle.
+## Core Concepts of Linux
 
-A stands for Application
-S stands for Shell
-K stands for Kernel
-H stands for Hardware
+Linux works on the **ASKH principle**:
 
-The shell is a user interface that allows users to interact with the system, while applications and services communicate with the kernel using system calls.
+- **A** – Application  
+- **S** – Shell  
+- **K** – Kernel  
+- **H** – Hardware  
 
-When you power ON the system BIOS/UEFI loads the GNU GRUB which initializes the kernel, the kernel mounts the root filesystem and starts the systemd (PID 1), which initiazies user space services like system libraries, shell, system utilities and applications. Key concepts of linux include treating all devices as files and managing processes.
+### How ASKH Works
 
-In Linux we say Everything is a file or a file like device and and running programs are managed as processes.. For eg even if you install an application on the linux it will be considered a file or a directory and if you copy the file or start an application both are process to linux.
+- The **Shell** acts as a user interface.
+- Applications and services communicate with the **Kernel** using system calls.
+- The Kernel directly interacts with the **Hardware**.
 
-Note that init/systemd is the first process in the linux
+---
 
-How Processes are created and managed - 
+## Linux Boot Process (High Level)
 
-When you run a command or start an application, linux creates a copy of existing process and then changes the copied process with the command you have run and then kernel will decide when the process gets CPU time, it gives memory to execute the process and later waits for command to be executed and then terminates process of the run command and this process is call fork-exec process
+When you power ON the system:
 
-Fork is duplicating the existing process and exec is replacing the duplicated process with a process that user is running.
+1. BIOS/UEFI loads the GNU GRUB bootloader.
+2. GNU GRUB initializes the Kernel.
+3. The Kernel mounts the root filesystem.
+4. The Kernel starts systemd (PID 1).
+5. systemd initializes:
+   - System libraries
+   - Shell
+   - System utilities
+   - Applications
 
-For eg you are running a ls command, as this is a shell command first linux will create a copy of shell process, the copy of shell process is replaced with ls command process, then kernel manages this ls process by giving it CPU time, provides memory and lets it finish and then removes that process
+---
 
-Manages 
+## Important Linux Philosophy
 
-What systemd does and why it matters?
+### 1️⃣ Everything is a File
 
-Systemd is the boss of the system. When linux starts systemd is the first program to start, it main job is to start, stop and manage all other programs and services on the system.
+In Linux:
 
-Starts services when the system boots
-   Eg - network, SSH, web server
-Stops services when system shuts down
-Keeps services running, i.e. if any service crashes it helps in restarting the service automatically
-Starts the services in a particular order for eg it starts network services before apps
-Manages system states such as Boot, shutdown, reboot and rescue mode.
+- Devices are treated as files.
+- Applications are files/directories.
+- Copying a file is considered a process.
+- Running an application is also a process.
 
-Systemd is important because it provides faster boot time, automatic recovery of service, easy service management.
+Even if you install an application, Linux considers it as a file or directory.
 
-Linux Process States - 
-Running (R)
-Process is using CPU or ready to run
-Example: a script currently executing
+---
 
-Sleeping (S)
-Waiting for something (input, network, disk)
-Most processes stay in this state
+### 2️⃣ Everything Running is a Process
 
-Uninterruptible Sleep (D)
-Waiting for I/O (disk, network)
-Cannot be killed easily
+- Every running program is managed as a **process**.
+- `init/systemd` is the **first process** in Linux (PID 1).
 
-Zombie (Z)
-Process finished execution
-Parent didn’t clean it up
-Uses no CPU, but still listed
+---
 
-Stopped (T)
-Process paused manually
-Example: pressed Ctrl + C
+# Process Creation and Management
 
-Linux Command used daily - 
-cd - Change directory 
-This command is used to navigate into directories
+## Fork-Exec Model
 
-cp - copy command
-This command is used to copy files and directories from source to destination
+When you run a command:
 
-mv - Move / rename command
-This command is used move the files and directory to a different location or rename the existing filename or directory name.
+1. Linux creates a copy of an existing process.
+2. The copied process is modified to run your command.
+3. The Kernel:
+   - Allocates CPU time
+   - Assigns memory
+   - Executes the command
+   - Terminates the process after completion
 
-cat - Open and view the contents in a file
-This command is used to view whats written in the file
+This is called the **Fork-Exec Process Model**.
 
-touch - Creata file command
-This command creates an empty file without data.
+### Fork
 
+- Duplicates the existing process.
 
+### Exec
 
-	
+- Replaces the duplicated process with the new program.
 
+---
 
+## Example: Running `ls` Command
 
+1. The shell is running.
+2. Linux creates a copy of the shell process.
+3. The copied process is replaced with the `ls` command.
+4. Kernel:
+   - Assigns CPU time
+   - Allocates memory
+   - Executes `ls`
+   - Terminates the process after completion
 
+---
 
+# What is systemd and Why It Matters?
 
+`systemd` is the first process (PID 1) when Linux starts.
+
+Its main job is to start, stop, and manage all other programs and services on the system.
+
+## Responsibilities of systemd
+
+- Starts services during boot  
+  Example: network, SSH, web server
+- Stops services during shutdown
+- Automatically restarts crashed services
+- Starts services in a specific order  
+  Example: network services start before applications
+- Manages system states:
+  - Boot
+  - Shutdown
+  - Reboot
+  - Rescue mode
+
+## Why systemd is Important
+
+- Faster boot time
+- Automatic service recovery
+- Easy service management
+
+---
+
+# Linux Process States
+
+| State | Meaning | Description |
+|-------|----------|--------------|
+| **R (Running)** | Using CPU or ready to run | Example: Script currently executing |
+| **S (Sleeping)** | Waiting for event | Most processes stay here |
+| **D (Uninterruptible Sleep)** | Waiting for I/O | Cannot be killed easily |
+| **Z (Zombie)** | Finished but not cleaned by parent | Uses no CPU but still listed |
+| **T (Stopped)** | Manually paused | Example: Suspended process |
+
+---
+
+# Daily Used Linux Commands
+
+## `cd` – Change Directory
+
+Used to navigate between directories.
+
+---
+
+## `cp` – Copy
+
+Used to copy files and directories from source to destination.
+
+---
+
+## `mv` – Move / Rename
+
+Used to:
+- Move files/directories
+- Rename files or directories
+
+---
+
+## `cat` – View File Contents
+
+Used to display the contents of a file.
+
+---
+
+## `touch` – Create File
+
+Used to create an empty file without data.
+
+---
