@@ -1,30 +1,140 @@
-**Day 6 \- Linux Fundamentals : Read and Write Text Files**
+# 🐧 Day 6 – Linux Fundamentals: Read and Write Text Files
 
-Todays goal was to focus on basic linux file read and write operations.
+---
 
-**File Creation \-** 
+## 🎯 Objective
 
-Command \- touch file.txt  
-Description \- This command creates a blank file
+Today's goal was to focus on basic Linux file read and write operations.
 
-**Writing to a File \-**
+---
 
-Command \- echo “Line 1” \> file.txt   
-Description \- This command will write the text “Line 1” in file.txt and also note that if file.txt has some data in it, it will be replaced by the text “Line 1”
+# 📂 File Creation
 
-Command \- echo “Line 2” \>\> file.txt  
-Description \- This command appends text to the file without replacing existing content. For eg if file.txt has “Line 1” as data then after entering the above command text “Line 2” will be written in the next line without replacing the text “Line 1” in the file.
+## 🔹 Command:
+```
+touch file.txt
+```
 
-Command \- echo “Line 3” | tee \-a file.txt  
-Description \- This also does the same operation as echo “Line 2” \>\> file.txt but it also displays the line on the screen which will be appended in the file. In above command it will display text “Line 3” on the screen as well as it will write the same text in the file.txt
+### ✅ Description:
+Creates a blank (empty) file named `file.txt`.
 
-**Reading the File \-**
+If the file already exists, it updates the timestamp instead of creating a new file.
 
-Command \- cat file.txt  
-Description \- This command is used to read the full file at once
+---
 
-Command \- head \-n 2 file.txt  
-Description \- This command is used to read only first two lines of the file
+# ✍️ Writing to a File
 
-Command \- tail \-n 2 file.txt  
-Description \- This command is used to read only last two lines of the file
+---
+
+## 🔹 Overwrite File Content
+
+### Command:
+```
+echo "Line 1" > file.txt
+```
+
+### ✅ Description:
+- Writes the text **"Line 1"** into `file.txt`
+- If `file.txt` already contains data, it will be **replaced**
+- `>` is called the overwrite operator
+
+---
+
+## 🔹 Append to File
+
+### Command:
+```
+echo "Line 2" >> file.txt
+```
+
+### ✅ Description:
+- Appends text to the file
+- Does **not replace** existing content
+- If `file.txt` already contains:
+
+```
+Line 1
+```
+
+After running the command, the file will contain:
+
+```
+Line 1
+Line 2
+```
+
+- `>>` is called the append operator
+
+---
+
+## 🔹 Append Using tee (Display + Write)
+
+### Command:
+```
+echo "Line 3" | tee -a file.txt
+```
+
+### ✅ Description:
+- Appends text to `file.txt`
+- Also displays the text on the screen
+- `-a` flag means append
+
+This command:
+- Prints **"Line 3"** on terminal
+- Writes **"Line 3"** into the file
+
+---
+
+# 📖 Reading the File
+
+---
+
+## 🔹 Read Entire File
+
+### Command:
+```
+cat file.txt
+```
+
+### ✅ Description:
+Displays the entire file content at once.
+
+---
+
+## 🔹 Read First Few Lines
+
+### Command:
+```
+head -n 2 file.txt
+```
+
+### ✅ Description:
+Displays the **first 2 lines** of the file.
+
+---
+
+## 🔹 Read Last Few Lines
+
+### Command:
+```
+tail -n 2 file.txt
+```
+
+### ✅ Description:
+Displays the **last 2 lines** of the file.
+
+---
+
+# 🧠 Key Learning Summary
+
+- `touch` → Create file  
+- `>` → Overwrite content  
+- `>>` → Append content  
+- `tee -a` → Append + display output  
+- `cat` → Read full file  
+- `head` → Read first lines  
+- `tail` → Read last lines  
+
+---
+
+🚀 **Day 6 – Linux File Read & Write Practice Completed**
