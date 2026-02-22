@@ -1,102 +1,226 @@
-**Day 15 – Networking Concepts: DNS, IP, Subnets & Ports**
+# 🌐 Day 15 – Networking Concepts: DNS, IP, Subnets & Ports
 
-## **Task Objective**
+---
 
-The goal of Day 15 was to understand core networking concepts such as DNS resolution, IP addressing, subnetting using CIDR notation, and the role of ports in service communication.
+## 🎯 Task Objective
 
-## **Task 1: DNS – How Names Become IPs**
+The goal of Day 15 was to understand core networking concepts such as:
 
-When a domain name like google.com is entered in a browser, the browser first asks a DNS server to resolve the domain name. The DNS server looks up the domain in its records and returns the corresponding IP address. Once the IP address is received, the browser uses that IP to communicate with the Google server.
+- DNS resolution  
+- IP addressing  
+- Subnetting using CIDR notation  
+- Role of ports in service communication  
 
-### **DNS Record Types**
+---
 
-* **A record:** Maps a domain name to an IPv4 address  
-* **AAAA record:** Maps a domain name to an IPv6 address  
-* **CNAME record:** Maps one domain name to another domain name  
-* **MX record:** Specifies where emails for a domain should be delivered  
-* **NS record:** Specifies which DNS servers are responsible for a domain
+# 🔹 Task 1: DNS – How Names Become IPs
 
-### **DNS Lookup Observation**
+When a domain name like `google.com` is entered in a browser:
 
-Using the `dig google.com` command:
+1. The browser queries a DNS server.
+2. The DNS server resolves the domain name to an IP address.
+3. The browser connects to that IP address.
+4. Communication with the server begins.
 
-* **A record IP:** 142.250.70.110  
-* **TTL:** 109 seconds
+---
 
-## **Task 2: IP Addressing**
+## 📌 DNS Record Types
 
-An IPv4 address is made up of four numbers separated by dots, where each number ranges from 0 to 255\. It is a 32-bit address used to identify machines on a network so they can communicate with each other.
+- **A Record** → Maps a domain name to an IPv4 address  
+- **AAAA Record** → Maps a domain name to an IPv6 address  
+- **CNAME Record** → Maps one domain name to another domain name  
+- **MX Record** → Specifies mail server for a domain  
+- **NS Record** → Specifies authoritative DNS servers for a domain  
 
-### **Public vs Private IP**
+---
 
-* **Public IP:** Accessible over the internet  
-  Example: 43.204.108.136  
-* **Private IP:** Used for internal communication and not directly accessible over the internet  
-  Example: 172.31.13.238
+## 🔎 DNS Lookup Observation
 
-### **Private IP Ranges**
+Using:
 
-* 10.0.0.0 to 10.255.255.255  
-* 172.16.0.0 to 172.31.255.255  
-* 192.168.0.0 to 192.168.255.255
+```bash
+dig google.com
+```
 
-### **IPs on My Machine**
+### Result:
 
-* **Private IP:** 172.31.13.238  
-* **Interface:** ens5  
-* **Public IP directly assigned to machine:** No (public IP is attached at the network/NAT level)
+- **A Record IP:** `142.250.70.110`  
+- **TTL:** 109 seconds  
 
-## **Task 3: CIDR & Subnetting**
+---
 
-### **CIDR Meaning**
+# 🔹 Task 2: IP Addressing
 
-The `/24` in an IP address means the first 24 bits are reserved for the network. All devices sharing those first 24 bits belong to the same network, and this determines how many machines can exist in that network.
+An IPv4 address:
 
-### **Usable Hosts**
+- Consists of four numbers separated by dots  
+- Each number ranges from 0–255  
+- Is a 32-bit address  
+- Identifies devices on a network  
 
-* **/24:** 254 usable hosts  
-* **/16:** 65,534 usable hosts  
-* **/28:** 14 usable hosts
+---
 
-### **Why We Subnet**
+## 🌍 Public vs Private IP
 
-Subnetting is done to divide a large network into smaller networks. This helps use IP addresses efficiently, isolate traffic and services, and improve security and performance.
+### 🔹 Public IP
+- Accessible over the internet  
+- Example: `43.204.108.136`
 
-### **CIDR Table**
+### 🔹 Private IP
+- Used for internal communication  
+- Not directly accessible from the internet  
+- Example: `172.31.13.238`
 
-| CIDR | Subnet Mask | Total IPs | Usable Hosts |
-| ----- | ----- | ----- | ----- |
-| /24 | 255.255.255.0 | 256 | 254 |
-| /16 | 255.255.0.0 | 65536 | 65534 |
-| /28 | 255.255.255.240 | 16 | 14 |
+---
 
-## **Task 4: Ports – The Doors to Services**
+## 📦 Private IP Ranges
 
-A port helps the system decide which incoming network traffic should be sent to which application or service. Ports are needed because multiple services run on the same machine, and the machine has only one IP address.
+- `10.0.0.0 – 10.255.255.255`  
+- `172.16.0.0 – 172.31.255.255`  
+- `192.168.0.0 – 192.168.255.255`  
 
-### **Common Ports**
+---
 
-* **22:** SSH (SFTP over SSH)  
-* **80:** HTTP  
-* **443:** HTTPS  
-* **53:** DNS  
-* **3306:** MySQL  
-* **6379:** Redis  
-* **27017:** MongoDB
+## 🖥 IPs on My Machine
 
-## **Task 5: Putting It Together**
+- **Private IP:** `172.31.13.238`  
+- **Interface:** `ens5`  
+- **Public IP directly assigned to machine:** No  
+  - Public IP is attached at the NAT / network layer
 
-When running `curl http://myapp.com:8080`, DNS is used to resolve the domain name to an IP address. The system then connects to that IP on port 8080, and HTTP is used to request data from the application running on that port.
+---
 
-If an application cannot reach a database at 10.0.1.50:3306, the first step is to check network reachability by pinging the IP. If the IP is reachable, the next step is to check whether port 3306 is accessible using tools like nc or telnet.
+# 🔹 Task 3: CIDR & Subnetting
 
-**What I Learned**
+## 📘 CIDR Meaning
 
-* How DNS resolves domain names to IP addresses  
-* The difference between public and private IPs and where they exist  
-* How CIDR and subnetting control network size and isolation  
-* Why ports are essential for running multiple services on one machine
+Example:
 
-## **Conclusion**
+```
+192.168.1.0/24
+```
 
-Day 15 strengthened my understanding of foundational networking concepts that are critical for DevOps engineers. These concepts help in designing networks, troubleshooting connectivity issues, and understanding how applications communicate in real production environments.
+- `/24` means first 24 bits are network portion  
+- Remaining bits are for hosts  
+- Devices sharing first 24 bits belong to the same network  
+
+---
+
+## 🧮 Usable Hosts
+
+- `/24` → 254 usable hosts  
+- `/16` → 65,534 usable hosts  
+- `/28` → 14 usable hosts  
+
+---
+
+## 🎯 Why We Subnet
+
+Subnetting helps:
+
+- Divide large networks into smaller networks  
+- Use IP addresses efficiently  
+- Isolate traffic  
+- Improve security  
+- Improve performance  
+
+---
+
+## 📊 CIDR Table
+
+| CIDR | Subnet Mask         | Total IPs | Usable Hosts |
+|------|---------------------|-----------|--------------|
+| /24  | 255.255.255.0       | 256       | 254          |
+| /16  | 255.255.0.0         | 65536     | 65534        |
+| /28  | 255.255.255.240     | 16        | 14           |
+
+---
+
+# 🔹 Task 4: Ports – The Doors to Services
+
+A port determines which service receives incoming traffic.
+
+Since multiple services run on one machine (with one IP), ports differentiate them.
+
+---
+
+## 🚪 Common Ports
+
+- **22** → SSH  
+- **80** → HTTP  
+- **443** → HTTPS  
+- **53** → DNS  
+- **3306** → MySQL  
+- **6379** → Redis  
+- **27017** → MongoDB  
+
+---
+
+# 🔹 Task 5: Putting It Together
+
+### Example 1:
+
+```bash
+curl http://myapp.com:8080
+```
+
+What happens:
+
+1. DNS resolves `myapp.com` to an IP  
+2. System connects to that IP on port `8080`  
+3. HTTP protocol is used  
+4. Application responds  
+
+---
+
+### Example 2: Database Connectivity Issue
+
+If an application cannot reach:
+
+```
+10.0.1.50:3306
+```
+
+### Step 1: Check IP reachability
+
+```bash
+ping 10.0.1.50
+```
+
+### Step 2: Check Port accessibility
+
+```bash
+nc -zv 10.0.1.50 3306
+```
+
+or
+
+```bash
+telnet 10.0.1.50 3306
+```
+
+---
+
+# 📚 What I Learned
+
+- How DNS resolves domain names to IP addresses  
+- Difference between public and private IPs  
+- How CIDR controls network size  
+- Why subnetting is critical for isolation  
+- How ports enable multiple services on one machine  
+- Basic network troubleshooting approach  
+
+---
+
+# ✅ Conclusion
+
+Day 15 strengthened my understanding of foundational networking concepts essential for DevOps engineers.
+
+These concepts are critical for:
+
+- Designing scalable networks  
+- Troubleshooting connectivity issues  
+- Understanding service-to-service communication  
+- Managing real-world production environments  
+
+🚀 **Day 15 – Networking Concepts Completed**
