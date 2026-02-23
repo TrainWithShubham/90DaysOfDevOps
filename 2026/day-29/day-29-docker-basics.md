@@ -12,10 +12,10 @@ A Conatainer is runing instance of docker image.
 4. Cloud
     No Environment Mismatch
 # 2. Isolation 
-** Container isolates the application 
+Container isolates the application 
 Example:
-** . App1 needs Python 3.8
-  .  Apps2 needs python 3.11
+. App1 needs Python 3.8
+ .Apps2 needs python 3.11
   They Won't conflict
   # 3. Lightweight (Important Difference from VM)
   ** Containers share host OS kernel.
@@ -28,7 +28,7 @@ Example:
   # 5. Scalability
   ** We can multile conatainer at time. Used in microservices.
   # 6. Microservices Architecture
-  ** Modern apps are built as:
+  Modern apps are built as:
   1.payment-services
   2.Auth services 
   3.Order services
