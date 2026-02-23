@@ -1,9 +1,11 @@
 # Day 01 – Introduction to DevOps and Cloud
 
 ## Task
+
 Today’s goal is to **set the foundation for your DevOps journey**.
 
 You will create a **90-day personal DevOps learning plan** that clearly defines:
+
 - What is your understanding of DevOps and Cloud Engineering?
 - Why you are starting learning DevOps & Cloud?
 - Where do you want to reach?
@@ -15,6 +17,7 @@ This is your **career execution blueprint** for the next 90 days.
 ---
 
 ## Expected Output
+
 By the end of today, you should have:
 
 - A markdown file named:  
@@ -24,12 +27,12 @@ or
 
 - A hand written plan for the next 90 Days (Recommended)
 
-
 The file/note should clearly reflect your intent, discipline, and seriousness toward becoming a DevOps engineer.
 
 ---
 
 ## Guidelines
+
 Follow these rules while creating your plan:
 
 - Mention your **current level**  
@@ -46,6 +49,7 @@ Follow these rules while creating your plan:
 ---
 
 ## Resources
+
 You may refer to:
 
 - TrainWithShubham [course curriculum](https://english.trainwithshubham.com/JOSH_BATCH_10_Syllabus_v1.pdf)
@@ -57,6 +61,7 @@ Avoid over-researching today. The focus is **clarity**, not depth.
 ---
 
 ## Why This Matters for DevOps
+
 DevOps engineers succeed not just because of tools, but because of:
 
 - Discipline
@@ -68,6 +73,7 @@ In real jobs, no one tells you exactly what to do every day.
 This task trains you to **take ownership of your own growth**, just like a real DevOps engineer.
 
 A clear plan:
+
 - Reduces confusion
 - Prevents burnout
 - Keeps you focused during tough days
@@ -75,6 +81,7 @@ A clear plan:
 ---
 
 ## Submission
+
 1. Fork this `90DaysOfDevOps` repository  
 2. Navigate to the `2026/day-01/` folder  
 3. Add your `learning-plan.md` file  
@@ -83,6 +90,7 @@ A clear plan:
 ---
 
 ## Learn in Public
+
 Share your Day 01 progress on LinkedIn:
 
 - Post 2–3 lines on why you’re starting **#90DaysOfDevOps**
@@ -90,10 +98,12 @@ Share your Day 01 progress on LinkedIn:
 - Optional: screenshot of your markdown file or a professional picture
 
 Use hashtags:
-#90DaysOfDevOps
-#DevOpsKaJosh
-#TrainWithShubham
 
+## 90DaysOfDevOps
+
+## DevOpsKaJosh
+
+## TrainWithShubham
 
 Happy Learning  
 **TrainWithShubham**
