@@ -8,13 +8,12 @@ Merge feature-signup into main — what happens this time?
 
 
 <img width="502" height="177" alt="Screenshot 2026-02-24 at 5 47 58 PM" src="https://github.com/user-attachments/assets/86345162-5cfb-4bc7-84d7-838b4a0b18ce" />
-<img width="502" height="177" alt="Screenshot 2026-02-24 at 5 47 58 PM" src="https://github.com/user-attachments/assets/86345162-5cfb-4bc7-84d7-838b4a0b18ce" />
+
 
 
 **What is a fast-forward merge?** - if commit in main and branches are linear it will do fast-forward merger, 
 **When does Git create a merge commit instead?** -  if commits are in both main and branch before merger , it will not be a fast-fwd merge and it will be merge commit
 **What is a merge conflict? (try creating one intentionally by editing the same line in both branches)** - if same line has been edited by differente branch then it will be merge confilict and it need to resolve by one of them.
-<img width="665" height="549" alt="Screenshot 2026-02-24 at 5 57 44 PM" src="https://github.com/user-attachments/assets/6ba89fec-eeae-4088-bc87-dfa98bebaff4" />
 <img width="665" height="549" alt="Screenshot 2026-02-24 at 5 57 44 PM" src="https://github.com/user-attachments/assets/6ba89fec-eeae-4088-bc87-dfa98bebaff4" />
 
 
