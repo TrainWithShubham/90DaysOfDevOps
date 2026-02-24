@@ -15,7 +15,7 @@ This is hands-on. Keep it simple and focused on fundamentals.
 ## Expected Output
 By the end of today, you should have:
 
-- A markdown file named:  
+- A markdown file named:
   `linux-practice.md`
 
 or
