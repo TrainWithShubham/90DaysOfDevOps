@@ -1,0 +1,18 @@
+Task 1: Understanding Branches
+
+--> What is a branch in Git?
+branch is like a sperate like of development.
+it lets you make changes with touching the main/master branch
+
+--> Why do we use branches instead of committing everything to main?
+we use braches so that if multiple user are working on the same code and they push the changes it can break the production
+and it will be full of mess hence we use branches
+
+--> What is HEAD in Git?
+HEAD points to your current branch
+
+--> What happens to your files when you switch branches?
+when we switch the branches it shows file of your branch which were commited.
+
+eg : if main branch have hello.txt --> print "hello"
+and bracnh have hellow.txt --> pint "hellow world" and you swithc from main to local branch it will show hellow.txt --> pint "hellow world" 
