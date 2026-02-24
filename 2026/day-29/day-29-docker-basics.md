@@ -143,4 +143,24 @@ Docker conatiner=Blueprint of Docker Images
   
 <img width="1003" height="722" alt="docker _hello" src="https://github.com/user-attachments/assets/77b9bbc2-3111-45ef-b9cc-7ce3adecae6f" />
 
+## **Task 3**
+* Nginx container and access it in your browse
+* <img width="1006" height="397" alt="Nginx_server" src="https://github.com/user-attachments/assets/859ad4c5-47d4-465a-9d4e-3cda2643c080" />
+
+* Ubuntu container in interactive mode — explore it like a mini Linux machine and list running container
+  <img width="1006" height="718" alt="ubuntu-container" src="https://github.com/user-attachments/assets/31fbb25a-0a64-4ecf-aa5d-267bc7a634cf" />
+* list of all runing containers and remove all container
   
+<img width="1005" height="463" alt="docker-ps" src="https://github.com/user-attachments/assets/416fc1e6-cddc-49a6-87ac-3110b3d27738" />
+
+  ##**Task 4**
+  1. Run container in dettached mode and
+  2. give custom name
+  3. Map the port 80:80
+
+<img width="1006" height="99" alt="custom_name" src="https://github.com/user-attachments/assets/a46fa84f-35e5-4393-b94b-20d537f8bdb7" />
+
+  4.  logs of a running container
+<img width="1018" height="438" alt="docker_logs" src="https://github.com/user-attachments/assets/d999cdd0-453d-4ee0-8e2b-4d9bf55961e6" />
+5. Run a command inside a running container
+
