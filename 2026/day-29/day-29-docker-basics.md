@@ -1,3 +1,5 @@
+## **Task 1**
+
 ## what is Container?
 Container is light weight, standalone and executable software packages that includes everything need to run an aplication
 like  code, runtime, system tools, libraries, and settings. 
@@ -132,6 +134,12 @@ docker build: used to build the image from dockerfile
 A Docker container is a lightweight, standalone, and executable software package that bundles an application and all its dependencies, ensuring it runs consistently and reliably across different computing environments. It is a running instance of a Docker image. 
 Docker conatiner=Blueprint of Docker Images
 
-   
+## **Task 2**
+* Install and Verify the Docker 
+
+<img width="747" height="103" alt="docker_version" src="https://github.com/user-attachments/assets/2c94f3f6-d86d-41f4-93dd-92bdc30d0c16" />
+* Run the hello-world container
+  
+<img width="1003" height="722" alt="docker _hello" src="https://github.com/user-attachments/assets/77b9bbc2-3111-45ef-b9cc-7ce3adecae6f" />
 
   
