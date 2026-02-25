@@ -1,0 +1,48 @@
+Task 1 — Understand Ownership
+ls -l ~
+
+Task 2 — Basic chown
+
+Create file:
+
+touch devops-file.txt
+ls -l devops-file.txt
+
+sudo chown tokyo devops-file.txt
+ls -l devops-file.txt
+
+sudo chown berlin devops-file.txt
+ls -l devops-file.txt
+
+Task 3 — chgrp
+touch team-notes.txt
+ls -l team-notes.txt
+
+sudo groupadd heist-team
+sudo chgrp heist-team team-notes.txt
+ls -l team-notes.txt
+
+Task 4 — Owner + Group together
+touch project-config.yaml
+
+sudo useradd professor 2>/dev/null
+
+sudo chown professor:heist-team project-config.yaml
+ls -l project-config.yaml
+
+mkdir app-logs
+sudo chown berlin:heist-team app-logs
+ls -ld app-logs
+
+Task 5 — Recursive ownership
+mkdir -p heist-project/vault
+mkdir -p heist-project/plans
+
+touch heist-project/vault/gold.txt
+touch heist-project/plans/strategy.conf
+
+sudo groupadd planners
+
+sudo chown -R professor:planners heist-project/
+
+ls -lR heist-project/

@@ -1,0 +1,60 @@
+1} Mindset & Plan Review (Day 01)
+
+My goal is still to become job-ready in DevOps within 90 days.
+
+I will continue focusing on Linux fundamentals before moving deeply into cloud and CI/CD.
+
+Improvement: Spend more time on hands-on instead of only reading notes.
+
+2 Processes & Services Practice
+
+Commands re-run today:
+
+ps aux | head
+systemctl status nginx
+journalctl -u nginx --no-pager | tail -10
+Observations:
+
+ps aux shows all running processes with CPU and memory usage.
+
+systemctl status nginx clearly shows whether service is active or failed.
+
+journalctl helps debug service-related issues quickly.
+
+3️⃣ File Skills Practice (Days 06–11)
+
+Commands practiced:
+
+echo "revision test" >> notes.txt
+chmod 755 script.sh
+chown tokyo:vault-team access-codes.txt
+ls -l
+mkdir test-folder
+
+What I observed:
+
+Permission changes immediately reflect in ls -l.
+
+Wrong ownership can prevent access.
+
+>> appends content without overwriting file.
+
+4️⃣ My Incident Cheat Sheet (Top 5 Commands)
+
+If production issue happens, I would use:
+
+top
+ps aux --sort=-%cpu | head
+systemctl status <service>
+journalctl -u <service>
+ls -l
+
+These help quickly:
+
+Check CPU issues
+
+Identify crashed services
+
+View logs
+
+Verify file permissions

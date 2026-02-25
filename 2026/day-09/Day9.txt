@@ -1,0 +1,38 @@
+Task 1 — Create Users
+
+sudo useradd -m tokyo
+sudo passwd tokyo
+
+sudo useradd -m berlin
+sudo passwd berlin
+
+sudo useradd -m professor
+sudo passwd professor
+
+Task 2 — Create Groups
+sudo groupadd developers
+sudo groupadd admins
+
+Task 3 — Assign Users to Groups
+
+sudo usermod -aG developers tokyo
+sudo usermod -aG developers berlin
+sudo usermod -aG admins berlin
+sudo usermod -aG admins professor
+
+Task 4 — Shared Directory
+sudo mkdir -p /opt/dev-project
+sudo chgrp developers /opt/dev-project
+sudo chmod 775 /opt/dev-project
+
+Task 5 — Team Workspace
+sudo useradd -m nairobi
+sudo passwd nairobi
+
+sudo groupadd project-team
+sudo usermod -aG project-team nairobi
+sudo usermod -aG project-team tokyo
+
+sudo mkdir -p /opt/team-workspace
+sudo chgrp project-team /opt/team-workspace
+sudo chmod 775 /opt/team-workspace
