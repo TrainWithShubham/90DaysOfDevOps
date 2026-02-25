@@ -46,7 +46,7 @@ else
  echo "Hello, $1"
 fi
 ```
-- Create args_demo.sh that:Prints total number of arguments ($#), Prints all arguments ($@), Prints the script name ($0)
+- Create args_demo.sh that:Prints total number of arguments $#, Prints all arguments $@, Prints the script name ($0)
 ```
 #!/bin/bash
 echo "Script name: $0"
