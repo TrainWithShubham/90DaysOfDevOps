@@ -116,7 +116,7 @@ Write at least 4 commands in order.
 - Then check: What do the logs say?
 - Finally check: Is it enabled to start on boot?
 
-**Commands to explore:** `systemctl status myapp`, `systemctl is-enabled myapp`, `journalctl -u myapp -n 50`
+**Commands to explore:** `systemctl status myapp`, ` myapp`, `journalctl -u myapp -n 50`systemctl is-enabled
 
 **Resource:** Review Day 04 (Process and Services practice)
 
