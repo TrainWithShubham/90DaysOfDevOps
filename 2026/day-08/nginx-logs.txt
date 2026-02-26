@@ -1,0 +1,4 @@
+115.70.62.21 - - [10/Feb/2026:10:32:37 +0000] "GET / HTTP/1.1" 200 409 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+115.70.62.21 - - [10/Feb/2026:10:32:37 +0000] "GET /favicon.ico HTTP/1.1" 404 196 "http://16.26.213.32/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+146.190.26.148 - - [10/Feb/2026:10:33:08 +0000] "GET / HTTP/1.1" 200 409 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+146.190.26.148 - - [10/Feb/2026:10:33:09 +0000] "GET /favicon.ico HTTP/1.1" 404 196 "http://16.26.213.32/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
