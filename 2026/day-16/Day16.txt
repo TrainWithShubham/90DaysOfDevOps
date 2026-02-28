@@ -1,0 +1,55 @@
+Task 1
+vim task1.sh
+#!/bin/bash
+echo "Hello devops"
+chmod 774 task1.sh
+./task1.sh
+
+Task 2
+#!/bin/bash
+Name="Sahil"
+Role="Devops"
+echo "Hello devops $Name $Role"
+
+Task 3
+#!/bin/bash
+read -p "Enter Your Name : " Name
+Role="Devops"
+echo "Hello devops "$Name" $Role"
+
+
+Task 4 
+
+part 1
+#!/bin/bash
+read -p "Enter number : " Number
+if [ $Number -lt 0 ]; then
+        echo "negative"
+elif [ $Number -gt 0 ]; then
+        echo "postive"
+else
+        echo "zero"
+fi
+
+part 2
+
+#!/bin/bash
+read -p "Enter file name : " fileName
+
+if [ -f "$fileName" ]; then
+        echo "File exists"
+else
+        echo "File doesnot exists"
+fi
+
+
+Task 5
+#!/bin/bash
+
+read -p "Enter service name" Name
+read -p "Do you want to check the status (y/n)?" a
+if [ "$a" = "y" ]; then
+        systemctl status "$Name"
+elif [ "$a" = "n" ]; then
+        echo "skipped"
+fi

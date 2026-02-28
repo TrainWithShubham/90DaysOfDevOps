@@ -1,0 +1,76 @@
+
+Task 1 
+
+part 1
+#!/bin/bash
+for fruit in apple mango bnana
+do
+        echo "$fruit"
+done
+
+part 2
+#!/bin/bash
+for i in {1..10}
+do
+        echo "$i"
+done
+
+Task 2
+#!/bin/bash
+
+read -p "Enter Number " num
+while [ $num -gt 0 ]
+do
+        echo $num
+        num=$((num-1))
+        if [ $num -eq 0 ]; then
+                echo "done"
+        fi
+done
+
+Task 3
+
+Part 1
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+        echo "Usage: greet"
+        exit 1
+else
+        echo "Hello $1"
+fi
+Part 2
+#!/bin/bash
+
+echo "Total arguments : $#"
+echo "All arguments : $@"
+echo "File name :  $0"
+
+Task 4 
+#!/bin/bash
+
+
+packages=(curl nginx)
+
+for pack in "${packages[@]}"
+do
+        if dpkg -s "$pack" > /dev/null 2>&1
+        then
+                echo "$pack is already there"
+        else
+                sudo apt install -y "$pack"
+
+        fi
+        if systemctl list-unit-files | grep -q "$pack"
+        then
+                systemctl status "$pack"
+        fi
+done
+
+Task 5
+
+part 1
+#!/bin/bash
+set -e
+mkdir /tmp/devops-test > /dev/null || echo "Directory Already exists"
+cd /tmp/devops-test

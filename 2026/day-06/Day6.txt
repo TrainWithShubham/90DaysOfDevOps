@@ -1,0 +1,7 @@
+touch notes.txt
+echo "Line 1" > notes.txt
+echo "Line 2" >> notes.txt
+echo "Line 3" | tee -a notes.txt
+cat notes.txt
+head -n 2 notes.txt
+tail -n 2 notes.txt

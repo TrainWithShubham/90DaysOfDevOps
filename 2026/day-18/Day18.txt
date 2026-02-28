@@ -1,0 +1,114 @@
+
+Task 1
+greet()
+{
+        echo "hello $1"
+}
+greet sajil
+
+sum()
+{
+sum=$(( $1 + $2 ))
+echo "Sum is: $sum"
+}
+sum 5 4
+
+Task 2
+#!/bin/bash
+
+# Function to check disk usage
+check_disk() {
+    echo "===== Disk Usage (/) ====="
+    df -h /
+    echo ""
+}
+check_memory() {
+    echo "===== Memory Usage ====="
+    free -h
+    echo ""
+}
+echo "===== System Health Check ====="
+echo ""
+
+check_disk
+check_memory
+
+echo "===== Check Completed ====="
+
+
+task 3
+set -e -----> exits whenever error occur it stops from ahead execution
+set -u -----> it is useful for unset variable 
+set -o pipefail ---->   cmd1 fails but cmd2 succeeds → script continues.
+
+With pipefail:
+
+If ANY command fails → whole pipeline fails
+
+Task 4
+#!/bin/bash
+
+name="Global"
+
+show_local() {
+    local name="Local"
+    echo "Inside show_local: $name"
+}
+
+show_global() {
+    name="ChangedGlobal"
+    echo "Inside show_global: $name"
+}
+
+echo "Before function: $name"
+
+show_local
+echo "After show_local: $name"
+
+show_global
+echo "After show_global: $name"
+
+Task 5
+#!/bin/bash
+set -euo pipefail
+
+# Function: Hostname and OS Info
+print_system_info() {
+    echo "===== SYSTEM INFORMATION ====="
+    echo "Hostname: $(hostname)"
+    echo ""
+}
+
+print_uptime() {
+    echo "===== UPTIME ====="
+    uptime
+    echo ""
+}
+
+print_disk_usage() {
+    echo "===== TOP 5 DISK USAGE (/) ====="
+    sudo du -sh /* 2>/dev/null | sort -hr | head -5
+    echo ""
+}
+print_memory_usage() {
+    echo "===== MEMORY USAGE ====="
+    free -h
+    echo ""
+}
+
+print_top_cpu() {
+    echo "===== TOP 5 CPU PROCESSES ====="
+    ps -eo pid,comm,%cpu --sort=-%cpu | head -6
+    echo ""
+}
+
+main() {
+    print_system_info
+    print_uptime
+    print_disk_usage
+    print_memory_usage
+    print_top_cpu
+}
+
+# Execute main
+main
