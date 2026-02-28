@@ -1,0 +1,51 @@
+Server Backup and log Roationing and Cron Tab
+
+
+#!/bin/bash
+
+set -e
+
+Display_Usage(){
+
+        echo "Usage : ./backup.sh <pathsource> <path to backup folder>"
+}
+
+
+if [ $# -eq 0 ]; then
+        Display_Usage
+        exit 1
+fi
+SourceDir=$1
+backupDir=$2
+time=$(date '+%Y-%m-%d-%H-%M-%S')
+
+backup (){
+   zip -r "${backupDir}/backup_${time}.zip" "${sourceDir}" > /dev/null
+
+   if [ $? -eq 0 ]; then
+           echo "backup Generated succesfully for ${time}"
+   fi
+
+}
+rotation (){
+        backups=($( ls -t "${backupDir}/backup_"*.zip 2>/dev/null))
+
+
+        if [ "${#backups[@]}" -gt 5 ];then
+                echo "performing rotationing 5 days"
+                backupToRemove=("${backups[@]:5}")
+
+                for backup in "${backupToRemove[@]}"
+                do
+                        rm -f "$backup"
+                done
+        fi
+
+
+
+}
+backup
+rotation
+
+crontab -e
+* * * * * bash /home/Ubuntu/backup.sh /home/Ubuntu/data /home/Ubuntu/backups
