@@ -1,0 +1,3 @@
+ps aux | head
+top
+pgrep ssh

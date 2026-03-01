@@ -1,0 +1,27 @@
+Part 1: Launch Cloud Instance & SSH Access
+ssh -i my-key.pem ubuntu@<your-instance-ip>
+
+
+updates the system packages
+sudo apt update
+install nginx
+sudo apt install nginx -y
+sudo systemctl start nginx
+sudo systemctl enable nginx
+sudo systemctl status nginx
+
+
+Part 3: Security Group Configuration
+
+In AWS Security Group:
+
+Added inbound rule:
+
+Type: HTTP
+
+Port: 80
+
+Source: 0.0.0.0/0
+Step 1: View Logs
+Step 2: Save Logs to File
+Step 3: Download Log File to Local Machine

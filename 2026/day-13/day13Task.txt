@@ -1,0 +1,19 @@
+
+firstly i have mounted the disk storage directory xvdg is disk storage
+lsblk
+mkdir disk_mount
+mkfs -t ext4 /dev/xvdg
+mount /dev/xvdg /mnt/disk_mount
+
+
+Second i have create Physical volumn of size 10GB and i have create Volumn group of them and then i have create logical volumn of storage 5GB and then in the last i have extend the remaining size of volumn
+
+sudo su
+pvcreate /dev/xvdf
+vgcreate demo_vg /dev/xvdf
+lvcreate -l 5G -n demo_lv demo_vg
+mkfs.ext4 /dev/demo_vg/demo_lv
+mkdir -p /mnt/demo
+mount /dev/demo_vg/demo_lv /mnt/demo
+lvextend -L +4G /dev/mapper/demo_vg-demo_lv
+df -h /mnt/demo

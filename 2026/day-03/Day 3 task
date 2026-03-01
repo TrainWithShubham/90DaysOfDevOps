@@ -1,0 +1,38 @@
+Process Management Commands
+
+ps aux
+top 
+htop
+Find specific Process
+ps aux | grep nginx
+Kill a Process
+Kill <PID>
+pkill nginx
+
+
+
+File System Commands
+Disk Usage
+df -h 
+lsblk
+
+File & directory operations
+ls -l
+cp file1 file2
+mv file1 file2
+rm file
+rm -rf folder
+chmod 764 file1.txt
+cat file1
+head file
+tail file
+
+
+networking troubleshooting Commands
+
+ipconfig
+hostname
+ping google.com
+curl google.com
+nslookup google.com
+traceroute google.com
