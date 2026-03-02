@@ -1,0 +1,12 @@
+---
+server:
+  name: nginx_server
+  ip: 172.0.0.0
+  port: 80
+
+database:
+  name: sql_db
+  host: aws
+  credentials:
+    user: $USER
+    password: $PASSWORD

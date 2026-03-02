@@ -1,0 +1,14 @@
+---
+person:
+  name: ABC
+  role: Devops Learner
+  experience:
+    years: 1
+    main_focus: CI/CD pipelines
+  skills:
+    - Linux
+    - Shell Scripting
+    - Git
+    - Docker
+    - k8s
+  learning: "true"

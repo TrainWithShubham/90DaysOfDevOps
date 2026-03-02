@@ -1,0 +1,21 @@
+---
+servers:
+  nginx_server:
+    ip: 172.0.0.0
+    port: 80
+    script: |
+      sudo apt-get update && sudo apt install nginx
+      sudo systemctl start nginx
+      echo "Nginx has been installed"
+  mysql_server:
+    ip: 172.0.0.0
+    port: 3306
+    script: >
+      sudo apt-get update && sudo apt install mysql
+      echo "Mysql server has been installed"
+database:
+  name: sql_db
+  host: aws
+  credentials:
+    user: $USER
+    password: $PASSWORD

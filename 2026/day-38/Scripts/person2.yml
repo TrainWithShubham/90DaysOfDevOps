@@ -1,0 +1,17 @@
+---
+person:
+  name: ABC
+  role: Devops Learner
+  experience:
+    years: 1
+  tools:
+    - Linux
+    - Shell Scripting
+    - Networking
+    - Docker
+    - GitHub Actions
+  learning: true
+  hobbies:
+    - coding
+    - cooking
+    - reading
