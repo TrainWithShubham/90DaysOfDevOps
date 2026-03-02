@@ -1,3 +1,59 @@
-- My name is Om Sanjay Deshmukh, and I am a second-year IT Engineering student at Pillai HOC College of Engineering and Technology.
-- My primary goal over the next 90 days is to become job-ready in DevOps by building strong technical and professional skills. I am actively focusing on Docker, Kubernetes, and CI/CD pipelines, as these tools are in high demand across modern organizations. Alongside technical expertise, I am also working on improving my communication skills and building a strong, professional LinkedIn profile.
-- Due to my college schedule, I dedicate 1.5 to 2 hours on weekdays to consistent learning and hands-on practice. On weekends, I invest 4 to 5 hours in deeper study, project work, and skill enhancement. I strongly believe that consistent effort, practical implementation, and continuous learning will help me achieve my goal of securing a DevOps internship and becoming industry-ready
+# 👨‍💻 Om Sanjay Deshmukh
+
+## 🎓 About Me
+
+I am a second-year Information Technology engineering student with a strong interest in DevOps and modern infrastructure technologies.  
+
+I am currently following a structured 90-day learning plan to become industry-ready by building real technical skills, hands-on experience, and professional discipline.
+
+---
+
+## 🎯 My Goal
+
+My primary objective is to become job-ready in DevOps and secure a DevOps internship.
+
+To achieve this, I am focusing on:
+
+- 🐳 Docker (Containerization)
+- ☸️ Kubernetes (Container Orchestration)
+- 🔄 CI/CD Pipelines
+- 🐧 Linux Fundamentals
+- 🔧 Git & Version Control
+- ☁️ Cloud Basics
+
+I aim to understand not just how tools work, but how they are used in real-world environments.
+
+---
+
+## 📚 Learning Strategy
+
+Consistency and practical implementation are the core principles of my learning process.
+
+### 🗓 Weekly Commitment
+- **Weekdays:** Focused learning and hands-on practice
+- **Weekends:** Deep study, project implementation, and revision
+
+### 🛠 Approach
+- Learning by building projects
+- Writing clear documentation
+- Practicing real-world workflows
+- Continuously improving problem-solving skills
+
+---
+
+## 🌱 Professional Development
+
+Along with technical skills, I am also working on:
+
+- Improving communication skills
+- Building a professional LinkedIn presence
+- Maintaining structured and clean GitHub repositories
+- Developing discipline and consistency
+
+---
+
+## 🚀 Vision
+
+I believe consistent effort, structured learning, and practical execution will help me transition from a student to an industry-ready DevOps professional.
+
+This repository documents my journey, projects, and continuous growth.

@@ -1,6 +1,6 @@
 # Day 27 – GitHub Profile Audit (Honest Self-Review)
 
-## 1️⃣ First Impression (As a Stranger)
+## 1 First Impression (As a Stranger)
 
 If I visit my GitHub profile as a recruiter or stranger, it clearly shows that I am learning DevOps.
 
@@ -10,9 +10,9 @@ It looks more like a student learning account than a professional developer prof
 
 ---
 
-## 2️⃣ Audit Questions – Honest Answers
+## 2 Audit Questions – Honest Answers
 
-### 🧑‍💼 Is my profile picture professional?
+###  Is my profile picture professional?
 
 Yes, I have a profile picture.
 
@@ -21,7 +21,7 @@ If it looks casual or low quality, I should improve it because first impressions
 
 ---
 
-### 📝 Is my bio filled in? Does it clearly say what I do?
+###  Is my bio filled in? Does it clearly say what I do?
 
 Partially.
 
@@ -35,7 +35,7 @@ My bio is average. It could be much stronger.
 
 ---
 
-### 📌 Are my pinned repositories relevant, or are they random forks?
+###  Are my pinned repositories relevant, or are they random forks?
 
 Most of my repositories are forks or learning-based repositories.
 
@@ -51,7 +51,7 @@ This is currently a weak point in my profile.
 
 ---
 
-### 📄 Do my repositories have proper descriptions?
+###  Do my repositories have proper descriptions?
 
 Many repositories either have weak descriptions or no proper explanation.
 
@@ -65,7 +65,7 @@ This definitely needs improvement.
 
 ---
 
-### 🎯 Would a recruiter understand what I’ve been working on?
+###  Would a recruiter understand what I’ve been working on?
 
 Not clearly.
 
@@ -81,23 +81,23 @@ Right now, my profile shows effort — but not strong proof of skill.
 
 ---
 
-# 🔥 Final Honest Conclusion
+#  Final Honest Conclusion
 
 My GitHub currently shows:
 
-✅ I am learning  
-✅ I am active  
-✅ I am consistent  
+ I am learning  
+ I am active  
+ I am consistent  
 
 But it does NOT clearly show:
 
-❌ Strong original projects  
-❌ Clear DevOps skill demonstration  
-❌ Professional branding  
+ Strong original projects  
+ Clear DevOps skill demonstration  
+ Professional branding  
 
 ---
 
-# 🎯 What I Need To Improve
+#  What I Need To Improve
 
 1. Write a stronger, more specific bio  
 2. Build 2–3 original DevOps mini-projects  
@@ -115,3 +115,9 @@ Convert learning into visible proof of skill.
 ---
 
 
+
+
+https://github.com/omdeshmukh304-create
+
+
+![alt text](image.png)

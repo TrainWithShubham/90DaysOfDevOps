@@ -4,7 +4,7 @@
 
 
 ## Scenario 1: Service Not Starting
-systemctl status myapp
+ systemctl status myapp
 To check whether the service is running, stopped, or failed after reboot.
 
 

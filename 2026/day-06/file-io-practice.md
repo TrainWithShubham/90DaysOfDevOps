@@ -1,7 +1,7 @@
 # Creating and Updating file with linux commands
 
 ---
-
+```bash
 touch notes.txt
 
 
