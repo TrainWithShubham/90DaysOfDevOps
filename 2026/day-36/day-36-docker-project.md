@@ -68,18 +68,14 @@ CMD ["java", "-jar", "/app/app.jar"]
 
 **Stage 1 (Builder):**
 
-Uses Maven image
-
-Builds the JAR file
-
-Skips tests for container build
+- Uses Maven image
+- Builds the JAR file
+- Skips tests for container build
 
 **Stage 2 (Runtime):**
 
-Uses lightweight JRE alpine image
-
-Copies only the JAR file
-
-Runs as non-root user
+- Uses lightweight JRE alpine image
+- Copies only the JAR file
+- Runs as non-root user
 
 Minimal and secure
