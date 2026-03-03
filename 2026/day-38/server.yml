@@ -8,3 +8,18 @@ database:
     credential: 
       user: shivam
       password: test@123
+
+Starup_script: |
+    echo "staring application"
+    docker pull myapp:latest
+    docker compose up -d
+    echo "Deployment completed"
+
+Starup_script: >
+    echo "staring application"
+    docker pull myapp:latest
+    docker compose up -d
+    echo "Deployment completed"
+    
+
+
