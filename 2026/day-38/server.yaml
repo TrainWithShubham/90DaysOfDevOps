@@ -1,0 +1,22 @@
+server:
+  name: prod-machine
+  ip: 172.56.34.10
+  port: 8080
+
+database:
+  host: prod-database
+  name: my-database
+  credentials:
+    user: admin
+    password: Secured@one
+
+startup-script: |
+  #!/bin/bash
+  echo "Starting server"
+  python3.14 app.py
+
+description: >
+  This is a very long description
+  that spans several lines for
+  better readability in the YAML file,
+  but will be a single line in the output.

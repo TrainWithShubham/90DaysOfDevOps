@@ -1,0 +1,11 @@
+name: Ashutos Dash
+role: DevOps
+experience_years: 5
+learning: true
+tools:
+  - Docker
+  - Github actions
+  - Kubernetes
+  - Terraform
+  - Ansible
+hobbies: [workout, movies, reading]
