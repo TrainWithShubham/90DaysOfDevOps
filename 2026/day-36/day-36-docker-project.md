@@ -62,7 +62,7 @@ USER bankapp
 
 CMD ["java", "-jar", "/app/app.jar"]
 
----
+```
 
 ## 🔍 Explanation
 
