@@ -162,3 +162,4 @@ Working Directory: The actual folder where you are currently making changes to f
 Staging Area: The middle zone where you prepare and check your changes using git add.
 
 Repository: The final storage (the .git folder) where all your confirmed history and commits live.
+and 
