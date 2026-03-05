@@ -22,4 +22,13 @@ registery is a place where all the images are stored  to be used . Example, Dock
 A Docker image is a read-only template that contains the application code, runtime, libraries, and dependencies needed to create a container.
 container is an isolated instance where your application  is running created from a docker image while share host kernel OS
 
+**
+Task 2: Install Docker
 
+Install Docker on your machine (or use a cloud instance)
+Verify the installation
+Run the hello-world container
+Read the output carefully — it explains what just happened**
+---------------------------------------
+
+<img width="800" height="404" alt="Screenshot 2026-03-05 at 1 02 38 PM" src="https://github.com/user-attachments/assets/0cfc248e-97bc-42c0-9958-41f23c6550b8" />
