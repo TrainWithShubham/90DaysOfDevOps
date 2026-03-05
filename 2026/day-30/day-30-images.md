@@ -577,3 +577,11 @@ In this task you learned how to:
 - Check Docker disk usage
 
 Regular cleanup helps keep Docker environments **efficient and clutter-free**.
+
+
+
+
+
+
+
+
