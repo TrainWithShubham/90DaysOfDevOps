@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: my-nginx
+    ports:
+      - "80:80"
+    restart: unless-stopped
