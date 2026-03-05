@@ -32,3 +32,22 @@ Read the output carefully — it explains what just happened**
 ---------------------------------------
 
 <img width="800" height="404" alt="Screenshot 2026-03-05 at 1 02 38 PM" src="https://github.com/user-attachments/assets/0cfc248e-97bc-42c0-9958-41f23c6550b8" />
+
+
+**Task 3: Run Real Containers**
+
+Run an Nginx container and access it in your browser
+Run an Ubuntu container in interactive mode — explore it like a mini Linux machine
+List all running containers
+List all containers (including stopped ones)
+Stop and remove a container
+
+<img width="870" height="151" alt="Screenshot 2026-03-05 at 1 12 47 PM" src="https://github.com/user-attachments/assets/529b3b84-83b4-471c-ac42-4bee22b1f7b6" />
+
+
+<img width="788" height="391" alt="Screenshot 2026-03-05 at 1 13 04 PM" src="https://github.com/user-attachments/assets/8060c9d9-2592-4c04-bf90-e5229ab835ad" />
+
+**docker rm **
+--------------
+<img width="867" height="132" alt="Screenshot 2026-03-05 at 1 13 42 PM" src="https://github.com/user-attachments/assets/c2e18b7c-5e21-485b-903e-4678835eac55" />
+
