@@ -6,9 +6,9 @@ In simpler words, a package manager is a tool that allows users to install, remo
 
 You’ll often find me using the term ‘package’ in tutorials and articles, To understand package manager, you must understand what a package is.
 
-### What is a package?
+### What is package?
 
-A package is usually referred to an application but it could be a GUI application, command line tool or a software library (required by other software programs). A package is essentially an archive file containing the binary executable, configuration file and sometimes information about the dependencies.
+Package is usually referred to an application but it could be a GUI application, command line tool or a software library (required by other software programs). A package is essentially an archive file containing the binary executable, configuration file and sometimes information about the dependencies.
 
 ### Different kinds of package managers
 
