@@ -39,6 +39,22 @@ Scripts:
 OUTPUT:
 
 <img width="843" height="294" alt="image" src="https://github.com/user-attachments/assets/ab0038be-235c-4d2b-963e-ef645e9e9e01" />
+<hr>
+Task 3: Command-Line Arguments
+1. Create greet.sh that:
+<ul><li>Accepts a name as $1
+</li>
+<li> Prints Hello, <name>!
+</li>
+<li> If no argument is passed, prints "Usage: ./greet.sh "
+</li>
+</ul>
+Script:
+
+Output:
+
+<img width="811" height="414" alt="image" src="https://github.com/user-attachments/assets/cdb8569d-ca57-4f99-a0ac-20622da7b286" />
+
 
 
 
