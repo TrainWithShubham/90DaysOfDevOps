@@ -72,7 +72,7 @@ Create greet.sh that:
   
 </ul>
 <br><br>
-Script:
+### Script:
 
 <img width="727" height="474" alt="image" src="https://github.com/user-attachments/assets/db10a82a-c435-462f-a5c8-d368f658930e" />
 <hr>
@@ -85,7 +85,7 @@ Asks for a filename
 <li> Checks if the file exists using -f</li>
 <li> Prints appropriate message</li>
 </ul>
-Script:
+### Script:
 <img width="547" height="345" alt="image" src="https://github.com/user-attachments/assets/d92e6474-af0c-43c8-a2b4-63fbc003a6c6" />
 <hr>
 
