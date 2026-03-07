@@ -21,6 +21,17 @@ jobs:
 
 <img width="1024" height="635" alt="hello workflows" src="https://github.com/user-attachments/assets/59b6b502-9c5c-4b96-8926-c06319a5d32a" />
 
+
+## Understand the Anatomy
+
+- name: Name of the workflow.
+- on: Workflow runs whenever code is pushed.
+- runs-on: Runner where job executes.
+- steps: Tasks executed inside the job.
+- uses: Used to run a reusable GitHub Action created by someone else or by your organization.
+- run: Executes a shell command.
+- name (on-step): Provides a human-readable label for the step in the workflow logs.
+
 # Print current date 
 ```
 name: hello worksflow
@@ -87,8 +98,23 @@ jobs:
     - name: Print runner operating system
       run: echo  Runner OS is "${{runner.os}}"
 ```
-
 <img width="996" height="624" alt="runnner" src="https://github.com/user-attachments/assets/e657d812-f7d7-4d37-9f6a-c24934608bc1" />
 
+ **Adding wrong command**
+ The workflow log shows: 
+ ```
+Run exit 1
+Error: Process completed with exit code 1.
+```
+```
+✔ Checkout code
+✔ Print greeting
+✔ Print current date
+✔ Print branch name
+✔ List files
+✔ Print runner OS
+✖ Intentional failure step
+```
+The job stops immediately after the failure.
 
 
