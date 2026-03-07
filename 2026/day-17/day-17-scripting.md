@@ -1,57 +1,99 @@
 # Day 17 – Shell Scripting: Loops, Arguments & Error Handling
-<hr>
-Task
-Level up your scripting — use loops, handle arguments, and deal with errors.
+## Task 1: For Loop
+1. Create `for_loop.sh` that:
+   - Loops through a list of 5 fruits and prints each one
+   
+   [Script](scripts/for_loop.sh)
+   
+   ![for_loop](images/for_loop.png)
 
-Write for and while loops
-Use command-line arguments ($1, $2, $#, $@)
-Install packages via script
-Add basic error handling
-<hr>
-Task 1: For Loop
-Create for_loop.sh that:
-Loops through a list of 5 fruits and prints each one
-  [Script](scripts/for_loop.sh)
+2. Create `count.sh` that:
+   - Prints numbers 1 to 10 using a for loop
+   
+   [Script](scripts/count.sh)
+   
+   ![count](images/count.png)
 
-<img width="560" height="196" alt="image" src="https://github.com/user-attachments/assets/b3ccebd2-7408-45a7-b969-5d4b23862baa" />
- OUTPUT:
+---
 
-<img width="734" height="196" alt="image" src="https://github.com/user-attachments/assets/6fede97a-2fbb-46cc-9b63-cff51428039f" />
-<hr>
+## Task 2: While Loop
+1. Create `countdown.sh` that:
+   - Takes a number from the user
+   - Counts down to 0 using a while loop
+   - Prints "Done!" at the end
 
-2. Create count.sh that:
-Prints numbers 1 to 10 using a for loop
-<br></br>
+   [Script](scripts/countdown.sh)
+   
+   ![countdown](images/coutdown.png)
+   
+---
 
-<img width="745" height="384" alt="image" src="https://github.com/user-attachments/assets/22709608-bdb7-43f0-8be9-27e633e18538" />
-<hr>
-Task 2: While Loop
-<ul>
-Create countdown.sh that:
-<li> Takes a number from the user</li>
-<li>Counts down to 0 using a while loop</li>
-<li> Prints "Done!" at the end</li>
-</ul>
-Scripts:
+## Task 3: Command-Line Arguments
+1. Create `greet.sh` that:
+   - Accepts a name as `$1`
+   - Prints `Hello, <name>!`
+   - If no argument is passed, prints "Usage: ./greet.sh <name>"
+   
+   [Script](scripts/greet.sh)
+   
+   ![greet](images/greet.sh.png)
 
-<img width="449" height="290" alt="image" src="https://github.com/user-attachments/assets/b20fa796-dd88-4edf-ae7f-9068f7a6e0ca" />
+2. Create `args_demo.sh` that:
+   - Prints total number of arguments (`$#`)
+   - Prints all arguments (`$@`)
+   - Prints the script name (`$0`)
+   
+   [Script](scripts/args_demo.sh)
+   
+   ![args_demo](images/args_demo.png)
 
-OUTPUT:
+---
 
-<img width="843" height="294" alt="image" src="https://github.com/user-attachments/assets/ab0038be-235c-4d2b-963e-ef645e9e9e01" />
-<hr>
-Task 3: Command-Line Arguments
-1. Create greet.sh that:
-<ul><li>Accepts a name as $1
-</li>
-<li> Prints Hello, <name>!
-</li>
-<li> If no argument is passed, prints "Usage: ./greet.sh "
-</li>
-</ul>
+## Task 4: Install Packages via Script
+1. Create `install_packages.sh` that:
+   - Defines a list of packages: `nginx`, `curl`, `wget`
+   - Loops through the list
+   - Checks if each package is installed (use `dpkg -s` or `rpm -q`)
+   - Installs it if missing, skips if already present
+   - Prints status for each package
+   
+   [Script](scripts/install_packages.sh)
+   
+   ![packages](images/packages.png)
+
+---
+
+## Task 5: Error Handling
+1. Create `safe_script.sh` that:
+   - Uses `set -e` at the top (exit on error)
+   - Tries to create a directory `/tmp/devops-test`
+   - Tries to navigate into it
+   - Creates a file inside
+   - Uses `||` operator to print an error if any step fails
+   
+   [Script](scripts/safe_script.sh)
+   
+   ![safe](images/safe.png)
 
 
-<img width="811" height="414" alt="image" src="https://github.com/user-attachments/assets/cdb8569d-ca57-4f99-a0ac-20622da7b286" />
+2. Modify your `install_packages.sh` to check if the script is being run as root — exit with a message if not.
+
+   [Script](scripts/modified_install_packages.sh)
+   
+   ![snapshot](images/modify_installpkg.png)
+
+---
 
 
+## What I Learned
 
+* Used for loops to iterate over lists and number ranges
+* Used while loops for countdown logic with user input
+* Handled command-line arguments using $1, $#, $@, $0
+* Added usage messages for missing arguments
+* Took user input using read
+* Automated package installation (nginx, curl, wget)
+* Checked package status using dpkg -s
+* Added root user validation using $EUID
+* Implemented error handling with set -e and ||
+* Created safe scripts to avoid failures and overwrites
