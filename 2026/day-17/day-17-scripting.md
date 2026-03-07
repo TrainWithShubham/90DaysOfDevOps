@@ -1,4 +1,4 @@
-<img width="537" height="372" alt="image" src="https://github.com/user-attachments/assets/d00d7029-f8f5-46a1-b1a7-ee36bbd82b44" /># Day 17 – Shell Scripting: Loops, Arguments & Error Handling
+# Day 17 – Shell Scripting: Loops, Arguments & Error Handling
 ## Task 1: For Loop
 1. Create `for_loop.sh` that:
    - Loops through a list of 5 fruits and prints each one
@@ -97,7 +97,7 @@ Output:
 2. Modify your `install_packages.sh` to check if the script is being run as root — exit with a message if not.
 
    - [Script]
-   
+   <img width="537" height="372" alt="image" src="https://github.com/user-attachments/assets/d00d7029-f8f5-46a1-b1a7-ee36bbd82b44" />
    
    - ![snapshot]
      Running as root. Starting package check...
