@@ -17,7 +17,7 @@ Yesterday was basics. Today you handle real scenarios — app + database + cache
 
 ### Task 1: Build Your Own App Stack
 Create a `docker-compose.yml` for a 3-service stack:
-- A **web app** (use Python Flask, Node.js, or any language you know)
+- A **web app** (use html,css,javascript)
 - A **database** (Postgres or MySQL)
 - A **cache** (Redis)
 

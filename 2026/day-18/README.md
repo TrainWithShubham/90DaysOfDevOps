@@ -37,14 +37,22 @@ You will:
 
 ### Task 3: Strict Mode — `set -euo pipefail`
 1. Create `strict_demo.sh` with `set -euo pipefail` at the top
+
 2. Try using an **undefined variable** — what happens with `set -u`?
+   -Because set -u prevents the use of variables that are not defined.
+
 3. Try a command that **fails** — what happens with `set -e`?
+   -The script immediately exits and does not execute any further commands.
+
 4. Try a **piped command** where one part fails — what happens with `set -o pipefail`?
+   -If any command in the pipeline fails, the entire pipeline fails and the script exits.
 
 **Document:** What does each flag do?
-- `set -e` →
-- `set -u` →
-- `set -o pipefail` →
+- `set -e` →Exits the script immediately if any command returns a non-zero (error) status.
+
+- `set -u` →Treats the use of undefined variables as an error and exits the script.
+
+- `set -o pipefail` →Returns a failure status if any command in a pipeline fails, not just the last command.
 
 ---
 
