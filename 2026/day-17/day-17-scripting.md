@@ -2,10 +2,12 @@
 ## Task 1: For Loop
 1. Create `for_loop.sh` that:
    - Loops through a list of 5 fruits and prints each one
-   
-   [Script](scripts/for_loop.sh)
-   
-   ![for_loop](images/for_loop.png)
+Script:
+ <img width="560" height="196" alt="Screenshot 2026-03-08 005057" src="https://github.com/user-attachments/assets/35aaec12-caca-47a8-a7b4-bee014d4b5e4" />
+Output:
+
+<img width="734" height="196" alt="Screenshot 2026-03-08 005141" src="https://github.com/user-attachments/assets/151495d0-5358-4ea6-ab9e-a647d047689e" />
+
 
 2. Create `count.sh` that:
    - Prints numbers 1 to 10 using a for loop
