@@ -55,7 +55,11 @@ Task 3: Command-Line Arguments
 
 <img width="811" height="414" alt="image" src="https://github.com/user-attachments/assets/cdb8569d-ca57-4f99-a0ac-20622da7b286" />
 
+## Scripts
 
+- [greet.sh](greet.sh)
+- [countdown.sh](countdown.sh)
+- [file_check.sh](file_check.sh)
 
 
 
