@@ -19,9 +19,27 @@ Scripts:
 <img width="734" height="196" alt="image" src="https://github.com/user-attachments/assets/6fede97a-2fbb-46cc-9b63-cff51428039f" />
 <hr>
 
-Create count.sh that:
+2. Create count.sh that:
 Prints numbers 1 to 10 using a for loop
 <br></br>
 
 <img width="745" height="384" alt="image" src="https://github.com/user-attachments/assets/22709608-bdb7-43f0-8be9-27e633e18538" />
+<hr>
+Task 2: While Loop
+<ul>
+Create countdown.sh that:
+<li> Takes a number from the user</li>
+<li>Counts down to 0 using a while loop</li>
+<li> Prints "Done!" at the end</li>
+</ul>
+Scripts:
+
+<img width="449" height="290" alt="image" src="https://github.com/user-attachments/assets/b20fa796-dd88-4edf-ae7f-9068f7a6e0ca" />
+
+OUTPUT:
+
+<img width="843" height="294" alt="image" src="https://github.com/user-attachments/assets/ab0038be-235c-4d2b-963e-ef645e9e9e01" />
+
+
+
 
