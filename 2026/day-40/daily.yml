@@ -1,0 +1,10 @@
+name: Run on regular schedule
+
+on:
+  schedule:
+    - cron: '0 11 * * 1'
+jobs:
+  schedule:
+    steps:
+      - name: Print run
+        run: echo "This is a scheduled run"

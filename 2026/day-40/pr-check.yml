@@ -1,0 +1,13 @@
+name: Pull request trigger
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  Branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Branch name
+        run: echo "${{ github.head_ref }}"
