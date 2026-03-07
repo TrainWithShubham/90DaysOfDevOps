@@ -88,7 +88,26 @@ Asks for a filename
 ### Script:
 <img width="547" height="345" alt="image" src="https://github.com/user-attachments/assets/d92e6474-af0c-43c8-a2b4-63fbc003a6c6" />
 <hr>
+Task 5: Combine It All
+Create server_check.sh that:
+<ul>
+<li> Stores a service name in a variable (e.g., nginx, sshd)
+ </li>  
+<li> Asks the user: "Do you want to check the status? (y/n)"
+</li>
+<li> If y — runs systemctl status <service> and prints whether it's active or not
+</li>
+<li> If n — prints "Skipped."
+</li>  
+</ul>
+<br>
+  <img width="809" height="460" alt="image" src="https://github.com/user-attachments/assets/5d4da3a1-93c3-4eea-93c7-dd36032ea5a5" />
+<br><br>
+  OUTPUT:
+  
+  <img width="566" height="258" alt="image" src="https://github.com/user-attachments/assets/5168ecb9-3002-45cf-b419-a8a3a59bf7ce" />
 
+<hr>
 
 
 
