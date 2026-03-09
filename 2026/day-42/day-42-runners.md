@@ -456,3 +456,124 @@ Self-hosted runners are useful when:
 - A green dot in the runner list confirms the runner is **online and active**.
 
 ---
+
+## Task4: Use Your Self-Hosted Runner
+
+## Overview
+In this task I executed a GitHub Actions workflow on my **self-hosted runner** instead of a GitHub-hosted runner.  
+The runner was configured on an **AWS EC2 Ubuntu instance**.  
+The workflow was triggered manually and executed directly on my machine.
+
+---
+
+## Goal
+Create a workflow that runs on a **self-hosted runner** and verifies that the job executes on my own machine.
+
+Steps performed in the workflow:
+
+1. Print the hostname of the machine
+2. Print the working directory
+3. Create a file and verify it exists
+
+---
+
+# Workflow File
+
+File location:
+
+.github/workflows/self-hosted.yml
+
+Workflow configuration:
+
+name: Self Hosted Runner
+
+on:
+  workflow_dispatch
+
+jobs:
+  runner_details:
+    runs-on: self-hosted
+
+    steps:
+
+      - name: Print hostname of the EC2 Instance
+        run: hostname
+
+      - name: Print working directory
+        run: pwd
+
+      - name: Create a file and verify it exists on your machine after the run
+        run: |
+          touch hello.txt
+          ls hello.txt
+
+---
+
+# Triggering the Workflow
+
+The workflow was triggered manually from:
+
+GitHub → Actions → Self Hosted Runner → Run workflow
+
+The job was picked up by my **self-hosted runner running on the EC2 instance**.
+
+---
+
+# Output Observed
+
+The workflow printed:
+
+- EC2 hostname
+- Runner working directory
+- Created file confirmation
+
+Example output:
+
+hostname → ip-172-31-39-119
+
+working directory →  
+/home/ubuntu/actions-runner/_work/github-actions-zero-to-hero/github-actions-zero-to-hero
+
+file created →  
+hello.txt
+
+---
+
+# Verification on the Machine
+
+After the workflow completed, I checked the runner working directory on the EC2 instance.
+
+Command used:
+
+ls
+
+Result:
+
+hello.txt
+
+This confirms that the workflow actually ran on my **own machine**, not on GitHub’s infrastructure.
+
+---
+
+# Why This Matters
+
+Self-hosted runners allow workflows to run on machines controlled by the user.
+
+Benefits include:
+
+- Full control over the environment
+- Ability to install custom software
+- Access to private networks
+- More powerful hardware if required
+- Ability to reuse the same environment for multiple jobs
+
+---
+
+# Key Learning
+
+- A workflow with `runs-on: self-hosted` executes on a registered self-hosted runner.
+- The runner listens for jobs and executes them locally.
+- Files created by the workflow remain on the host machine.
+- This confirms the workflow is running on **user-controlled infrastructure**.
+
+---
