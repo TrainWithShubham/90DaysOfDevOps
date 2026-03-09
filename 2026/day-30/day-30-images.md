@@ -7,10 +7,13 @@ Inspect an image — what information can you see?
 Remove an image you no longer need**
 =============================================================
 images pulled
+
 <img width="612" height="147" alt="Screenshot 2026-03-09 at 12 09 25 PM" src="https://github.com/user-attachments/assets/bd9e84cc-a2bc-41d3-9276-b70f289f0eb9" />
 
 inspect for nginx
+
 <img width="980" height="724" alt="Screenshot 2026-03-09 at 12 13 03 PM" src="https://github.com/user-attachments/assets/ef13fe72-4eb6-4bf7-a2f1-b3eccdbc44dd" />
 
 removed image (rmi)
+
 <img width="700" height="392" alt="Screenshot 2026-03-09 at 12 14 44 PM" src="https://github.com/user-attachments/assets/edfb7929-4468-4c84-ac3f-1b3814afe646" />
