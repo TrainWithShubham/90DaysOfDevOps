@@ -3,13 +3,13 @@
 
 ## Task 1: GitHub Hosted Runners
 
-## Overview
+### Overview
 In this task I learned how GitHub Actions workflows run on **GitHub-hosted runners** and how the same workflow can execute jobs on different operating systems.  
 I created a workflow that runs **three jobs in parallel** on Ubuntu, Windows, and macOS runners and prints information about each runner.
 
 ---
 
-## Goal
+### Goal
 Create a workflow with **3 jobs**, each running on a different operating system:
 
 - ubuntu-latest
@@ -25,7 +25,7 @@ All jobs run **in parallel**.
 
 ---
 
-# Workflow File
+### Workflow File
 
 File location:
 
@@ -80,7 +80,7 @@ jobs:
 
 ---
 
-# Result
+### Result
 
 When the workflow runs, GitHub creates **three separate runners**.
 
@@ -98,21 +98,21 @@ All jobs run **in parallel**.
 
 ---
 
-# Example Output
+### Example Output
 
-### Ubuntu Runner
+#### Ubuntu Runner
 
 Linux fv-az123-456 6.x.x x86_64 GNU/Linux  
 fv-az123-456  
 runner  
 
-### Windows Runner
+#### Windows Runner
 
 OS Name: Microsoft Windows Server 2022 Datacenter  
 fv-az789-321  
 runneradmin  
 
-### macOS Runner
+#### macOS Runner
 
 macOS  
 fv-az654-987  
@@ -120,7 +120,7 @@ runner
 
 ---
 
-# What is a GitHub-hosted runner?
+### What is a GitHub-hosted runner?
 
 A **GitHub-hosted runner** is a virtual machine provided by GitHub that runs workflow jobs.
 
@@ -139,7 +139,7 @@ This allows CI/CD pipelines to run without manually setting up infrastructure.
 
 ---
 
-# Who manages GitHub-hosted runners?
+### Who manages GitHub-hosted runners?
 
 GitHub-hosted runners are **fully managed by GitHub**.
 
@@ -157,13 +157,13 @@ Developers only need to define the **workflow configuration**, and GitHub takes 
 
 ## Task 2: Explore Pre-installed Tools
 
-## Overview
+### Overview
 In this task I explored what tools are already available on the **ubuntu-latest GitHub-hosted runner**.  
 GitHub provides runners with many development tools pre-installed so workflows can run immediately without installing everything from scratch.
 
 ---
 
-## Goal
+### Goal
 Run commands in a workflow step to print versions of common tools that are already installed on the runner.
 
 Tools checked:
@@ -175,7 +175,7 @@ Tools checked:
 
 ---
 
-# Workflow Step Used
+### Workflow Step Used
 
 Example step used inside the workflow:
 
@@ -197,7 +197,7 @@ Example step used inside the workflow:
 
 ---
 
-# Example Output
+### Example Output
 
 Docker version:
 Docker version 24.x.x
@@ -215,7 +215,7 @@ This confirms that these tools are already available on the runner without needi
 
 ---
 
-# Full List of Pre-installed Software
+### Full List of Pre-installed Software
 
 GitHub provides documentation listing all software installed on the Ubuntu runner image.
 
@@ -272,16 +272,16 @@ Package managers:
 
 Pre-installed tools are important for several reasons.
 
-### 1. Faster CI/CD pipelines
+#### 1. Faster CI/CD pipelines
 Since tools like Docker, Python, Node, and Git are already installed, workflows start immediately without spending time installing dependencies.
 
-### 2. Reduced setup complexity
+#### 2. Reduced setup complexity
 Developers do not need to manually configure environments. The runner already contains common development tools.
 
-### 3. Consistent environments
+#### 3. Consistent environments
 Every workflow run starts with the same environment configuration, which reduces issues caused by environment differences.
 
-### 4. Better developer productivity
+#### 4. Better developer productivity
 Teams can focus on building and testing applications instead of maintaining build infrastructure.
 
 ### 5. Lower infrastructure management effort
@@ -289,7 +289,7 @@ GitHub manages the runner images and keeps the tools updated, so developers do n
 
 ---
 
-# Key Learning
+### Key Learning
 
 - GitHub-hosted runners include many common development tools pre-installed.
 - Tools like Docker, Python, Node.js, and Git are available by default.
@@ -300,14 +300,14 @@ GitHub manages the runner images and keeps the tools updated, so developers do n
 
 ## Task 3 – Self-Hosted Runner Setup
 
-## Overview
+### Overview
 In this task I learned how to set up a **self-hosted runner** for GitHub Actions.  
 Unlike GitHub-hosted runners, a self-hosted runner runs workflows on **my own machine or cloud server**.  
 I configured a self-hosted runner on an **Ubuntu EC2 instance** and connected it to my GitHub repository.
 
 ---
 
-## Goal
+### Goal
 Set up a self-hosted runner for a GitHub repository and verify that it appears in the runner list and is ready to accept jobs.
 
 Steps required:
@@ -320,7 +320,7 @@ Steps required:
 
 ---
 
-# Environment Used
+### Environment Used
 
 Runner hosted on:
 
@@ -334,7 +334,7 @@ actions-runner
 
 ---
 
-# Commands Used to Set Up the Runner
+## Commands Used to Set Up the Runner
 
 ### Download Runner Package
 
@@ -362,7 +362,7 @@ shiv-ubuntu-runner
 
 ---
 
-# Start the Runner
+### Start the Runner
 
 To start the runner:
 
@@ -382,7 +382,7 @@ This confirms the runner successfully connected to GitHub.
 
 ---
 
-# Verification in GitHub
+### Verification in GitHub
 
 After starting the runner:
 
@@ -410,7 +410,7 @@ This means the runner is **online and ready to execute workflow jobs**.
 
 ---
 
-# What is a Self-Hosted Runner?
+### What is a Self-Hosted Runner?
 
 A **self-hosted runner** is a machine that you manage yourself and register with GitHub to run workflow jobs.
 
@@ -435,7 +435,7 @@ It can run on:
 
 ---
 
-# Why Use Self-Hosted Runners?
+### Why Use Self-Hosted Runners?
 
 Self-hosted runners are useful when:
 
@@ -447,7 +447,7 @@ Self-hosted runners are useful when:
 
 ---
 
-# Key Learnings
+### Key Learnings
 
 - A self-hosted runner allows workflows to run on machines managed by the user.
 - It must be **downloaded, configured, and started manually**.
@@ -459,14 +459,14 @@ Self-hosted runners are useful when:
 
 ## Task4: Use Your Self-Hosted Runner
 
-## Overview
+### Overview
 In this task I executed a GitHub Actions workflow on my **self-hosted runner** instead of a GitHub-hosted runner.  
 The runner was configured on an **AWS EC2 Ubuntu instance**.  
 The workflow was triggered manually and executed directly on my machine.
 
 ---
 
-## Goal
+### Goal
 Create a workflow that runs on a **self-hosted runner** and verifies that the job executes on my own machine.
 
 Steps performed in the workflow:
@@ -509,7 +509,7 @@ jobs:
 
 ---
 
-# Triggering the Workflow
+### Triggering the Workflow
 
 The workflow was triggered manually from:
 
@@ -519,7 +519,7 @@ The job was picked up by my **self-hosted runner running on the EC2 instance**.
 
 ---
 
-# Output Observed
+### Output Observed
 
 The workflow printed:
 
@@ -539,7 +539,7 @@ hello.txt
 
 ---
 
-# Verification on the Machine
+### Verification on the Machine
 
 After the workflow completed, I checked the runner working directory on the EC2 instance.
 
@@ -555,7 +555,7 @@ This confirms that the workflow actually ran on my **own machine**, not on GitHu
 
 ---
 
-# Why This Matters
+### Why This Matters
 
 Self-hosted runners allow workflows to run on machines controlled by the user.
 
@@ -569,11 +569,150 @@ Benefits include:
 
 ---
 
-# Key Learning
+### Key Learning
 
 - A workflow with `runs-on: self-hosted` executes on a registered self-hosted runner.
 - The runner listens for jobs and executes them locally.
 - Files created by the workflow remain on the host machine.
 - This confirms the workflow is running on **user-controlled infrastructure**.
+
+---
+
+## Task5: Using Labels with Self-Hosted Runners
+
+### Overview
+In this task I learned how **labels work with self-hosted runners** in GitHub Actions.  
+Labels help GitHub decide **which runner should execute a workflow job when multiple self-hosted runners are available**.
+
+By adding a custom label to my runner and updating the workflow, I ensured that the job runs only on the intended runner.
+
+---
+
+### Goal
+1. Add a custom label to the self-hosted runner
+2. Update the workflow to use that label
+3. Trigger the workflow and verify the job is picked by the correct runner
+
+---
+
+### Step 1 – Add a Label to the Runner
+
+Navigate to:
+
+Repository → **Settings → Actions → Runners**
+
+Select the runner and add a custom label.
+
+Example label used:
+
+```
+my-linux-runner
+```
+
+After adding the label, the runner shows labels such as:
+
+- self-hosted  
+- Linux  
+- X64  
+- prod  
+- my-linux-runner  
+
+These labels identify the runner’s capabilities.
+
+---
+
+### Step 2 – Update the Workflow
+
+Workflow file:
+
+.github/workflows/self-hosted.yml
+
+Updated configuration:
+
+```
+name: Self Hosted Runner
+
+on:
+  workflow_dispatch
+
+jobs:
+  runner_details:
+    runs-on: [self-hosted, my-linux-runner]
+
+    steps:
+      - name: Print hostname
+        run: hostname
+
+      - name: Print working directory
+        run: pwd
+
+      - name: Create a file
+        run: |
+          touch hello2.txt
+          ls hello2.txt
+```
+
+---
+
+### Step 3 – Trigger the Workflow
+
+The workflow was triggered manually from the **Actions tab**.
+
+The job was picked up by the runner that contains the label:
+
+```
+my-linux-runner
+```
+
+---
+
+### Verification
+
+In the workflow logs:
+
+- The job executed on my **self-hosted EC2 runner**.
+- The hostname printed matched my EC2 instance.
+
+On the EC2 machine I checked the directory and confirmed the file exists:
+
+```
+hello2.txt
+```
+
+This confirms the job ran successfully on the labeled runner.
+
+---
+
+### Why Labels Are Important
+
+Labels are useful when a repository has **multiple self-hosted runners**.
+
+They help GitHub decide **which runner should execute the workflow job**.
+
+Example runners:
+
+| Runner | Labels |
+|------|------|
+| Runner 1 | self-hosted, linux, docker |
+| Runner 2 | self-hosted, linux, gpu |
+| Runner 3 | self-hosted, windows |
+
+Example workflow job:
+
+```
+runs-on: [self-hosted, gpu]
+```
+
+GitHub will select the runner that has the **gpu label**.
+
+---
+
+### Key Learning
+
+- Labels are used to **route jobs to the correct self-hosted runner**.
+- A runner can have **multiple labels**.
+- Workflow jobs can specify labels in the `runs-on` field.
+- GitHub selects a runner that matches **all specified labels**.
+- Labels become very important when multiple runners exist.
 
 ---
