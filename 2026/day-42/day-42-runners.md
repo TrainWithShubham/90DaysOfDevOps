@@ -1,12 +1,13 @@
-# Day 42 – GitHub Hosted Runners
+# Day 42 – Runners: GitHub-Hosted & Self-Hosted
+
+
+## Task 1: GitHub Hosted Runners
 
 ## Overview
 In this task I learned how GitHub Actions workflows run on **GitHub-hosted runners** and how the same workflow can execute jobs on different operating systems.  
 I created a workflow that runs **three jobs in parallel** on Ubuntu, Windows, and macOS runners and prints information about each runner.
 
 ---
-
-# Task – GitHub Hosted Runners
 
 ## Goal
 Create a workflow with **3 jobs**, each running on a different operating system:
