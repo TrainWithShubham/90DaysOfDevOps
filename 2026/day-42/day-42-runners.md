@@ -294,3 +294,164 @@ GitHub manages the runner images and keeps the tools updated, so developers do n
 - Tools like Docker, Python, Node.js, and Git are available by default.
 - The full list of installed tools is documented in the GitHub **runner-images repository**.
 - Pre-installed tools make CI pipelines faster, easier to maintain, and more reliable.
+
+---
+
+## Task 3 – Self-Hosted Runner Setup
+
+## Overview
+In this task I learned how to set up a **self-hosted runner** for GitHub Actions.  
+Unlike GitHub-hosted runners, a self-hosted runner runs workflows on **my own machine or cloud server**.  
+I configured a self-hosted runner on an **Ubuntu EC2 instance** and connected it to my GitHub repository.
+
+---
+
+## Goal
+Set up a self-hosted runner for a GitHub repository and verify that it appears in the runner list and is ready to accept jobs.
+
+Steps required:
+
+1. Go to repository → **Settings**
+2. Navigate to **Actions → Runners**
+3. Click **New self-hosted runner**
+4. Choose **Linux** as the operating system
+5. Follow the setup instructions on the machine where the runner will run
+
+---
+
+# Environment Used
+
+Runner hosted on:
+
+- **AWS EC2 instance**
+- Operating System: **Ubuntu Linux**
+- Architecture: **x64**
+
+The runner was configured inside a directory called:
+
+actions-runner
+
+---
+
+# Commands Used to Set Up the Runner
+
+### Download Runner Package
+
+```
+mkdir actions-runner && cd actions-runner
+curl -o actions-runner-linux-x64.tar.gz -L https://github.com/actions/runner/releases/download/vX.X.X/actions-runner-linux-x64-X.X.X.tar.gz
+tar xzf ./actions-runner-linux-x64.tar.gz
+```
+
+### Configure Runner
+
+```
+./config.sh
+```
+
+During configuration I provided:
+
+- GitHub repository URL
+- Registration token
+- Runner name
+
+Example runner name:
+
+shiv-ubuntu-runner
+
+---
+
+# Start the Runner
+
+To start the runner:
+
+```
+./run.sh
+```
+
+Example output:
+
+```
+Connected to GitHub
+Current runner version: 2.332.0
+Listening for Jobs
+```
+
+This confirms the runner successfully connected to GitHub.
+
+---
+
+# Verification in GitHub
+
+After starting the runner:
+
+1. Go to **Repository → Settings**
+2. Open **Actions → Runners**
+
+The runner appears in the list.
+
+Example:
+
+Runner name: **shiv-ubuntu-runner**
+
+Labels shown:
+
+- self-hosted
+- Linux
+- X64
+- prod
+
+Status:
+
+● Idle (green dot)
+
+This means the runner is **online and ready to execute workflow jobs**.
+
+---
+
+# What is a Self-Hosted Runner?
+
+A **self-hosted runner** is a machine that you manage yourself and register with GitHub to run workflow jobs.
+
+It can run on:
+
+- Local machines
+- Cloud servers (AWS, Azure, GCP)
+- Virtual machines
+- On-premise infrastructure
+
+---
+
+# GitHub-Hosted vs Self-Hosted Runners
+
+| Feature | GitHub Hosted Runner | Self Hosted Runner |
+|------|------|------|
+| Managed by | GitHub | User |
+| Infrastructure | GitHub cloud | Your machine or server |
+| Setup required | No | Yes |
+| Custom tools | Limited | Fully customizable |
+| Cost | Included in GitHub Actions limits | Depends on your infrastructure |
+
+---
+
+# Why Use Self-Hosted Runners?
+
+Self-hosted runners are useful when:
+
+1. You need **custom tools or software**
+2. You require **specific hardware**
+3. Workflows need access to **private networks**
+4. You want **more control over the environment**
+5. Large builds require **more resources**
+
+---
+
+# Key Learnings
+
+- A self-hosted runner allows workflows to run on machines managed by the user.
+- It must be **downloaded, configured, and started manually**.
+- Once started, it connects to GitHub and waits for jobs.
+- GitHub shows the runner status as **Idle** when it is ready.
+- A green dot in the runner list confirms the runner is **online and active**.
+
+---
