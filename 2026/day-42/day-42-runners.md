@@ -716,3 +716,15 @@ GitHub will select the runner that has the **gpu label**.
 - Labels become very important when multiple runners exist.
 
 ---
+
+# Task 6: GitHub-Hosted vs Self-Hosted
+
+| Feature | GitHub-Hosted Runner | Self-Hosted Runner |
+|---|---|---|
+| Who manages it? | Managed and maintained by GitHub | Managed by the user or organization |
+| Cost | Free within GitHub Actions usage limits (extra minutes cost money) | Cost depends on the infrastructure used (EC2, VM, server, etc.) |
+| Pre-installed tools | Comes with many pre-installed tools (Docker, Node.js, Python, Git, browsers, etc.) | Tools must be installed and managed by the user |
+| Good for | Quick setup, CI pipelines, testing across different OS | Custom environments, private networks, specialized hardware |
+| Security concern | Safer because GitHub manages and isolates runners | Higher responsibility because the user manages security, updates, and access |
+
+---
