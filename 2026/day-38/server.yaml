@@ -1,11 +1,22 @@
 server:
   name: prod-server-01
-  ip: 192.168.1.100
+  ip: 192.168.1.10
   port: 8080
 
 database:
-  host: localhost
+  host: db.internal
   name: tododb
   credentials:
     user: root
     password: Test@123
+
+startup_script: |
+  echo "Starting server..."
+  cd /app
+  npm install
+  node index.js
+
+shutdown_script: >
+  echo "Stopping server..."
+  cd /app
+  pm2 stop all
