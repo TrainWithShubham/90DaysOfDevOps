@@ -42,3 +42,25 @@ What they are: Fresh virtual machines (Ubuntu, Windows, or macOS) provided by Gi
 Who manages them: GitHub.
 Management duties: GitHub handles all hardware, operating system updates, security patches, and pre-installed software.
 Best for: Users who want a "zero-maintenance" solution and don't need highly specialized hardware.
+
+### Task 2
+ ** Print Version of Docker, git, pyhthon and node**
+  ```
+name: Ubuntu-Runner
+on: 
+    workflow_dispatch:
+
+jobs:
+    Print-software-version:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Print Version
+              run: | 
+                   docker --version
+                   python --version
+                   node --version
+                   git --version
+```
+<img width="1000" height="490" alt="runner" src="https://github.com/user-attachments/assets/c2c21c05-f4ec-4280-816b-0fca478d7d33" />
+
