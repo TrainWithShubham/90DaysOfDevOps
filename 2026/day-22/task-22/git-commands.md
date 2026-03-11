@@ -8,17 +8,14 @@
 <img width="706" height="58" alt="Screenshot 2026-03-11 061430" src="https://github.com/user-attachments/assets/90d0e1a5-c2bf-4842-8df7-0197ad208009" />
 
 # Task 3: Create Your Git Commands Reference
-# Git Commands Reference
+## Git Commands Reference
+# Setup & Config
 
-## Setup & Config
-
-### git --version
-- Shows the installed Git version.
+- git --version , Shows the installed Git version.
 ```
 git --version
 ```
-Sets your global Git username.
-- git config --global user.name
+- Sets your global Git username , git config --global user.name
 ```
 git config --global user.name "Rahul Sharma"
 ```
@@ -33,7 +30,6 @@ git config --global user.email "rahul@gmail.com"
 git config --list
 ```
 # Basic Workflow
-
 - git init , Initializes a new Git repository.
 ```
 git init
