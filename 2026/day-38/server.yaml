@@ -1,0 +1,21 @@
+server:
+  name: web-server-01
+  ip: 192.168.1.10
+  port: 8080
+
+database:
+  host: db.internal
+  name: app_db
+  credentials:
+    user: dbuser
+    password: strongpassword  
+startup_script: |
+  #!/bin/bash
+    echo "Starting web server"
+    sudo systemctl start nginx
+    echo "Server started"
+script_startup: >
+  This startup script initializes
+  the server services and ensures
+  the web server is running.
+  
