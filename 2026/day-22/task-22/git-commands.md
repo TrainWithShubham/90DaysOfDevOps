@@ -1,7 +1,11 @@
 ## Day 22 – Introduction to Git: My First Repository
 # Task 1: Install and Configure Git
+<img width="583" height="376" alt="git1" src="https://github.com/user-attachments/assets/41913ef5-9d8b-4f55-acf1-472072ecb2a6" />
 
 # Task 2: Create Your Git Project
+<img width="832" height="265" alt="Screenshot 2026-03-11 052925" src="https://github.com/user-attachments/assets/e4bf8ed8-38e2-4e76-85bd-0246226224ce" />
+
+<img width="706" height="58" alt="Screenshot 2026-03-11 061430" src="https://github.com/user-attachments/assets/90d0e1a5-c2bf-4842-8df7-0197ad208009" />
 
 # Task 3: Create Your Git Commands Reference
 # Git Commands Reference
