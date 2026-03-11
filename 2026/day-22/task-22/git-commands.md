@@ -66,7 +66,6 @@ git commit -m "Add git commands reference documentation"
 ```
 git log
 ```
-![git log](image-2.png)
 # git log --oneline - Shows a compact version of commit history.
 ```
 git log --oneline
@@ -85,6 +84,7 @@ Staging Area
         ▼
 Git Repository (History)
 ```
+## Task 5- Make More Changes and Build History
 ## Branching
 # git branch - Shows all branches in the repository.
 ```
@@ -94,3 +94,39 @@ git branch
 ```
 git checkout main
 ```
+# Task 6: Understand the Git Workflow
+- Step 1: Create the Notes File
+```
+touch day-22-notes.md
+```
+- What is the difference between git add and git commit?
+- Ans: git add moves changes from the working directory to the staging area. It prepares the files that will be included in the next commit. Git commit saves the staged changes into the Git repository as a permanent snapshot with a message explaining what changed.
+- Example workflow:
+```
+git add file.txt
+git commit -m "Added new feature"
+```
+- What does the staging area do? Why doesn't Git just commit directly?
+- Ans: The staging area is a place where you prepare changes before committing them. It allows you to select exactly which changes should go into the next commit. Git uses a staging area so developers can group related changes together instead of committing everything at once.
+
+- What information does git log show you?
+- Ans: git log shows the commit history of the repository.
+It includes:
+- Commit ID (unique hash)
+- Author name and email
+- Date of the commit
+- Commit message
+
+- What is the .git/ folder and what happens if you delete it?
+- Ans: The .git folder is the hidden directory that stores all Git data for the repository. It contains commits, branches, configuration, and history. If the .git folder is deleted, the project is no longer a Git repository and all version history is lost.
+
+- What is the difference between a working directory, staging area, and repository?
+- Working Directory  
+This is the folder where you edit and create files on your computer.
+
+Staging Area  
+This is where files are prepared before committing. Files are added here using git add.
+
+Repository  
+This is where Git permanently stores committed versions of files along with the project history.
+
