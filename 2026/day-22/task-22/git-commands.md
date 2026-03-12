@@ -129,4 +129,44 @@ This is where files are prepared before committing. Files are added here using g
 
 Repository  
 This is where Git permanently stores committed versions of files along with the project history.
+- List all branches in your repo
+```
+git branch
+```
+- Create a New Branch Called feature-1
+```
+git branch feature-1
+```
+- Switch to feature-1
+```
+git checkout feature-1
+```
+## Create a new branch and switch to it in a single command — call it feature-2
+```
+- git checkout -b feature-2
+```
+## Try using git switch to move between branches — how is it different from git checkout?
+```
+git switch feature -1
+```
+## Difference Between checkout and switch
+- git checkout - Older command used for switching branches AND restoring files
+- git switch - Newer command used only for switching branches, simpler and safer
 
+## Make a Commit on feature-1 (Not on Main)
+- git switch feature-1
+- ### git branch
+Lists all branches in the repository.
+Example:
+git branch
+
+- git add git-commands.md
+- git commit -m "Add branching commands documentation"
+- Switch Back to main and Verify - The commit from feature-1 is NOT in main.
+![git switch](image-3.png)
+![git main](image.png)
+
+- Delete a Branch You No Longer Need
+```
+git branch -D feature-2
+```
