@@ -101,4 +101,24 @@ So Rebase is, reapplies commits from one branch onto another branch to create a 
 Merge is, combines histories of two branches by creating a merge commit.
 ```
 ## Task 3: Squash Commit vs Merge Commit
-
+- What does squash merging do?
+- Squash merging combines multiple commits from a feature branch into a single commit before adding it to the main branch. This creates a clean and simple commit history.
+## When would you use squash merge vs regular merge?
+Use squash merge when: There are many small commits, Commit history is messy & You want a clean history
+Use regular merge when: You want to preserve complete commit history, Working with a team & Important commits should stay visible
+## What is the trade-off of squashing?
+- The trade-off is that you lose the detailed commit history of the feature branch. This means you cannot easily see:
+individual fixes
+step-by-step changes
+who made specific small changes
+Simple Visual Summary
+SQUASH
+```
+A --- S
+```
+MERGE
+```
+A --- M
+     / \
+    B   C
+```
