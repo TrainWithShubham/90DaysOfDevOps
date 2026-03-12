@@ -170,3 +170,4 @@ git branch
 ```
 git branch -D feature-2
 ```
+## Task 3: Push to GitHub
