@@ -102,7 +102,7 @@ Merge is, combines histories of two branches by creating a merge commit.
 ```
 ## Task 3: Squash Commit vs Merge Commit
 - What does squash merging do?
-- Squash merging combines multiple commits from a feature branch into a single commit before adding it to the main branch. This creates a clean and simple commit history.
+- Squash merging combines multiple commits from a feature branch into a single commit before adding it to the main branch. This creates a clean and simple commit history. Command - ``` git merge --squash feature-profile```
 ## When would you use squash merge vs regular merge?
 Use squash merge when: There are many small commits, Commit history is messy & You want a clean history
 Use regular merge when: You want to preserve complete commit history, Working with a team & Important commits should stay visible
@@ -122,3 +122,5 @@ A --- M
      / \
     B   C
 ```
+## Task 4: Git Stash — Hands-On
+- Start making changes to a file but do not commit
