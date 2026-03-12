@@ -123,4 +123,28 @@ A --- M
     B   C
 ```
 ## Task 4: Git Stash — Hands-On
-- Start making changes to a file but do not commit
+- Start making changes to a file but do not commit, Now imagine you need to urgently switch to another branch — try switching. What happens? You will get the message that stash the items before you switch
+![git_stash](image.png)
+## What is the difference between git stash pop and git stash apply?
+- git stash pop -> Applies the stash and removes it from the stash list
+- git stash apply -> Applies the stash but keeps it in the stash list
+
+## When would you use stash in a real-world workflow?
+- Developers use git stash when:
+They are in the middle of work
+They need to quickly switch branches
+They are not ready to commit changes
+
+- Example situations:
+Urgent bug fix on another branch
+Pulling latest changes
+Testing something quickly
+Stash temporarily saves unfinished work without committing it.
+
+## Useful stash commands
+- git stash -> save changes
+- git stash list -> view stashes
+- git stash pop -> apply + remove stash
+- git stash apply -> apply stash only
+- git stash drop stash@{0} -> delete stash
+- git stash clear -> delete all stashes
