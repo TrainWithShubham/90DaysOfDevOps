@@ -57,8 +57,6 @@ git branch
 - git add git-commands.md
 - git commit -m "Add branching commands documentation"
 - Switch Back to main and Verify - The commit from feature-1 is NOT in main.
-![git switch](image-3.png)
-![git main](image.png)
 
 - Delete a Branch You No Longer Need
 ```
