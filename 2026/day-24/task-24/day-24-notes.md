@@ -25,7 +25,7 @@ feature: A --- B --- C
 After merge:
 main: A --- B --- C
 ```
-- When does Git create a Merge Commit?
+## When does Git create a Merge Commit?
 - Git creates a merge commit when both branches have new commits and their histories have diverged.
 Example:
 ```
@@ -40,7 +40,7 @@ A --- D ------ M
         B --- C
 ```
 M is the merge commit.
-- What is a Merge Conflict?
+## What is a Merge Conflict?
 - A merge conflict occurs when Git cannot automatically combine changes from two branches. This usually happens when:
 The same line of code is edited in both branches
 The same file is modified differently
@@ -58,3 +58,47 @@ Main has no new commits - 	Fast-forward merge
 Both branches changed - 	Merge commit
 Same line edited in both branches -	Merge conflict 
 ```
+## Task 2: Git Rebase — Hands-On
+- Create a branch feature-dashboard from main, add 2-3 commits -> ```git switch -c feature-dashboard```
+- While on main, add a new commit (so main moves ahead)
+- What does rebase actually do to your commits?
+- Rebase moves your branch commits and reapplies them on top of another branch. It rewrites commit history by creating new commits.
+```
+Before rebase:
+main: A --- E
+feature: B --- C --- D
+
+After rebase:
+A --- E --- B' --- C' --- D'
+```
+## How is the history different from a merge?
+- Merge keeps branch history and creates a merge commit.   
+```
+A --- E ---- M
+       \    /
+        B--C--D
+```
+- Rebase replays commits and creates a linear history.
+```
+A --- E --- B' --- C' --- D'
+```
+So the history looks cleaner and easier to read.
+## Why should you never rebase commits that have been pushed and shared?
+- Because rebase rewrites commit history. If commits were already pushed:
+- Other developers may already have those commits.
+- Rewriting them causes history conflicts.
+- It can break the repository for others.
+- Rule:
+❗ Never rebase public/shared branches.
+
+## When would you use rebase vs merge?
+- Use Rebase -> Clean up local commits , Update feature branch with latest main, Maintain linear history, Before creating pull request
+```
+So Rebase is, reapplies commits from one branch onto another branch to create a linear history.
+```
+- use Merge -> Combine branches safely , When branch is shared, Preserve full branch history , Team collaboration
+```
+Merge is, combines histories of two branches by creating a merge commit.
+```
+## Task 3: Squash Commit vs Merge Commit
+
