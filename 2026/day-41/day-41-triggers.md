@@ -1,18 +1,5 @@
 # Day 41 – Triggers & Matrix Builds
 
-## Task
-Your pipeline runs on push. Today you learn **every way to trigger a workflow** and how to run jobs across multiple environments at once.
-
----
-
-## Expected Output
-- New workflow files in your `github-actions-practice` repo
-- A markdown file: `day-41-triggers.md`
-
----
-
-## Challenge Tasks
-
 ### Task 1: Trigger on Pull Request
 1. Create `.github/workflows/pr-check.yml`
 2. Trigger it only when a pull request is **opened or updated** against `main`
@@ -21,15 +8,33 @@ Your pipeline runs on push. Today you learn **every way to trigger a workflow** 
 5. Watch the workflow run automatically
 
 **Verify:** Does it show up on the PR page?
-<img src="Images/task1.png" width="900">
+**Answer:**
+
+Yes — the workflow will show up on the PR page.
+
+
+
+- [ ] A Checks section on the PR
+
+- [ ] The workflow PR Check running automatically
+
+- [ ] Status like ✅ All checks passed
+
+
+
+
+>>**[ Script](workflows/pr_check.yml)**
+<img src="images/task1.png" width="500">
 ---
+
+
 
 ### Task 2: Scheduled Trigger
 1. Add a `schedule:` trigger to any workflow using cron syntax
 2. Set it to run every day at midnight UTC
 3. Write in your notes: What is the cron expression for every Monday at 9 AM?
 
-
+>>**[ Script](workflows/schedule.yml)**
 ---
 
 ### Task 3: Manual Trigger
@@ -39,10 +44,12 @@ Your pipeline runs on push. Today you learn **every way to trigger a workflow** 
 4. Go to the **Actions** tab → find the workflow → click **Run workflow**
 
 **Verify:** Can you trigger it manually and see your input printed?
-<img src="Images/task2-0.png" width="900">
 
-<img src="Images/task2-1.png" width="900">
----
+>>**[ Script](workflows/manual.yml)**
+<img src="images/task2-0.png" width="500">
+
+<img src="images/task2-1.png" width="500">
+-----
 
 ### Task 4: Matrix Builds
 Create `.github/workflows/matrix.yml` that:
@@ -52,50 +59,26 @@ Create `.github/workflows/matrix.yml` that:
 3. Watch all 3 run in parallel
 
 Then extend the matrix to also include 2 operating systems — how many total jobs run now?
-<img src="Images/4.png" width="900">
----
+
+>>**[ Script](workflows/matrix.yml)**
+
+<img src="images/4.png" width="900">
+------
 
 ### Task 5: Exclude & Fail-Fast
 1. In your matrix, **exclude** one specific combination (e.g., Python 3.10 on Windows)
 2. Set `fail-fast: false` — trigger a failure in one job and observe what happens to the rest
 3. Write in your notes: What does `fail-fast: true` (the default) do vs `false`?
 
-<img src="Images/5.png" width="900">
-<img src="Images/5-2.png" width="900">
+
+>>**[ Script](workflows/fail_fast.yml)**
+
+
+<img src="images/5.png" width="400">
+<img src="images/5-2.png" width="400">
 
 
 **fail-fast:true** 
   If one job fails, all the jobs after it will also fail and contrary to this in **fail-fast:false**
   if one job fails, other jobs will be continued.
----
 
-## Hints
-- PR trigger: `on: pull_request: branches: [main]`
-- Cron trigger: `on: schedule: - cron: '0 0 * * *'`
-- Manual trigger: `on: workflow_dispatch: inputs:`
-- Matrix: `strategy: matrix: python-version: [...]`
-- Exclude: `exclude: - os: windows-latest python-version: "3.10"`
-
----
-
-## Documentation
-Create `day-41-triggers.md` with:
-- Each workflow YAML
-- Screenshots of runs
-- The cron expression answer from Task 2
-
----
-
-## Submission
-1. Add `day-41-triggers.md` to `2026/day-41/`
-2. Commit and push to your fork
-
----
-
-## Learn in Public
-Share your matrix build screenshot — seeing multiple jobs run in parallel for the first time is a great moment.
-
-`#90DaysOfDevOps` `#DevOpsKaJosh` `#TrainWithShubham`
-
-Happy Learning!
-**TrainWithShubham**
