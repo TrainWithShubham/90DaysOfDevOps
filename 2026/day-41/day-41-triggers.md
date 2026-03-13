@@ -1,18 +1,5 @@
 # Day 41 – Triggers & Matrix Builds
 
-## Task
-Your pipeline runs on push. Today you learn **every way to trigger a workflow** and how to run jobs across multiple environments at once.
-
----
-
-## Expected Output
-- New workflow files in your `github-actions-practice` repo
-- A markdown file: `day-41-triggers.md`
-
----
-
-## Challenge Tasks
-
 ### Task 1: Trigger on Pull Request
 1. Create `.github/workflows/pr-check.yml`
 2. Trigger it only when a pull request is **opened or updated** against `main`
@@ -33,7 +20,7 @@ Your pipeline runs on push. Today you learn **every way to trigger a workflow** 
 2. Set it to run every day at midnight UTC
 3. Write in your notes: What is the cron expression for every Monday at 9 AM?
 
-
+>>**[ Script](workflows/schedule.yml)**
 ---
 
 ### Task 3: Manual Trigger
@@ -43,6 +30,8 @@ Your pipeline runs on push. Today you learn **every way to trigger a workflow** 
 4. Go to the **Actions** tab → find the workflow → click **Run workflow**
 
 **Verify:** Can you trigger it manually and see your input printed?
+
+>>**[ Script](workflows/manual.yml)**
 <img src="images/task2-0.png" width="500">
 
 <img src="images/task2-1.png" width="500">
@@ -56,6 +45,9 @@ Create `.github/workflows/matrix.yml` that:
 3. Watch all 3 run in parallel
 
 Then extend the matrix to also include 2 operating systems — how many total jobs run now?
+
+>>**[ Script](workflows/matrix.yml)**
+
 <img src="Images/4.png" width="900">
 ---
 
@@ -63,6 +55,10 @@ Then extend the matrix to also include 2 operating systems — how many total jo
 1. In your matrix, **exclude** one specific combination (e.g., Python 3.10 on Windows)
 2. Set `fail-fast: false` — trigger a failure in one job and observe what happens to the rest
 3. Write in your notes: What does `fail-fast: true` (the default) do vs `false`?
+
+
+>>**[ Script](workflows/fail_fast.yml)**
+
 
 <img src="images/5.png" width="500">
 <img src="images/5-2.png" width="500">
