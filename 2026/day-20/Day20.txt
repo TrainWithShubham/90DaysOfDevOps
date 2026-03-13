@@ -1,0 +1,39 @@
+#!/bin/bash
+set -euo pipefail
+
+
+
+if [ $# -eq 0 ]; then
+        echo "Usage: ./Analizer.sh <filePath>"
+       exit 1
+fi
+
+filePath="$1"
+if [[ ! -f "$filePath" ]]; then
+        echo "Provided file doesnot exists"
+        exit 1
+fi
+
+DATE=$(date +%Y-%m-%d)
+REPORT_FILE="log_report_${DATE}.txt"
+
+ErrorCounts=$(grep -Ei "error" "$filePath" | wc -l)
+echo "Total No of Errors in file is : $ErrorCounts"
+TotalLines=$(wc -l "$filePath")
+ReloadingEvents=$(grep -ni "Reloading" "$filePath" || true)
+
+{
+echo "Total no of Lines: $TotalLines"
+echo "Log file : $filePath"
+echo "Total No of Errors in file is : $ErrorCounts"
+
+if [[ -n "$ReloadingEvents" ]]; then
+        echo "$ReloadingEvents"
+else
+        echo "Reloading Evnets not founded"
+fi
+} > "$REPORT_FILE"
+
+
+echo ""
+echo "Report generated: $REPORT_FILE"

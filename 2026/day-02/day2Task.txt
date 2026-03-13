@@ -1,0 +1,93 @@
+Day 02 – Linux Architecture, Processes, and systemd
+Core Components of Linux
+1) Kernel
+
+Core of the Linux OS
+
+Manages CPU, memory, devices, and processes
+
+Acts as bridge between hardware and software
+
+2) User Space
+
+Where applications run (bash, nginx, docker, etc.)
+
+Users interact with system through commands and programs
+
+3) Init / systemd
+
+First process started in Linux (PID 1)
+
+Starts and manages all services and background processes
+
+Handles system boot and service lifecycle
+
+How Processes Are Created & Managed
+
+Every program running in Linux is a process
+
+Created using fork() and exec() system calls
+
+Each process has:
+
+PID (Process ID)
+
+Parent PID
+
+CPU & memory usage
+
+Linux scheduler decides which process runs and for how long.
+
+Process States
+
+Running (R) → currently executing
+
+Sleeping (S) → waiting for input/output
+
+Stopped (T) → paused manually
+
+Zombie (Z) → finished but entry still exists
+
+Idle → waiting for CPU
+
+What systemd Does & Why It Matters
+
+systemd is the service manager in modern Linux.
+
+Responsibilities:
+
+Boots the system
+
+Starts services (nginx, docker, ssh)
+
+Restarts failed services automatically
+
+Manages logs using journald
+
+Handles service dependencies
+
+Why important for DevOps:
+
+Helps debug production issues
+
+Controls application services
+
+Automates system startup tasks
+
+5 Commands I Will Use Daily
+ps aux        # list running processes
+top           # real-time CPU & memory usage
+htop          # improved process viewer
+systemctl     # manage services
+journalctl    # view system logs
+Practical DevOps Relevance
+
+Understand crashed services using logs
+
+Monitor CPU/memory issues
+
+Restart and manage production applications
+
+Troubleshoot system boot problems
+
+Linux knowledge is essential because most servers run on Linux, and DevOps engineers handle deployments, monitoring, and incident resolution on these systems.

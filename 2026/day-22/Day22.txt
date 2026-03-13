@@ -1,0 +1,73 @@
+Task 1: Install and Configure Git
+Verify Git is installed on your machine ----> git --version
+Set up your Git identity — name and email ----> git config --global user.name "Sahil" git config --global user.email "sahilgarg@gmail.com"
+Verify your configuration ------> git config --global --list
+
+
+Task 2: Create Your Git Project
+Create a new folder called devops-git-practice------> mkdir devopsGitPractice
+Initialize it as a Git repository -----> git init
+Check the status — read and understand what Git is telling you 
+git status
+what git is telling you that you are on master branch 
+No comments exists
+No Files are being tracked
+add files and use git add for tracking that file 
+Explore the hidden .git/ directory — look at what's inside
+| File/Folder | Purpose                         |
+| ----------- | ------------------------------- |
+| HEAD        | Points to current branch        |
+| config      | Git configuration for this repo |
+| objects/    | Stores commits & file data      |
+| refs/       | Stores branch references        |
+| hooks/      | Scripts triggered by Git events |
+
+
+Task 4: Stage and Commit
+Stage your file ----> git add gits-command.md
+Check what's staged ----> git status
+Commit with a meaningful message --->git commit -m "git cheat sheet added"
+View your commit history ----> git log 
+
+
+Task 5: Make More Changes and Build History
+Edit git-commands.md — add more commands as you discover them ---> git add git-commands.md
+Check what changed since your last commit ---git log
+Stage and commit again with a different, descriptive message ---> git add . ----> git commit -m "modified"
+Repeat this process at least 3 times so you have multiple commits in your history
+View the full history in a compact format -----> git log --oneline
+
+
+Task 6: Understand the Git Workflow
+Answer these questions in your own words (add them to a day-22-notes.md file):
+
+What is the difference between git add and git commit?
+ans :- git add added the files in the staging area from the untracked file that we can modifed restore or delete that file where git commit means commit the changes from staging to Traked fiels with descriptive meaningful message
+What does the staging area do? Why doesn't Git just commit directly?
+What It Actually Does
+
+When you modify a file:
+echo "Hello" >> file.txt
+Git sees the change but it is not yet staged.
+When you run:
+git add file.txt
+You are telling Git:
+“I want this exact version of file.txt in my next commit.”
+It takes a snapshot and puts it into the staging area.
+Then:
+git commit -m "Updated file"
+Git commits only what is in the staging area.
+if it commit directly then every small change would become in the forms of commit 
+
+What information does git log show you?
+git log shows you the information of commit history of this repo
+
+What is the .git/ folder and what happens if you delete it?
+
+.git is the heart of your Git repo it contain all tversion control data
+if you delete it your project will no longer in git repo all commit history will be gone forever
+
+What is the difference between a working directory, staging area, and repository?
+working directory means your actual project on your disk
+Staging area -> A preparation area where you select what will go into the next commit.
+repository --> he permanent storage of commits and history.
