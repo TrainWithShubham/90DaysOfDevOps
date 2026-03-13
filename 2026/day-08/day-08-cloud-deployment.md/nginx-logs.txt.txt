@@ -1,0 +1,1169 @@
+
+PC@DESKTOP-4L7099I MINGW64 ~
+$ ssh
+usage: ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface] [-b bind_address]
+           [-c cipher_spec] [-D [bind_address:]port] [-E log_file]
+           [-e escape_char] [-F configfile] [-I pkcs11] [-i identity_file]
+           [-J destination] [-L address] [-l login_name] [-m mac_spec]
+           [-O ctl_cmd] [-o option] [-P tag] [-p port] [-R address]
+           [-S ctl_path] [-W host:port] [-w local_tun[:remote_tun]]
+           destination [command [argument ...]]
+       ssh [-Q query_option]
+
+PC@DESKTOP-4L7099I MINGW64 ~
+$ cd Downloads
+
+PC@DESKTOP-4L7099I MINGW64 ~/Downloads
+$ ll
+total 275789
+-rwxr-xr-x 1 PC 197121  10752440 Jan  7 17:52  ChromeSetup.exe*
+-rwxr-xr-x 1 PC 197121  66292520 Jan 31 20:17 'Git-2.52.0-64-bit (1).exe'*
+-rwxr-xr-x 1 PC 197121  66292520 Jan 31 20:16  Git-2.52.0-64-bit.exe*
+-rwxr-xr-x 1 PC 197121   1359392 Jan 27 19:01  MSTeamsSetup.exe*
+-rw-r--r-- 1 PC 197121    169409 Jan 31 19:51 'Migsun Migente CC.pdf'
+-rwxr-xr-x 1 PC 197121    179120 Jan 16 10:06 'Zoom_cm_fo42lnktZ9vvrZo4_mCTJSdjI7ktlAe7lpncx19ExY8YDTrHaxIGIX@ODX6uEK1GiOxLp2U_k9ffaebad76fd0911_.exe'*
+-rw-r--r-- 1 PC 197121       282 Jan  7 03:49  desktop.ini
+-rw-r--r-- 1 PC 197121    164194 Jan 31 19:49 'diagram (1).pdf'
+-rw-r--r-- 1 PC 197121     72121 Jan 31 19:49  diagram.pdf
+-rwxr-xr-x 1 PC 197121 125446368 Jan 18 21:22  draw.io-29.3.0-windows-installer.exe*
+-rw-r--r-- 1 PC 197121      2591 Jan 31 19:49  notes.md
+-rwxr-xr-x 1 PC 197121   9543720 Jan  7 18:07  ocam-550-installer.exe*
+-rwxr-xr-x 1 PC 197121   1948448 Jan  7 18:06  ocam-550-installer_Il9-593.exe*
+-rw-r--r-- 1 PC 197121     75885 Jan 27 22:32 'sunil kumar pan card (1).pdf'
+-rw-r--r-- 1 PC 197121     75885 Jan 27 22:32 'sunil kumar pan card.pdf'
+-rw-r--r-- 1 PC 197121      1678 Jan 31 20:04  super-key.pem
+
+PC@DESKTOP-4L7099I MINGW64 ~/Downloads
+$ ls super-key.pem
+super-key.pem
+
+PC@DESKTOP-4L7099I MINGW64 ~/Downloads
+$ chmod 400 super-key.pem
+
+PC@DESKTOP-4L7099I MINGW64 ~/Downloads
+$ ls -lrth
+total 270M
+-rw-r--r-- 1 PC 197121  282 Jan  7 03:49  desktop.ini
+-rwxr-xr-x 1 PC 197121  11M Jan  7 17:52  ChromeSetup.exe*
+-rwxr-xr-x 1 PC 197121 1.9M Jan  7 18:06  ocam-550-installer_Il9-593.exe*
+-rwxr-xr-x 1 PC 197121 9.2M Jan  7 18:07  ocam-550-installer.exe*
+-rwxr-xr-x 1 PC 197121 175K Jan 16 10:06 'Zoom_cm_fo42lnktZ9vvrZo4_mCTJSdjI7ktlAe7lpncx19ExY8YDTrHaxIGIX@ODX6uEK1GiOxLp2U_k9ffaebad76fd0911_.exe'*
+-rwxr-xr-x 1 PC 197121 120M Jan 18 21:22  draw.io-29.3.0-windows-installer.exe*
+-rwxr-xr-x 1 PC 197121 1.3M Jan 27 19:01  MSTeamsSetup.exe*
+-rw-r--r-- 1 PC 197121  75K Jan 27 22:32 'sunil kumar pan card.pdf'
+-rw-r--r-- 1 PC 197121  75K Jan 27 22:32 'sunil kumar pan card (1).pdf'
+-rw-r--r-- 1 PC 197121  71K Jan 31 19:49  diagram.pdf
+-rw-r--r-- 1 PC 197121 2.6K Jan 31 19:49  notes.md
+-rw-r--r-- 1 PC 197121 161K Jan 31 19:49 'diagram (1).pdf'
+-rw-r--r-- 1 PC 197121 166K Jan 31 19:51 'Migsun Migente CC.pdf'
+-r--r--r-- 1 PC 197121 1.7K Jan 31 20:04  super-key.pem
+-rwxr-xr-x 1 PC 197121  64M Jan 31 20:16  Git-2.52.0-64-bit.exe*
+-rwxr-xr-x 1 PC 197121  64M Jan 31 20:17 'Git-2.52.0-64-bit (1).exe'*
+
+PC@DESKTOP-4L7099I MINGW64 ~/Downloads
+$ ssh -i super-key.pem ubuntu@ec2-13-48-46-105.eu-north-1.compute.amazonaws.com
+The authenticity of host 'ec2-13-48-46-105.eu-north-1.compute.amazonaws.com (13.48.46.105)' can't be established.
+ED25519 key fingerprint is: SHA256:QYsd6m1XTFGxiBqdz/ltWh9/+UBK69K3CUpsT4CNmOY
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'ec2-13-48-46-105.eu-north-1.compute.amazonaws.com' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 24.04.3 LTS (GNU/Linux 6.14.0-1018-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Sat Jan 31 14:58:48 UTC 2026
+
+  System load:  0.0               Temperature:           -273.1 C
+  Usage of /:   9.5% of 18.33GB   Processes:             110
+  Memory usage: 24%               Users logged in:       0
+  Swap usage:   0%                IPv4 address for ens5: 172.31.32.49
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+ubuntu@ip-172-31-32-49:~$ Read from remote host ec2-13-48-46-105.eu-north-1.compute.amazonaws.com: Connection reset by peer
+Connection to ec2-13-48-46-105.eu-north-1.compute.amazonaws.com closed.
+client_loop: send disconnect: Connection reset by peer
+
+PC@DESKTOP-4L7099I MINGW64 ~/Downloads
+$ ls
+ ChromeSetup.exe*                                                                                           draw.io-29.3.0-windows-installer.exe*
+'Git-2.52.0-64-bit (1).exe'*                                                                                dummy-server-key.pem
+ Git-2.52.0-64-bit.exe*                                                                                     notes.md
+ MSTeamsSetup.exe*                                                                                          ocam-550-installer.exe*
+'Migsun Migente CC.pdf'                                                                                     ocam-550-installer_Il9-593.exe*
+'Zoom_cm_fo42lnktZ9vvrZo4_mCTJSdjI7ktlAe7lpncx19ExY8YDTrHaxIGIX@ODX6uEK1GiOxLp2U_k9ffaebad76fd0911_.exe'*   ssh_server.PNG
+ aws-2-server.PNG                                                                                          'sunil kumar pan card (1).pdf'
+ desktop.ini                                                                                               'sunil kumar pan card.pdf'
+'diagram (1).pdf'                                                                                           super-key.pem
+ diagram.pdf
+
+PC@DESKTOP-4L7099I MINGW64 ~/Downloads
+$ ls -a
+ ./                           'Zoom_cm_fo42lnktZ9vvrZo4_mCTJSdjI7ktlAe7lpncx19ExY8YDTrHaxIGIX@ODX6uEK1GiOxLp2U_k9ffaebad76fd0911_.exe'*   notes.md
+ ../                           aws-2-server.PNG                                                                                           ocam-550-installer.exe*
+ ChromeSetup.exe*              desktop.ini                                                                                                ocam-550-installer_Il9-593.exe*
+'Git-2.52.0-64-bit (1).exe'*  'diagram (1).pdf'                                                                                           ssh_server.PNG
+ Git-2.52.0-64-bit.exe*        diagram.pdf                                                                                               'sunil kumar pan card (1).pdf'
+ MSTeamsSetup.exe*             draw.io-29.3.0-windows-installer.exe*                                                                     'sunil kumar pan card.pdf'
+'Migsun Migente CC.pdf'        dummy-server-key.pem                                                                                       super-key.pem
+
+PC@DESKTOP-4L7099I MINGW64 ~/Downloads
+$ ssh
+usage: ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface] [-b bind_address]
+           [-c cipher_spec] [-D [bind_address:]port] [-E log_file]
+           [-e escape_char] [-F configfile] [-I pkcs11] [-i identity_file]
+           [-J destination] [-L address] [-l login_name] [-m mac_spec]
+           [-O ctl_cmd] [-o option] [-P tag] [-p port] [-R address]
+           [-S ctl_path] [-W host:port] [-w local_tun[:remote_tun]]
+           destination [command [argument ...]]
+       ssh [-Q query_option]
+
+PC@DESKTOP-4L7099I MINGW64 ~/Downloads
+$ ls
+ ChromeSetup.exe*                                                                                           draw.io-29.3.0-windows-installer.exe*
+'Git-2.52.0-64-bit (1).exe'*                                                                                dummy-server-key.pem
+ Git-2.52.0-64-bit.exe*                                                                                     notes.md
+ MSTeamsSetup.exe*                                                                                          ocam-550-installer.exe*
+'Migsun Migente CC.pdf'                                                                                     ocam-550-installer_Il9-593.exe*
+'Zoom_cm_fo42lnktZ9vvrZo4_mCTJSdjI7ktlAe7lpncx19ExY8YDTrHaxIGIX@ODX6uEK1GiOxLp2U_k9ffaebad76fd0911_.exe'*   ssh_server.PNG
+ aws-2-server.PNG                                                                                          'sunil kumar pan card (1).pdf'
+ desktop.ini                                                                                               'sunil kumar pan card.pdf'
+'diagram (1).pdf'                                                                                           super-key.pem
+ diagram.pdf
+
+PC@DESKTOP-4L7099I MINGW64 ~/Downloads
+$  ssh -i super-key.pem ubuntu@ec2-13-48-46-105.eu-north-1.compute.amazonaws.com
+Welcome to Ubuntu 24.04.3 LTS (GNU/Linux 6.14.0-1018-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Sat Jan 31 15:13:46 UTC 2026
+
+  System load:  0.0               Temperature:           -273.1 C
+  Usage of /:   9.7% of 18.33GB   Processes:             114
+  Memory usage: 24%               Users logged in:       0
+  Swap usage:   0%                IPv4 address for ens5: 172.31.32.49
+
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+
+Last login: Sat Jan 31 14:58:49 2026 from 49.36.190.119
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+ubuntu@ip-172-31-32-49:~$ ls
+ubuntu@ip-172-31-32-49:~$ ls -a
+.  ..  .bash_logout  .bashrc  .cache  .profile  .ssh
+ubuntu@ip-172-31-32-49:~$ cd .ssh
+ubuntu@ip-172-31-32-49:~/.ssh$ ls
+authorized_keys
+ubuntu@ip-172-31-32-49:~/.ssh$ cat authorized_keys
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDmAMeUVKHWH8epHf/NKX4OncGvyoeGvK/hxNtlFDmoyTc9bgkF8srPh/t7MtSl+m/d7PlJZI1GDWqorq8lfEUjvq/ydWgfxk7kh10KLuh6gB8P8weNiLpItE86NnAED7fluNjp2IMtdQ/0IW8dROhPakyITvHOs1bdNzovPTj4HUVJbOhTJ7k7dRfBh1u8irwEhtOCNgrB60WKXi7LXDKEgmEN3f3rfBsL7j8lXlrjEBvoq1lnSIw6gzT3Hn6MNsCvrx/cEScQQpilYN7nHhM+M5nKeD1tIdCQpzVSyHv1d6qFPxtFwL6XumoO2FZzF49fbLi98OG765x22v4gWJ+b super-key
+ubuntu@ip-172-31-32-49:~/.ssh$
+ubuntu@ip-172-31-32-49:~/.ssh$
+ubuntu@ip-172-31-32-49:~/.ssh$ ssh-keygen
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (/home/ubuntu/.ssh/id_ed25519):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /home/ubuntu/.ssh/id_ed25519
+Your public key has been saved in /home/ubuntu/.ssh/id_ed25519.pub
+The key fingerprint is:
+SHA256:Uq4pp+BVU+btd6/eAZXlK83wb6NNxoVR+/BrBo/kGWI ubuntu@ip-172-31-32-49
+The key's randomart image is:
++--[ED25519 256]--+
+|                o|
+|               o+|
+|        +    .o+.|
+|       * .    *=o|
+|      + S .E *.=+|
+|     . = .. + X +|
+|  . o +   . .+.@o|
+| . o +     . .B+o|
+|  . .        oooo|
++----[SHA256]-----+
+ubuntu@ip-172-31-32-49:~/.ssh$ ls
+authorized_keys  id_ed25519  id_ed25519.pub
+ubuntu@ip-172-31-32-49:~/.ssh$ touch sunil-josh.txt
+ubuntu@ip-172-31-32-49:~/.ssh$ ls
+authorized_keys  id_ed25519  id_ed25519.pub  sunil-josh.txt
+ubuntu@ip-172-31-32-49:~/.ssh$  Read from remote host ec2-13-48-46-105.eu-north-1.compute.amazonaws.com: Connection reset by peer
+Connection to ec2-13-48-46-105.eu-north-1.compute.amazonaws.com closed.
+client_loop: send disconnect: Connection reset by peer
+
+PC@DESKTOP-4L7099I MINGW64 ~/Downloads
+$ ls
+ ChromeSetup.exe*                                                                                           draw.io-29.3.0-windows-installer.exe*
+'Git-2.52.0-64-bit (1).exe'*                                                                                dummy-server-key.pem
+ Git-2.52.0-64-bit.exe*                                                                                     notes.md
+ MSTeamsSetup.exe*                                                                                          ocam-550-installer.exe*
+'Migsun Migente CC.pdf'                                                                                     ocam-550-installer_Il9-593.exe*
+'Zoom_cm_fo42lnktZ9vvrZo4_mCTJSdjI7ktlAe7lpncx19ExY8YDTrHaxIGIX@ODX6uEK1GiOxLp2U_k9ffaebad76fd0911_.exe'*   ssh_server.PNG
+ aws-2-server.PNG                                                                                          'sunil kumar pan card (1).pdf'
+ desktop.ini                                                                                               'sunil kumar pan card.pdf'
+'diagram (1).pdf'                                                                                           super-key.pem
+ diagram.pdf
+
+PC@DESKTOP-4L7099I MINGW64 ~/Downloads
+$  ssh -i super-key.pem ubuntu@ec2-13-48-46-105.eu-north-1.compute.amazonaws.com
+Welcome to Ubuntu 24.04.3 LTS (GNU/Linux 6.14.0-1018-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Sat Jan 31 15:54:26 UTC 2026
+
+  System load:  0.0               Temperature:           -273.1 C
+  Usage of /:   9.7% of 18.33GB   Processes:             113
+  Memory usage: 26%               Users logged in:       0
+  Swap usage:   0%                IPv4 address for ens5: 172.31.32.49
+
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+
+Last login: Sat Jan 31 15:13:47 2026 from 49.36.190.119
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+ubuntu@ip-172-31-32-49:~$ ls
+ubuntu@ip-172-31-32-49:~$ ls -lrth
+total 0
+ubuntu@ip-172-31-32-49:~$ ls -a
+.  ..  .bash_history  .bash_logout  .bashrc  .cache  .profile  .ssh
+ubuntu@ip-172-31-32-49:~$
+ubuntu@ip-172-31-32-49:~$
+ubuntu@ip-172-31-32-49:~$ touch sunil-josh.txt
+ubuntu@ip-172-31-32-49:~$ cd .ssh
+ubuntu@ip-172-31-32-49:~/.ssh$ ls
+authorized_keys  id_ed25519  id_ed25519.pub  sunil-josh.txt
+ubuntu@ip-172-31-32-49:~/.ssh$ rm -rf sunil-josh.txt
+ubuntu@ip-172-31-32-49:~/.ssh$ ls
+authorized_keys  id_ed25519  id_ed25519.pub
+ubuntu@ip-172-31-32-49:~/.ssh$ cat id_ed25519.pub
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB8Pvn0Hyas3OoWdR+1IE1nloORN/znPaYKHlNUKHjRF ubuntu@ip-172-31-32-49
+ubuntu@ip-172-31-32-49:~/.ssh$
+ubuntu@ip-172-31-32-49:~/.ssh$
+ubuntu@ip-172-31-32-49:~/.ssh$
+ubuntu@ip-172-31-32-49:~/.ssh$ cat id_ed25519
+-----BEGIN OPENSSH PRIVATE KEY-----
+b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+QyNTUxOQAAACAfD759B8mrNzqFnUftSBNZ5aDkTf85z2mCh5TVCh40RQAAAKAkiWFhJIlh
+YQAAAAtzc2gtZWQyNTUxOQAAACAfD759B8mrNzqFnUftSBNZ5aDkTf85z2mCh5TVCh40RQ
+AAAEA87CyuDtY3UCxP9JkREctFe/eYQlK1/dYuSGPuxyfC1h8Pvn0Hyas3OoWdR+1IE1nl
+oORN/znPaYKHlNUKHjRFAAAAFnVidW50dUBpcC0xNzItMzEtMzItNDkBAgMEBQYH
+-----END OPENSSH PRIVATE KEY-----
+ubuntu@ip-172-31-32-49:~/.ssh$
+ubuntu@ip-172-31-32-49:~/.ssh$
+ubuntu@ip-172-31-32-49:~/.ssh$ Read from remote host ec2-13-48-46-105.eu-north-1.compute.amazonaws.com: Connection reset by peer
+Connection to ec2-13-48-46-105.eu-north-1.compute.amazonaws.com closed.
+client_loop: send disconnect: Connection reset by peer
+
+PC@DESKTOP-4L7099I MINGW64 ~/Downloads
+$  ssh -i super-key.pem ubuntu@ec2-13-48-46-105.eu-north-1.compute.amazonaws.com
+Welcome to Ubuntu 24.04.3 LTS (GNU/Linux 6.14.0-1018-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Sat Jan 31 16:02:37 UTC 2026
+
+  System load:  0.0               Temperature:           -273.1 C
+  Usage of /:   9.7% of 18.33GB   Processes:             115
+  Memory usage: 25%               Users logged in:       0
+  Swap usage:   0%                IPv4 address for ens5: 172.31.32.49
+
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+
+Last login: Sat Jan 31 15:54:27 2026 from 49.36.190.119
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+ubuntu@ip-172-31-32-49:~$ cd .ssh
+ubuntu@ip-172-31-32-49:~/.ssh$ ls -a
+.  ..  authorized_keys  id_ed25519  id_ed25519.pub
+ubuntu@ip-172-31-32-49:~/.ssh$ cd
+ubuntu@ip-172-31-32-49:~$ ls
+sunil-josh.txt
+ubuntu@ip-172-31-32-49:~$ ssh -i .ssh/id_ed25519 ubuntu@ec2-13-61-32-122.eu-north-1.compute.amazonaws.com
+The authenticity of host 'ec2-13-61-32-122.eu-north-1.compute.amazonaws.com (172.31.35.207)' can't be established.
+ED25519 key fingerprint is SHA256:FGhRjTbXv9YOpEqarhMgMrjC2wSU14w7pwAhMaA8DhA.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'ec2-13-61-32-122.eu-north-1.compute.amazonaws.com' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 24.04.3 LTS (GNU/Linux 6.14.0-1018-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Sat Jan 31 16:05:09 UTC 2026
+
+  System load:  0.0               Temperature:           -273.1 C
+  Usage of /:   26.4% of 6.71GB   Processes:             113
+  Memory usage: 23%               Users logged in:       1
+  Swap usage:   0%                IPv4 address for ens5: 172.31.35.207
+
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+
+Last login: Sat Jan 31 15:58:17 2026 from 13.48.4.202
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+ubuntu@ip-172-31-35-207:~$ ls
+dummy-server.txt
+ubuntu@ip-172-31-35-207:~$ exit
+logout
+Connection to ec2-13-61-32-122.eu-north-1.compute.amazonaws.com closed.
+ubuntu@ip-172-31-32-49:~$ ls
+sunil-josh.txt
+ubuntu@ip-172-31-32-49:~$ cat /etc/ssh/sshd_config
+
+# This is the sshd server system-wide configuration file.  See
+# sshd_config(5) for more information.
+
+# This sshd was compiled with PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+
+# The strategy used for options in the default sshd_config shipped with
+# OpenSSH is to specify options with their default value where
+# possible, but leave them commented.  Uncommented options override the
+# default value.
+
+Include /etc/ssh/sshd_config.d/*.conf
+
+# When systemd socket activation is used (the default), the socket
+# configuration must be re-generated after changing Port, AddressFamily, or
+# ListenAddress.
+#
+# For changes to take effect, run:
+#
+#   systemctl daemon-reload
+#   systemctl restart ssh.socket
+#
+#Port 22
+#AddressFamily any
+#ListenAddress 0.0.0.0
+#ListenAddress ::
+
+#HostKey /etc/ssh/ssh_host_rsa_key
+#HostKey /etc/ssh/ssh_host_ecdsa_key
+#HostKey /etc/ssh/ssh_host_ed25519_key
+
+# Ciphers and keying
+#RekeyLimit default none
+
+# Logging
+#SyslogFacility AUTH
+#LogLevel INFO
+
+# Authentication:
+
+#LoginGraceTime 2m
+#PermitRootLogin prohibit-password
+#StrictModes yes
+#MaxAuthTries 6
+#MaxSessions 10
+
+#PubkeyAuthentication yes
+
+# Expect .ssh/authorized_keys2 to be disregarded by default in future.
+#AuthorizedKeysFile     .ssh/authorized_keys .ssh/authorized_keys2
+
+#AuthorizedPrincipalsFile none
+
+#AuthorizedKeysCommand none
+#AuthorizedKeysCommandUser nobody
+
+# For this to work you will also need host keys in /etc/ssh/ssh_known_hosts
+#HostbasedAuthentication no
+# Change to yes if you don't trust ~/.ssh/known_hosts for
+# HostbasedAuthentication
+#IgnoreUserKnownHosts no
+# Don't read the user's ~/.rhosts and ~/.shosts files
+#IgnoreRhosts yes
+
+# To disable tunneled clear text passwords, change to no here!
+#PasswordAuthentication yes
+#PermitEmptyPasswords no
+
+# Change to yes to enable challenge-response passwords (beware issues with
+# some PAM modules and threads)
+KbdInteractiveAuthentication no
+
+# Kerberos options
+#KerberosAuthentication no
+#KerberosOrLocalPasswd yes
+#KerberosTicketCleanup yes
+#KerberosGetAFSToken no
+
+# GSSAPI options
+#GSSAPIAuthentication no
+#GSSAPICleanupCredentials yes
+#GSSAPIStrictAcceptorCheck yes
+#GSSAPIKeyExchange no
+
+# Set this to 'yes' to enable PAM authentication, account processing,
+# and session processing. If this is enabled, PAM authentication will
+# be allowed through the KbdInteractiveAuthentication and
+# PasswordAuthentication.  Depending on your PAM configuration,
+# PAM authentication via KbdInteractiveAuthentication may bypass
+# the setting of "PermitRootLogin prohibit-password".
+# If you just want the PAM account and session checks to run without
+# PAM authentication, then enable this but set PasswordAuthentication
+# and KbdInteractiveAuthentication to 'no'.
+UsePAM yes
+
+#AllowAgentForwarding yes
+#AllowTcpForwarding yes
+#GatewayPorts no
+X11Forwarding yes
+#X11DisplayOffset 10
+#X11UseLocalhost yes
+#PermitTTY yes
+PrintMotd no
+#PrintLastLog yes
+#TCPKeepAlive yes
+#PermitUserEnvironment no
+#Compression delayed
+#ClientAliveInterval 0
+#ClientAliveCountMax 3
+#UseDNS no
+#PidFile /run/sshd.pid
+#MaxStartups 10:30:100
+#PermitTunnel no
+#ChrootDirectory none
+#VersionAddendum none
+
+# no default banner path
+#Banner none
+
+# Allow client to pass locale environment variables
+AcceptEnv LANG LC_*
+
+# override default of no subsystems
+Subsystem       sftp    /usr/lib/openssh/sftp-server
+
+# Example of overriding settings on a per-user basis
+#Match User anoncvs
+#       X11Forwarding no
+#       AllowTcpForwarding no
+#       PermitTTY no
+#       ForceCommand cvs server
+ubuntu@ip-172-31-32-49:~$ Read from remote host ec2-13-48-46-105.eu-north-1.compute.amazonaws.com: Connection reset by peer
+Connection to ec2-13-48-46-105.eu-north-1.compute.amazonaws.com closed.
+client_loop: send disconnect: Connection reset by peer
+
+PC@DESKTOP-4L7099I MINGW64 ~/Downloads
+$  ssh -i super-key.pem ubuntu@ec2-13-48-46-105.eu-north-1.compute.amazonaws.com
+Welcome to Ubuntu 24.04.3 LTS (GNU/Linux 6.14.0-1018-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Sat Jan 31 16:24:10 UTC 2026
+
+  System load:  0.0               Temperature:           -273.1 C
+  Usage of /:   9.7% of 18.33GB   Processes:             114
+  Memory usage: 24%               Users logged in:       0
+  Swap usage:   0%                IPv4 address for ens5: 172.31.32.49
+
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+
+Last login: Sat Jan 31 16:02:38 2026 from 49.36.190.119
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+ubuntu@ip-172-31-32-49:~$ ls -a
+.  ..  .bash_history  .bash_logout  .bashrc  .cache  .profile  .ssh  sunil-josh.txt
+ubuntu@ip-172-31-32-49:~$ Read from remote host ec2-13-48-46-105.eu-north-1.compute.amazonaws.com: Connection reset by peer
+Connection to ec2-13-48-46-105.eu-north-1.compute.amazonaws.com closed.
+client_loop: send disconnect: Connection reset by peer
+
+PC@DESKTOP-4L7099I MINGW64 ~/Downloads
+$  ssh -i super-key.pem ubuntu@ec2-13-48-46-105.eu-north-1.compute.amazonaws.com
+Welcome to Ubuntu 24.04.3 LTS (GNU/Linux 6.14.0-1018-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Sat Jan 31 16:36:16 UTC 2026
+
+  System load:  0.08              Temperature:           -273.1 C
+  Usage of /:   9.7% of 18.33GB   Processes:             112
+  Memory usage: 26%               Users logged in:       0
+  Swap usage:   0%                IPv4 address for ens5: 172.31.32.49
+
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+
+Last login: Sat Jan 31 16:24:11 2026 from 49.36.190.119
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+ubuntu@ip-172-31-32-49:~$ who am i
+ubuntu   pts/0        2026-01-31 16:36 (49.36.190.119)
+ubuntu@ip-172-31-32-49:~$ cd /
+ubuntu@ip-172-31-32-49:/$ ls
+bin                boot  etc   lib                lib64       media  opt   root  sbin                snap  sys  usr
+bin.usr-is-merged  dev   home  lib.usr-is-merged  lost+found  mnt    proc  run   sbin.usr-is-merged  srv   tmp  var
+ubuntu@ip-172-31-32-49:/$ cd root
+-bash: cd: root: Permission denied
+ubuntu@ip-172-31-32-49:/$ sudo apt install nginx
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  nginx-common
+Suggested packages:
+  fcgiwrap nginx-doc ssl-cert
+The following NEW packages will be installed:
+  nginx nginx-common
+0 upgraded, 2 newly installed, 0 to remove and 0 not upgraded.
+Need to get 564 kB of archives.
+After this operation, 1596 kB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+Get:1 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 nginx-common all 1.24.0-2ubuntu7.5 [43.4 kB]
+Get:2 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 nginx amd64 1.24.0-2ubuntu7.5 [520 kB]
+Fetched 564 kB in 0s (18.6 MB/s)
+Preconfiguring packages ...
+Selecting previously unselected package nginx-common.
+(Reading database ... 71752 files and directories currently installed.)
+Preparing to unpack .../nginx-common_1.24.0-2ubuntu7.5_all.deb ...
+Unpacking nginx-common (1.24.0-2ubuntu7.5) ...
+Selecting previously unselected package nginx.
+Preparing to unpack .../nginx_1.24.0-2ubuntu7.5_amd64.deb ...
+Unpacking nginx (1.24.0-2ubuntu7.5) ...
+Setting up nginx-common (1.24.0-2ubuntu7.5) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/nginx.service → /usr/lib/systemd/system/nginx.service.
+Setting up nginx (1.24.0-2ubuntu7.5) ...
+ * Upgrading binary nginx                                                                                                                                            [ OK ]
+Processing triggers for man-db (2.12.0-4build2) ...
+Processing triggers for ufw (0.36.2-6) ...
+Scanning processes...
+Scanning linux images...
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+ubuntu@ip-172-31-32-49:/$ sudo apt install update
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+E: Unable to locate package update
+ubuntu@ip-172-31-32-49:/$ sudo apt update
+Hit:1 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble InRelease
+Get:2 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+Get:3 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+Get:4 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble/universe amd64 Packages [15.0 MB]
+Get:5 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+Get:6 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble/universe Translation-en [5982 kB]
+Get:7 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble/universe amd64 Components [3871 kB]
+Get:8 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble/universe amd64 c-n-f Metadata [301 kB]
+Get:9 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble/multiverse amd64 Packages [269 kB]
+Get:10 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble/multiverse Translation-en [118 kB]
+Get:11 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble/multiverse amd64 Components [35.0 kB]
+Get:12 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble/multiverse amd64 c-n-f Metadata [8328 B]
+Get:13 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1717 kB]
+Get:14 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [317 kB]
+Get:15 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [175 kB]
+Get:16 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 c-n-f Metadata [16.0 kB]
+Get:17 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1525 kB]
+Get:18 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [312 kB]
+Get:19 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [386 kB]
+Get:20 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-updates/universe amd64 c-n-f Metadata [31.8 kB]
+Get:21 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [2536 kB]
+Get:22 http://security.ubuntu.com/ubuntu noble-security/main amd64 Packages [1410 kB]
+Get:23 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [580 kB]
+Get:24 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Components [212 B]
+Get:25 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 c-n-f Metadata [556 B]
+Get:26 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [32.1 kB]
+Get:27 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-updates/multiverse Translation-en [6816 B]
+Get:28 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
+Get:29 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 c-n-f Metadata [496 B]
+Get:30 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages [40.4 kB]
+Get:31 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-backports/main Translation-en [9208 B]
+Get:32 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [7300 B]
+Get:33 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-backports/main amd64 c-n-f Metadata [368 B]
+Get:34 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages [29.5 kB]
+Get:35 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-backports/universe Translation-en [17.9 kB]
+Get:36 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [10.5 kB]
+Get:37 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-backports/universe amd64 c-n-f Metadata [1444 B]
+Get:38 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-backports/restricted amd64 Components [216 B]
+Get:39 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-backports/restricted amd64 c-n-f Metadata [116 B]
+Get:40 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Components [212 B]
+Get:41 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 c-n-f Metadata [116 B]
+Get:42 http://security.ubuntu.com/ubuntu noble-security/main Translation-en [229 kB]
+Get:43 http://security.ubuntu.com/ubuntu noble-security/main amd64 Components [21.5 kB]
+Get:44 http://security.ubuntu.com/ubuntu noble-security/main amd64 c-n-f Metadata [9820 B]
+Get:45 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Packages [925 kB]
+Get:46 http://security.ubuntu.com/ubuntu noble-security/universe Translation-en [209 kB]
+Get:47 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Components [74.2 kB]
+Get:48 http://security.ubuntu.com/ubuntu noble-security/universe amd64 c-n-f Metadata [19.7 kB]
+Get:49 http://security.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [2369 kB]
+Get:50 http://security.ubuntu.com/ubuntu noble-security/restricted Translation-en [543 kB]
+Get:51 http://security.ubuntu.com/ubuntu noble-security/restricted amd64 Components [212 B]
+Get:52 http://security.ubuntu.com/ubuntu noble-security/restricted amd64 c-n-f Metadata [536 B]
+Get:53 http://security.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [28.8 kB]
+Get:54 http://security.ubuntu.com/ubuntu noble-security/multiverse Translation-en [6492 B]
+Get:55 http://security.ubuntu.com/ubuntu noble-security/multiverse amd64 Components [212 B]
+Get:56 http://security.ubuntu.com/ubuntu noble-security/multiverse amd64 c-n-f Metadata [396 B]
+Fetched 39.6 MB in 6s (6466 kB/s)
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+69 packages can be upgraded. Run 'apt list --upgradable' to see them.
+ubuntu@ip-172-31-32-49:/$ sudo install docker.io
+install: missing destination file operand after 'docker.io'
+Try 'install --help' for more information.
+ubuntu@ip-172-31-32-49:/$ sudo instal docker.io
+sudo: instal: command not found
+ubuntu@ip-172-31-32-49:/$ sudo apt install docker.io
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  bridge-utils containerd dns-root-data dnsmasq-base pigz runc ubuntu-fan
+Suggested packages:
+  ifupdown aufs-tools cgroupfs-mount | cgroup-lite debootstrap docker-buildx docker-compose-v2 docker-doc rinse zfs-fuse | zfsutils
+The following NEW packages will be installed:
+  bridge-utils containerd dns-root-data dnsmasq-base docker.io pigz runc ubuntu-fan
+0 upgraded, 8 newly installed, 0 to remove and 69 not upgraded.
+Need to get 76.1 MB of archives.
+After this operation, 288 MB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+Get:1 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble/universe amd64 pigz amd64 2.8-1 [65.6 kB]
+Get:2 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble/main amd64 bridge-utils amd64 1.7.1-1ubuntu2 [33.9 kB]
+Get:3 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 runc amd64 1.3.3-0ubuntu1~24.04.3 [8815 kB]
+Get:4 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 containerd amd64 1.7.28-0ubuntu1~24.04.2 [38.4 MB]
+Get:5 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 dns-root-data all 2024071801~ubuntu0.24.04.1 [5918 B]
+Get:6 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-updates/main amd64 dnsmasq-base amd64 2.90-2ubuntu0.1 [376 kB]
+Get:7 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-updates/universe amd64 docker.io amd64 28.2.2-0ubuntu1~24.04.1 [28.3 MB]
+Get:8 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu noble-updates/universe amd64 ubuntu-fan all 0.12.16+24.04.1 [34.2 kB]
+Fetched 76.1 MB in 1s (95.2 MB/s)
+Preconfiguring packages ...
+Selecting previously unselected package pigz.
+(Reading database ... 71800 files and directories currently installed.)
+Preparing to unpack .../0-pigz_2.8-1_amd64.deb ...
+Unpacking pigz (2.8-1) ...
+Selecting previously unselected package bridge-utils.
+Preparing to unpack .../1-bridge-utils_1.7.1-1ubuntu2_amd64.deb ...
+Unpacking bridge-utils (1.7.1-1ubuntu2) ...
+Selecting previously unselected package runc.
+Preparing to unpack .../2-runc_1.3.3-0ubuntu1~24.04.3_amd64.deb ...
+Unpacking runc (1.3.3-0ubuntu1~24.04.3) ...
+Selecting previously unselected package containerd.
+Preparing to unpack .../3-containerd_1.7.28-0ubuntu1~24.04.2_amd64.deb ...
+Unpacking containerd (1.7.28-0ubuntu1~24.04.2) ...
+Selecting previously unselected package dns-root-data.
+Preparing to unpack .../4-dns-root-data_2024071801~ubuntu0.24.04.1_all.deb ...
+Unpacking dns-root-data (2024071801~ubuntu0.24.04.1) ...
+Selecting previously unselected package dnsmasq-base.
+Preparing to unpack .../5-dnsmasq-base_2.90-2ubuntu0.1_amd64.deb ...
+Unpacking dnsmasq-base (2.90-2ubuntu0.1) ...
+Selecting previously unselected package docker.io.
+Preparing to unpack .../6-docker.io_28.2.2-0ubuntu1~24.04.1_amd64.deb ...
+Unpacking docker.io (28.2.2-0ubuntu1~24.04.1) ...
+Selecting previously unselected package ubuntu-fan.
+Preparing to unpack .../7-ubuntu-fan_0.12.16+24.04.1_all.deb ...
+Unpacking ubuntu-fan (0.12.16+24.04.1) ...
+Setting up dnsmasq-base (2.90-2ubuntu0.1) ...
+Setting up runc (1.3.3-0ubuntu1~24.04.3) ...
+Setting up dns-root-data (2024071801~ubuntu0.24.04.1) ...
+Setting up bridge-utils (1.7.1-1ubuntu2) ...
+Setting up pigz (2.8-1) ...
+Setting up containerd (1.7.28-0ubuntu1~24.04.2) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/containerd.service → /usr/lib/systemd/system/containerd.service.
+Setting up ubuntu-fan (0.12.16+24.04.1) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/ubuntu-fan.service → /usr/lib/systemd/system/ubuntu-fan.service.
+Setting up docker.io (28.2.2-0ubuntu1~24.04.1) ...
+info: Selecting GID from range 100 to 999 ...
+info: Adding group `docker' (GID 113) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/docker.service → /usr/lib/systemd/system/docker.service.
+Created symlink /etc/systemd/system/sockets.target.wants/docker.socket → /usr/lib/systemd/system/docker.socket.
+Processing triggers for dbus (1.14.10-4ubuntu4.1) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+Scanning processes...
+Scanning linux images...
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+ubuntu@ip-172-31-32-49:/$ sudo apt install nginx
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+nginx is already the newest version (1.24.0-2ubuntu7.5).
+0 upgraded, 0 newly installed, 0 to remove and 69 not upgraded.
+ubuntu@ip-172-31-32-49:/$
+ubuntu@ip-172-31-32-49:/$
+ubuntu@ip-172-31-32-49:/$ systemctl status nginx
+● nginx.service - A high performance web server and a reverse proxy server
+     Loaded: loaded (/usr/lib/systemd/system/nginx.service; enabled; preset: enabled)
+     Active: active (running) since Sat 2026-01-31 16:37:37 UTC; 2min 36s ago
+       Docs: man:nginx(8)
+   Main PID: 2250 (nginx)
+      Tasks: 3 (limit: 1008)
+     Memory: 2.4M (peak: 5.3M)
+        CPU: 26ms
+     CGroup: /system.slice/nginx.service
+             ├─2250 "nginx: master process /usr/sbin/nginx -g daemon on; master_process on;"
+             ├─2252 "nginx: worker process"
+             └─2253 "nginx: worker process"
+
+Jan 31 16:37:37 ip-172-31-32-49 systemd[1]: Starting nginx.service - A high performance web server and a reverse proxy server...
+Jan 31 16:37:37 ip-172-31-32-49 systemd[1]: Started nginx.service - A high performance web server and a reverse proxy server.
+ubuntu@ip-172-31-32-49:/$ systemctl status nginx
+● nginx.service - A high performance web server and a reverse proxy server
+     Loaded: loaded (/usr/lib/systemd/system/nginx.service; enabled; preset: enabled)
+     Active: active (running) since Sat 2026-01-31 16:37:37 UTC; 7min ago
+       Docs: man:nginx(8)
+   Main PID: 2250 (nginx)
+      Tasks: 3 (limit: 1008)
+     Memory: 2.5M (peak: 5.3M)
+        CPU: 27ms
+     CGroup: /system.slice/nginx.service
+             ├─2250 "nginx: master process /usr/sbin/nginx -g daemon on; master_process on;"
+             ├─2252 "nginx: worker process"
+             └─2253 "nginx: worker process"
+
+Jan 31 16:37:37 ip-172-31-32-49 systemd[1]: Starting nginx.service - A high performance web server and a reverse proxy server...
+Jan 31 16:37:37 ip-172-31-32-49 systemd[1]: Started nginx.service - A high performance web server and a reverse proxy server.
+ubuntu@ip-172-31-32-49:/$ sudo systemctl stop nginx
+ubuntu@ip-172-31-32-49:/$ systemctl status nginx
+○ nginx.service - A high performance web server and a reverse proxy server
+     Loaded: loaded (/usr/lib/systemd/system/nginx.service; enabled; preset: enabled)
+     Active: inactive (dead) since Sat 2026-01-31 16:45:10 UTC; 10s ago
+   Duration: 7min 29.770s
+       Docs: man:nginx(8)
+    Process: 3396 ExecStop=/sbin/start-stop-daemon --quiet --stop --retry QUIT/5 --pidfile /run/nginx.pid (code=exited, status=0/SUCCESS)
+   Main PID: 2250 (code=exited, status=0/SUCCESS)
+        CPU: 36ms
+
+Jan 31 16:37:37 ip-172-31-32-49 systemd[1]: Starting nginx.service - A high performance web server and a reverse proxy server...
+Jan 31 16:37:37 ip-172-31-32-49 systemd[1]: Started nginx.service - A high performance web server and a reverse proxy server.
+Jan 31 16:45:07 ip-172-31-32-49 systemd[1]: Stopping nginx.service - A high performance web server and a reverse proxy server...
+Jan 31 16:45:10 ip-172-31-32-49 systemd[1]: nginx.service: Deactivated successfully.
+Jan 31 16:45:10 ip-172-31-32-49 systemd[1]: Stopped nginx.service - A high performance web server and a reverse proxy server.
+ubuntu@ip-172-31-32-49:/$ sudo systemctl start nginx
+ubuntu@ip-172-31-32-49:/$ systemctl status nginx
+● nginx.service - A high performance web server and a reverse proxy server
+     Loaded: loaded (/usr/lib/systemd/system/nginx.service; enabled; preset: enabled)
+     Active: active (running) since Sat 2026-01-31 16:46:41 UTC; 4s ago
+       Docs: man:nginx(8)
+    Process: 3405 ExecStartPre=/usr/sbin/nginx -t -q -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
+    Process: 3407 ExecStart=/usr/sbin/nginx -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
+   Main PID: 3408 (nginx)
+      Tasks: 3 (limit: 1008)
+     Memory: 2.6M (peak: 2.8M)
+        CPU: 12ms
+     CGroup: /system.slice/nginx.service
+             ├─3408 "nginx: master process /usr/sbin/nginx -g daemon on; master_process on;"
+             ├─3409 "nginx: worker process"
+             └─3410 "nginx: worker process"
+
+Jan 31 16:46:41 ip-172-31-32-49 systemd[1]: Starting nginx.service - A high performance web server and a reverse proxy server...
+Jan 31 16:46:41 ip-172-31-32-49 systemd[1]: Started nginx.service - A high performance web server and a reverse proxy server.
+ubuntu@ip-172-31-32-49:/$ journalctl -u nginx
+Jan 31 16:37:37 ip-172-31-32-49 systemd[1]: Starting nginx.service - A high performance web server and a reverse proxy server...
+Jan 31 16:37:37 ip-172-31-32-49 systemd[1]: Started nginx.service - A high performance web server and a reverse proxy server.
+Jan 31 16:45:07 ip-172-31-32-49 systemd[1]: Stopping nginx.service - A high performance web server and a reverse proxy server...
+Jan 31 16:45:10 ip-172-31-32-49 systemd[1]: nginx.service: Deactivated successfully.
+Jan 31 16:45:10 ip-172-31-32-49 systemd[1]: Stopped nginx.service - A high performance web server and a reverse proxy server.
+Jan 31 16:46:41 ip-172-31-32-49 systemd[1]: Starting nginx.service - A high performance web server and a reverse proxy server...
+Jan 31 16:46:41 ip-172-31-32-49 systemd[1]: Started nginx.service - A high performance web server and a reverse proxy server.
+ubuntu@ip-172-31-32-49:/$
+ubuntu@ip-172-31-32-49:/$
+ubuntu@ip-172-31-32-49:/$ man passwd
+ubuntu@ip-172-31-32-49:/$ man useradd
+ubuntu@ip-172-31-32-49:/$ man adduser
+ubuntu@ip-172-31-32-49:/$
+ubuntu@ip-172-31-32-49:/$
+ubuntu@ip-172-31-32-49:/$ useradd -m berlin
+useradd: Permission denied.
+useradd: cannot lock /etc/passwd; try again later.
+ubuntu@ip-172-31-32-49:/$ sudo useradd -m berlin
+ubuntu@ip-172-31-32-49:/$
+ubuntu@ip-172-31-32-49:/$
+ubuntu@ip-172-31-32-49:/$ ls
+bin                boot  etc   lib                lib64       media  opt   root  sbin                snap  sys  usr
+bin.usr-is-merged  dev   home  lib.usr-is-merged  lost+found  mnt    proc  run   sbin.usr-is-merged  srv   tmp  var
+ubuntu@ip-172-31-32-49:/$ ls -lrth
+total 76K
+drwxr-xr-x   2 root root 4.0K Feb 26  2024 bin.usr-is-merged
+drwxr-xr-x   2 root root 4.0K Mar 31  2024 sbin.usr-is-merged
+drwxr-xr-x   2 root root 4.0K Apr  8  2024 lib.usr-is-merged
+lrwxrwxrwx   1 root root    8 Apr 22  2024 sbin -> usr/sbin
+lrwxrwxrwx   1 root root    9 Apr 22  2024 lib64 -> usr/lib64
+lrwxrwxrwx   1 root root    7 Apr 22  2024 lib -> usr/lib
+lrwxrwxrwx   1 root root    7 Apr 22  2024 bin -> usr/bin
+drwxr-xr-x   2 root root 4.0K Dec 12 10:00 mnt
+drwxr-xr-x   2 root root 4.0K Dec 12 10:00 srv
+drwxr-xr-x   2 root root 4.0K Dec 12 10:00 media
+drwxr-xr-x  12 root root 4.0K Dec 12 10:00 usr
+drwx------   2 root root  16K Dec 12 10:03 lost+found
+drwxr-xr-x   5 root root 4.0K Dec 12 10:09 boot
+drwxr-xr-x   6 root root 4.0K Dec 12 10:10 snap
+dr-xr-xr-x 177 root root    0 Jan 31 14:34 proc
+dr-xr-xr-x  13 root root    0 Jan 31 14:34 sys
+drwxr-xr-x  16 root root 3.3K Jan 31 14:35 dev
+drwx------   4 root root 4.0K Jan 31 14:35 root
+drwxr-xr-x  14 root root 4.0K Jan 31 16:37 var
+drwxr-xr-x   3 root root 4.0K Jan 31 16:39 opt
+drwxrwxrwt  13 root root 4.0K Jan 31 16:39 tmp
+drwxr-xr-x  34 root root 1.1K Jan 31 16:46 run
+drwxr-xr-x 114 root root 4.0K Jan 31 16:49 etc
+drwxr-xr-x   4 root root 4.0K Jan 31 16:49 home
+ubuntu@ip-172-31-32-49:/$ cd /home.
+-bash: cd: /home.: No such file or directory
+ubuntu@ip-172-31-32-49:/$ cd /home/
+ubuntu@ip-172-31-32-49:/home$ ls
+berlin  ubuntu
+ubuntu@ip-172-31-32-49:/home$ su berlin
+Password:
+su: Authentication failure
+ubuntu@ip-172-31-32-49:/home$ su berlin
+Password:
+su: Authentication failure
+ubuntu@ip-172-31-32-49:/home$ sudo passwd berlin
+New password:
+Retype new password:
+passwd: password updated successfully
+ubuntu@ip-172-31-32-49:/home$ su berlin
+Password:
+$ whoami
+berlin
+$ exit
+ubuntu@ip-172-31-32-49:/home$ which bash
+/usr/bin/bash
+ubuntu@ip-172-31-32-49:/home$ sudo useradd -m sunil -s /usr/bin/bash/ -p 1234
+useradd: Warning: missing or non-executable shell '/usr/bin/bash/'
+ubuntu@ip-172-31-32-49:/home$ sudo useradd -m sunil -s /usr/bin/bash/ -p test@123
+useradd: Warning: missing or non-executable shell '/usr/bin/bash/'
+useradd: user 'sunil' already exists
+ubuntu@ip-172-31-32-49:/home$ ls
+berlin  sunil  ubuntu
+ubuntu@ip-172-31-32-49:/home$ sudo passwd sunil
+New password:
+Retype new password:
+passwd: password updated successfully
+ubuntu@ip-172-31-32-49:/home$ su sunil
+Password:
+su: failed to execute /usr/bin/bash/: Not a directory
+ubuntu@ip-172-31-32-49:/home$ ls -l
+total 12
+drwxr-x--- 2 berlin berlin 4096 Jan 31 16:49 berlin
+drwxr-x--- 2 sunil  sunil  4096 Jan 31 16:53 sunil
+drwxr-x--- 4 ubuntu ubuntu 4096 Jan 31 16:49 ubuntu
+ubuntu@ip-172-31-32-49:/home$ cat etc/group/
+cat: etc/group/: No such file or directory
+ubuntu@ip-172-31-32-49:/home$ cat /etc/group/
+cat: /etc/group/: Not a directory
+ubuntu@ip-172-31-32-49:/home$ cat /etc/group
+root:x:0:
+daemon:x:1:
+bin:x:2:
+sys:x:3:
+adm:x:4:syslog,ubuntu
+tty:x:5:
+disk:x:6:
+lp:x:7:
+mail:x:8:
+news:x:9:
+uucp:x:10:
+man:x:12:
+proxy:x:13:
+kmem:x:15:
+dialout:x:20:
+fax:x:21:
+voice:x:22:
+cdrom:x:24:ubuntu
+floppy:x:25:
+tape:x:26:
+sudo:x:27:ubuntu
+audio:x:29:
+dip:x:30:ubuntu
+www-data:x:33:
+backup:x:34:
+operator:x:37:
+list:x:38:
+irc:x:39:
+src:x:40:
+shadow:x:42:
+utmp:x:43:
+video:x:44:
+sasl:x:45:
+plugdev:x:46:
+staff:x:50:
+games:x:60:
+users:x:100:
+nogroup:x:65534:
+systemd-journal:x:999:
+systemd-network:x:998:
+crontab:x:997:
+systemd-timesync:x:996:
+input:x:995:
+sgx:x:994:
+kvm:x:993:
+render:x:992:
+messagebus:x:101:
+syslog:x:102:
+systemd-resolve:x:991:
+uuidd:x:103:
+tss:x:104:
+lxd:x:105:ubuntu
+_ssh:x:106:
+rdma:x:107:
+tcpdump:x:108:
+landscape:x:109:
+fwupd-refresh:x:990:
+polkitd:x:989:
+admin:x:110:
+netdev:x:111:
+_chrony:x:112:
+ubuntu:x:1000:
+docker:x:113:
+berlin:x:1001:
+sunil:x:1002:
+ubuntu@ip-172-31-32-49:/home$
+ubuntu@ip-172-31-32-49:/home$
+ubuntu@ip-172-31-32-49:/home$ exit
+logout
+Connection to ec2-13-48-46-105.eu-north-1.compute.amazonaws.com closed.
+
+PC@DESKTOP-4L7099I MINGW64 ~/Downloads
+$  ssh -i super-key.pem ubuntu@ec2-13-48-46-105.eu-north-1.compute.amazonaws.com
+Welcome to Ubuntu 24.04.3 LTS (GNU/Linux 6.14.0-1018-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Sat Jan 31 16:57:39 UTC 2026
+
+  System load:  0.0                Temperature:           -273.1 C
+  Usage of /:   12.4% of 18.33GB   Processes:             116
+  Memory usage: 30%                Users logged in:       0
+  Swap usage:   0%                 IPv4 address for ens5: 172.31.32.49
+
+ * Ubuntu Pro delivers the most comprehensive open source security and
+   compliance features.
+
+   https://ubuntu.com/aws/pro
+
+Expanded Security Maintenance for Applications is not enabled.
+
+63 updates can be applied immediately.
+32 of these updates are standard security updates.
+To see these additional updates run: apt list --upgradable
+
+1 additional security update can be applied with ESM Apps.
+Learn more about enabling ESM Apps service at https://ubuntu.com/esm
+
+
+Last login: Sat Jan 31 16:36:17 2026 from 49.36.190.119
+ubuntu@ip-172-31-32-49:~$ sudo gpasswd -a sunil ubuntu
+Adding user sunil to group ubuntu
+ubuntu@ip-172-31-32-49:~$ ls
+sunil-josh.txt
+ubuntu@ip-172-31-32-49:~$ pwd
+/home/ubuntu
+ubuntu@ip-172-31-32-49:~$ su sunil
+Password:
+su: failed to execute /usr/bin/bash/: Not a directory
+ubuntu@ip-172-31-32-49:~$ su sunil
+Password:
+su: failed to execute /usr/bin/bash/: Not a directory
+ubuntu@ip-172-31-32-49:~$ systemctl status docker
+● docker.service - Docker Application Container Engine
+     Loaded: loaded (/usr/lib/systemd/system/docker.service; enabled; preset: enabled)
+     Active: active (running) since Sat 2026-01-31 16:39:43 UTC; 19min ago
+TriggeredBy: ● docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 3082 (dockerd)
+      Tasks: 9
+     Memory: 34.3M (peak: 34.9M)
+        CPU: 407ms
+     CGroup: /system.slice/docker.service
+             └─3082 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+
+Jan 31 16:39:43 ip-172-31-32-49 dockerd[3082]: time="2026-01-31T16:39:43.388898199Z" level=info msg="Loading containers: start."
+Jan 31 16:39:43 ip-172-31-32-49 dockerd[3082]: time="2026-01-31T16:39:43.666939968Z" level=info msg="Loading containers: done."
+Jan 31 16:39:43 ip-172-31-32-49 dockerd[3082]: time="2026-01-31T16:39:43.696966916Z" level=info msg="Docker daemon" commit="28.2.2-0ubuntu1~24.04.1" containerd-snapshotter>
+Jan 31 16:39:43 ip-172-31-32-49 dockerd[3082]: time="2026-01-31T16:39:43.697084537Z" level=info msg="Initializing buildkit"
+Jan 31 16:39:43 ip-172-31-32-49 dockerd[3082]: time="2026-01-31T16:39:43.706787675Z" level=warning msg="CDI setup error /etc/cdi: failed to monitor for changes: no such fi>
+Jan 31 16:39:43 ip-172-31-32-49 dockerd[3082]: time="2026-01-31T16:39:43.706818095Z" level=warning msg="CDI setup error /var/run/cdi: failed to monitor for changes: no suc>
+Jan 31 16:39:43 ip-172-31-32-49 dockerd[3082]: time="2026-01-31T16:39:43.725191377Z" level=info msg="Completed buildkit initialization"
+Jan 31 16:39:43 ip-172-31-32-49 dockerd[3082]: time="2026-01-31T16:39:43.732443060Z" level=info msg="Daemon has completed initialization"
+Jan 31 16:39:43 ip-172-31-32-49 dockerd[3082]: time="2026-01-31T16:39:43.732513628Z" level=info msg="API listen on /run/docker.sock"
+Jan 31 16:39:43 ip-172-31-32-49 systemd[1]: Started docker.service - Docker Application Container Engine.
+ ESCOC
+
+
+
+
+
+
+
+
+
+
+sock
+
+evel=info msg="Loading containers: start."
+evel=info msg="Loading containers: done."
+evel=info msg="Docker daemon" commit="28.2.2-0ubuntu1~24.04.1" containerd-snapshotter=false storage-driver=overlay2 version=28.2.2
+evel=info msg="Initializing buildkit"
+evel=warning msg="CDI setup error /etc/cdi: failed to monitor for changes: no such file or directory"
+evel=warning msg="CDI setup error /var/run/cdi: failed to monitor for changes: no such file or directory"
+evel=info msg="Completed buildkit initialization"
+evel=info msg="Daemon has completed initialization"
+evel=info msg="API listen on /run/docker.sock"
+n Container Engine.
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+ubuntu@ip-172-31-32-49:~$
+ubuntu@ip-172-31-32-49:~$ sudo docker os
+docker: unknown command: docker os
+
+Run 'docker --help' for more information
+ubuntu@ip-172-31-32-49:~$ sudo docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+ubuntu@ip-172-31-32-49:~$
+ubuntu@ip-172-31-32-49:~$
+ubuntu@ip-172-31-32-49:~$
+ubuntu@ip-172-31-32-49:~$ sudo usermod -aG docker ubuntu
+ubuntu@ip-172-31-32-49:~$ docker ps
+permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.50/containers/json": dial unix /var/run/docker.sock: connect: permission denied
+ubuntu@ip-172-31-32-49:~$ newgrp docker
+ubuntu@ip-172-31-32-49:~$ ls
+sunil-josh.txt
+ubuntu@ip-172-31-32-49:~$
+ubuntu@ip-172-31-32-49:~$
+ubuntu@ip-172-31-32-49:~$
+ubuntu@ip-172-31-32-49:~$ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+ubuntu@ip-172-31-32-49:~$ sudo chown berlin suni-josh.txt
+chown: cannot access 'suni-josh.txt': No such file or directory
+ubuntu@ip-172-31-32-49:~$ sudo chown sunil suni-josh.txt
+chown: cannot access 'suni-josh.txt': No such file or directory
+ubuntu@ip-172-31-32-49:~$
