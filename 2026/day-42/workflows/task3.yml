@@ -1,0 +1,16 @@
+
+name: Self-hosted Runner
+
+on: 
+  push:
+    branches: [main]
+
+jobs:
+  example-job:
+    runs-on: ubuntu-latest   # GitHub-hosted runner
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Print OS
+        run: uname -a

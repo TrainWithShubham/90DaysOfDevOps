@@ -1,0 +1,23 @@
+name: Self-hosted Runner
+on:
+  push:
+    branches: [main]
+jobs:
+  system-details:
+    runs-on: self-hosted
+    steps:
+      - name: Code Checkout
+        uses: actions/checkout@v4
+      - name: Print Host machine
+        run: hostname
+      - name: Print Work Dir
+        run: pwd
+      - name: File Creation
+        run: |
+             touch myfile.txt
+             ls -la
+             if [ -f myfile.txt ]; then
+                 echo "File has been found"
+             fi
+             
+             

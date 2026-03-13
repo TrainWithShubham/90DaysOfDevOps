@@ -1,0 +1,28 @@
+
+name: Parallel Jobs
+
+on: 
+  push:
+    branches: [main]
+
+jobs:
+  hosted-runners:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [windows-latest, macos-latest, ubuntu-latest]
+
+    steps:
+      - name: Cloning the Userspace
+        uses: actions/checkout@v4
+
+      - name: Print OS using uname
+        run: uname -a
+
+      - name: Print runner's OS
+        run: echo "${{ matrix.os }}"
+
+      - name: Print current user
+        run: whoami           
+  

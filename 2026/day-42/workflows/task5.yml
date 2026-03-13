@@ -1,0 +1,23 @@
+name: Label Runner
+on:
+  workflow_dispatch: 
+jobs:
+  label-runner:
+    runs-on: [my-linux-runner]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Print Runner-name
+        run:  echo "$RUNNER_NAME"
+      - name: Print Runner-labels
+        run:  echo "$RUNNER_LABELS" 
+      - name: Print job for runner label output
+        run: | 
+             echo "Print pwd"
+             pwd
+             echo "Hostname"
+             hostname
+             echo " this my second file " >> README.md
+             cat /home/ubuntu/actions-runner/_work/tws_github_workflows/tws_github_workflows/README.md
+             
+             
