@@ -21,7 +21,8 @@ Your pipeline runs on push. Today you learn **every way to trigger a workflow** 
 5. Watch the workflow run automatically
 
 **Verify:** Does it show up on the PR page?
-<img src="Images/task1.png" width="900">
+
+<img src="images/task1.png" width="500">
 ---
 
 ### Task 2: Scheduled Trigger
@@ -39,9 +40,9 @@ Your pipeline runs on push. Today you learn **every way to trigger a workflow** 
 4. Go to the **Actions** tab → find the workflow → click **Run workflow**
 
 **Verify:** Can you trigger it manually and see your input printed?
-<img src="images/task2-0.png" width="900">
+<img src="images/task2-0.png" width="500">
 
-<img src="images/task2-1.png" width="900">
+<img src="images/task2-1.png" width="500">
 ---
 
 ### Task 4: Matrix Builds
@@ -60,8 +61,8 @@ Then extend the matrix to also include 2 operating systems — how many total jo
 2. Set `fail-fast: false` — trigger a failure in one job and observe what happens to the rest
 3. Write in your notes: What does `fail-fast: true` (the default) do vs `false`?
 
-<img src="images/5.png" width="900">
-<img src="images/5-2.png" width="900">
+<img src="images/5.png" width="500">
+<img src="images/5-2.png" width="500">
 
 
 **fail-fast:true** 
