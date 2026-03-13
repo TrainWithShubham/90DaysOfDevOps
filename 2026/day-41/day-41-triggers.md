@@ -22,8 +22,11 @@ Your pipeline runs on push. Today you learn **every way to trigger a workflow** 
 
 **Verify:** Does it show up on the PR page?
 
+>>**[ Script](workflows/pr_check.yml)**
 <img src="images/task1.png" width="500">
 ---
+
+
 
 ### Task 2: Scheduled Trigger
 1. Add a `schedule:` trigger to any workflow using cron syntax
@@ -69,12 +72,3 @@ Then extend the matrix to also include 2 operating systems — how many total jo
   If one job fails, all the jobs after it will also fail and contrary to this in **fail-fast:false**
   if one job fails, other jobs will be continued.
 
-
-
-## Learn in Public
-Share your matrix build screenshot — seeing multiple jobs run in parallel for the first time is a great moment.
-
-`#90DaysOfDevOps` `#DevOpsKaJosh` `#TrainWithShubham`
-
-Happy Learning!
-**TrainWithShubham**
