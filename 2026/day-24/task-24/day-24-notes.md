@@ -148,3 +148,22 @@ Stash temporarily saves unfinished work without committing it.
 - git stash apply -> apply stash only
 - git stash drop stash@{0} -> delete stash
 - git stash clear -> delete all stashes
+## Task 5: Cherry Picking
+- Create a branch feature-hotfix, make 3 commits with different changes - ```git checkout -b feature-hotfix```
+- Switch to main & Cherry-pick only the second commit from feature-hotfix onto main - ```git log --oneline``` by this command you will find the second commit id. ```git cherry-pick 953aaa7```
+- Got the conflict which i resolved manually and ran the command- ```git cherry-pick --continue``` but still got an error where it says - Waiting for your editor to close the file... Vim: Error reading input, exiting...
+Vim: Finished. So i ran the command - ``` git commit -m "Cherry-picked commit 953aaa7"``` and check the graph -- ```git log --oneline --graph``` 
+```
+* a2e208d (HEAD -> master) Cherry-picked commit 953aaa7
+* 329c683 Added picture
+* 2c2dadf Add profile feature
+* 3fe48e4 new line added
+*   c08f35e (origin/master, origin/HEAD) Merge branch 'TrainWithShubham:master' into master
+|\
+| * 4cba04c Added day 16 tasks
+| * 929b190 Added day 15 tasks
+```
+It shows like this where the commit ``` a2e208d (HEAD -> master) Cherry-picked commit 953aaa7 ``Git created the final commit using the staged changes from the cherry-pick. That commit 953aaa7 became a2e208d
+- Even though you ran git commit manually, the commit is still considered a cherry-picked commit because the changes came from the cherry-pick operation.
+- How you can confirm - ``` git show a2e208d ```
+![git_show](image-1.png)
