@@ -165,5 +165,5 @@ Vim: Finished. So i ran the command - ``` git commit -m "Cherry-picked commit 95
 ```
 It shows like this where the commit ``` a2e208d (HEAD -> master) Cherry-picked commit 953aaa7 ``Git created the final commit using the staged changes from the cherry-pick. That commit 953aaa7 became a2e208d
 - Even though you ran git commit manually, the commit is still considered a cherry-picked commit because the changes came from the cherry-pick operation.
-- How you can confirm - ``` git show a2e208d ```
+- How you can confirm - ```git show a2e208d ```
 ![git_show](image-1.png)
