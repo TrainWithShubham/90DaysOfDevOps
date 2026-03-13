@@ -14,4 +14,4 @@ jobs:
         run: 'echo "The branch name is: ${{ github.head_ref }}"'
 
       - name: New Branch
-        run: 'echo "A  branch ${{ github.head_ref }} has been created" '
+        run: 'echo "A  branch ${{ github.head_ref }} has been created." '
