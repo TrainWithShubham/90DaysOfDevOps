@@ -5,7 +5,7 @@ Docker images can contain **security vulnerabilities** because they are built on
 
 Even if our application code is secure, the **base image packages may contain known CVEs (Common Vulnerabilities and Exposures).**
 
-So in real CI/CD pipelines we scan images before deployment.
+So in real CI/CD pipelines, we scan images before deployment.
 
 Today we added **Trivy vulnerability scanning** to the pipeline.
 
