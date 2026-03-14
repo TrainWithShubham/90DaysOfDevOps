@@ -70,5 +70,25 @@ jobs:
    * Set the Repo
    * Runner Showing IDLE
 
-     
+```
+name: Self-Hosted-Runner
+
+on: 
+    workflow_dispatch:
+
+jobs:
+    self-hosted-EC2:
+        runs-on: self-hosted
+
+        steps:
+            - name: Print Hostname
+              run: hostname
+
+            - name: Print the working directory
+              run: pwd
+
+            - name: Create File and Verify 
+              run : |
+                  echo "Hello world" > test.txt
+```
    
