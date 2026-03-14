@@ -1,0 +1,52 @@
+version: "3.9"
+
+services:
+
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - app-network
+    labels:
+      project: "day34-devops"
+      service: "web-app"
+
+  db:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: appdb
+    volumes:
+      - db-data:/var/lib/mysql
+    restart: always
+    networks:
+      - app-network
+    labels:
+      project: "day34-devops"
+      service: "database"
+
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      retries: 5
+      timeout: 5s
+      start_period: 10s
+
+  redis:
+    image: redis:7
+    restart: always
+    networks:
+      - app-network
+    labels:
+      project: "day34-devops"
+      service: "cache"
+
+networks:
+  app-network:
+
+volumes:
+  db-data:

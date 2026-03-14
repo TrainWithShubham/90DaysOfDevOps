@@ -1,3 +1,46 @@
+<<<<<<< HEAD
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+*.pid
+
+# Environment
+.env
+.env.*
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Node
+node_modules/
+
+# Build
+build/
+dist/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+
+# Kubernetes
+.kube/
+
+# IDE
+.vscode/
+.idea/
+
+# Caches
+.cache/
+.pytest_cache/
+coverage/
+=======
 # OS
 .DS_Store
 Thumbs.db
@@ -40,3 +83,4 @@ crash.log
 .pytest_cache/
 coverage/
 CLAUDE.md
+>>>>>>> 19e24a671ba2be77160a553bc639e42369150f07
