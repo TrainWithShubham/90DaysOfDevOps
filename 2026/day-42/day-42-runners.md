@@ -58,9 +58,11 @@ Task 5: Labels
 <img width="1277" height="482" alt="image" src="https://github.com/user-attachments/assets/79a3ccf3-6227-49f5-aa40-02ac403b6a66" />
 
 - What is Labels in GitHub Action?
+  
 Labels in a GitHub Actions runner are used to target specific runners for a job defined in a workflow file. They allow you to control which machine executes a particular job, especially in self-hosted environments.
 
 - Why Are Labels Useful When You Have Multiple Self-Hosted Runners?
+  
 Labels become important when a project has multiple self-hosted runners with different capabilities.
 They allow workflows to run on the correct machine based on requirements.
 
