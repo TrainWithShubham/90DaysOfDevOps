@@ -209,7 +209,7 @@ Use Case
 ### gh release – Manage Releases
 - Create and manage GitHub releases. ```gh release create v1.0.0```
 - create a release with notes ```gh release create v1.0.0 --notes "Initial release"``` 
-- ```gh release list
+- ```gh release list```
 
 ### 4. gh alias – Create Command Shortcuts
 - 4. gh alias – Create Command Shortcuts ```gh alias set prs "pr list"```
