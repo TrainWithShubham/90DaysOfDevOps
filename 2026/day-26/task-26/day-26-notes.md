@@ -99,3 +99,128 @@ Comments
 - The gh issue command can be used in automation scripts to manage issues automatically.
 ***Automatically create issues for CI/CD failures
 ``` gh issue create --title "Build Failed" --body "The CI pipeline failed. Please check logs."```
+
+### Managing Pull Requests using GitHub CLI
+
+### 1. Create a Branch and Make Changes
+- create a new branch ```git checkout -b feature-upt```
+- Make changes to a file and commit them:
+```
+git add .
+git commit -m "Update documentation"
+```
+- Push the branch to GitHub:
+``` git push origin feature-upt```
+
+### 2. Create a Pull Request from the Terminal
+```
+gh pr create --title "Update documentation" \
+--body "Improved documentation and added new examples."
+```
+` This will create a pull request from your branch to the main branch.
+### 3. List All Open Pull Requests
+```gh pr list```
+### 4. View Pull Request Details
+```gh pr view 15```
+### 5. Merge a Pull Request from the Terminal
+```gh pr merge 15```
+- Merge Methods Supported by ```gh pr merge```
+GitHub CLI supports three merge methods:
+
+Method	Command	Description
+Merge Commit	gh pr merge --merge	Keeps all commits and creates a merge commit
+Squash Merge	gh pr merge --squash	Combines all commits into one commit
+Rebase Merge	gh pr merge --rebase	Reapplies commits on top of the base branch
+
+## How to Review Someone Else's Pull Request using gh
+- View the PR:```gh pr view <PR-number>```
+- Checkout the PR locally: ```gh pr checkout <PR number>```
+- Review the changes: ```git diff```
+- Approve the PR: ```gh pr review <PR-number> --approve```
+- Request changes: ```gh pr review <PR-number> --request-changes``
+- Add a comment: ```gh pr comment <PR-number> --body "Looks good!"``
+
+## GitHub Actions & Workflows (Preview)
+
+GitHub CLI allows you to interact with GitHub Actions workflows directly from the terminal.
+
+---
+
+### 1. List Workflow Runs
+
+You can list workflow runs for the current repository:
+
+```bash
+gh run list
+```
+### Example Output
+```
+STATUS   TITLE                     WORKFLOW      BRANCH   EVENT   ID
+✓        Update documentation      CI Pipeline   main     push    123456
+✓        Fix API tests             CI Pipeline   main     push    123455
+```
+### 2. View the Status of a Specific Workflow Run
+``` gh run view <run-id>``` Eg: ```gh run view 123456```
+You can also open it in the browser:
+```gh run view 123456 --web```
+- List Available Workflows
+```gh workflow list```
+Example:
+```
+NAME              STATE
+CI Pipeline       active
+Deploy Workflow   active
+```
+### How could gh run and gh workflow be useful in a CI/CD pipeline?
+- The GitHub CLI commands help developers and DevOps engineers manage CI/CD pipelines directly from the terminal.
+Eg:
+- Monitor CI/CD pipeline status ```gh run list```
+This allows engineers to quickly check if builds or deployments are successful.
+- Debug workflow failures ```gh run view <run-id> - This helps inspect logs and identify why a pipeline failed.
+- Trigger or manage workflows
+Using gh workflow commands, teams can manage automation workflows without leaving the terminal.
+
+## Useful GitHub CLI (`gh`) Tricks
+
+The GitHub CLI provides powerful commands that allow developers to interact with GitHub directly from the terminal.
+
+---
+
+### 1. `gh api` – Call the GitHub API
+
+You can make raw GitHub API requests directly from the terminal.
+
+Example: Get information about the authenticated user.
+
+```bash
+gh api user
+```
+Use Case
+- Automate GitHub tasks
+- Retrieve repository data
+- Integrate GitHub with scripts
+
+### gh gist – Manage GitHub Gists
+- A Gist is a feature on GitHub that lets you store and share small pieces of code, text, or notes online.
+- gh gist – Manage GitHub Gists ```gh gist create file.txt```
+- create a public gist ```gh gist create file.txt --public
+-list your gist ```gh gist list```
+
+### gh release – Manage Releases
+- Create and manage GitHub releases. ```gh release create v1.0.0```
+- create a release with notes ```gh release create v1.0.0 --notes "Initial release"``` 
+- ```gh release list
+
+### 4. gh alias – Create Command Shortcuts
+- 4. gh alias – Create Command Shortcuts ```gh alias set prs "pr list"```
+now you can run ```gh prs``` to list pull request
+Use Case
+-Save time with frequently used commands
+-Simplify long CLI commands
+
+### 5. gh search repos – Search Repositories
+- 5. gh search repos – Search Repositories ```gh search repos devops```
+- limit results: ```gh search repos devops --limit 10```
+- Search by language:  ```gh search repos "kubernetes language:go"``
+
+Note: ```gh pr create --fill``` auto-fills the PR title and body from your commits
