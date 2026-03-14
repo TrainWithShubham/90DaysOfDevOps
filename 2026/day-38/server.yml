@@ -1,0 +1,25 @@
+server:
+    name: production_server
+    ip: 192.168.1.10
+    port: 22
+database: 
+    host: db_internal_data
+    name: app_data
+    credential: 
+      user: shivam
+      password: test@123
+
+Starup_script: |
+    echo "staring application"
+    docker pull myapp:latest
+    docker compose up -d
+    echo "Deployment completed"
+
+Starup_script: >
+    echo "staring application"
+    docker pull myapp:latest
+    docker compose up -d
+    echo "Deployment completed"
+    
+
+
