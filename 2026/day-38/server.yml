@@ -1,0 +1,11 @@
+server:
+  name: Rahul
+  IP: 192.168.1.10
+  port: 80
+
+database:
+  host: localhost
+  name: rahul_db
+  credentials: 
+    user: admin
+    password: ra123
