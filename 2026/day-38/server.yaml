@@ -1,0 +1,21 @@
+---
+server:
+  name: my-server
+  ip: 192.168.1.10
+
+database:
+  host: localhost
+  name: mydb
+  credentials:
+    username: admin
+    password: secret123
+
+startup_script: |
+  echo "Starting server"
+  sudo systemctl start nginx
+  echo "Server started"
+
+startup_message: >
+  This server starts automatically
+  when the system boots
+  and loads all services.

@@ -1,0 +1,15 @@
+---
+name: Om Deshmukh
+age: 19
+experience_years: 0
+role: DevOps Learner
+learning: true
+
+tools:
+  - Git
+  - Docker
+  - github-actions
+  - linux
+  - shell-scripting
+
+hobbies: [coding, learning-devops]

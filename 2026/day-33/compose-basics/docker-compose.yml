@@ -12,6 +12,8 @@ services:
       MYSQL_PASSWORD: wppass
     volumes:
       - mysql_data:/var/lib/mysql
+    networks:
+      - wp-network
 
   wordpress:
     image: wordpress:latest
@@ -25,6 +27,13 @@ services:
       WORDPRESS_DB_NAME: wordpress
     depends_on:
       - mysql
+    networks:
+      - wp-network
 
 volumes:
   mysql_data:
+    driver: local
+
+networks:
+  wp-network:
+    driver: bridge
