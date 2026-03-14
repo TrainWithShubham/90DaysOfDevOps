@@ -137,8 +137,8 @@ Rebase Merge	gh pr merge --rebase	Reapplies commits on top of the base branch
 - Checkout the PR locally: ```gh pr checkout <PR number>```
 - Review the changes: ```git diff```
 - Approve the PR: ```gh pr review <PR-number> --approve```
-- Request changes: ```gh pr review <PR-number> --request-changes``
-- Add a comment: ```gh pr comment <PR-number> --body "Looks good!"``
+- Request changes: ```gh pr review <PR-number> --request-changes```
+- Add a comment: ```gh pr comment <PR-number> --body "Looks good!"```
 
 ## GitHub Actions & Workflows (Preview)
 
@@ -221,6 +221,6 @@ Use Case
 ### 5. gh search repos – Search Repositories
 - 5. gh search repos – Search Repositories ```gh search repos devops```
 - limit results: ```gh search repos devops --limit 10```
-- Search by language:  ```gh search repos "kubernetes language:go"``
+- Search by language:  ```gh search repos "kubernetes language:go"```
 
 Note: ```gh pr create --fill``` auto-fills the PR title and body from your commits
