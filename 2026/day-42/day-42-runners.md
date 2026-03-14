@@ -64,3 +64,11 @@ jobs:
 ```
 <img width="1000" height="490" alt="runner" src="https://github.com/user-attachments/assets/c2c21c05-f4ec-4280-816b-0fca478d7d33" />
 
+### Task 3
+  **Created Self hosted runner on EC2**
+   * Created runner on Ubuntu Instance and configure with Gitub
+   * Set the Repo
+   * Runner Showing IDLE
+
+     
+   
