@@ -1,4 +1,4 @@
-# Day 41 – Triggers & Matrix Builds
+# Day 41 – Triggers & Matrix Build
 
 ## Task
 Your pipeline runs on push. Today you learn **every way to trigger a workflow** and how to run jobs across multiple environments at once.
