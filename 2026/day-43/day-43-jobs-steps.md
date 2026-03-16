@@ -30,5 +30,32 @@ jobs:
 
 ```
 
+### ENVIROMENT LEVEL
+```
+name: Environment Level
+on:
+  workflow_dispatch: null
+  
+env:
+  APP_NAME: myapp
+  
+jobs:
+  print_env:
+    runs-on: ubuntu-latest
+    
+    env:
+      ENVIRONMENT: staging
+      
+    steps:
+      - name: Print all variables
+        env:
+          VERSION: 1.0.0
+        run: |
+          echo "App Name: $APP_NAME"
+          echo "Environment: $ENVIRONMENT"
+          echo "Version: $VERSION"
+```
+
+
 
 
