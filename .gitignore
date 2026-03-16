@@ -39,3 +39,4 @@ crash.log
 .cache/
 .pytest_cache/
 coverage/
+CLAUDE.md
