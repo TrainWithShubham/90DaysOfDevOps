@@ -53,3 +53,82 @@ S = last letter
 ### Architecture Diagram
 
 
+
+
+### Kubernetes Pod Creation Flow
+
+#### What happens when you run `kubectl apply -f pod.yaml`?
+
+1. **kubectl sends request to API Server**
+   - kubectl reads the YAML file.
+   - It sends a REST API request to the Kubernetes **API Server**.
+
+2. **API Server validates the request**
+   - Authentication
+   - Authorization
+   - YAML validation
+
+3. **Pod spec stored in etcd**
+   - API Server stores the Pod definition in **etcd**.
+   - Pod status becomes **Pending**.
+
+4. **Scheduler selects a worker node**
+   - Scheduler watches the API Server for pods without a node.
+   - It checks available nodes (CPU, memory, etc.).
+   - Chooses the best **worker node**.
+
+5. **API Server updates Pod with selected node**
+   - Scheduler informs API Server about the chosen node.
+   - API Server updates this in **etcd**.
+
+6. **Kubelet detects the Pod**
+   - Kubelet on the worker node watches the API Server.
+   - When it sees a pod assigned to its node, it starts processing it.
+
+7. **Container runtime starts the container**
+   - Kubelet instructs the container runtime (containerd/CRI-O).
+   - Image is pulled.
+   - Container is started.
+
+8. **Pod status updated**
+   - Kubelet sends status back to API Server.
+   - Pod becomes **Running**.
+
+#### Flow Summary
+
+kubectl → API Server → etcd → Scheduler → API Server → Kubelet → Container Runtime → Running Pod
+
+---
+
+# What happens if the API Server goes down?
+
+#### What stops working
+- kubectl commands
+- Creating new pods
+- Scheduling pods
+- Scaling deployments
+- Cluster management
+
+#### What keeps working
+- Already running pods continue running
+- Applications keep serving traffic
+
+Reason: containers are already running on worker nodes.
+
+---
+
+### What happens if a Worker Node goes down?
+
+1. **Heartbeat stops**
+   - Kubelet normally sends heartbeats to the API Server.
+
+2. **Node marked NotReady**
+   - If heartbeat stops, Kubernetes marks the node **NotReady**.
+
+3. **Pods on that node become unreachable**
+
+4. **Pods recreated on other nodes**
+   - If pods belong to a **Deployment / ReplicaSet / StatefulSet**, Kubernetes automatically creates new pods on healthy nodes.
+
+Note:
+- If it is a **standalone Pod**, Kubernetes will NOT recreate it.
