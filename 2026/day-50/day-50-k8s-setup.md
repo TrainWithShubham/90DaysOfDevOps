@@ -194,3 +194,105 @@ kubectl allows you to:
 - Inspect cluster resources
 - Manage pods, services, and deployments
 - Debug Kubernetes workloads
+
+---
+
+## Task 4: Set Up Local Kubernetes Cluster
+
+### Tool Chosen: kind (Kubernetes in Docker)
+
+I chose **kind** to create my local Kubernetes cluster.
+
+#### Reason for Choosing kind
+
+- **Lightweight** – Uses Docker containers as nodes instead of full virtual machines.
+- **Fast startup** – Cluster creation takes only a few seconds.
+- **Low resource usage** – Works well on local laptops with limited CPU and RAM.
+- **Good for local practice** – Ideal for learning Kubernetes and running test environments.
+
+Because of these advantages, **kind is very convenient for practicing Kubernetes locally**.
+
+---
+
+### Installing kind (Windows)
+
+I installed **kind manually**, similar to how I installed **kubectl**.
+
+#### Step 1: Download kind
+Download `kind.exe` from the official GitHub releases page.
+
+Example:
+https://kind.sigs.k8s.io/dl/latest/kind-windows-amd64
+
+Rename the file to:
+
+```
+kind.exe
+```
+
+Save it in a folder.
+
+Example location:
+
+```
+C:\kind\kind.exe
+```
+
+---
+
+#### Step 2: Add kind to PATH
+
+1. Open **Environment Variables**
+2. Go to **System Variables**
+3. Select **Path**
+4. Click **Edit**
+5. Add the folder path
+
+Example:
+
+```
+C:\kind
+```
+
+Click **OK** to save.
+
+---
+
+### Create the Kubernetes Cluster
+
+Run:
+
+```
+kind create cluster --name devops-cluster
+```
+
+---
+
+### Verify the Cluster
+
+Check cluster information:
+
+```
+kubectl cluster-info
+```
+
+Check nodes:
+
+```
+kubectl get nodes
+```
+
+Example output:
+
+```
+NAME                     STATUS   ROLES           AGE
+devops-cluster-control-plane   Ready    control-plane   1m
+```
+
+This confirms the Kubernetes cluster is running successfully.
+
+---
+
+### Summary
+
+kind provides a **lightweight, fast, and efficient way to run a Kubernetes cluster locally**, making it ideal for **DevOps practice and learning Kubernetes concepts**.
