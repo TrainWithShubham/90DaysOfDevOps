@@ -52,8 +52,7 @@ S = last letter
 
 ### Architecture Diagram
 
-
-
+<img width="1275" height="537" alt="image" src="https://github.com/user-attachments/assets/206105b9-33bd-4c2e-8dbe-7618d564cfb1" />
 
 ### Kubernetes Pod Creation Flow
 
@@ -296,3 +295,50 @@ This confirms the Kubernetes cluster is running successfully.
 ### Summary
 
 kind provides a **lightweight, fast, and efficient way to run a Kubernetes cluster locally**, making it ideal for **DevOps practice and learning Kubernetes concepts**.
+
+---
+
+## Task 5: Explore Your Cluster
+
+`kubectl cluster-info`
+
+<img width="988" height="153" alt="image" src="https://github.com/user-attachments/assets/08c5d179-945e-418a-a335-051f523ffeff" />
+
+`kubectl get nodes`
+
+<img width="636" height="162" alt="image" src="https://github.com/user-attachments/assets/b10bf851-24a3-45b7-9c83-37f2a230e840" />
+
+`kubectl describe node <node-name>`
+
+<img width="1487" height="657" alt="image" src="https://github.com/user-attachments/assets/a909ea86-8c60-471f-a689-6d5be51089b7" />
+
+<img width="1357" height="907" alt="image" src="https://github.com/user-attachments/assets/1ce171c2-ef00-453d-bbfb-a316ab769096" />
+
+<img width="835" height="252" alt="image" src="https://github.com/user-attachments/assets/dd6dd605-fdf6-4556-9417-1288b1808ab4" />
+
+`kubectl get namespaces`
+
+<img width="408" height="212" alt="image" src="https://github.com/user-attachments/assets/62dc3314-5016-45c8-a9af-1986e498e5aa" />
+
+`kubectl get pods -A`
+
+<img width="1002" height="601" alt="image" src="https://github.com/user-attachments/assets/c4d5ed4e-ea29-48aa-8774-7ab56eb37c88" />
+
+`kubectl get pods -n kube-system`
+
+<img width="881" height="380" alt="image" src="https://github.com/user-attachments/assets/5c95aa1b-848d-40e8-8d66-0dd15e45a014" />
+
+---
+
+## Task 6: Practice Cluster Lifecycle
+
+<img width="657" height="581" alt="image" src="https://github.com/user-attachments/assets/a6dba0d9-0436-495c-9116-3556386fb437" />
+
+<img width="808" height="837" alt="image" src="https://github.com/user-attachments/assets/33c0ca05-7fb9-4ded-ae16-f889e4765581" />
+
+
+
+
+
+
+
