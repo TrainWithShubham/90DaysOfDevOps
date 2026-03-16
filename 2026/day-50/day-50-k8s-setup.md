@@ -132,3 +132,65 @@ Reason: containers are already running on worker nodes.
 
 Note:
 - If it is a **standalone Pod**, Kubernetes will NOT recreate it.
+
+---
+
+## Task3: Install kubectl (Windows)
+
+kubectl is the command-line tool used to interact with a Kubernetes cluster.
+
+### Method Used: Manual Installation
+
+#### Step 1: Download kubectl
+Download `kubectl.exe` from the official Kubernetes website.
+
+Example download link:
+https://dl.k8s.io/release/v1.29.0/bin/windows/amd64/kubectl.exe
+
+Save the file on your system.
+
+Example location:
+C:\kubectl\kubectl.exe
+
+---
+
+#### Step 2: Add kubectl to PATH
+
+1. Open **Environment Variables**
+2. Go to **System Variables**
+3. Find and select **Path**
+4. Click **Edit**
+5. Add the folder path where kubectl.exe is stored
+
+Example:
+C:\kubectl
+
+Click **OK** and save.
+
+---
+
+#### Step 3: Verify Installation
+
+Open a new terminal (PowerShell or CMD) and run:
+
+```
+kubectl version --client
+```
+
+Example Output:
+
+```
+Client Version: v1.29.x
+```
+
+This confirms kubectl is installed successfully.
+
+---
+
+### What kubectl does
+
+kubectl allows you to:
+- Deploy applications
+- Inspect cluster resources
+- Manage pods, services, and deployments
+- Debug Kubernetes workloads
