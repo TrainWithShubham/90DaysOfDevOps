@@ -47,3 +47,8 @@ K = first letter
 S = last letter
 
 ---
+
+## Task 2: Draw the Kubernetes Architecture
+
+### Architecture Diagram
+
