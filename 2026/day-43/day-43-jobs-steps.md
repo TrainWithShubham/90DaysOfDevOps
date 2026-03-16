@@ -56,6 +56,17 @@ jobs:
           echo "Version: $VERSION"
 ```
 
+Print SHA and ACTOR
+
+```
+ - name: Print SHA
+   run: echo "The SHA is :${{ github.sha }}"
+
+- name: Print Working User or Actor
+  run: echo "Use/action :${{ github.actor }}"
+
+```
+
 
 
 
