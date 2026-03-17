@@ -39,6 +39,7 @@ Task 3: Upload Artifacts
 Task 4: Download Artifacts Between Jobs
 - Job 1: generate a file and upload it as an artifact
 - Job 2: download the artifact from Job 1 and use it (print its contents)
+
   ![alt text](image-7.png)
 
 - Write in your notes: When would you use artifacts in a real pipeline?
@@ -54,5 +55,6 @@ Task 5: Run Real Tests in CI
 - Fails the pipeline if the script exits with a non-zero code
 - Intentionally break the script — verify the pipeline goes red
 - Fix it — verify it goes green again
+
   ![alt text](image-8.png)
   ![alt text](image-9.png)
