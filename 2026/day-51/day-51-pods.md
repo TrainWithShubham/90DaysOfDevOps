@@ -168,8 +168,6 @@ kubectl apply -f nginx-pod.yaml --dry-run=server
 
 View labels:
 kubectl get pods --show-labels  
-<img width="627" height="86" alt="image" src="https://github.com/user-attachments/assets/90d2253e-d7a8-4bd4-b84e-ad99eda83bf0" />
-
 
 Filter:
 kubectl get pods -l app=nginx  
@@ -180,6 +178,9 @@ kubectl label pod nginx-pod environment=production
 
 Remove label:
 kubectl label pod nginx-pod environment-  
+
+<img width="797" height="676" alt="image" src="https://github.com/user-attachments/assets/0126e66f-11ed-4d1e-a2af-501534711660" />
+
 
 ---
 
@@ -195,22 +196,9 @@ kubectl delete -f nginx-pod.yaml
 
 Key Learning:
 Pods are not self-healing  
-Once deleted, they are gone permanently  
+Once deleted, they are gone permanently 
 
----
-
-## 📸 Output Screenshot
-
-Take screenshot of:
-kubectl get pods  
-
-Make sure STATUS is Running  
-
-Store image at:
-2026/day-51/images/pods-running.png  
-
-Add in markdown:
-![Pods Running](./images/pods-running.png)  
+<img width="822" height="192" alt="image" src="https://github.com/user-attachments/assets/3d0a8b22-2580-42f9-a5c6-39ced9807fac" />
 
 ---
 
