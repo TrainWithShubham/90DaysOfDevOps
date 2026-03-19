@@ -91,11 +91,12 @@ Verify: Does your custom action run and print the greeting?
 Task 6: Reusable Workflow vs Composite Action
 Feature	Reusable Workflow	Composite Action
 Triggered by	workflow_call	uses: in a step
-Can contain jobs?	 Yes (multiple jobs)	 No (only steps)
-Can contain multiple steps?	 Yes	 Yes
+Can contain jobs?	Yes (multiple jobs)	No (only steps)
+Can contain multiple steps?	Yes	Yes
 Lives where?	.github/workflows/	.github/actions/<action-name>/
-Can accept secrets directly?	 Yes (via secrets:)	 No (must pass via env)
+Can accept secrets directly?	Yes (via secrets:)	No (must pass via env)
 Best for	Full CI/CD pipelines, multi-job workflows	Small reusable logic, step grouping
+
 
 
 
