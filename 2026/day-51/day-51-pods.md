@@ -50,9 +50,21 @@ spec:
 Commands Used:
 kubectl apply -f nginx-pod.yaml  
 kubectl get pods  
+
+
+<img width="767" height="192" alt="image" src="https://github.com/user-attachments/assets/436e35df-91a9-4aa2-8c69-9c069a474d60" />
+
 kubectl describe pod nginx-pod  
-kubectl logs nginx-pod  
-kubectl exec -it nginx-pod -- /bin/bash  
+
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/72d90023-df82-4177-bde2-42e98efd9adb" />
+
+kubectl logs nginx-pod
+
+<img width="915" height="601" alt="image" src="https://github.com/user-attachments/assets/357b72ef-1add-4822-bb43-1438da498ff3" />
+ 
+kubectl exec -it nginx-pod -- bash  
+
+
 
 Verification:
 Run: curl localhost:80  
