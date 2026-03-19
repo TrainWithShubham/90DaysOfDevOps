@@ -63,12 +63,10 @@ kubectl logs nginx-pod
 <img width="915" height="601" alt="image" src="https://github.com/user-attachments/assets/357b72ef-1add-4822-bb43-1438da498ff3" />
  
 kubectl exec -it nginx-pod -- bash  
-
-
-
 Verification:
 Run: curl localhost:80  
-Result: Nginx welcome page displayed  
+
+<img width="757" height="541" alt="image" src="https://github.com/user-attachments/assets/5900adcc-2e53-4af6-879c-77cb5f3e398e" />
 
 ---
 
@@ -88,12 +86,18 @@ spec:
     command: ["sh", "-c", "echo Hello from BusyBox && sleep 3600"]  
 
 Commands Used:
-kubectl apply -f busybox-pod.yaml  
-kubectl get pods  
+kubectl apply -f busybox-pod.yaml 
+
+<img width="607" height="83" alt="image" src="https://github.com/user-attachments/assets/f5f85645-3de7-4bb8-bda1-49361f88f5f1" />
+
+kubectl get pods 
+
+<img width="646" height="113" alt="image" src="https://github.com/user-attachments/assets/edf300c7-99b9-4ef3-b6c7-beabf2063283" />
+
 kubectl logs busybox-pod  
 
-Verification:
-Output: Hello from BusyBox  
+<img width="625" height="77" alt="image" src="https://github.com/user-attachments/assets/6b0b9ca4-75ba-49be-8ebb-b3708f2a5ea5" />
+
 
 Key Learning:
 BusyBox exits immediately without a long-running command  
@@ -123,6 +127,8 @@ spec:
 Imperative:
 kubectl run redis-pod --image=redis:latest  
 
+<img width="748" height="177" alt="image" src="https://github.com/user-attachments/assets/6fe66353-f1b9-4c26-ba90-f574d2fefd7d" />
+
 Declarative:
 kubectl apply -f nginx-pod.yaml  
 
@@ -145,13 +151,16 @@ Used to generate base YAML and customize it
 ## ✅ Validation Before Apply
 
 Client-side:
-kubectl apply -f nginx-pod.yaml --dry-run=client  
+kubectl apply -f nginx-pod.yaml --dry-run=client 
+<img width="825" height="316" alt="image" src="https://github.com/user-attachments/assets/29b9cd6f-5df6-48dd-b03f-81b320faa037" />
+
+<img width="1088" height="86" alt="image" src="https://github.com/user-attachments/assets/8e52e345-0d08-441e-8a89-f213b0028eb8" />
 
 Server-side:
 kubectl apply -f nginx-pod.yaml --dry-run=server  
+<img width="483" height="213" alt="image" src="https://github.com/user-attachments/assets/a04358e7-b629-45ad-82a0-435274a1b917" />
 
-Error when image is missing:
-error: spec.containers[0].image: Required value  
+<img width="1648" height="87" alt="image" src="https://github.com/user-attachments/assets/47fe5613-6f0c-486e-9bb8-eb6d2903165a" /> 
 
 ---
 
@@ -159,6 +168,8 @@ error: spec.containers[0].image: Required value
 
 View labels:
 kubectl get pods --show-labels  
+<img width="627" height="86" alt="image" src="https://github.com/user-attachments/assets/90d2253e-d7a8-4bd4-b84e-ad99eda83bf0" />
+
 
 Filter:
 kubectl get pods -l app=nginx  
