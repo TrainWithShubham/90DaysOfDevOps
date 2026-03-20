@@ -132,19 +132,36 @@ kubectl is the CLI tool you will use to talk to your Kubernetes cluster.
 <img width="1627" height="363" alt="image" src="https://github.com/user-attachments/assets/520cb14c-7a64-4ddd-8078-8f2e667f14ef" />
 
 ## Task 4: Set Up Your Local Cluster
-<img width="1170" height="664" alt="image" src="https://github.com/user-attachments/assets/31c6a47d-737f-4a18-b370-f3d8fe6856c9" />
+<img width="1047" height="336" alt="image" src="https://github.com/user-attachments/assets/df621fc3-fa2b-4aa7-bd3b-e728803c2280" />
+<img width="1257" height="654" alt="image" src="https://github.com/user-attachments/assets/2b5fe3c2-a4f2-4b9f-be76-05c3ca9b7fe3" />
+
+
 
 ## Task 5: Explore Your Cluster
+<img width="1184" height="387" alt="image" src="https://github.com/user-attachments/assets/d64a0874-6a5c-44bc-bc05-2e11a5b39e0e" />
+<img width="1354" height="645" alt="image" src="https://github.com/user-attachments/assets/9d08fef3-f8dc-4300-8a09-7a4cf0ef691d" />
+<img width="1643" height="640" alt="image" src="https://github.com/user-attachments/assets/d4327a99-8aef-43c4-847b-cbde8ade5cd3" />
+<img width="1226" height="617" alt="image" src="https://github.com/user-attachments/assets/a40491e1-eebe-41eb-9263-e6ee68cd3471" />
 
-<img width="1170" height="664" alt="image" src="https://github.com/user-attachments/assets/87962f5c-3452-4709-af6a-dc8e21c3454b" />
-<img width="1219" height="602" alt="image" src="https://github.com/user-attachments/assets/72202555-04a7-4115-8b74-747e9753c51d" />
-<img width="1211" height="666" alt="image" src="https://github.com/user-attachments/assets/4c02bc21-6872-4090-b336-295d08db36cd" />
-<img width="1216" height="669" alt="image" src="https://github.com/user-attachments/assets/4e020ec3-53c1-42cf-bd54-630bbbe0bbb3" />
-<img width="1189" height="664" alt="image" src="https://github.com/user-attachments/assets/7daf9fdd-5375-45de-b13e-ab5d8c3275dd" />
-<img width="1225" height="666" alt="image" src="https://github.com/user-attachments/assets/0725e674-31e8-4ce6-b60c-0a370488ef6e" />
-<img width="1215" height="641" alt="image" src="https://github.com/user-attachments/assets/a04c19c1-2581-49a9-a527-2129daee3307" />
+## Task 6: Practice Cluster Lifecycle
+<img width="1093" height="445" alt="image" src="https://github.com/user-attachments/assets/a0f770e1-01c7-4b58-8598-8e7091ca9904" />
+<img width="951" height="484" alt="image" src="https://github.com/user-attachments/assets/cab21d8e-699d-4520-ba23-58724cb9b129" />
 
+What is a kubeconfig? Where is it stored on your machine?
 
+Ans: A kubeconfig file is a configuration file used by kubectl (the Kubernetes CLI) to connect to a Kubernetes cluster.  
+It contains:
+   - Cluster details → API server endpoint (URL)
+   - User credentials → certificates, tokens, etc.
+   - Context → which cluster + user combination to use
+
+By default, kubeconfig is stored at:
+
+  ``` ~/.kube/config ```  
+Explanation:  
+```~``` → your home directory  
+```.kube``` → hidden folder  
+```config``` → the kubeconfig file  
 ## What I learn
 - Architecture Diagram
 - History of Kubernetes
