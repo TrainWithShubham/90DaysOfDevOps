@@ -148,6 +148,7 @@ kubectl is the CLI tool you will use to talk to your Kubernetes cluster.
 ## What I learn
 - Architecture Diagram
 - History of Kubernetes
+- Basic Command of Kubernetes
 
 
 
