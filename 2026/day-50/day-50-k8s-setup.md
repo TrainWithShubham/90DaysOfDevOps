@@ -16,12 +16,15 @@ Task 1: Recall the Kubernetes Story
 Task 2: Draw the Kubernetes Architecture
 <img width="656" height="371" alt="image" src="https://github.com/user-attachments/assets/cb737c3f-9a3c-45c4-9349-79199d5dcc44" />
 
+
 Task 3: Install kubectl
 <img width="1271" height="67" alt="image" src="https://github.com/user-attachments/assets/0bfe0076-df57-40da-bd56-da699f61a523" />
 
 Task 4: Set Up Your Local Cluster
 - installed kind
+  
   <img width="516" height="47" alt="image" src="https://github.com/user-attachments/assets/d1da56d6-3473-444b-b60b-579113287e1b" />
+  
 
 - verify docker, kind and kubectl installed as part of pre-requisite
   <img width="1263" height="97" alt="image" src="https://github.com/user-attachments/assets/2854895b-ac2a-4fbf-b8eb-c84f8290cb45" />
