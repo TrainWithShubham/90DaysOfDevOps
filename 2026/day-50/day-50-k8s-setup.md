@@ -8,3 +8,9 @@ Who created Kubernetes and what was it inspired by?
 What does the name "Kubernetes" mean?
 Do not look anything up yet. Write what you remember from the session, then verify against the official docs.
 <hr>
+Kubernetes was created to manage containers at scale. Docker can run containers on a single machine, but when applications grow and need to run across multiple servers, Docker alone is not enough. Kubernetes solves this by automating deployment, scaling, networking, and management of containers.
+<hr>
+## Task2:  Kubernetes Architecture
+<img width="1502" height="1054" alt="image" src="https://github.com/user-attachments/assets/947f8231-28bc-467a-b71c-51e6a1c151ed" />
+
+
