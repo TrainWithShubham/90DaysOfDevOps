@@ -44,7 +44,10 @@ brew install docker --cask docker
 ## Step 3: Create Kubernetes Cluster
 
 [Kind-config](./kind-config.yml)
-[screenshot](./.png)
+
+<ul> [screenshot](./clusterifo)
+ 
+ </ul>
 
 <hr>
 
