@@ -2,5 +2,6 @@
 
 ### Task 1: Create Your First Pod (Nginx)
 Create a file called nginx-pod.yaml:
-📄 View Screenshot: [Pod Output](./screenshot/pod.pdf)
+📄 View Screenshot: [Nginx file](nginx-pod.yml)
+
 
