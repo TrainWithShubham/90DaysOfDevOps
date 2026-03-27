@@ -11,7 +11,6 @@ Do not look anything up yet. Write what you remember from the session, then veri
 Kubernetes was created to manage containers at scale. Docker can run containers on a single machine, but when applications grow and need to run across multiple servers, Docker alone is not enough. Kubernetes solves this by automating deployment, scaling, networking, and management of containers.
 <hr>
 ## Task2:  Kubernetes Architecture
-<img width="450" height="400" alt="image" src="https://github.com/user-attachments/assets/947f8231-28bc-467a-b71c-51e6a1c151ed" />
 Kubernetes consists of two main components:
 <ul>
 <li>Control Plane</li>
@@ -19,11 +18,13 @@ Kubernetes consists of two main components:
 <li>Scheduler – Assigns pods to nodes</li>
 <li>Controller Manager – Maintains desired state
 </li>
-<li>etcd – Stores cluster data
-</li>
+<li>etcd – Stores cluster data</li>
 </ul>
+<hr>
+<img width="1200" height="400" alt="image" src="https://github.com/user-attachments/assets/947f8231-28bc-467a-b71c-51e6a1c151ed" />
 
-</li>
+
+
 
 
 
