@@ -41,7 +41,8 @@ brew install docker --cask docker
 
 <img width="1280" height="800" alt="Screenshot 2026-03-27 at 10 50 29 PM" src="https://github.com/user-attachments/assets/4a830a2c-f05c-473e-9b3d-69892d6ef209" />
 <br>
-## Step 3: Create Kubernetes Cluster
+#### Step 3: Create Kubernetes Cluster
+
 
 [Kind-config](./kind-config.yml)
 
@@ -66,10 +67,19 @@ kubectl describe node <node-name>
 # List all namespaces
 kubectl get namespaces
 
-# See ALL pods running in the cluster (across all namespaces)
+### See ALL pods running in the cluster (across all namespaces)
+
 kubectl get pods -A
 
 [screenshot](screenshot/cluster.pdf)
+Look at the pods running in the kube-system namespace:
+
+kubectl get pods -n kube-system
+
+[screenshot](screenshot/explorepod.pdf)
+
+<hr>
+#90DaysOfDevOps #DevOpsKaJosh #TrainWithShubham
 
 
 
