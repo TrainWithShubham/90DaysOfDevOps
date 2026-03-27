@@ -42,7 +42,9 @@ brew install docker --cask docker
 <img width="1280" height="800" alt="Screenshot 2026-03-27 at 10 50 29 PM" src="https://github.com/user-attachments/assets/4a830a2c-f05c-473e-9b3d-69892d6ef209" />
 <br>
 ### Step 3: Create Kubernetes Cluster
-[kind-config.yml](./kind-config.yml)
+## [kind-config.yml](./kind-config.yml)
+
+<hr>
 
 <img width="1280" height="800" alt="Screenshot 2026-03-27 at 11 02 42 PM 2" src="https://github.com/user-attachments/assets/6900353c-2615-43d2-9105-2d8eb0d3a554" />
 <br>
