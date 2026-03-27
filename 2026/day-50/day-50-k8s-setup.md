@@ -44,6 +44,8 @@ brew install docker --cask docker
 ## Step 3: Create Kubernetes Cluster
 
 [Kind-config](./kind-config.yml)
+[screenshot](./.png)
+
 <hr>
 
 
@@ -53,7 +55,7 @@ kubectl get nodes
 ### Task 5: Explore Your Cluster
 
 
-<img width="1280" height="800" alt="Screenshot 2026-03-27 at 11 17 59 PM" src="https://github.com/user-attachments/assets/458ddf23-935a-46ae-a356-b5bfaf687f50" />
+
 
 
 
