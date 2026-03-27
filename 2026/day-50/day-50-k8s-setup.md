@@ -1,14 +1,9 @@
 ## Day 50 – Kubernetes Architecture and Cluster Setup
 Challenge Tasks
 Task 1: Recall the Kubernetes Story
-Before touching a terminal, write down from memory:
+<p>
+Kubernetes was created to manage containers at scale. Docker can run containers on a single machine, but when applications grow and need to run across multiple servers, Docker alone is not enough. Kubernetes solves this by automating deployment, scaling, networking, and management of containers.</p>
 
-Why was Kubernetes created? What problem does it solve that Docker alone cannot?
-Who created Kubernetes and what was it inspired by?
-What does the name "Kubernetes" mean?
-Do not look anything up yet. Write what you remember from the session, then verify against the official docs.
-<hr>
-Kubernetes was created to manage containers at scale. Docker can run containers on a single machine, but when applications grow and need to run across multiple servers, Docker alone is not enough. Kubernetes solves this by automating deployment, scaling, networking, and management of containers.
 <hr>
 ## Task2:  Kubernetes Architecture
 Kubernetes consists of two main components:
@@ -38,10 +33,35 @@ Worker Node
 <li>Steps for Setting up</li>
 </ul>
 
-<ul> Install Kind </ul>
-curl -Lo ./kind https://kind.sigs.k8s.io/dl/latest/kind-linux-amd64
-chmod +x ./kind
-sudo mv ./kind /usr/local/bin/kind
+### Task 3: Install kubectl
+# macOS
+brew install kubectl
+brew install docker --cask docker
+
+<img width="1280" height="800" alt="Screenshot 2026-03-27 at 10 50 29 PM" src="https://github.com/user-attachments/assets/4a830a2c-f05c-473e-9b3d-69892d6ef209" />
+<br>
+### Step 3: Create Kubernetes Cluster
+kind create cluster --name 90dayofdevops-cluster
+
+<img width="1280" height="800" alt="Screenshot 2026-03-27 at 11 02 42 PM 2" src="https://github.com/user-attachments/assets/6900353c-2615-43d2-9105-2d8eb0d3a554" />
+<br>
+### Step 4: Verify Cluster
+kubectl get nodes
+### Task 5: Explore Your Cluster
+kubectl cluster-info
+Kubernetes control plane is running at https://127.0.0.1:51123
+CoreDNS is running at https://127.0.0.1:51123/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+
+
+
+
+
+
+
+
+
 
 
 
