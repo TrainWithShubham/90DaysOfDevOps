@@ -57,7 +57,7 @@ kubectl get nodes
 ### Task 5: Explore Your Cluster
 # See cluster info
 kubectl cluster-info
-
+📄 View Screenshot: [Cluster Output](./screenshot/cluster-info.pdf)
 # List all nodes
 kubectl get nodes
 
@@ -71,12 +71,11 @@ kubectl get namespaces
 
 kubectl get pods -A
 
-[screenshot](screenshot/cluster.pdf)
 Look at the pods running in the kube-system namespace:
 
 kubectl get pods -n kube-system
 
-[screenshot](screenshot/explorepod.pdf)
+📄 View Screenshot: [Cluster Output](./screenshot/kube-system.pdf)
 
 <hr>
 #90DaysOfDevOps #DevOpsKaJosh #TrainWithShubham
