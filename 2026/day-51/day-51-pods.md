@@ -4,4 +4,27 @@
 Create a file called nginx-pod.yaml:
 📄 View Screenshot: [Nginx file](nginx-pod.yml)
 
+kubectl apply -f nginx-pod.yaml
+##### Verify:
+
+kubectl get pods
+kubectl get pods -o wide
+Wait until the STATUS shows Running. Then explore:
+
+#### Detailed info about the pod
+kubectl describe pod nginx-pod
+
+#### Read the logs
+kubectl logs nginx-pod
+
+##### Get a shell inside the container
+kubectl exec -it nginx-pod -- /bin/bash
+
+#### Inside the container, run:
+curl localhost:80
+exit
+📄 View Screenshot: [Nginx file](nginx-status.pdf)
+
+
+
 
