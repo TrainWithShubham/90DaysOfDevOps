@@ -45,10 +45,8 @@ brew install docker --cask docker
 
 [Kind-config](./kind-config.yml)
 
-<ul> [screenshot](./clusterifo)
+[screenshot](./cluster.png)
  
- </ul>
-
 <hr>
 
 
