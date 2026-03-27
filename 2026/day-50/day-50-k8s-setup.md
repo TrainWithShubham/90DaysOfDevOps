@@ -23,6 +23,16 @@ Kubernetes consists of two main components:
 <hr>
 <img width="1200" height="400" alt="image" src="https://github.com/user-attachments/assets/947f8231-28bc-467a-b71c-51e6a1c151ed" />
 
+Worker Node
+Kubelet – Manages containers
+Container Runtime – Runs containers
+Kube Proxy – Handles networking
+<hr>
+### Cluster Setup
+Tool Used
+Kind (Kubernetes IN Docker)
+Steps
+
 
 
 
