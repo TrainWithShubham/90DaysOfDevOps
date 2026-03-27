@@ -54,7 +54,22 @@ brew install docker --cask docker
 ### Step 4: Verify Cluster
 kubectl get nodes
 ### Task 5: Explore Your Cluster
+# See cluster info
+kubectl cluster-info
 
+# List all nodes
+kubectl get nodes
+
+# Get detailed info about your node
+kubectl describe node <node-name>
+
+# List all namespaces
+kubectl get namespaces
+
+# See ALL pods running in the cluster (across all namespaces)
+kubectl get pods -A
+
+[screenshot](screenshot/cluster.pdf)
 
 
 
