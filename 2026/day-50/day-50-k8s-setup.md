@@ -25,16 +25,20 @@ Kubernetes consists of two main components:
 </li>
 <li>
 Worker Node
-Kubelet – Manages containers
-Container Runtime – Runs containers
-Kube Proxy – Handles networking
-</li>
+| Component             | Description                                              | Key Responsibility                                                                     |
+| --------------------- | -------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| **Kubelet**           | Agent running on each worker node                        | Ensures containers (pods) are running as expected and communicates with the API server |
+| **Container Runtime** | Software that runs containers (e.g., containerd, Docker) | Pulls images and runs containers inside pods                                           |
+| **Kube Proxy**        | Network component on each node                           | Manages networking rules and enables communication between services and pods           |
+
 <hr>
-### Cluster Setup
-Tool Used
-Kind (Kubernetes IN Docker)
-Steps for Setting up
-Install Kind
+ ## Cluster Setup
+<ul>Tool Used
+<li>Kind (Kubernetes IN Docker)</li>
+<li>Steps for Setting up</li>
+</ul>
+
+<ul> Install Kind </ul>
 curl -Lo ./kind https://kind.sigs.k8s.io/dl/latest/kind-linux-amd64
 chmod +x ./kind
 sudo mv ./kind /usr/local/bin/kind
