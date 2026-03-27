@@ -46,7 +46,7 @@ brew install docker --cask docker
 [Kind-config](./kind-config.yml)
 <hr>
 
-<img width="1280" height="800" alt="Screenshot 2026-03-27 at 11 02 42 PM 2" src="https://github.com/user-attachments/assets/6900353c-2615-43d2-9105-2d8eb0d3a554" />
+
 <br>
 ### Step 4: Verify Cluster
 kubectl get nodes
