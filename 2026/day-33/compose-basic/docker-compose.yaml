@@ -1,0 +1,7 @@
+name: nginx-service
+
+services:
+  nginx-app:
+    image: nginx:latest
+    ports:
+      - 8080:80
