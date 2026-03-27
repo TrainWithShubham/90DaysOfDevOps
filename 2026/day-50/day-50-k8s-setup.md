@@ -48,11 +48,9 @@ kind create cluster --name 90dayofdevops-cluster
 ### Step 4: Verify Cluster
 kubectl get nodes
 ### Task 5: Explore Your Cluster
-kubectl cluster-info
-Kubernetes control plane is running at https://127.0.0.1:51123
-CoreDNS is running at https://127.0.0.1:51123/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
 
-To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+
+<img width="1280" height="800" alt="Screenshot 2026-03-27 at 11 17 59 PM" src="https://github.com/user-attachments/assets/458ddf23-935a-46ae-a356-b5bfaf687f50" />
 
 
 
