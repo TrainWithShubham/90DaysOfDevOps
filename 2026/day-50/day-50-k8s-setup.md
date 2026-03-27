@@ -28,6 +28,7 @@ Worker Node
 
 <hr>
  ## Cluster Setup
+📥 Download config: [kind-config.yml](./kind-config.yml)
 <ul>Tool Used
 <li>Kind (Kubernetes IN Docker)</li>
 <li>Steps for Setting up</li>
