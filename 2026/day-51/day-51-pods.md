@@ -25,6 +25,15 @@ curl localhost:80
 exit
 📄 View Screenshot: [Nginx file](nginx-status.pdf)
 
+### Task 2: Create a Custom Pod (BusyBox)
+Write a new manifest busybox-pod.yaml from scratch (do not copy-paste the nginx one):
+ [Nginx file](busyboxpod.yml)
+ 
+kubectl apply -f busybox-pod.yaml
+kubectl get pods
+kubectl logs busybox-pod
+
+
 
 
 
