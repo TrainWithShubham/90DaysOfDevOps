@@ -13,9 +13,6 @@ The Metrics Server is a cluster-wide aggregator of resource usage data. It colle
 ## Installation
 
 ~~~bash
-# Minikube
-minikube addons enable metrics-server
-
 # Kind / kubeadm (may need --kubelet-insecure-tls flag on local clusters)
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
 
