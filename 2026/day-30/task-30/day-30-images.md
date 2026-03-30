@@ -79,7 +79,7 @@ Docker uses layers to enable caching, reduce storage usage, speed up builds, and
 Running a container in detached mode allows it to run in the background. Logs can be viewed using docker logs, and real-time logs with the -f flag. The docker exec command is used to interact with a running container or execute commands inside it. The docker inspect command provides detailed metadata including IP address, port mappings, and mounted volumes.
 ```
 ## ask 5: Cleanup
-1. 1. Stop All Running Containers (One Command) - `docker stop $(docker ps -q)`
+1. Stop All Running Containers (One Command) - `docker stop $(docker ps -q)`
 - docker ps -q → gets IDs of running containers
 - docker stop → stops all of them
 2. Remove All Stopped Containers - `docker container prune`
@@ -87,6 +87,7 @@ Running a container in detached mode allows it to run in the background. Logs ca
 3. Remove Unused Images - `docker image prune`
 - Remove ALL unused images (more aggressive): `docker image prune -a`
 4. Check Docker Disk Usage - `docker system df`
+
 ![dockerdf](image-2.png)
 
 
