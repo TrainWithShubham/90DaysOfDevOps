@@ -1,0 +1,57 @@
+# ----------- Builder Stage -----------
+FROM golang:1.22.3-alpine3.19 AS builder
+
+# Metadata (optional in builder)
+LABEL stage=builder
+
+WORKDIR /build
+
+# Install build dependencies
+RUN apk add --no-cache git
+
+# Enable static build
+ENV CGO_ENABLED=0 GOOS=linux GOARCH=amd64
+
+# Cache dependencies
+# COPY go.mod go.sum ./
+COPY go.mod ./
+
+RUN go mod download
+
+# Copy source
+COPY . .
+
+# Build optimized binary
+RUN go build -ldflags="-s -w" -o app
+
+# ----------- Final Stage -----------
+# 1. Use ultra-minimal base image
+FROM alpine:3.19
+
+# Alternative (even smaller, but stricter):
+# FROM scratch
+
+# 2. Metadata
+LABEL maintainer="SUMIT" \
+      version="1.0" \
+      description="Go app - production optimized"
+
+# 3. Create non-root user
+RUN addgroup -S gogrp && adduser -S gousr -G gogrp
+
+WORKDIR /app
+
+# 4. Copy only binary (no source, no compiler)
+COPY --from=builder /build/app .
+
+# 5. Ownership
+RUN chown gousr:gogrp /app/app
+
+# 6. Switch user
+USER gousr
+
+# 7. Expose port
+EXPOSE 8080
+
+# 8. Run
+CMD ["./app"]

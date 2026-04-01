@@ -1,0 +1,39 @@
+# ----------- Builder Stage -----------
+FROM maven:3.9.9-eclipse-temurin-17 AS builder
+
+WORKDIR /build
+
+# Cache dependencies
+COPY pom.xml .
+RUN mvn -B -q -e -DskipTests dependency:go-offline
+
+# Copy source
+COPY src ./src
+
+# Build artifact
+RUN mvn -B -q -DskipTests package
+
+# ----------- Runtime Stage -----------
+FROM eclipse-temurin:17.0.10_7-jre-jammy
+
+LABEL maintainer="yourname@example.com" \
+      version="1.0" \
+      description="Book API - multi-stage optimized"
+
+ENV JAVA_OPTS="-XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0"
+
+# Create non-root user
+RUN useradd -m javausr
+
+WORKDIR /app
+
+# Copy only jar
+COPY --from=builder /build/target/book-api-1.0.0.jar app.jar
+
+RUN chown javausr:javausr /app/app.jar
+
+USER javausr
+
+EXPOSE 8080
+
+ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar app.jar"]

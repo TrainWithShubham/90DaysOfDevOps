@@ -1,0 +1,15 @@
+.git
+.gitignore
+
+bin/
+build/
+dist/
+
+*.log
+*.test
+
+Dockerfile*
+docker-compose*
+
+.vscode/
+.idea/
