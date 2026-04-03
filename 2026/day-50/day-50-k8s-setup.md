@@ -12,3 +12,7 @@ What does the name "Kubernetes" mean?
 kubernes mean the "helmsman" or "pilot" 
 
 ============================================
+<img width="1128" height="601" alt="Screenshot 2026-04-03 at 3 04 08 PM" src="https://github.com/user-attachments/assets/f4ca6d48-1488-455d-999a-d8034b99e2ac" />
+
+
+=============================================
