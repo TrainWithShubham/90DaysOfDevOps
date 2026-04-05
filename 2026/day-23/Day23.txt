@@ -1,0 +1,74 @@
+Ques 1
+What is a branch in Git?
+
+A branch in Git is:
+
+A lightweight pointer to a specific commit.
+
+It represents an independent line of development.
+
+When you create a branch, Git does NOT copy files.
+It simply creates a new pointer to the current commit.
+
+Ques 2
+what is Head in Git
+Head is a pointer to the currently checkout out branch or commit 
+
+
+ques 3
+why do we use branches instead putting everything in mainly
+to fix bugs without breaking the production, to devleop features safely
+
+ques 4 
+What happens to your files when you switch branches?    
+it updates your wrking directory
+
+Task 2: Branching Commands — Hands-On
+In your devops-git-practice repo, perform the following:
+
+List all branches in your repo --- git branch
+Create a new branch called feature-1 ---- git barnch feature-1
+Switch to feature-1   ----> git checkout feature-1
+Create a new branch and switch to it in a single command — call it feature-2 ----> git checkout -b feature-1
+Try using git switch to move between branches — how is it different from git checkout? ----> git switch master
+Make a commit on feature-1 that does not exist on main ---> git checkout feature-1 add or edit the file and git add . and commit it using git commit -m "description"
+Switch back to main — verify that the commit from feature-1 is not there  ---> git checkout main , git log 
+Delete a branch you no longer need --- git branch -d feature-login
+Add all branching commands to your git-commands.md
+
+
+
+Task 3: Push to GitHub
+Create a new repository on GitHub (do NOT initialize it with a README)
+Connect your local devops-git-practice repo to the GitHub remote ----> git remote add origin https://github.com/your-username/devops-git-practice.git
+Push your main branch to GitHub--->git push origin main
+Push feature-1 branch to GitHub----> git push origin feature-1
+Verify both branches are visible on GitHub
+Answer in your notes: What is the difference between origin and upstream?
+
+origin is the default name of your remote repo
+upstream refers to the original repo you have forked from 
+used to sync updates from original repo
+
+
+ask 4: Pull from GitHub
+Make a change to a file directly on GitHub (use the GitHub editor)
+Pull that change to your local repo ---> git fetch origin main , git pull origin main
+Answer in your notes: What is the difference between git fetch and git pull?
+git fetch 
+downloads new changes from remote and donot merge them
+git pull 
+git fetch + git merge combined
+Downloads and merge automatically
+ 
+
+
+ Clone Vs forked
+ clones means it copies a repo to your local machine
+ it doesn't create new repo
+ Used to download and work locally
+
+ Fork
+Creates a copy of someone else's repository under your GitHub account.
+Happens on GitHub (not locally).
+Used to contribute without direct access to original repo.

@@ -1,0 +1,37 @@
+Task 1 — Create Files
+touch devops.txt
+
+echo "My DevOps notes" > notes.txt
+
+vim script.sh
+
+Task 2 — Read Files
+cat notes.txt
+
+vim -R script.sh
+
+head -n 5 /etc/passwd
+
+tail -n 5 /etc/passwd
+
+
+Task 3 — Check Current Permissions
+ls -l devops.txt notes.txt script.sh
+
+
+Task 4 — Modify Permissions
+Make script executable
+chmod +x script.sh
+./script.sh
+Make devops.txt read-only
+chmod a-w devops.txt
+Set notes.txt to 640
+chmod 640 notes.txt
+Create directory project with 755
+mkdir project
+chmod 755 project
+
+Verify:
+
+ls -l
+ls -ld project

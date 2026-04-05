@@ -1,0 +1,354 @@
+# Git Merge Hands-On Task
+
+## Task 1: Git Merge Practice
+
+---
+
+# Step 1: Create Branch feature-login
+
+Switch to main branch
+
+git checkout main
+
+Create new branch
+
+git checkout -b feature-login
+
+Add changes
+
+echo "Login feature started" >> app.txt
+
+Stage changes
+
+git add .
+
+Commit changes
+
+git commit -m "Add login feature step 1"
+
+Add another change
+
+echo "Login validation added" >> app.txt
+
+git add .
+
+git commit -m "Add login validation"
+
+---
+
+# Step 2: Merge feature-login into main
+
+Switch back to main
+
+git checkout main
+
+Merge the branch
+
+git merge feature-login
+
+Result:
+
+Git performs a **Fast-Forward Merge** because main had no new commits after the branch was created.
+
+Example History
+
+A --- B (main)
+
+feature-login adds commits
+
+A --- B --- C --- D (feature-login)
+
+After merge
+
+A --- B --- C --- D (main)
+
+No merge commit is created.
+
+---
+
+# Step 3: Create another branch feature-signup
+
+git checkout -b feature-signup
+
+Add change
+
+echo "Signup page added" >> app.txt
+
+git add .
+
+git commit -m "Add signup page"
+
+---
+
+# Step 4: Add commit to main before merging
+
+Switch to main
+
+git checkout main
+
+Add new change
+
+echo "Hotfix on main branch" >> app.txt
+
+git add .
+
+git commit -m "Hotfix on main"
+
+Now the histories of main and feature-signup are different.
+
+---
+
+# Step 5: Merge feature-signup into main
+
+git merge feature-signup
+
+Result:
+
+Git creates a **Merge Commit**.
+
+Example History
+
+A --- B --- C (main)
+
+D --- E (feature-signup)
+
+After merge
+
+A --- B --- C -------- F (main)
+\              /
+D ---- E ----
+
+F = Merge Commit
+
+---
+
+# Notes Answers
+
+## 1. What is a Fast-Forward Merge?
+
+Fast-forward merge happens when the target branch has no new commits and Git can simply move the branch pointer forward.
+
+Example
+
+main: A --- B
+
+feature: A --- B --- C --- D
+
+After merge
+
+main: A --- B --- C --- D
+
+No merge commit is created.
+
+---
+
+## 2. When does Git create a Merge Commit?
+
+Git creates a merge commit when both branches have different commits and their histories have diverged.
+
+Example
+
+main: A --- B --- C
+
+feature: A --- B --- D
+
+After merge
+
+A --- B --- C -------- E
+\              /
+D ------------
+
+E = merge commit
+
+---
+
+## 3. What is a Merge Conflict?
+
+A merge conflict occurs when two branches modify the same line in the same file and Git cannot decide which change to keep.
+
+Example conflict
+
+<<<<<<< HEAD
+Login button color = blue
+=========================
+
+Login button color = red
+
+> > > > > > > feature-login
+
+To resolve the conflict:
+
+1. Edit the file and choose the correct code
+2. Remove the conflict markers
+3. Run
+
+git add .
+
+git commit -m "Resolve merge conflict"
+
+---
+
+# Important Git Commands Used
+
+git checkout main
+git checkout -b branch-name
+git add .
+git commit -m "message"
+git merge branch-name
+
+---
+
+
+1. What does squash merging do?
+
+Squash merge:
+
+Combines multiple commits from a branch
+
+Creates one single commit in the target branch
+
+Keeps history clean
+
+Example
+
+Feature branch
+
+A --- B --- C --- D --- E
+
+After squash merge
+
+A --- F
+
+F contains all changes from B, C, D, and E.
+
+2. When would you use squash merge vs regular merge?
+
+Use Squash Merge When:
+
+Feature branch has many small commits
+
+Commits are messy (typos, formatting fixes)
+
+You want clean project history
+
+Common in GitHub Pull Requests
+
+Example
+
+"Complete user profile feature"
+
+instead of 10 small commits.
+
+Use Regular Merge When:
+
+You want to preserve commit history
+
+Working in large team
+
+Each commit has meaningful change
+
+Debugging history later is important
+
+Example
+
+Tracking every step of development.
+
+3. What is the trade-off of squashing?
+
+Advantages
+
+Cleaner history
+
+Easier to read git log
+
+Single commit per feature
+
+Disadvantages
+
+Individual commit history is lost
+
+Harder to debug step-by-step changes
+
+Cannot see detailed development process
+
+Example
+
+Instead of seeing
+
+Fix bug
+Update UI
+Add validation
+
+You only see
+
+Add complete profile feature
+
+What does cherry-pick do?
+
+Cherry-pick allows you to apply a specific commit from one branch to another branch.
+
+Instead of merging the whole branch, Git copies only the chosen commit.
+
+Example
+
+Feature branch
+
+A --- B --- C --- D
+
+Cherry-pick commit C
+
+Main branch becomes
+
+A --- C'
+
+C' = copied commit
+
+2. When would you use cherry-pick in a real project?
+
+Cherry-pick is useful when you need only a specific fix or feature.
+
+Common real-world scenarios
+
+Production Hotfix
+
+A bug fix is committed in a development branch, but production needs the fix immediately.
+
+Instead of merging the entire branch, you cherry-pick only that commit.
+
+Selective Feature Transfer
+
+A commit from one feature branch is useful for another branch.
+
+Backporting Fixes
+
+A fix in a new version needs to be applied to an older release branch.
+
+Example
+
+release-v1.0
+release-v2.0
+
+You cherry-pick the bug fix from v2.0 to v1.0.
+
+3. What can go wrong with cherry-picking?
+
+Possible problems
+
+Duplicate Commits
+
+Cherry-pick creates new commit IDs, so the same change may appear multiple times.
+
+Merge Conflicts
+
+If the code in the target branch is different, cherry-pick may create conflicts that need manual resolution.
+
+Harder History Tracking
+
+Repeated cherry-picking can make the Git history confusing.
+
+Important Git Commands
+
+git checkout branch-name
+git cherry-pick commit-hash
+git log --oneline --graph
+git cherry-pick --abort (cancel cherry-pick if conflict happens)

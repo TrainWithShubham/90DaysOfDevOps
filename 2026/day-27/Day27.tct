@@ -1,0 +1,187 @@
+# Day 27 – GitHub Profile Makeover Notes
+
+## Task 1: Audit My Current GitHub Profile
+
+After reviewing my GitHub profile as a recruiter might see it:
+
+* **Profile Picture:** Professional profile picture added.
+* **Bio:** Updated bio to describe that I am learning DevOps and working on the **90 Days of DevOps challenge**.
+* **Pinned Repositories:** Updated pinned repos to highlight my best learning projects instead of random repositories.
+* **Repository Descriptions:** Added short descriptions to repositories that previously had none.
+* **Overall Impression:** Now a recruiter can clearly understand what I am learning and what projects I have worked on.
+
+---
+
+# Task 2: Profile README
+
+Created a **special repository with my GitHub username** and added a `README.md` that appears on my profile.
+
+### Contents of my Profile README
+
+**Introduction**
+
+Hi, I'm a DevOps learner currently working through the **90 Days of DevOps challenge** to build real-world skills.
+
+**Currently Learning**
+
+* Linux
+* Git & GitHub
+* Shell Scripting
+* Python for Automation
+* DevOps fundamentals
+
+**Current Project**
+
+* 90 Days of DevOps learning journey
+
+**Key Repositories**
+
+* 90-days-of-devops
+* shell-scripts
+* python-scripts
+* devops-notes
+
+**Contact**
+
+* LinkedIn
+* Email
+
+---
+
+# Task 3: Organize Repositories
+
+Created or organized the following repositories:
+
+## 1. 90-days-of-devops
+
+Purpose: Track daily progress of the DevOps challenge.
+
+Structure example
+
+2026/
+day-01
+day-02
+day-03
+...
+
+README includes:
+
+* Challenge explanation
+* Folder structure
+* Daily submissions
+
+---
+
+## 2. shell-scripts
+
+Contains shell scripting work from Days 16–21.
+
+Example scripts
+
+backup.sh
+system-info.sh
+disk-check.sh
+
+README explains what each script does.
+
+---
+
+## 3. python-scripts
+
+Contains Python scripts created during learning.
+
+Examples
+
+file-organizer.py
+log-analyzer.py
+api-script.py
+
+README lists each script and purpose.
+
+---
+
+## 4. devops-notes
+
+Contains all learning notes and references.
+
+Structure
+
+linux/
+git/
+python/
+cheatsheets/
+
+Includes:
+
+* shell scripting cheat sheet
+* git-commands.md
+* learning notes
+
+---
+
+# Task 4: Pinned Repositories
+
+Pinned 6 repositories on my GitHub profile:
+
+1. 90-days-of-devops
+2. shell-scripts
+3. python-scripts
+4. devops-notes
+5. one practice project
+6. another useful learning project
+
+Each pinned repo now includes:
+
+* description
+* README
+* proper naming
+
+---
+
+# Task 5: Clean Up
+
+Performed cleanup tasks:
+
+* Deleted empty or unused repositories
+* Renamed unclear repository names
+* Checked for sensitive data such as API keys or `.env` files
+* Added `.gitignore` where necessary
+
+---
+
+# Task 6: Before & After
+
+Screenshots added:
+
+Before: GitHub profile before cleanup
+After: Updated GitHub profile with organized repositories and profile README
+
+(Images added to this folder)
+
+---
+
+# Improvements Made
+
+### 1. Better First Impression
+
+Added a profile README and bio so visitors immediately understand what I am learning and working on.
+
+### 2. Organized Repositories
+
+Created dedicated repositories for scripts, notes, and the DevOps challenge.
+
+### 3. Professional Presentation
+
+Pinned important repositories and added descriptions and READMEs to make the profile easier to explore.
+
+---
+
+# Result
+
+My GitHub profile now works as a **developer portfolio**, clearly showing:
+
+* my learning journey
+* my projects
+* my DevOps skills
+
+---

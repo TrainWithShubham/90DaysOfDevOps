@@ -1,0 +1,575 @@
+1. What is the difference between --soft, --mixed, and --hard?
+
+git reset --soft
+
+Moves HEAD to previous commit
+
+Changes remain staged
+
+Example
+
+A --- B --- C
+
+After
+
+git reset --soft HEAD~1
+
+A --- B
+
+Changes from C are ready to commit again.
+
+git reset --mixed (default)
+
+Moves HEAD to previous commit
+
+Changes remain in working directory
+
+Not staged
+
+Example
+
+A --- B
+
+Changes from C still exist but must be staged again.
+
+git reset --hard
+
+Moves HEAD to previous commit
+
+Deletes commit and working directory changes
+
+Example
+
+A --- B
+
+All changes from C are permanently removed.
+
+2. Which one is destructive and why?
+
+git reset --hard is destructive.
+
+Reason
+
+It deletes:
+
+commit history
+
+working directory changes
+
+These changes cannot be recovered easily.
+
+3. When would you use each one?
+
+Use --soft
+
+When you want to undo the last commit but keep the changes staged.
+
+Example
+
+Wrong commit message.
+
+Use --mixed
+
+When you want to undo a commit but re-edit the files before committing again.
+
+Example
+
+You forgot to modify something.
+
+Use --hard
+
+When you want to completely discard changes and commits.
+
+Example
+
+You want to clean the repository state.
+
+4. Should you ever use git reset on commits that are already pushed?
+
+Generally No.
+
+Reason
+
+Git reset rewrites history.
+
+If commits were already pushed:
+
+other developers will have different history
+
+it can break collaboration
+
+If absolutely necessary
+
+You must force push
+
+git push --force
+
+But this should be used very carefully.
+
+Important Commands
+
+git reset --soft HEAD~1
+git reset --mixed HEAD~1
+git reset --hard HEAD~1
+git log --oneline
+git status
+
+Summary
+
+git reset --soft
+Undo commit but keep staged changes
+
+git reset --mixed
+Undo commit and unstage changes
+
+git reset --hard
+Undo commit and delete changes completely
+
+
+1. How is git revert different from git reset?
+
+git reset
+
+Moves the branch pointer backward
+
+Removes commits from history
+
+Rewrites commit history
+
+Example
+
+Before reset
+
+A --- B --- C
+
+After reset
+
+A --- B
+
+Commit C disappears.
+
+git revert
+
+Does not remove commits
+
+Creates a new commit that reverses previous changes
+
+Example
+
+Before revert
+
+A --- B --- C
+
+After revert B
+
+A --- B --- C --- D
+
+D undoes changes from B.
+
+History stays intact.
+
+2. Why is revert considered safer than reset for shared branches?
+
+Revert is safer because
+
+It does not rewrite history
+
+Existing commits remain unchanged
+
+Other developers' repositories stay consistent
+
+Reset rewrites history, which can cause problems if the commits were already pushed.
+
+Example issue
+
+Developer A resets history and force pushes.
+
+Developer B already pulled the old commits.
+
+Now histories do not match.
+
+3. When would you use revert vs reset?
+
+Use git revert when
+
+Working with shared branches
+
+The commit is already pushed
+
+You want to undo a change safely
+
+Example
+
+Undo a bad commit in the main branch.
+
+Use git reset when
+
+Working locally
+
+The commit has not been pushed yet
+
+You want to modify or remove recent commits
+
+Example
+
+Fixing a commit message or combining commits.
+
+Important Commands
+
+git revert commit-hash
+git reset --soft HEAD~1
+git reset --mixed HEAD~1
+git reset --hard HEAD~1
+git log --oneline --graph
+
+Summary
+
+git revert
+
+Creates a new commit
+
+Safely undoes changes
+
+Best for shared repositories
+
+git reset
+
+Removes commits from history
+
+Rewrites history
+
+Best for local changes only
+
+
+# Task 3: Reset vs Revert — Summary
+
+|                                        | git reset                                                                                                                      | git revert                                                                                             |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| **What it does**                       | Moves the branch pointer (HEAD) backward to a previous commit and optionally removes changes from staging or working directory | Creates a new commit that **undoes the changes** from a specific previous commit                       |
+| **Removes commit from history?**       | Yes. It rewrites history and the removed commits disappear from the branch history                                             | No. The original commit stays in history, but a new commit reverses its changes                        |
+| **Safe for shared / pushed branches?** | No. It rewrites history and can break collaboration if others already pulled those commits                                     | Yes. It keeps history intact, so it is safe for shared repositories                                    |
+| **When to use**                        | When working locally and you want to undo or modify recent commits before pushing                                              | When a commit has already been pushed and you want to safely undo its effects without changing history |
+
+---
+
+# Quick Example
+
+### git reset
+
+Before reset
+
+A --- B --- C
+
+Command
+
+git reset --hard HEAD~1
+
+After reset
+
+A --- B
+
+Commit **C is removed** from history.
+
+---
+
+### git revert
+
+Before revert
+
+A --- B --- C
+
+Command
+
+git revert B
+
+After revert
+
+A --- B --- C --- D
+
+D = new commit that **undoes the changes from B**.
+
+---
+
+# Simple Rule to Remember
+
+If the commit is **not pushed yet → use reset**
+
+If the commit is **already pushed or shared → use revert**
+
+---
+1. Which strategy would you use for a startup shipping fast?
+
+GitHub Flow
+
+Reason:
+
+Simple workflow
+
+Fast development
+
+Works perfectly with CI/CD
+
+Ideal for rapid deployment
+
+2. Which strategy would you use for a large team with scheduled releases?
+
+GitFlow
+
+Reason:
+
+Structured workflow
+
+Separate release branches
+
+Better version control
+
+Easier maintenance of multiple versions
+
+3. Which one does your favorite open-source project use?
+
+Example: Linux Kernel
+
+The Linux kernel project uses a workflow similar to Trunk-Based Development with maintainers managing feature branches before merging into the mainline.
+
+Many GitHub projects also follow GitHub Flow.
+
+
+
+# Git Commands Reference (Days 22–25)
+
+A quick reference guide for commonly used Git commands.
+
+---
+
+# 1. Setup & Config
+
+Configure Git for the first time.
+
+Set username
+
+git config --global user.name "Your Name"
+
+Set email
+
+git config --global user.email "[your@email.com](mailto:your@email.com)"
+
+Check configuration
+
+git config --list
+
+Initialize a repository
+
+git init
+
+---
+
+# 2. Basic Workflow
+
+Check repository status
+
+git status
+
+Add file to staging area
+
+git add file.txt
+
+Add all files
+
+git add .
+
+Commit changes
+
+git commit -m "Commit message"
+
+View commit history
+
+git log
+
+Compact history
+
+git log --oneline
+
+View differences in files
+
+git diff
+
+---
+
+# 3. Branching
+
+Create new branch
+
+git branch branch-name
+
+Switch branch
+
+git checkout branch-name
+
+Create and switch branch
+
+git checkout -b branch-name
+
+Modern command
+
+git switch branch-name
+
+Create and switch
+
+git switch -c branch-name
+
+List branches
+
+git branch
+
+Delete branch
+
+git branch -d branch-name
+
+---
+
+# 4. Remote Repository
+
+Clone repository
+
+git clone repository-url
+
+Add remote repository
+
+git remote add origin repository-url
+
+Push changes
+
+git push origin main
+
+Pull latest changes
+
+git pull origin main
+
+Fetch updates without merging
+
+git fetch origin
+
+Check remote repositories
+
+git remote -v
+
+Fork repository (done on GitHub UI)
+
+Then clone your fork locally
+
+git clone fork-url
+
+---
+
+# 5. Merging & Rebasing
+
+Merge branch
+
+git merge branch-name
+
+Example
+
+git checkout main
+git merge feature-branch
+
+Rebase branch
+
+git rebase main
+
+Abort rebase
+
+git rebase --abort
+
+View commit graph
+
+git log --oneline --graph --all
+
+Squash merge
+
+git merge --squash branch-name
+
+---
+
+# 6. Stash & Cherry Pick
+
+Save temporary work
+
+git stash
+
+List stashes
+
+git stash list
+
+Apply stash
+
+git stash apply
+
+Apply and remove stash
+
+git stash pop
+
+Delete stash
+
+git stash drop stash@{0}
+
+Cherry pick commit
+
+git cherry-pick commit-hash
+
+Abort cherry pick
+
+git cherry-pick --abort
+
+---
+
+# 7. Reset & Revert
+
+Reset commit but keep staged changes
+
+git reset --soft HEAD~1
+
+Reset commit and unstage changes
+
+git reset --mixed HEAD~1
+
+Reset commit and delete changes
+
+git reset --hard HEAD~1
+
+Revert commit safely
+
+git revert commit-hash
+
+---
+
+# Quick Summary Table
+
+| Command         | Purpose                 |
+| --------------- | ----------------------- |
+| git init        | Initialize repository   |
+| git add         | Stage changes           |
+| git commit      | Save changes            |
+| git status      | Check repository status |
+| git log         | View commit history     |
+| git branch      | Manage branches         |
+| git merge       | Combine branches        |
+| git rebase      | Reapply commits         |
+| git stash       | Temporarily save work   |
+| git cherry-pick | Apply specific commit   |
+| git reset       | Undo commits            |
+| git revert      | Safely undo commits     |
+
+---
+
+# Final Tip
+
+A typical Git workflow used in projects:
+
+git checkout -b feature-login
+git add .
+git commit -m "Add login feature"
+git push origin feature-login
+
+Create Pull Request → Code Review → Merge into main.
+
+---

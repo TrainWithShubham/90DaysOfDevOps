@@ -1,0 +1,342 @@
+# Task 1: Install and Authenticate GitHub CLI (Short Notes)
+
+## 1. Install GitHub CLI
+
+Windows
+
+sudo apt-get install gh
+Check installation
+
+gh --version
+
+---
+
+## 2. Authenticate with GitHub
+
+Run login command
+
+gh auth login
+
+Steps:
+
+1. Choose **GitHub.com**
+2. Select **HTTPS**
+3. Login via **browser**
+4. Authorize GitHub CLI
+
+---
+
+## 3. Verify Login
+
+Check login status
+
+gh auth status
+
+This shows which GitHub account is active.
+
+---
+
+## Answer: What authentication methods does `gh` support?
+
+GitHub CLI supports:
+
+1. **Browser Login** (recommended)
+2. **Personal Access Token (PAT)**
+3. **SSH Authentication**
+4. **GitHub Enterprise login**
+
+---
+
+
+# Task 2: Working with Repositories using GitHub CLI (Short Notes)
+
+## 1. Create a New GitHub Repository
+
+Create a public repo with README
+
+gh repo create my-test-repo --public --clone --add-readme
+
+---
+
+## 2. Clone a Repository using gh
+
+gh repo clone username/repository-name
+
+Example
+
+gh repo clone username/my-project
+
+---
+
+## 3. View Repository Details
+
+gh repo view repository-name
+
+Example
+
+gh repo view my-test-repo
+
+---
+
+## 4. List All Your Repositories
+
+gh repo list
+
+---
+
+## 5. Open Repository in Browser
+
+gh repo view --web
+
+This opens the repo directly in your browser.
+
+---
+
+## 6. Delete the Test Repository
+
+gh repo delete my-test-repo
+
+GitHub CLI will ask for confirmation before deleting.
+
+---
+
+# Useful Commands Summary
+
+gh repo create repo-name --public --add-readme
+gh repo clone username/repo-name
+gh repo view repo-name
+gh repo list
+gh repo view --web
+gh repo delete repo-name
+
+---
+
+# GitHub CLI Tasks (Issues, PRs, Actions, Useful Commands)
+
+---
+
+# Task 3: Issues
+
+## 1. Create an Issue
+
+gh issue create --title "Bug in login page" --body "Login button not working" --label bug
+
+---
+
+## 2. List All Open Issues
+
+gh issue list
+
+---
+
+## 3. View a Specific Issue
+
+gh issue view 1
+
+(1 = issue number)
+
+---
+
+## 4. Close an Issue
+
+gh issue close 1
+
+---
+
+## Answer: How could you use `gh issue` in automation?
+
+`gh issue` can be used in scripts to:
+
+* Automatically create issues when a build fails
+* Track bugs found during CI/CD testing
+* Generate issues from monitoring alerts
+* Manage project tasks automatically
+
+Example
+
+A CI pipeline could create an issue if tests fail.
+
+---
+
+# Task 4: Pull Requests
+
+## 1. Create Branch and PR from Terminal
+
+Create branch
+
+git checkout -b feature-update
+
+Make changes and commit
+
+git add .
+git commit -m "Update feature"
+
+Push branch
+
+git push origin feature-update
+
+Create pull request
+
+gh pr create --title "Update feature" --body "Added improvements"
+
+---
+
+## 2. List Open Pull Requests
+
+gh pr list
+
+---
+
+## 3. View PR Details
+
+gh pr view 1
+
+Shows
+
+* status
+* reviewers
+* checks
+* commits
+
+---
+
+## 4. Merge Pull Request
+
+gh pr merge 1
+
+---
+
+## Answer: What merge methods does `gh pr merge` support?
+
+* **Merge commit**
+* **Squash merge**
+* **Rebase merge**
+
+Examples
+
+gh pr merge --merge
+gh pr merge --squash
+gh pr merge --rebase
+
+---
+
+## Answer: How to Review Someone's PR using gh?
+
+Commands
+
+gh pr checkout 2
+gh pr view 2
+gh pr diff 2
+
+You can:
+
+* read code changes
+* test locally
+* leave comments on GitHub
+
+---
+
+# Task 5: GitHub Actions (Preview)
+
+## 1. List Workflow Runs
+
+gh run list
+
+---
+
+## 2. View Workflow Run Status
+
+gh run view RUN_ID
+
+Example
+
+gh run view 123456
+
+---
+
+## Answer: How `gh run` and `gh workflow` help CI/CD?
+
+They allow developers to:
+
+* monitor CI/CD pipelines from terminal
+* check build status quickly
+* rerun failed workflows
+* debug deployment issues
+
+Example
+
+gh run rerun RUN_ID
+
+---
+
+# Task 6: Useful gh Tricks
+
+## 1. GitHub API
+
+gh api repos/owner/repo
+
+Used to interact directly with GitHub API.
+
+---
+
+## 2. GitHub Gists
+
+Create gist
+
+gh gist create file.txt
+
+List gists
+
+gh gist list
+
+---
+
+## 3. GitHub Releases
+
+Create release
+
+gh release create v1.0
+
+List releases
+
+gh release list
+
+---
+
+## 4. Create Command Aliases
+
+Example alias
+
+gh alias set co "pr checkout"
+
+Now run
+
+gh co 1
+
+---
+
+## 5. Search GitHub Repositories
+
+gh search repos devops
+
+Search repos directly from terminal.
+
+---
+
+# Summary
+
+Useful GitHub CLI commands
+
+gh issue create
+gh issue list
+gh pr create
+gh pr list
+gh pr merge
+gh run list
+gh api
+gh gist
+gh release
+gh alias
+
+---
+

@@ -1,0 +1,344 @@
+Document the following with short descriptions and examples:
+1. Shebang (`#!/bin/bash`) — what it does and why it matters
+ it first lines in script.
+ it tells the system to use which interpreter should going to executes the script. 
+ if we didnot write shebang at the top of script then,
+ it may didnot able to know which interpreter to use it may use sh instead of bash and it tells the system kernel to run this is bash file
+2. Running a script — `chmod +x`, `./script.sh`, `bash script.sh`
+chmod +x ---> meaning of this command is your are changing the file executable permissions and gives the access to execute the script to every one that is user , group and others also
+./script.sh -----> . means current directory, / means inside the directory, script.sh file is there and tells the linux to execute this but before this you must the permissions of executing the file
+bach script.sh  -----> this command means inside current working directory a file name script.sh is there executes it and bash tells means it tells the os to run it as the bash script
+
+3. Comments — single line (`#`) and inline
+single line comments -----> comments in the script means interpreter will going to ignore that part of line comments syntax is # comments it mainly used for referencing purpose for example if you put comment before the particular comment and tell what that command is going to do then it will easy for to refernce it further
+inline comments : inline comments means in the command line you can put the comment like echo "hello" # print hello
+multiline line comment: you can put comments in multiple lines 
+<< comment // start of comment
+ hello bruhhh
+ what are you doing 
+ comment // end of comment
+4. Variables — declaring, using, and quoting (`$VAR`, `"$VAR"`, `'$VAR'`)
+variables are just like container for storing the different kind of values and further using it 
+
+declaring  a variable --> Name="Sahil"
+using it ---> echo "hello $Name"
+(`$VAR`, `"$VAR"`, `'$VAR'`) ---> $VAR is split the spaces like $VAR="Sahil Garg" becomes Sahil only , "$VAR" doesnot split the spaces variable printed as it is, $VAR="Sahil" `$VAR` in the single quotes var name treated as string literal only
+
+5. Reading user input — `read`
+we can read the input from the user while running and resue that entered thing further 
+read command is use to taking user inputs 
+read -p "Enter your Name " Name   ----> here read means takes the user and -p means prompting the message for user
+echo "hello "$Name" "
+6. Command-line arguments — `$0`, `$1`, `$#`, `$@`, `$?`
+$0 ----> it refers to names of the file 
+$1 ----> it refers to first arguments that is passed while executing the file
+$# ----> count the number of arguments passed with the file
+$@ ----> for displaying all the arguments that is passed by user and stores that all values in the list
+$? -----> exit status of last command 0 if last command executes succesfuly other wise it will return non zero values
+
+
+
+
+Task 2: Operators and Conditionals
+Document with examples:
+
+String comparisons — =, !=, -z, -n
+= ---> check if two string are equal
+!= --> string not equal
+-z ---> means string is empty
+-n ---> means string is not empty
+
+Integer comparisons — -eq, -ne, -lt, -gt, -le, -ge 
+-eq means equal to 
+-ne means not equal
+-lt means less then 
+-gt means greater then
+-le means less then equal to
+-ge means greater then equal to
+
+File test operators — -f, -d, -e, -r, -w, -x, -s
+-f ---> check for file exist 
+-d ---> check for directory exist or not
+-e ---> file exists of any type
+-r ---> Read permissions
+-w ---> write permission
+-x ---> executable permission
+-s ---> file not empty
+
+if, elif, else syntax 
+
+if <condition>; then
+    echo "condition true"
+fi
+if <condition>; then
+    echo "condition true"
+elif <condition2>:then
+    echo "condition 2 solve"
+else 
+    echo "default part if 1 and 2 conditions fail"
+fi
+Logical operators — &&, ||, !
+&& ---> Run second command only if first command succeeds
+|| ---> Run second command only if first command fails (non-zero exit code)
+! ---> Reverses condition.
+
+Case statements — case ... esac
+
+#!/bin/bash
+
+read -p "Enter environment: " env
+
+case "$env" in
+    dev)
+        echo "Development environment"
+        ;;
+    prod)
+        echo "Production environment"
+        ;;
+    *)
+        echo "Invalid environment"
+        ;;
+esac
+
+
+ask 3: Loops
+Document with examples:
+
+for loop — list-based and C-style
+for name in tokyo berlin nairobi
+do
+    echo "Hello $name"
+done
+for i in {1..5}
+do
+    echo "Number: $i"
+done
+for ((i=1; i<=5; i++))
+do
+    echo "Counter: $i"
+done
+while loop
+count=1
+while [ $count -le 5 ];
+do 
+     echo "Count : $count"
+     ((count++))
+done
+
+until loop
+count=1
+
+until [ $count -gt 5 ]
+do
+    echo "Count: $count"
+    ((count++))
+done
+
+Loop control — break, continue
+
+break ---> Exit loop imediatiely when condition got true
+continue ---> Skip current iteration when condition got true
+for i in {1..10}
+do 
+    if [ $i -eq 5]; then
+       break
+    fi
+    if [ $i -eq 3]; then
+       continue
+    fi
+       echo "$i"
+done
+
+Looping over files — for file in *.log
+for file in *.log
+do
+    echo "Processing $file"
+done
+Looping over command output — while read line
+
+
+
+
+Task 4: Functions
+Document with examples:
+
+Defining a function — function_name() { ... }
+greet() {
+    echo "Hello DevOps"
+}
+
+Calling a function
+greet
+
+
+Passing arguments to functions — $1, $2 inside functions
+greet() {
+    echo "Hello $1"
+}
+
+greet tokyo
+
+Return values — return vs echo
+returns the exit status only
+check_file(){
+    if [ -f "$1" ]; then
+        return 0
+    else 
+       return 1
+    fi
+}
+
+check_file 
+
+
+if [ $? -eq 0]; then
+  echo "file exists"
+fi
+
+echo ---->If you want to return actual data:
+get_name() {
+    echo "tokyo"
+}
+
+name=$(get_name)
+echo "$name"
+
+Local variables — local
+by default variables inside functions are global
+
+name="global"
+
+myfunc() {
+    name="changed"
+}
+
+myfunc
+echo "$name"
+
+output ---> changed
+
+if you want to prevent this use local by default
+
+
+Task 5: Text Processing Commands
+Document the most useful flags/patterns for each:
+
+grep — search patterns, -i, -r, -c, -n, -v, -E
+
+grep = global regular expression print
+grep "root" /etc/passwd
+shows lines containing root
+grep -i "error" file.Text ----->Finds "ERROR", "Error", "error"
+it search for case sensitive
+
+grep -r
+r means recursive search 
+grep -r "database" /var/www/  -----> Searches inside directory and subdirectories
+
+grep -c  ---> count matches
+grep -c "failed" log.txt ----> Shows number of matching lines
+
+grep -n ---> show line Numbers
+grep -n "nginx" log.txt  ---> Display matching line Numbers
+
+grep -v ----> Show invert matches
+grep -v "INFO" app.log ----> shows the lines that donot contain INFO
+
+
+awk — print columns, field separator, patterns, BEGIN/END
+awk process text line by line and splits each line into fields (columns)
+awk {' print $1'} file.txt  ---- print single columns 
+awk {' print $1 , $3'} file.txt  ---- print multiple columns 
+
+field separator
+By default → space
+To change separator, use -F
+awk -F ':' '{print $1, $7}' /etc/passwd
+
+patterns --> you can filter lines before printing
+awk '$1 == "root"' file.txt
+
+BEGIN and END Blocks
+
+Used to execute code:
+Before file processing → BEGIN
+After file processing → END
+awk '
+BEGIN { print "Start Processing" }
+{ print $1 }
+END { print "Done" }
+' file.txt
+
+sed — substitution, delete lines, in-place edit
+
+sed is Stream editor editor the file line by line without opening the file 
+substitution
+sed — substitution, delete lines, in-place edit
+s → substitute
+first / → separator
+old → pattern
+new → replacement
+
+Delete Lines --- Delete specific number of lines 
+sed '3d' file.txt ---> deletes the third number line
+
+cut — extract columns by delimiter
+sort — alphabetical, numerical, reverse, unique
+sort --> sorts lines of text
+sort file.txt   ----> alphabetical sort this is default
+sort -n numbers.txt----> numerical sort 
+sort -r file.txt ---> reverse order sort
+sort -u file.txt --->this is unique type of sort remove duplicates and sort
+
+uniq — deduplicate, count
+sort file.txt | uniq  ----> remove duplicates
+sort file.txt | uniq ---> count the occureances of uniqre 
+
+tr — translate/delete characters
+tr used to convert case and replaces delete
+echo "devops" | tr 'a-z' 'A-Z' ---> converts lower to upper
+echo "2025-01-01" | tr '-' '/'----> Replace Characters
+
+wc — line/word/char count
+wc -l file.txt ---> count the number of lines
+wc -w file.txt --> coun the number of word
+wc -c file.txt --> coun the characters of word
+head / tail — first/last N lines, follow mode
+head -n 5 file.txt ---> shows firt n lines
+tail file.txt ---> shows the last lines
+tail -f file.txt ---> used for live lgog monitiroing follow mode
+
+
+ask 6: Useful Patterns and One-Liners
+Include at least 5 real-world one-liners you find useful. Examples:
+
+Find and delete files older than N days
+find <path> -type f -mtime +7 -delete
+
+Count lines in all .log files
+cat *.log | wc -l
+Replace a string across multiple files
+find . -type f -exec sed -i 's/localhost/127.0.0.1/g' {} +
+Check if a service is running
+systemctl is-active --quiet nginx && echo "Runinng" || echo "stopped"
+
+Monitor disk usage with alerts
+df -h | awk '$5+0 > 80 {print "Warning : Disk usage is very high"}
+du -ah / | sort -rh | head -10
+
+Parse CSV or JSON from command line
+Tail a log and filter for errors in real time
+tail -f /var/log/syslog | grep -i "error"
+
+
+Task 7: Error Handling and Debugging
+Document with examples:
+
+Exit codes — $?, exit 0, exit 1
+$? ---> exit status of last executed command if last command succesfuly run then exit status will 0 and otherwise non value 
+
+set -e — exit on error ----> exits the script imediatiely if any commands fails 
+set -u — treat unset variables as error -----> exits the script if is there any unset variables
+set -o pipefail — catch errors in pipes ----> command1| command 2 exit if is there any eroor in first commnad
+set -x — debug mode (trace execution) --->It prints every command before executing it.
+Trap — trap 'cleanup' EXIT
