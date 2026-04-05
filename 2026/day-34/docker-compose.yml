@@ -1,0 +1,53 @@
+services:
+  python_app:
+    labels:
+      - com.myapp.name=python-app
+    build: .
+  
+    ports:
+      - "2000:2000"
+    networks:
+      - custom_network
+  mysql_db:
+    labels:
+      - com.myapp.name=mysql-db
+    image: mysql:latest
+    container_name: MySQL_cont
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: mydatabase
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
+    restart: on-failure
+    networks:
+      - custom_network
+  cache_app:
+    labels:
+      - com.myapp.name=cache-app
+    image: redis:latest
+    container_name: Redis_cont
+    ports:
+      - "6379:6379"
+    networks:
+      - custom_network
+
+networks:
+  custom_network:
+    name: my_network
+
+volumes:
+  mysql_data:
+    driver: local
+  redis_data:
+    driver: local
+  python_data:
+    driver: local
+  
