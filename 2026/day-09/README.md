@@ -121,7 +121,7 @@ Create `day-09-user-management.md`:
 **User can't access directory?**
 - Check group: `groups username`
 - Check permissions: `ls -ld /path`
-
+cd 
 ---
 
 ## Submission
