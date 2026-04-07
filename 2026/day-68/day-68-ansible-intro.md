@@ -3,7 +3,7 @@
 #### Task 1: Understand Ansible
 Research and write short notes on:
 
-What is configuration management? Why do we need it?
+Q1. What is configuration management? Why do we need it?
 Configuration Management is a systematic DevOps tools is to manage the server configuration, installing required packages for web servers to run for applications. Configuration Management is a way to ensure that your systems(servers,software and other os peripherical devices) always match a "desired state" or baseline. 
 
 Instead of installing & configuring packages manually in each system or nodes, we define the desired setup and apply it automatically using tools like Ansible, chef, puppet.
@@ -15,67 +15,37 @@ Without configuration management, complex IT environments quickly experience "co
 - Scalability: Automated tools (like Ansible, Puppet, or Terraform) allow teams to manage hundreds or thousands of servers with the same effort it takes to manage one.
 - Efficiency: Automation reduces repetitive manual tasks, freeing up staff to focus on innovation rather than "firefighting" configuration errors
 
+Q2. How is Ansible different from Chef, Puppet, and Salt?
+Ansible is different because of following reasons:
+- Ansible: If you want to get started quickly without managing agent software. It's excellent for "orchestration"—running tasks in a specific order across multiple machines.
+- Chef: Ideal for "development-centric" teams who are comfortable writing actual code (Ruby) to manage their infrastructure.
+- Puppet: The most "mature" choice for massive, heterogeneous environments where you need strict, declarative state management and detailed reporting.
+- SaltStack: Best for speed. It uses a high-performance messaging system (ZeroMQ) that can push changes to thousands of servers almost instantly.
+  
+Q3. What does "agentless" mean? How does Ansible connect to managed nodes?
 
-Ansible is different because it is agentless and easy to use, working over SSH with a simple YAML syntax. It uses a push model
-While Chef and Puppet mainly use a pull model and require agents.
-Salt supports both push and event-driven models but is more complex.
-Overall, Ansible is simpler and faster to set up, whereas Chef Puppetand Salt are more complex but offer advanced features.
-What does "agentless" mean? How does Ansible connect to managed nodes?
+In the context of configuration management, agentless means you do not need to install or maintain any proprietary software (agents) on the servers you want to manage. Instead of having a background service constantly running on the target machine, the management tool connect  it only when needed, performs its tasks, and then disconnects.
 
-Agentless means that no dedicated software (agent) needs to be installed or running on the managed nodes.
-The control system communicates with nodes directly when tasks need to be executed.
-In Ansible, the control node connects to managed nodes using standard remote protocols:
-SSH for Linux/Unix systems
-WinRM for Windows systems
-When a task is run, Ansible:
-Establishes a connection (SSH/WinRM)
-Transfers the required module/code temporarily
-Executes it on the node
-Removes it and disconnects
-This approach makes Ansible simple to set up, lightweight, and easier to maintain, since there are no agents to install or manage on each node.
-Describe the Ansible architecture:
+- How Ansible Connects:
+Ansible uses existing, standard communication protocols that are already built into most operating systems to manage nodes: 
 
-Control Node -- the machine where Ansible runs (your laptop or a jump server)
-Managed Nodes -- the servers Ansible configures (your EC2 instances)
-Inventory -- the list of managed nodes
-Modules -- units of work Ansible executes (install a package, copy a file, start a service)
-Playbooks -- YAML files that define what to do on which hosts
-Command Execution (Control Node)
+- For Linux/Unix Nodes (SSH): Ansible connects primarily via Secure Shell (SSH). By default, it assumes you are using SSH keys for passwordless authentication, though it can also use standard passwords with the --ask-pass flag.
+- For Windows Nodes (WinRM or SSH):
+WinRM: Traditionally, Ansible uses Windows Remote Management (WinRM), which communicates over HTTP/HTTPS.
+SSH: On modern Windows versions (Server 2019+ and Windows 10+), Ansible officially supports SSH as a faster and more secure alternative to WinRM.
 
-You run an Ansible command (ansible or ansible-playbook) from the Control Node.
-Only this machine needs Ansible installed.
-Read Inventory & Playbook
+- For Network Devices: Ansible can connect to routers and switches using standard protocols like SSH, NETCONF, or specific APIs provided by the manufacturer.
+  The Execution Process:
 
-Ansible:
-Reads the Inventory -> identifies Managed Nodes
-Parses the Playbook -> understands tasks and modules to execute
-Establish Connections
+  When you run a command or playbook, Ansible follows this "push-based" flow:
+- Connects: The control node initiates an SSH or WinRM connection to the target.
+- Transfers: It pushes small, temporary programs called modules (usually Python-based) to the remote machine.
+- Executes: The remote machine runs these modules locally.
+- Cleans Up: Once the task is finished, Ansible removes the temporary modules and closes the connection. 
 
-Ansible opens SSH connections to managed nodes in parallel
-Module Preparation & Transfer
+<hr>
 
-For each task:
-Ansible packages the required Module into a temporary script
-Uploads it to /tmp on the remote server
-Remote Execution
 
-The script runs on the Managed Node using its Python interpreter
-No agent required (agentless)
-Result Return
-
-The module:
-Sends back a JSON result ( ok, changed, failed, skipped)
-Deletes itself from /tmp after execution
-Final Summary
-
-Ansible collects results from all nodes and shows a clear summary on control node
-Analogy: The Delivery Driver
-
-Think of Ansible like a delivery driver.
-The driver (Ansible) picks up packages (modules) from the warehouse (control node)
-Drives to each house (managed node) using an address list (inventory)
-Delivers the package (runs the module), gets a signature (receives JSON result) and drives away.
-The house doesn't need any special equipment installed to receive deliveries — just a doorbell (SSH).
 Task 2: Set Up Your Lab Environment
 You need 2-3 EC2 instances to practice on. Choose one approach:
 
