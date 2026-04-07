@@ -46,7 +46,7 @@ SSH: On modern Windows versions (Server 2019+ and Windows 10+), Ansible official
 <hr>
 
 
-Task 2: Set Up Your Lab Environment
+#### Task 2: Set Up Your Lab Environment
 You need 2-3 EC2 instances to practice on. Choose one approach:
 
 Option A: Use Terraform (recommended -- you just learned this) Use your TerraWeek skills to provision 3 EC2 instances with:
@@ -61,5 +61,7 @@ Label them mentally:
 
 Instance 1: web server
 Instance 2: app server
+
+
 Instance 3: db server
 Verify you can SSH into each one from your control node:
