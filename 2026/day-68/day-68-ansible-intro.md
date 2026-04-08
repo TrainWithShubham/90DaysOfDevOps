@@ -142,6 +142,10 @@ ansible all -i inventory.ini -m copy -a "src=hello.txt dest=/tmp/hello.txt"
 <img width="1280" height="800" alt="Screenshot 2026-04-08 at 11 11 10 PM 1" src="https://github.com/user-attachments/assets/35ea661d-cbba-44fa-ac6e-3abe78108104" />
 
 
+- Verify the file was copied:
+ansible all -i inventory.ini -m command -a "cat /tmp/hello.txt"
+<img width="1280" height="800" alt="Screenshot 2026-04-08 at 11 12 53 PM" src="https://github.com/user-attachments/assets/a8ae3414-d5e9-4228-9854-9945d5ad94c3" />
+
 
 
 
