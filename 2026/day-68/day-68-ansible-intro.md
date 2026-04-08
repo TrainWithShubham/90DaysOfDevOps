@@ -75,19 +75,19 @@ Verify you can SSH into each one from your control node:
 
 #### Task 3: Install Ansible
 Install Ansible on your control node (your laptop or one dedicated EC2 instance):
-# macOS
+- macOS
 brew install ansible
 
-# Ubuntu/Debian
+- Ubuntu/Debian
 sudo apt update
 sudo apt install ansible -y
 
-# Amazon Linux / RHEL
+- Amazon Linux / RHEL
 sudo yum install ansible -y
-# or
+- or
 pip3 install ansible
 
-# Verify
+- Verify
 ansible --version
 <img width="1366" height="768" alt="task4" src="https://github.com/user-attachments/assets/4bf5e23b-b791-4988-a27b-9f1b750d2dad" />
 <hr>
