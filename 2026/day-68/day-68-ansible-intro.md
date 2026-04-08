@@ -75,7 +75,7 @@ ssh -i ~/your-key.pem ec2-user@<public-ip-1>
 ssh -i ~/your-key.pem ec2-user@<public-ip-2>
 ssh -i ~/your-key.pem ec2-user@<public-ip-3>
 <img width="1280" height="800" alt="Screenshot 2026-04-08 at 10 21 02 PM" src="https://github.com/user-attachments/assets/5ccf732b-b2c5-46bd-8ae9-d2db7c19e4c1" />
-<img width="1280" height="800" alt="Screenshot 2026-04-08 at 8 26 42 PM" src="https://github.com/user-attachments/assets/f5797384-a407-43e6-a4e5-5114eca1b9a5" />
+
 
 <img width="1280" height="800" alt="Screenshot 2026-04-08 at 10 13 27 PM" src="https://github.com/user-attachments/assets/e10de56c-f4f2-4c92-91a3-10b8460aa6ee" />
 
