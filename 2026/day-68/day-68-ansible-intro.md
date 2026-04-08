@@ -115,8 +115,13 @@ Check the security group allows SSH from your IP
 Check the ansible_user matches your AMI (ec2-user for Amazon Linux, ubuntu for Ubuntu)
 
 
+#### Task 5: Run Ad-Hoc Commands
+Ad-hoc commands let you run quick one-off tasks without writing a playbook.
 
+Check uptime on all servers:
+ansible all -i inventory.ini -m command -a "uptime"
 
+<img width="1280" height="800" alt="Screenshot 2026-04-08 at 10 59 54 PM" src="https://github.com/user-attachments/assets/1fb8de04-6e10-4d19-8ea4-cfdad9ab01ef" />
 
 
 
