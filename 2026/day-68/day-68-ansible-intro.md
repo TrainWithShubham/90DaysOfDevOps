@@ -94,5 +94,11 @@ ansible --version
 ### Task 4: Create Your Inventory File
 The inventory tells Ansible which servers to manage. Create a project directory and your first inventory:
 
+![Uploading Screenshot 2026-04-08 at 8.26.42 PM.png…]()
+
+
+
+
+
 
 
