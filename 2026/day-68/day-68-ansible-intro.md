@@ -62,9 +62,6 @@ ssh -i ~/your-key.pem ec2-user@<public-ip-3>
 
 <img width="1366" height="768" alt="Screenshot (57)" src="https://github.com/user-attachments/assets/6f5ec4b9-335e-4e0f-b399-ff1a9601ba16" /> <br><br><br/>
 
-<img width="1366" height="768" alt="task3" src="https://github.com/user-attachments/assets/2da8077f-5e52-4ccb-8241-1da628a47d9f" />
-
-
 
 
 
@@ -74,3 +71,26 @@ ssh -i ~/your-key.pem ec2-user@<public-ip-3>
 - Instance 3: db server
   
 Verify you can SSH into each one from your control node:
+<img width="1366" height="768" alt="task3" src="https://github.com/user-attachments/assets/2da8077f-5e52-4ccb-8241-1da628a47d9f" />
+
+#### Task 3: Install Ansible
+Install Ansible on your control node (your laptop or one dedicated EC2 instance):
+# macOS
+brew install ansible
+
+# Ubuntu/Debian
+sudo apt update
+sudo apt install ansible -y
+
+# Amazon Linux / RHEL
+sudo yum install ansible -y
+# or
+pip3 install ansible
+
+# Verify
+ansible --version
+<img width="1366" height="768" alt="task4" src="https://github.com/user-attachments/assets/4bf5e23b-b791-4988-a27b-9f1b750d2dad" />
+
+
+
+
