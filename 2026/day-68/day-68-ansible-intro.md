@@ -145,6 +145,24 @@ ansible all -i inventory.ini -m copy -a "src=hello.txt dest=/tmp/hello.txt"
 - Verify the file was copied:
 ansible all -i inventory.ini -m command -a "cat /tmp/hello.txt"
 <img width="1280" height="800" alt="Screenshot 2026-04-08 at 11 12 53 PM" src="https://github.com/user-attachments/assets/a8ae3414-d5e9-4228-9854-9945d5ad94c3" />
+<hr>
+#### Task 6: Explore Inventory Groups and Patterns
+
+Create a group of groups -- add this to your inventory.ini:
+[application:children]
+web
+app
+
+[all_servers:children]
+application
+db
+
+- Run commands against different groups:
+ansible application -i inventory.ini -m ping     # web + app servers
+ansible db -i inventory.ini -m ping               # only db server
+ansible all_servers -i inventory.ini -m ping      # everything
+
+
 
 
 
