@@ -57,8 +57,69 @@ tasks:
   - name: Task 2 (won’t run)
 
 <hr>
+### Task 3: Learn the Essential Modules
+Practice each of these modules by writing a playbook called essential-modules.yml with multiple tasks:
 
+1. yum/apt -- Install and remove packages:
 
+- name: Install multiple packages
+  yum:
+    name:
+      - git
+      - curl
+      - wget
+      - tree
+    state: present
+
+2. service -- Manage services:
+- name: Ensure Nginx is running
+  service:
+    name: nginx
+    state: started
+    enabled: true
+3. copy -- Copy files from control node to managed nodes:
+- name: Copy config file
+  copy:
+    src: files/app.conf
+    dest: /etc/app.conf
+    owner: root
+    group: root
+    mode: '0644'
+4. file -- Create directories and manage permissions:
+
+  - name: Create application directory
+  file:
+    path: /opt/myapp
+    state: directory
+    owner: ec2-user
+    mode: '0755'
+5. command -- Run a command (no shell features):
+
+- name: Check disk space
+  command: df -h
+  register: disk_output
+
+- name: Print disk space
+  debug:
+    var: disk_output.stdout_lines
+
+6. shell -- Run a command with shell features (pipes, redirects):
+
+  - name: Count running processes
+  shell: ps aux | wc -l
+  register: process_count
+
+- name: Show process count
+  debug:
+    msg: "Total processes: {{ process_count.stdout }}"
+
+7. lineinfile -- Add or modify a single line in a file:
+
+- name: Set timezone in environment
+  lineinfile:
+    path: /etc/environment
+    line: 'TZ=Asia/Kolkata'
+    create: true
 
     - name: Task name                  # TASK -- one unit of work
       module_name:                     # MODULE -- what Ansible does
