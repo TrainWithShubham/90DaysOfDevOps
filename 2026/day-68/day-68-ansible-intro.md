@@ -62,8 +62,8 @@ ssh -i ~/your-key.pem ec2-user@<public-ip-3>
 
 <img width="1366" height="768" alt="Screenshot (57)" src="https://github.com/user-attachments/assets/6f5ec4b9-335e-4e0f-b399-ff1a9601ba16" /> <br><br><br/>
 
-<img width="818" height="968" alt="task2" src="https://github.com/user-attachments/assets/fee1c61b-dfee-48a7-b313-28180919afc0" />
 <img width="1366" height="768" alt="task3" src="https://github.com/user-attachments/assets/2da8077f-5e52-4ccb-8241-1da628a47d9f" />
+
 
 
 
