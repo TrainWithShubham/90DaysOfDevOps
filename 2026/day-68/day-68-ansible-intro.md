@@ -130,6 +130,10 @@ ansible all -i inventory.ini -m command -a "df -h"
 
 <img width="1280" height="800" alt="Screenshot 2026-04-08 at 11 04 12 PM" src="https://github.com/user-attachments/assets/d5abcbf4-7eb1-47c7-9541-13c9df17b663" />
 
+- Install a package on the web group:
+ansible web -i inventory.ini -m yum -a "name=git state=present" --become
+
+<img width="1280" height="800" alt="Screenshot 2026-04-08 at 11 07 34 PM" src="https://github.com/user-attachments/assets/adb06e47-da55-4902-a1d1-4f91e12698df" />
 
 
 
