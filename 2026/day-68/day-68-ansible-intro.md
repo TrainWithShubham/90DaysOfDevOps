@@ -162,7 +162,7 @@ ansible application -i inventory.ini -m ping     # web + app servers
 ansible db -i inventory.ini -m ping               # only db server
 ansible all_servers -i inventory.ini -m ping      # everything
 
-
+![Uploading Screenshot 2026-04-08 at 11.18.48 PM.png…]()
 
 
 
