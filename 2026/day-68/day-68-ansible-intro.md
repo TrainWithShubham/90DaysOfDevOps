@@ -135,6 +135,16 @@ ansible web -i inventory.ini -m yum -a "name=git state=present" --become
 
 <img width="1280" height="800" alt="Screenshot 2026-04-08 at 11 07 34 PM" src="https://github.com/user-attachments/assets/adb06e47-da55-4902-a1d1-4f91e12698df" />
 
+- Copy a file to all servers:
+echo "Hello from Ansible" > hello.txt
+ansible all -i inventory.ini -m copy -a "src=hello.txt dest=/tmp/hello.txt"
+
+<img width="1280" height="800" alt="Screenshot 2026-04-08 at 11 11 10 PM 1" src="https://github.com/user-attachments/assets/35ea661d-cbba-44fa-ac6e-3abe78108104" />
+
+
+
+
+
 
 
 
