@@ -59,9 +59,9 @@ Option B: Launch manually from AWS Console Create 3 instances with the same spec
 
 Label them mentally:
 
-Instance 1: web server
-Instance 2: app server
+- Instance 1: web server
+- Instance 2: app server
 
-
-Instance 3: db server
+- Instance 3: db server
+  
 Verify you can SSH into each one from your control node:
