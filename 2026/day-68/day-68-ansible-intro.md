@@ -118,10 +118,18 @@ Check the ansible_user matches your AMI (ec2-user for Amazon Linux, ubuntu for U
 #### Task 5: Run Ad-Hoc Commands
 Ad-hoc commands let you run quick one-off tasks without writing a playbook.
 
-Check uptime on all servers:
+- Check uptime on all servers:
 ansible all -i inventory.ini -m command -a "uptime"
 
 <img width="1280" height="800" alt="Screenshot 2026-04-08 at 10 59 54 PM" src="https://github.com/user-attachments/assets/1fb8de04-6e10-4d19-8ea4-cfdad9ab01ef" />
+
+- Check free memory on web servers only:
+ansible web -i inventory.ini -m command -a "free -h"
+
+ansible all -i inventory.ini -m command -a "df -h"
+
+<img width="1280" height="800" alt="Screenshot 2026-04-08 at 11 04 12 PM" src="https://github.com/user-attachments/assets/d5abcbf4-7eb1-47c7-9541-13c9df17b663" />
+
 
 
 
