@@ -22,7 +22,6 @@ Open your playbook and annotate each part in your notes:
 - name: Play name                      # PLAY -- targets a group of hosts
   hosts: web                           # Which inventory group to run on
   become: true                         # Run tasks as root (sudo)
-
   tasks:                               # List of TASKS in this play
 
 Answer:
@@ -59,7 +58,8 @@ tasks:
 <hr>
 ### Task 3: Learn the Essential Modules
 Practice each of these modules by writing a playbook called essential-modules.yml with multiple tasks:
+<img width="2361" height="1339" alt="image" src="https://github.com/user-attachments/assets/dab30f87-aeb4-4efb-bd91-07f32645c852" />
+<img width="2490" height="1268" alt="image" src="https://github.com/user-attachments/assets/1c896f0f-f9a4-47d0-b882-4babb8490282" />
 
 
-      module_name:                     # MODULE -- what Ansible does
-        key: value                     # Module arguments
+
