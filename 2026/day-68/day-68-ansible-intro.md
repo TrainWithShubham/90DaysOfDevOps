@@ -56,8 +56,17 @@ t2.micro instance type iam taking t3.micro because on my account t2.micro N/A
 A security group allowing SSH (port 22)
 A key pair for SSH access
 Option B: Launch manually from AWS Console Create 3 instances with the same specs above.
+ssh -i ~/your-key.pem ec2-user@<public-ip-1>
+ssh -i ~/your-key.pem ec2-user@<public-ip-2>
+ssh -i ~/your-key.pem ec2-user@<public-ip-3>
 
-Label them mentally:
+<img width="1366" height="768" alt="Screenshot (57)" src="https://github.com/user-attachments/assets/6f5ec4b9-335e-4e0f-b399-ff1a9601ba16" /> <br><br><br/>
+
+<img width="818" height="968" alt="task2" src="https://github.com/user-attachments/assets/fee1c61b-dfee-48a7-b313-28180919afc0" />
+<img width="1366" height="768" alt="task3" src="https://github.com/user-attachments/assets/2da8077f-5e52-4ccb-8241-1da628a47d9f" />
+
+
+
 
 - Instance 1: web server
 - Instance 2: app server
