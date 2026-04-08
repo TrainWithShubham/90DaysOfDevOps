@@ -90,7 +90,9 @@ pip3 install ansible
 # Verify
 ansible --version
 <img width="1366" height="768" alt="task4" src="https://github.com/user-attachments/assets/4bf5e23b-b791-4988-a27b-9f1b750d2dad" />
-
+<hr>
+### Task 4: Create Your Inventory File
+The inventory tells Ansible which servers to manage. Create a project directory and your first inventory:
 
 
 
