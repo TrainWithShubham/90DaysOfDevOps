@@ -105,7 +105,14 @@ ansible --version
 ### Task 4: Create Your Inventory File
 The inventory tells Ansible which servers to manage. Create a project directory and your first inventory:
 
-<img width="1280" height="800" alt="Screenshot 2026-04-08 at 8 26 42 PM" src="https://github.com/user-attachments/assets/459643d3-4ed8-4130-976b-50b1783e4cee" />
+
+<img width="1280" height="800" alt="Screenshot 2026-04-08 at 10 56 39 PM" src="https://github.com/user-attachments/assets/a20204ff-18ab-49d4-ab46-98ef7e94437d" />
+
+Troubleshoot: If ping fails:
+
+Check the SSH key path and permissions (chmod 400 your-key.pem)
+Check the security group allows SSH from your IP
+Check the ansible_user matches your AMI (ec2-user for Amazon Linux, ubuntu for Ubuntu)
 
 
 
