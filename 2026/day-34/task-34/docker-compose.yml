@@ -1,0 +1,53 @@
+services:
+#database service
+  my_database:
+    # docker run -d -e MYSQL_ROOT_PASSWORD=test123 MYSQL_USER=user MYSQL_PASSWORD=test@123 MYSQL_DATABASE=database -v day34_volume:/usr/lib/mysql --network day34_network mysql:latest
+    image: mysql:latest
+    #restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: test123
+      MYSQL_USER: user
+      MYSQL_PASSWORD: test@123
+      MYSQL_DATABASE: database
+    volumes:
+      - day34_volume:/var/lib/mysql
+    networks:
+      - day34_network    
+    healthcheck:
+      test: ["CMD","mysqladmin","ping", "-h", "localhost"]
+      interval: 5s
+      retries: 5
+      timeout: 10s
+    
+
+#redis service
+  redis_cache:
+    image: redis:7
+    #environment:
+     # - REDIS_HOST: redis
+     # - REDIS_PORT: 6379
+    networks:
+      - day34_network 
+
+#my app service
+  web_app:
+    build: ./app
+    #container_name: flask-app
+    depends_on:
+      - my_database
+    environment:
+      DB_HOST: my_database
+      DB_USER: user
+      DB_PASSORD: test@123
+      DB_NAME: database
+      REDIS_HOST: redis_cache
+    networks:
+      - day34_network
+    ports:
+      - "5000"
+
+networks:
+  day34_network:
+
+volumes:
+  day34_volume:
