@@ -1,0 +1,30 @@
+# This is simply the name of the workflow.
+# When you open the Actions tab in GitHub, you’ll see this name in the list of workflows.
+
+name: fahad workflow
+
+# This is the trigger. It tells GitHub when to start the workflow.
+on:
+  push:
+    branches: [master]
+# "Run this workflow whenever someone pushes code to the master branch."    
+
+#these are jobs are in workflow (* ecvery jobs need a runner)
+jobs: 
+# This is the job ID.
+# The name is just an identifier.
+  greets:
+# A runner is basically a temporary virtual machine that GitHub spins up for your workflow.  
+# runs-on: windows-latest
+# runs-on: macos-latest
+    runs-on: ubuntu-latest
+    
+    steps:
+# The dash - means this is a new step in the list.
+# name= This is just a label so humans can understand the step.
+      - name: say hello to users  # name of steps (lists)
+        run: echo "Hello fahad"
+
+      - name: say hello to username
+        run: echo "Hello $USER" 
+      
