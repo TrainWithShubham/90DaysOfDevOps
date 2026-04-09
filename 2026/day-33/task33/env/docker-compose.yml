@@ -1,0 +1,34 @@
+services:
+  db:
+    image: mysql:latest
+    volumes:
+      - env_db:/var/lib/mysql
+    networks:
+      - env-network
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+
+  wordpress:
+    image: wordpress:latest
+    volumes:
+      - env_word:/var/www/html
+    networks:
+      - env-network
+    ports:
+      - "82:80"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    depends_on:
+      - db
+
+volumes:
+  env_db:
+  env_word:
+
+networks:
+  env-network:
+    driver: bridge
