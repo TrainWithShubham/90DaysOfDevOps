@@ -89,5 +89,10 @@ Share what happened when you deleted a container without a volume on LinkedIn. T
 
 `#90DaysOfDevOps` `#DevOpsKaJosh` `#TrainWithShubham`
 
-Happy Learning!
-**TrainWithShubham**
+<img width="1221" height="611" alt="Screenshot_6" src="https://github.com/user-attachments/assets/9d897941-81e1-428e-b49f-34332fd13b94" />
+<img width="1227" height="708" alt="Screenshot_5" src="https://github.com/user-attachments/assets/a521b67c-5cc8-4cb8-9cf8-22d657990fdf" />
+<img width="1234" height="723" alt="Screenshot_4" src="https://github.com/user-attachments/assets/b5d62bc7-27e6-4a99-bf8c-aa353281c294" />
+<img width="1212" height="725" alt="Screenshot_3" src="https://github.com/user-attachments/assets/f5a93ffa-5ed9-4ca7-af7b-7ed50cd0ac07" />
+<img width="1223" height="721" alt="Screenshot_2" src="https://github.com/user-attachments/assets/8a7d3eff-8bae-408a-8904-8866dc302833" />
+<img width="1217" height="729" alt="Screenshot_1" src="https://github.com/user-attachments/assets/d7a7f985-db13-4c74-92e9-2cfcf625c0a6" />
+
