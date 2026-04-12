@@ -291,7 +291,7 @@ Write `multi-play.yml` with separate plays for each server group:
   tasks:
     - name: Install MySQL client
       yum:
-        name: mysql
+        name: mysql-client
         state: present
     - name: Create data directory
       file:
