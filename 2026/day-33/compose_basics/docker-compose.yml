@@ -1,0 +1,29 @@
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    env_file:
+      - .env
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - my_app
+  WordPress:
+    image: wordpress:latest
+    container_name: wordpress
+    env_file:
+      - .env  
+    ports:
+      - "8080:80"
+    volumes:
+      - wordpress_data:/var/www/html
+    networks:
+      - my_app
+networks:
+  my_app:
+    external: true
+volumes:
+  mysql_data:
+  wordpress_data:
