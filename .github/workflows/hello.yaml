@@ -1,0 +1,11 @@
+name: akash
+
+on :
+  push:
+    branches: main
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: say hi to everyone
+        run: echo "Hello dosto this is akash"
