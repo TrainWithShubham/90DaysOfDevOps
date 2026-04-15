@@ -53,6 +53,28 @@ Task 4: Add an EC2 Instance
 - <img width="898" height="263" alt="image" src="https://github.com/user-attachments/assets/10a71326-5b16-4744-9d1a-1d7f0749282a" />
 
 
+Task 5: Understand the State File
+- What information does the state file store about each resource?
+  The state file stores details about all managed resources, including resource IDs, configurations, metadata, attributes (like IPs, ARNs), and their current   state in the cloud.
+  
+- Why should you never manually edit the state file?
+  Manually editing the state file can corrupt it and cause Terraform to lose track of resources, leading to broken infrastructure or unintended deletions.
+  
+- Why should the state file not be committed to Git?
+  The state file may contain sensitive information like resource IDs, IP addresses, and sometimes credentials. Committing it to Git can expose security risks and sensitive data.
+
+
+Task 6: Modify, Plan, and Destroy
+- Change the EC2 instance tag from "TerraWeek-Day1" to "TerraWeek-Modified" in your main.tf
+- Run terraform plan and read the output carefully:
+  - What do the ~, +, and - symbols mean?
+      ~ means modify an existing resource
+      + means create a new resource
+      - means delete an existing resource
+
+- Is this an in-place update or a destroy-and-recreate?
+  It is an in-place update because only the tag changed, not the resource configuration.
+
 
 
 
