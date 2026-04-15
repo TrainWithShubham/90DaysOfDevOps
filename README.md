@@ -1,35 +1,130 @@
-# #90DaysOfDevOps Challenge
-## Learn, Upskill, Grow  with the Community
+# 🚀 90DaysOfDevOps
+### Learn • Build • Practice • Become Job-Ready
 
-This repository is a Challenge for the DevOps Community to get stronger in DevOps. 
-This challenge starts on the 1st January 2023 and in the next 90 Days we promise ourselves to become better at DevOps.
+Welcome to **90DaysOfDevOps**, a structured and hands-on DevOps challenge by **TrainWithShubham**.
 
-The reason for making this Public is so that others can learn from the community and help each other grow.
+This repository is designed to help you **build real DevOps skills step by step in 90 days** — not by watching endless videos, but by **doing daily tasks**, building projects, and thinking like a **production-ready DevOps engineer**.
 
-## Steps:
-- Fork[https://github.com/LondheShubham153/90DaysOfDevOps/fork] the Repo.
-- Learn Everyday and add your learnings in the day wise folders.
-- Check out what others are Learning and help/learn from them.
-- Showcase your learnings on LinkedIn
+This is not a theory-heavy course.  
+This is a **discipline + execution challenge**.
 
+---
 
-These are our community Links.
+## 🎯 What is #90DaysOfDevOps?
 
-- Telegram Channel: https://t.me/trainwithshubham
-- Discord Channel: https://discord.gg/hs3Pmc5F
-- WhatsApp Group: https://chat.whatsapp.com/FvRlAAZVxUhCUSZ0Y1s7KY
-- YouTube Channel: https://www.youtube.com/@TrainWithShubham
-- Website: https://www.trainwithshubham.com/
-- LinkedIn: https://www.linkedin.com/in/shubhamlondhe1996/
+**#90DaysOfDevOps** is a **day-wise DevOps learning challenge** where:
 
-## Events
+- Every day has **one clear task**
+- Every task has a **real-world DevOps outcome**
+- Every learner builds a **public GitHub proof of work**
+- Every concept is reinforced through **hands-on practice**
+- Learning is aligned with **live classes and recordings**
 
-YouTube Live Announcement:
-https://youtu.be/rO5Rllir-LM
+By the end of 90 days, you will have:
+- Strong DevOps fundamentals
+- Multiple mini-projects
+- One end-to-end DevOps capstone project
+- A GitHub profile that clearly shows consistency
+- Confidence to handle DevOps interviews and production systems
 
-YouTube Playlist for DevOps:
-https://youtube.com/playlist?list=PLlfy9GnSVerRqYJgVYO0UiExj5byjrW8u
+---
 
-DevOps Course:
-https://bit.ly/devops-batch-2
+## 🧠 Who Is This For?
 
+This challenge is ideal for:
+
+- Students and freshers entering DevOps or Cloud
+- Working professionals switching to DevOps / SRE / Cloud roles
+- Developers who want to understand infrastructure and CI/CD
+- Anyone who believes **consistency beats talent**
+
+No prior DevOps experience is required.  
+**Commitment is mandatory.**
+
+---
+
+## 🗂 Repository Structure
+
+```
+90DaysOfDevOps/
+│
+├── README.md
+├── CONTRIBUTING.md
+├── LICENSE
+├── .gitignore
+│
+├── scripts/
+│   └── helper-scripts.sh
+│
+├── day-01/
+│   └── README.md
+├── day-02/
+│   └── README.md
+├── ...
+├── day-90/
+│   └── README.md
+```
+
+---
+
+## 📅 How the Challenge Works
+
+- **One day = one task**
+- Tasks are aligned with **live classes**
+- Live class days focus on **core concepts**
+- Weekdays focus on **practice and reinforcement**
+- Daily commits are encouraged
+
+Even **30–60 minutes per day** is enough if done honestly.
+
+---
+
+## 🛠 What You Will Learn
+
+- Linux fundamentals and troubleshooting
+- Shell scripting and automation
+- Networking basics for DevOps
+- Git and GitHub workflows
+- Docker and containerization
+- AWS core and advanced services
+- CI/CD using Jenkins, GitHub Actions, GitLab
+- DevSecOps fundamentals
+- Kubernetes, Helm, ArgoCD
+- Terraform and Ansible
+- Observability with Grafana, Prometheus, OpenTelemetry
+- End-to-end DevOps project
+
+---
+
+## 📦 How to Participate
+
+1. Fork this repository
+2. Clone your fork
+3. Navigate to the current `day-XX` folder
+4. Complete the task
+5. Commit and push your work
+
+---
+
+## 🌍 Learn in Public
+
+Share your progress on LinkedIn:
+
+```
+#90DaysOfDevOps
+#DevOpsKaJosh
+#TrainWithShubham
+```
+
+---
+
+## ❤️ Final Note
+
+DevOps is not about tools.  
+It is about **ownership, reliability, and consistency**.
+
+One day at a time.  
+One commit at a time.
+
+Happy Learning  
+**TrainWithShubham**
