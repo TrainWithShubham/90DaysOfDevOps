@@ -1,0 +1,21 @@
+FROM python:3.11 AS build
+
+WORKDIR /app
+
+COPY requirements.txt .
+
+RUN pip install -r requirements.txt --no-cache --target=/app/dist
+
+COPY . .
+
+# 2nd Stage
+
+FROM gcr.io/distroless/python3-debian12
+
+WORKDIR /app
+
+COPY --from=build /app /app
+
+ENV PYTHONPATH=/app/dist
+
+ENTRYPOINT ["/usr/bin/python3.11","app.py"] 

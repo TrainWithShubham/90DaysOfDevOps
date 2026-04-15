@@ -1,0 +1,26 @@
+# Builder
+FROM golang:1.22.3-alpine3.19 AS builder
+
+WORKDIR /build
+
+ENV CGO_ENABLED=0
+
+# COPY go.mod go.sum ./
+COPY go.mod ./
+
+RUN go mod download
+
+COPY . .
+
+RUN go build -ldflags="-s -w" -o app
+
+# Final (no shell, no package manager)
+FROM gcr.io/distroless/base-debian12
+
+WORKDIR /app
+
+COPY --from=builder /build/app .
+
+USER nonroot:nonroot
+
+CMD ["/app/app"]

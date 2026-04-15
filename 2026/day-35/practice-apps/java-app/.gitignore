@@ -1,0 +1,24 @@
+# Compiled class files
+*.class
+
+# Logs
+*.log
+
+# Maven
+target/
+
+# Gradle
+.gradle/
+build/
+
+# Dependency directories
+node_modules/
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db

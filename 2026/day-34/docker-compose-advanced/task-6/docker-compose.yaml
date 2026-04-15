@@ -1,0 +1,54 @@
+
+services:
+  flask_app:
+    image: flask-app:latest
+    environment:
+      DB_HOST: pg-data
+      DB_NAME: pg-db
+      DB_USER: Robin
+      DB_PASSWORD: Test@123
+      REDIS_HOST: redis
+    depends_on:
+      pg-data:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    networks:
+      - new_net
+    labels:
+      - "project: demo-stack"
+      - "tier: frontend"
+
+  pg-data:
+    image: postgres:15
+    container_name: postgres_db
+    restart: on-failure
+    environment:
+      POSTGRES_DB: pg-db
+      POSTGRES_USER: Robin
+      POSTGRES_PASSWORD: Test@123
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL","pg_isready -U Robin -d pg-db"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    networks:
+      - new_net
+    labels:
+      - "project: demo-stack"
+      - "tier: database"
+
+  redis:
+    image: redis:7
+    container_name: redis_cache
+    networks:
+      - new_net
+    labels:
+      - "project: demo-stack"
+      - "tier: cache"
+networks:
+  new_net:
+volumes:
+  pg-data:

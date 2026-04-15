@@ -1,0 +1,25 @@
+# ---- Builder stage ----
+FROM python:3.11.8-alpine3.19 AS builder
+
+WORKDIR /build
+
+RUN apk add --no-cache build-base
+
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir --prefix=/install -r requirements.txt
+
+# ---- Final stage ----
+FROM python:3.11.8-alpine3.19
+
+RUN addgroup -S flask && adduser -S python -G flask
+
+WORKDIR /app
+
+COPY --from=builder /install /usr/local
+
+COPY . .
+
+USER python
+
+CMD ["python", "app.py"]

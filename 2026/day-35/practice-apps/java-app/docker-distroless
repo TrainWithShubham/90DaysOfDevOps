@@ -1,0 +1,24 @@
+# ----------- Builder -----------
+FROM maven:3.9.9-eclipse-temurin-17 AS builder
+
+WORKDIR /build
+
+COPY pom.xml .
+RUN mvn -B -q -DskipTests dependency:go-offline
+
+COPY src ./src
+RUN mvn -B -q -DskipTests package
+
+# ----------- Runtime -----------
+FROM gcr.io/distroless/java17-debian12
+
+WORKDIR /app
+
+COPY --from=builder /build/target/book-api-1.0.0.jar app.jar
+
+# Non-root by default
+USER nonroot:nonroot
+
+EXPOSE 8080
+
+ENTRYPOINT ["java","-jar","/app/app.jar"]

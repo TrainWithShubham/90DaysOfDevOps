@@ -1,0 +1,29 @@
+FROM node:18.20.3-alpine3.19 AS builder
+
+WORKDIR /build
+
+ENV NODE_ENV=development
+
+COPY package.json ./
+
+# Fallback to npm install
+RUN npm install
+
+COPY . .
+RUN npm run build
+
+FROM nginx:1.27.0-alpine
+
+LABEL maintainer="SUMIT" \
+      version="1.0" \
+      description="React app - multi-stage (no lock file)"
+
+RUN rm -rf /usr/share/nginx/html/*
+
+COPY --from=builder /build/build /usr/share/nginx/html
+
+USER nginx
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]

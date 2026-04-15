@@ -1,0 +1,23 @@
+# Binaries
+bin/
+*.exe
+*.out
+*.test
+
+# Build artifacts
+build/
+dist/
+
+# Vendor (optional depending on strategy)
+vendor/
+
+# Logs
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
