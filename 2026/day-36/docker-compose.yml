@@ -1,0 +1,60 @@
+version: "3.8"
+
+services:
+
+
+    mysql:
+      container_name: mysql_todoapp
+      image: mohammadadnankhan/mysql-cont
+      environment: 
+        MYSQL_ROOT_PASSWORD: Test@123
+        MYSQL_DATABASE: tododb
+      volumes:
+        - mysql-vol:/var/lib/mysql
+        - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      networks:
+        - todo-app-nw
+      ports:
+        - "3306:3306"
+      healthcheck:
+        test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-pTest@123"]
+        interval: 10s
+        timeout: 5s
+        retries: 5
+        start_period: 30s
+
+
+    backend:
+      container_name: todo-backend
+      image: mohammadadnankhan/todo-backend
+      environment:
+        DB_HOST: mysql
+        DB_USER: root
+        DB_PASSWORD: Test@123
+        DB_NAME: tododb
+      networks:
+        - todo-app-nw
+      ports:
+        - "5000:5000"
+      depends_on: 
+         mysql:
+            condition: service_healthy
+
+
+    frontend:
+      container_name: todo-frontend
+      image: mohammadadnankhan/todo-frontend
+      ports:
+        - "3000:80"
+      networks:
+        - todo-app-nw
+      depends_on:
+        - backend
+      
+
+networks:
+    todo-app-nw:
+        driver: bridge
+
+volumes:
+    mysql-vol:

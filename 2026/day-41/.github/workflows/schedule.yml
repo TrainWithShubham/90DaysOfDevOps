@@ -1,0 +1,22 @@
+name: Scheduled Job
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Every day at midnight UTC
+  push:
+    branches: [main]
+
+jobs:
+  scheduled:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Print schedule info
+        run: echo "Scheduled job running at $(date)"
+```
+
+**Cron expression for every Monday at 9 AM:**
+```
+0 9 * * 1

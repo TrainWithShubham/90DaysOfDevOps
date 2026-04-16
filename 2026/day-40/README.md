@@ -98,5 +98,5 @@ Share your first green pipeline screenshot on LinkedIn. That green checkmark hit
 
 `#90DaysOfDevOps` `#DevOpsKaJosh` `#TrainWithShubham`
 
-Happy Learning!
+Happy learning!
 **TrainWithShubham**
