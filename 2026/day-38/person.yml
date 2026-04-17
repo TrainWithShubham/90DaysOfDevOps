@@ -1,0 +1,11 @@
+name: Shivam
+role: DevOps Engineer
+experience_years: 3 Years
+learning: true
+tools:
+  - Linux
+  - git
+  - docker
+  - python
+  - github actions
+hobbies: [Learning, playing games, watching movies, gym]
