@@ -1,0 +1,20 @@
+#Task 1: Key-Value Pairs
+name: Rahul
+role: DevOps Engineer
+experience_year: 2
+learning: true
+
+#Task 2: Lists
+# What are the two ways to write a list in YAML?
+# There are two ways to write a list in YAML are Block Style and Flow Style. 
+
+#Block Style
+tools: 
+  - linux
+  - git
+  - docker
+  - kubernetes
+  - Jenkins
+
+  #Flow Style
+hobbies: [movies, reading, walking]
