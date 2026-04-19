@@ -1,0 +1,104 @@
+Jan 26 15:17:05 ip-172-31-13-238 dockerd[824]: time="2026-01-26T15:17:05.913679888Z" level=info msg="Completed buildkit initialization"
+Jan 26 15:17:05 ip-172-31-13-238 dockerd[824]: time="2026-01-26T15:17:05.923499544Z" level=info msg="Daemon has completed initialization"
+Jan 26 15:17:05 ip-172-31-13-238 dockerd[824]: time="2026-01-26T15:17:05.923560266Z" level=info msg="API listen on /run/docker.sock"
+Jan 26 15:17:05 ip-172-31-13-238 systemd[1]: Started docker.service - Docker Application Container Engine.
+Jan 26 15:18:18 ip-172-31-13-238 dockerd[824]: time="2026-01-26T15:18:18.197924489Z" level=info msg="Processing signal 'terminated'"
+Jan 26 15:18:18 ip-172-31-13-238 systemd[1]: Stopping docker.service - Docker Application Container Engine...
+Jan 26 15:18:18 ip-172-31-13-238 dockerd[824]: time="2026-01-26T15:18:18.213600795Z" level=info msg="stopping event stream following graceful shutdown" error="<nil>" module=libcontainerd namespace=moby
+Jan 26 15:18:18 ip-172-31-13-238 dockerd[824]: time="2026-01-26T15:18:18.215651905Z" level=info msg="Daemon shutdown complete"
+Jan 26 15:18:18 ip-172-31-13-238 systemd[1]: docker.service: Deactivated successfully.
+Jan 26 15:18:18 ip-172-31-13-238 systemd[1]: Stopped docker.service - Docker Application Container Engine.
+-- Boot 3c717d0c5ff54134a5744918542cf033 --
+Jan 26 15:19:22 ip-172-31-13-238 systemd[1]: Starting docker.service - Docker Application Container Engine...
+Jan 26 15:19:23 ip-172-31-13-238 dockerd[860]: time="2026-01-26T15:19:23.150399948Z" level=info msg="Starting up"
+Jan 26 15:19:23 ip-172-31-13-238 dockerd[860]: time="2026-01-26T15:19:23.154992960Z" level=info msg="OTEL tracing is not configured, using no-op tracer provider"
+Jan 26 15:19:23 ip-172-31-13-238 dockerd[860]: time="2026-01-26T15:19:23.158636820Z" level=info msg="detected 127.0.0.53 nameserver, assuming systemd-resolved, so using resolv.conf: /run/systemd/resolve/resolv.conf"
+Jan 26 15:19:23 ip-172-31-13-238 dockerd[860]: time="2026-01-26T15:19:23.372674673Z" level=info msg="Creating a containerd client" address=/run/containerd/containerd.sock timeout=1m0s
+Jan 26 15:19:23 ip-172-31-13-238 dockerd[860]: time="2026-01-26T15:19:23.441138154Z" level=info msg="[graphdriver] using prior storage driver: overlay2"
+Jan 26 15:19:23 ip-172-31-13-238 dockerd[860]: time="2026-01-26T15:19:23.447375172Z" level=info msg="Loading containers: start."
+Jan 26 15:19:23 ip-172-31-13-238 dockerd[860]: time="2026-01-26T15:19:23.787711948Z" level=warning msg="Error (Unable to complete atomic operation, key modified) deleting object [endpoint_count 193d4fea91592ef1e6ef826fc348b260afacadcb0b2479f1b66ab3c81a326f1c], retrying...."
+Jan 26 15:19:23 ip-172-31-13-238 dockerd[860]: time="2026-01-26T15:19:23.830946496Z" level=info msg="Loading containers: done."
+Jan 26 15:19:23 ip-172-31-13-238 dockerd[860]: time="2026-01-26T15:19:23.863009437Z" level=info msg="Docker daemon" commit="28.2.2-0ubuntu1~24.04.1" containerd-snapshotter=false storage-driver=overlay2 version=28.2.2
+Jan 26 15:19:23 ip-172-31-13-238 dockerd[860]: time="2026-01-26T15:19:23.864179484Z" level=info msg="Initializing buildkit"
+Jan 26 15:19:23 ip-172-31-13-238 dockerd[860]: time="2026-01-26T15:19:23.870073035Z" level=warning msg="CDI setup error /etc/cdi: failed to monitor for changes: no such file or directory"
+Jan 26 15:19:23 ip-172-31-13-238 dockerd[860]: time="2026-01-26T15:19:23.870099095Z" level=warning msg="CDI setup error /var/run/cdi: failed to monitor for changes: no such file or directory"
+Jan 26 15:19:23 ip-172-31-13-238 dockerd[860]: time="2026-01-26T15:19:23.886459425Z" level=info msg="Completed buildkit initialization"
+Jan 26 15:19:23 ip-172-31-13-238 dockerd[860]: time="2026-01-26T15:19:23.896171863Z" level=info msg="Daemon has completed initialization"
+Jan 26 15:19:23 ip-172-31-13-238 systemd[1]: Started docker.service - Docker Application Container Engine.
+Jan 26 15:19:23 ip-172-31-13-238 dockerd[860]: time="2026-01-26T15:19:23.896574178Z" level=info msg="API listen on /run/docker.sock"
+Jan 27 08:39:59 ip-172-31-13-238 systemd[1]: Stopping docker.service - Docker Application Container Engine...
+Jan 27 08:39:59 ip-172-31-13-238 dockerd[860]: time="2026-01-27T08:39:59.919246067Z" level=info msg="Processing signal 'terminated'"
+Jan 27 08:39:59 ip-172-31-13-238 dockerd[860]: time="2026-01-27T08:39:59.989880645Z" level=info msg="Daemon shutdown complete"
+Jan 27 08:40:00 ip-172-31-13-238 systemd[1]: docker.service: Deactivated successfully.
+Jan 27 08:40:00 ip-172-31-13-238 systemd[1]: Stopped docker.service - Docker Application Container Engine.
+Jan 27 08:40:00 ip-172-31-13-238 systemd[1]: docker.service: Consumed 6.159s CPU time, 93.5M memory peak, 0B memory swap peak.
+-- Boot b7db2cb3965049ef97333809d1039749 --
+Jan 27 08:44:18 ip-172-31-13-238 systemd[1]: Starting docker.service - Docker Application Container Engine...
+Jan 27 08:44:19 ip-172-31-13-238 dockerd[833]: time="2026-01-27T08:44:19.461009926Z" level=info msg="Starting up"
+Jan 27 08:44:19 ip-172-31-13-238 dockerd[833]: time="2026-01-27T08:44:19.468943463Z" level=info msg="OTEL tracing is not configured, using no-op tracer provider"
+Jan 27 08:44:19 ip-172-31-13-238 dockerd[833]: time="2026-01-27T08:44:19.473990049Z" level=info msg="detected 127.0.0.53 nameserver, assuming systemd-resolved, so using resolv.conf: /run/systemd/resolve/resolv.conf"
+Jan 27 08:44:19 ip-172-31-13-238 dockerd[833]: time="2026-01-27T08:44:19.630923247Z" level=info msg="Creating a containerd client" address=/run/containerd/containerd.sock timeout=1m0s
+Jan 27 08:44:19 ip-172-31-13-238 dockerd[833]: time="2026-01-27T08:44:19.721735187Z" level=info msg="[graphdriver] using prior storage driver: overlay2"
+Jan 27 08:44:19 ip-172-31-13-238 dockerd[833]: time="2026-01-27T08:44:19.727185495Z" level=info msg="Loading containers: start."
+Jan 27 08:44:20 ip-172-31-13-238 dockerd[833]: time="2026-01-27T08:44:20.129830337Z" level=warning msg="Error (Unable to complete atomic operation, key modified) deleting object [endpoint_count f7419789ee62a53b10074026638fa246896229e0816bbefc326f938cccf80e3f], retrying...."
+Jan 27 08:44:20 ip-172-31-13-238 dockerd[833]: time="2026-01-27T08:44:20.182101303Z" level=info msg="Loading containers: done."
+Jan 27 08:44:20 ip-172-31-13-238 dockerd[833]: time="2026-01-27T08:44:20.222159129Z" level=info msg="Docker daemon" commit="28.2.2-0ubuntu1~24.04.1" containerd-snapshotter=false storage-driver=overlay2 version=28.2.2
+Jan 27 08:44:20 ip-172-31-13-238 dockerd[833]: time="2026-01-27T08:44:20.222708567Z" level=info msg="Initializing buildkit"
+Jan 27 08:44:20 ip-172-31-13-238 dockerd[833]: time="2026-01-27T08:44:20.229338028Z" level=warning msg="CDI setup error /etc/cdi: failed to monitor for changes: no such file or directory"
+Jan 27 08:44:20 ip-172-31-13-238 dockerd[833]: time="2026-01-27T08:44:20.229377155Z" level=warning msg="CDI setup error /var/run/cdi: failed to monitor for changes: no such file or directory"
+Jan 27 08:44:20 ip-172-31-13-238 dockerd[833]: time="2026-01-27T08:44:20.248380289Z" level=info msg="Completed buildkit initialization"
+Jan 27 08:44:20 ip-172-31-13-238 dockerd[833]: time="2026-01-27T08:44:20.258542457Z" level=info msg="Daemon has completed initialization"
+Jan 27 08:44:20 ip-172-31-13-238 dockerd[833]: time="2026-01-27T08:44:20.258630120Z" level=info msg="API listen on /run/docker.sock"
+Jan 27 08:44:20 ip-172-31-13-238 systemd[1]: Started docker.service - Docker Application Container Engine.
+Jan 27 11:21:47 ip-172-31-13-238 systemd[1]: Stopping docker.service - Docker Application Container Engine...
+Jan 27 11:21:47 ip-172-31-13-238 dockerd[833]: time="2026-01-27T11:21:47.287524743Z" level=info msg="Processing signal 'terminated'"
+Jan 27 11:21:47 ip-172-31-13-238 dockerd[833]: time="2026-01-27T11:21:47.289228807Z" level=info msg="Daemon shutdown complete"
+Jan 27 11:21:47 ip-172-31-13-238 systemd[1]: docker.service: Deactivated successfully.
+Jan 27 11:21:47 ip-172-31-13-238 systemd[1]: Stopped docker.service - Docker Application Container Engine.
+Jan 27 11:21:47 ip-172-31-13-238 systemd[1]: docker.service: Consumed 1.469s CPU time.
+-- Boot f6fdb880858345f2846d1658f289db99 --
+Jan 27 11:22:58 ip-172-31-13-238 systemd[1]: Starting docker.service - Docker Application Container Engine...
+Jan 27 11:22:59 ip-172-31-13-238 dockerd[847]: time="2026-01-27T11:22:59.146070031Z" level=info msg="Starting up"
+Jan 27 11:22:59 ip-172-31-13-238 dockerd[847]: time="2026-01-27T11:22:59.153097857Z" level=info msg="OTEL tracing is not configured, using no-op tracer provider"
+Jan 27 11:22:59 ip-172-31-13-238 dockerd[847]: time="2026-01-27T11:22:59.156868123Z" level=info msg="detected 127.0.0.53 nameserver, assuming systemd-resolved, so using resolv.conf: /run/systemd/resolve/resolv.conf"
+Jan 27 11:22:59 ip-172-31-13-238 dockerd[847]: time="2026-01-27T11:22:59.341661285Z" level=info msg="Creating a containerd client" address=/run/containerd/containerd.sock timeout=1m0s
+Jan 27 11:22:59 ip-172-31-13-238 dockerd[847]: time="2026-01-27T11:22:59.427982543Z" level=info msg="[graphdriver] using prior storage driver: overlay2"
+Jan 27 11:22:59 ip-172-31-13-238 dockerd[847]: time="2026-01-27T11:22:59.432788586Z" level=info msg="Loading containers: start."
+Jan 27 11:22:59 ip-172-31-13-238 dockerd[847]: time="2026-01-27T11:22:59.840198216Z" level=warning msg="Error (Unable to complete atomic operation, key modified) deleting object [endpoint_count 39db68dd83851ae1baa980519b1697053c96e0cf72df1024a432e1fcbc35f27f], retrying...."
+Jan 27 11:22:59 ip-172-31-13-238 dockerd[847]: time="2026-01-27T11:22:59.888909011Z" level=info msg="Loading containers: done."
+Jan 27 11:22:59 ip-172-31-13-238 dockerd[847]: time="2026-01-27T11:22:59.923231339Z" level=info msg="Docker daemon" commit="28.2.2-0ubuntu1~24.04.1" containerd-snapshotter=false storage-driver=overlay2 version=28.2.2
+Jan 27 11:22:59 ip-172-31-13-238 dockerd[847]: time="2026-01-27T11:22:59.923827352Z" level=info msg="Initializing buildkit"
+Jan 27 11:22:59 ip-172-31-13-238 dockerd[847]: time="2026-01-27T11:22:59.930208985Z" level=warning msg="CDI setup error /etc/cdi: failed to monitor for changes: no such file or directory"
+Jan 27 11:22:59 ip-172-31-13-238 dockerd[847]: time="2026-01-27T11:22:59.930247381Z" level=warning msg="CDI setup error /var/run/cdi: failed to monitor for changes: no such file or directory"
+Jan 27 11:22:59 ip-172-31-13-238 dockerd[847]: time="2026-01-27T11:22:59.949936304Z" level=info msg="Completed buildkit initialization"
+Jan 27 11:22:59 ip-172-31-13-238 dockerd[847]: time="2026-01-27T11:22:59.957904823Z" level=info msg="Daemon has completed initialization"
+Jan 27 11:22:59 ip-172-31-13-238 dockerd[847]: time="2026-01-27T11:22:59.958383769Z" level=info msg="API listen on /run/docker.sock"
+Jan 27 11:22:59 ip-172-31-13-238 systemd[1]: Started docker.service - Docker Application Container Engine.
+Jan 30 03:52:51 ip-172-31-13-238 systemd[1]: Stopping docker.service - Docker Application Container Engine...
+Jan 30 03:52:51 ip-172-31-13-238 dockerd[847]: time="2026-01-30T03:52:51.199935484Z" level=info msg="Processing signal 'terminated'"
+Jan 30 03:52:51 ip-172-31-13-238 dockerd[847]: time="2026-01-30T03:52:51.294390727Z" level=info msg="Daemon shutdown complete"
+Jan 30 03:52:51 ip-172-31-13-238 systemd[1]: docker.service: Deactivated successfully.
+Jan 30 03:52:51 ip-172-31-13-238 systemd[1]: Stopped docker.service - Docker Application Container Engine.
+Jan 30 03:52:51 ip-172-31-13-238 systemd[1]: docker.service: Consumed 24.626s CPU time, 94.8M memory peak, 0B memory swap peak.
+-- Boot 50b9212abe9042cb9b8370fab9694a13 --
+Jan 30 08:42:37 ip-172-31-13-238 systemd[1]: Starting docker.service - Docker Application Container Engine...
+Jan 30 08:42:38 ip-172-31-13-238 dockerd[830]: time="2026-01-30T08:42:38.245914625Z" level=info msg="Starting up"
+Jan 30 08:42:38 ip-172-31-13-238 dockerd[830]: time="2026-01-30T08:42:38.251773728Z" level=info msg="OTEL tracing is not configured, using no-op tracer provider"
+Jan 30 08:42:38 ip-172-31-13-238 dockerd[830]: time="2026-01-30T08:42:38.254080318Z" level=info msg="detected 127.0.0.53 nameserver, assuming systemd-resolved, so using resolv.conf: /run/systemd/resolve/resolv.conf"
+Jan 30 08:42:38 ip-172-31-13-238 dockerd[830]: time="2026-01-30T08:42:38.437214641Z" level=info msg="Creating a containerd client" address=/run/containerd/containerd.sock timeout=1m0s
+Jan 30 08:42:38 ip-172-31-13-238 dockerd[830]: time="2026-01-30T08:42:38.532029840Z" level=info msg="[graphdriver] using prior storage driver: overlay2"
+Jan 30 08:42:38 ip-172-31-13-238 dockerd[830]: time="2026-01-30T08:42:38.538696724Z" level=info msg="Loading containers: start."
+Jan 30 08:42:38 ip-172-31-13-238 dockerd[830]: time="2026-01-30T08:42:38.990819041Z" level=warning msg="Error (Unable to complete atomic operation, key modified) deleting object [endpoint_count 72ef17e9598dfcc55ff38678fa8566e34cb335864da77d3c43bea762e50f5f18], retrying...."
+Jan 30 08:42:39 ip-172-31-13-238 dockerd[830]: time="2026-01-30T08:42:39.037219017Z" level=info msg="Loading containers: done."
+Jan 30 08:42:39 ip-172-31-13-238 dockerd[830]: time="2026-01-30T08:42:39.073487783Z" level=info msg="Docker daemon" commit="28.2.2-0ubuntu1~24.04.1" containerd-snapshotter=false storage-driver=overlay2 version=28.2.2
+Jan 30 08:42:39 ip-172-31-13-238 dockerd[830]: time="2026-01-30T08:42:39.074162566Z" level=info msg="Initializing buildkit"
+Jan 30 08:42:39 ip-172-31-13-238 dockerd[830]: time="2026-01-30T08:42:39.079730866Z" level=warning msg="CDI setup error /var/run/cdi: failed to monitor for changes: no such file or directory"
+Jan 30 08:42:39 ip-172-31-13-238 dockerd[830]: time="2026-01-30T08:42:39.079758137Z" level=warning msg="CDI setup error /etc/cdi: failed to monitor for changes: no such file or directory"
+Jan 30 08:42:39 ip-172-31-13-238 dockerd[830]: time="2026-01-30T08:42:39.097760781Z" level=info msg="Completed buildkit initialization"
+Jan 30 08:42:39 ip-172-31-13-238 dockerd[830]: time="2026-01-30T08:42:39.107976508Z" level=info msg="Daemon has completed initialization"
+Jan 30 08:42:39 ip-172-31-13-238 dockerd[830]: time="2026-01-30T08:42:39.108024321Z" level=info msg="API listen on /run/docker.sock"
+Jan 30 08:42:39 ip-172-31-13-238 systemd[1]: Started docker.service - Docker Application Container Engine.
+Jan 31 06:25:36 ip-172-31-13-238 dockerd[830]: time="2026-01-31T06:25:36.771333955Z" level=error msg="Failed to get event" error="rpc error: code = Unavailable desc = error reading from server: EOF" module=libcontainerd namespace=plugins.moby
+Jan 31 06:25:36 ip-172-31-13-238 dockerd[830]: time="2026-01-31T06:25:36.771334330Z" level=error msg="Failed to get event" error="rpc error: code = Unavailable desc = error reading from server: EOF" module=libcontainerd namespace=moby
+Jan 31 06:25:36 ip-172-31-13-238 dockerd[830]: time="2026-01-31T06:25:36.773673063Z" level=info msg="Waiting for containerd to be ready to restart event processing" module=libcontainerd namespace=plugins.moby
+Jan 31 06:25:36 ip-172-31-13-238 dockerd[830]: time="2026-01-31T06:25:36.773678244Z" level=info msg="Waiting for containerd to be ready to restart event processing" module=libcontainerd namespace=moby
