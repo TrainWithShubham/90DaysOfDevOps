@@ -86,6 +86,6 @@ journalctl -u nginx
 # Automatic Recovery
 systemd can restart failed services automatically.
 
-Restart=always
+Restart=always 
 
 
