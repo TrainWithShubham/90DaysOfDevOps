@@ -1,82 +1,53 @@
-# Day 03 – Linux Commands Practice
+# Cheatsheet for Process management 
 
-## Task
-Today’s goal is to **build your Linux command confidence**.
+# Process management 
 
-You will create a cheat sheet of commands focused on:
-- Process management
-- File system
-- Networking troubleshooting
+# ps
+shows commands runs in terminal
 
-This is the command toolkit you will reuse for years.
+# ps -e
+ displays all running processes on the system. Use this option when you need a complete list of system processes, including background services and processes from other users.
+# ps -ef
+show all the processes with full format listing
+# ps -x 
+shows processes which do not have tty
+# ps aux
+The ps aux format displays a detailed view of all running processes including user processes, system services, and background tasks. It provides information such as CPU usage, memory usage, process owner, start time, command name.
 
----
+# ps -u username 
+shows process related to username
+# ps -a 
+-a option processes for all users that are associated with terrminal except session leaders
 
-## Expected Output
-By the end of today, you should have:
+# ps -p pid
+show process with pid 
+# ps -ef --forest
+option displays process in a hierarchical true format, showing parent child relationships between processes.
+# ps -A
+The -A option displays all running processes on the Linux system
+# ps -d 
+list all processes except session leaders
+# ps -T
+The -T option displays all processes associated with the current terminal session. This helps users identify commands running within their terminal.
 
-- A markdown file named:  
-  `linux-commands-cheatsheet.md`
+# ps -G group_name 
+every process belongs to a user group.
 
-or
+# curl i 
 
-- A hand written cheat sheet (Recommended)
+# wget
 
-Your cheat sheet should be easy to scan during real troubleshooting.
+# ip addr
 
----
+# ping
 
-## Guidelines
-Follow these rules while creating your cheat sheet:
+# ls -l
 
-- Include **at least 20 commands** with one‑line usage notes
-- Add **3 networking commands** (`ping`, `ip addr`, `dig`, `curl`, etc.)
-- Group commands by category
-- Keep it concise and readable
+# ls -la
 
----
+# ls -lah
 
-## Resources
-You may refer to:
+# mv source destination 
 
-- Linux `man` pages
-- Your class notes
-- Reliable Linux command references
+# cp source destination 
 
-Don’t copy long lists. Focus on commands you understand.
-
----
-
-## Why This Matters for DevOps
-Real production issues are solved at the command line.
-
-The faster you can inspect logs and network issues, the faster you can:
-- Restore service
-- Reduce downtime
-- Gain trust as an operator
-
----
-
-## Submission
-1. Fork this `90DaysOfDevOps` repository  
-2. Navigate to the `2026/day-03/` folder  
-3. Add your `linux-commands-cheatsheet.md` file  
-4. Commit and push your changes to your fork  
-
----
-
-## Learn in Public
-Share your Day 03 progress on LinkedIn:
-
-- Post 2–3 lines on your favorite Linux commands
-- Share one log command and one networking command
-- Optional: screenshot of your cheat sheet
-
-Use hashtags:
-#90DaysOfDevOps
-#DevOpsKaJosh
-#TrainWithShubham
-
-
-Happy Learning  
-**TrainWithShubham**
