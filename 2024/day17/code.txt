@@ -1,0 +1,49 @@
+root@Bhavin-Savaliya:~/flask-app# history
+
+    1  clear
+    2  ls
+    3  docker ps
+    4  docker
+    5  docker --version
+    6  systemctl status docker
+    7  clear
+    8  ls
+    9  mkdir flask-app
+   10  ls
+   11  cd flask-app
+   12  vim app.py
+   13  ls
+   14  cat app.py
+   15  clear
+   16  ls
+   17  vim requirements.txt
+   18  ls
+   19  cat requirements.txt
+   20  clear
+   21  ls
+   22  vim Dockerfile
+   23  ls
+   24  cat Dockerfile
+   25  clear
+   26  ls
+   27  docker build -t flask-app .
+   28  RUN pip install
+   29  apt pip install
+   30  pip
+   31  apt install python3-pip
+   32  pip
+   33  python --version
+   34  python3 --version
+   35  docker build -t flask-app .
+   36  pip install -r requirements.txt
+   37  ls
+   38  vim requirements.txt
+   39  cat requirements.txt
+   40  clear
+   41  docker build -t flask-app .
+   42  docker run -d -p 5000:5000 flask-app
+   43  docker tag flask-app bhavin1998/flask-app
+   44  docker push bhavin1998/flask-app
+   45  docker login
+   46  docker push bhavin1998/flask-app
+   47  history
