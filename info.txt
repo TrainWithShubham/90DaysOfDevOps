@@ -22,8 +22,15 @@ Creating project-based learning for portfolio and GitHub
 Learning Approach
 
 I’m focusing on:
-
 Daily hands-on practice
 Real-world mini projects
 Documentation and blogging
 Uploading projects to GitHub for consistency and learning
+
+Additional Skills:
+- Git Branching
+- Pull Requests
+- SSH Authentication
+- Merge Conflict Resolution
+
+
