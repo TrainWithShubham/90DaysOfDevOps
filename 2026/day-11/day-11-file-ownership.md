@@ -209,6 +209,7 @@ mkdir
 groupadd
 chown
 chgrp
+sudo
 chown -R
 ```
 
