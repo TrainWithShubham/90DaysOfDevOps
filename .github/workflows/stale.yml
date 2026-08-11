@@ -1,27 +1,17 @@
-# This workflow warns and then closes issues and PRs that have had no activity for a specified amount of time.
-#
-# You can adjust the behavior by modifying this file.
-# For more information, see:
-# https://github.com/actions/stale
-name: Mark stale issues and pull requests
+name: PR Check Workflow
 
 on:
-  schedule:
-  - cron: '20 7 * * *'
+  pull_request:
+    branches: ["main"]
+    types: [opened, synchronize, reopened]
 
 jobs:
-  stale:
-
+  greet:
     runs-on: ubuntu-latest
-    permissions:
-      issues: write
-      pull-requests: write
 
     steps:
-    - uses: actions/stale@v5
-      with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        stale-issue-message: 'Stale issue message'
-        stale-pr-message: 'Stale pull request message'
-        stale-issue-label: 'no-issue-activity'
-        stale-pr-label: 'no-pr-activity'
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: PR checking
+        run: echo "PR check running for branch: ${{ github.head_ref }}"
