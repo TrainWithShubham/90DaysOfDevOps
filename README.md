@@ -14,7 +14,7 @@ This is a **discipline + execution challenge**.
 
 **#90DaysOfDevOps** is a **day-wise DevOps learning challenge** where:
 
-- Every day has **one clear task**
+
 - Every task has a **real-world DevOps outcome**
 - Every learner builds a **public GitHub proof of work**
 - Every concept is reinforced through **hands-on practice**
