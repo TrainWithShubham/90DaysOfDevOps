@@ -1,5 +1,9 @@
 from pathlib import Path
 
+<<info
+
+there are few changeees
+info
 root = Path(__file__).resolve().parents[1]
 base = root / "2026"
 base.mkdir(parents=True, exist_ok=True)
