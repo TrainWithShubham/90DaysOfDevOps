@@ -1,0 +1,29 @@
+# Stage 1: Build
+FROM eclipse-temurin:17-jdk-alpine AS builder
+
+WORKDIR /app
+
+COPY src/Main.java .
+
+# Compile the application
+RUN javac Main.java
+
+# Stage 2: Runtime
+FROM eclipse-temurin:17-jre-alpine
+
+# Create non-root user and app directory in one layer
+RUN addgroup -S appgroup && \
+    adduser -S appuser -G appgroup && \
+    mkdir -p /app && \
+    chown -R appuser:appgroup /app
+
+WORKDIR /app
+
+# Copy compiled artifact
+COPY --from=builder /app/Main.class .
+
+# Use non-root user
+USER appuser
+
+# Run application
+CMD ["java", "Main"]

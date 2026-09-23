@@ -1,0 +1,20 @@
+# Stage 1: Build the Java app
+FROM eclipse-temurin:17-jdk AS builder
+
+WORKDIR /app
+
+COPY src/Main.java .
+
+# Compile the Java file
+RUN javac Main.java
+
+# Stage 2: Minimal runtime image
+FROM eclipse-temurin:17-jre-alpine
+
+WORKDIR /app
+
+# Copy only compiled class file
+COPY --from=builder /app/Main.class .
+
+# Run the application
+CMD ["java", "Main"]
