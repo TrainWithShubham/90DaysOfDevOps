@@ -1,0 +1,39 @@
+---
+# tasks file for roles/webserver
+
+- name: Install Nginx
+  yum:
+    name: nginx
+    state: present
+
+- name: Deploy Nginx configuration
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+    mode: '0644'
+  notify: Restart Nginx
+
+- name: Create web root
+  file:
+    path: "/var/www/{{ app_name }}"
+    state: directory
+    mode: '0755'
+
+- name: Deploy virtual host
+  template:
+    src: nginx-vhost.conf.j2
+    dest: "/etc/nginx/conf.d/{{ app_name }}.conf"
+    mode: '0644'
+  notify: Restart Nginx
+
+- name: Deploy index page
+  template:
+    src: index.html.j2
+    dest: "/var/www/{{ app_name }}/index.html"
+    mode: '0644'
+
+- name: Start and enable Nginx
+  service:
+    name: nginx
+    state: started
+    enabled: true

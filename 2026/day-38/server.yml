@@ -1,0 +1,22 @@
+---
+server:
+  name: dev-server
+  ip: 192.168.1.10
+  port: 8080
+
+database:
+  host: localhost
+  name: app_db
+  credentials:
+    user: admin
+    password: "admin123"
+
+startup_script_pipe: |
+  echo "Starting server..."
+  docker compose up -d
+  echo "Server started successfully."
+
+startup_script_fold: >
+  echo "Starting server..."
+  docker compose up -d
+  echo "Server started successfully."

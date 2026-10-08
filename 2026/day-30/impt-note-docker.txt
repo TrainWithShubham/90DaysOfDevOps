@@ -1,0 +1,53 @@
+alpine:latest       28bd5fe8b56d         13MB         3.93MB 
+ubuntu:latest       f3d28607ddd7        160MB         45.3MB    U 
+nginx:latest        6415da96b72a        241MB           66MB
+
+
+
+Docker images are built using multiple layers. Each command in Dockerfile creates a layer.
+Docker uses layers for caching, faster builds, and storage optimization. 
+Some layers show 0B because they only update metadata like ENV or CMD and do not add files.
+
+
+docker create --name lifecycle-nginx nginx 
+this coimmands craete container but not start
+
+
+docker create --name lifecycle-nginx nginx
+Docker only:
+
+created container metadata
+prepared filesystem
+attached image layers
+assigned container ID
+
+
+Why daemon off; Important?
+
+Normally nginx runs in background.
+
+But inside Docker:
+
+main process must stay active
+
+So:
+
+daemon off;
+
+keeps nginx running in foreground.
+
+If main process stops:
+
+container stops automatically
+
+Very important Docker concept.
+
+docker start starts an existing container that was already created or stopped earlier. Docker mounts the image layers, 
+attaches networking, creates a writable layer, and starts the container's main process.
+ In nginx container, Docker starts the nginx process using the CMD instruction from the image
+ 
+ 
+ Easy Interview Answer
+
+docker stop performs graceful shutdown by sending SIGTERM signal, so the application gets time to clean up resources properly. But if the application becomes unresponsive or hangs, Docker may not be able to stop it normally.
+ In that case we use docker kill, which sends SIGKILL and forcefully terminates the container immediately.

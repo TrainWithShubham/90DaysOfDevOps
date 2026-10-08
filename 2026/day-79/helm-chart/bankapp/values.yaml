@@ -1,0 +1,81 @@
+# BankApp configuration
+bankapp:
+  replicaCount: 4
+  image:
+    repository: trainwithshubham/ai-bankapp-eks
+    tag: "latest"
+    pullPolicy: Always
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "250m"
+    limits:
+      memory: "512Mi"
+      cpu: "500m"
+  service:
+    type: ClusterIP
+    port: 8080
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 4
+    targetCPUUtilization: 70
+
+# MySQL configuration
+mysql:
+  enabled: true
+  image:
+    repository: mysql
+    tag: "8.0"
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "250m"
+    limits:
+      memory: "512Mi"
+      cpu: "500m"
+  persistence:
+    size: 5Gi
+    storageClass: gp3
+
+# Ollama AI configuration
+ollama:
+  enabled: true
+  image:
+    repository: ollama/ollama
+    tag: "latest"
+  model: tinyllama
+  resources:
+    requests:
+      memory: "2Gi"
+      cpu: "900m"
+    limits:
+      memory: "2.5Gi"
+      cpu: "1500m"
+  persistence:
+    size: 10Gi
+    storageClass: gp3
+
+# Shared configuration
+config:
+  mysqlDatabase: bankappdb
+  ollamaUrl: ""
+
+# Secrets
+secrets:
+  mysqlRootPassword: Test@123
+  mysqlUser: root
+  mysqlPassword: Test@123
+
+# Storage
+storageClass:
+  create: true
+  name: gp3
+  provisioner: ebs.csi.aws.com
+
+# Gateway
+gateway:
+  enabled: false
+  hostname: ""
+  tls:
+    enabled: false

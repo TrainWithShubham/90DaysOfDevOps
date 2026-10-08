@@ -1,0 +1,14 @@
+---
+- name: Facts demo
+  hosts: all
+
+  tasks:
+    - name: Show server facts
+      debug:
+        msg:
+          - "Hostname: {{ ansible_hostname }}"
+          - "OS: {{ ansible_distribution }}"
+          - "OS Version: {{ ansible_distribution_version }}"
+          - "Memory: {{ ansible_memtotal_mb }} MB"
+          - "IP Address: {{ ansible_default_ipv4.address }}"
+          - "Interfaces: {{ ansible_interfaces }}"

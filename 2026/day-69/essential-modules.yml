@@ -1,0 +1,50 @@
+---
+- name: Practice essential Ansible modules
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Install packages
+      yum:
+        name:
+          - git
+          - wget
+          - tree
+        state: present
+
+    - name: Copy config file
+      copy:
+        src: files/app.conf
+        dest: /etc/app.conf
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Create application directory
+      file:
+        path: /opt/myapp
+        state: directory
+        owner: ec2-user
+        mode: '0755'
+
+    - name: Check disk space
+      command: df -h
+      register: disk_output
+
+    - name: Print disk space
+      debug:
+        var: disk_output.stdout_lines
+
+    - name: Count running processes
+      shell: ps aux | wc -l
+      register: process_count
+
+    - name: Show process count
+      debug:
+        msg: "Total processes: {{ process_count.stdout }}"
+
+    - name: Set timezone in environment
+      lineinfile:
+        path: /etc/environment
+        line: 'TZ=Asia/Kolkata'
+        create: true

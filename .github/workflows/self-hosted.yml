@@ -1,0 +1,19 @@
+name: Self-Hosted Job
+
+on: push
+
+jobs:
+  run-on-my-machine:
+    runs-on: [self-hosted, my-linux-runner]
+    steps:
+      - name: Print hostname
+        run: echo "Hostname is $(hostname)"
+
+      - name: Print working directory
+        run: echo "Working directory is $(pwd)"
+
+      - name: Create a test file
+        run: echo "Hello from GitHub Actions" > day42-test.txt
+
+      - name: Show the file was created
+        run: cat day42-test.txt

@@ -1,0 +1,13 @@
+---
+timezone: America/Toronto
+project_name: devops-app
+app_env: development
+
+common_packages:
+  - vim
+  - wget
+  - git
+  - htop
+  - tree
+  - jq
+  - unzip

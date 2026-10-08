@@ -1,0 +1,9 @@
+alpine:latest       28bd5fe8b56d         13MB         3.93MB 
+ubuntu:latest       f3d28607ddd7        160MB         45.3MB    U 
+nginx:latest        6415da96b72a        241MB           66MB
+
+
+
+Docker images are built using multiple layers. Each command in Dockerfile creates a layer.
+ Docker uses layers for caching, faster builds, and storage optimization. 
+ Some layers show 0B because they only update metadata like ENV or CMD and do not add files.

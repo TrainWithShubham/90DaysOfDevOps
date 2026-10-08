@@ -1,0 +1,16 @@
+user nginx;
+worker_processes auto;
+
+events {
+    worker_connections {{ max_connections }};
+}
+
+http {
+    include /etc/nginx/mime.types;
+    default_type application/octet-stream;
+
+    sendfile on;
+    keepalive_timeout 65;
+
+    include /etc/nginx/conf.d/*.conf;
+}

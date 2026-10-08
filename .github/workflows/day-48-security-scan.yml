@@ -1,0 +1,26 @@
+name: Day 48 - Docker Security Scan
+
+on:
+  push:
+    branches:
+      - main
+      - DevOps-practice
+  workflow_dispatch:
+
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t devops-cicd-lab:scan .
+
+      - name: Scan Docker image with Trivy
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: devops-cicd-lab:scan
+          format: table
+          exit-code: 0

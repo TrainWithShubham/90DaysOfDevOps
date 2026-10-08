@@ -1,0 +1,94 @@
+# Requires: Gateway API CRDs + Envoy Gateway installed on the cluster
+# On EKS, Envoy Gateway creates an AWS NLB for external access automatically.
+# Install steps documented in terraform/README.md
+apiVersion: gateway.networking.k8s.io/v1
+kind: GatewayClass
+metadata:
+  name: envoy-gateway
+spec:
+  controllerName: gateway.envoyproxy.io/gatewayclass-controller
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: bankapp-gateway
+  namespace: bankapp
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  gatewayClassName: envoy-gateway
+  listeners:
+    # HTTP — needed for cert-manager ACME HTTP-01 challenge validation.
+    # cert-manager creates a temporary HTTPRoute in its own namespace to serve
+    # the challenge, so allowedRoutes must permit all namespaces.
+    - name: http
+      protocol: HTTP
+      port: 80
+      allowedRoutes:
+        namespaces:
+          from: All
+    # HTTPS — TLS terminated at Envoy Gateway using cert-manager certificate
+    - name: https
+      protocol: HTTPS
+      port: 443
+      hostname: 52.43.73.130.nip.io
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - group: ""
+            kind: Secret
+            name: bankapp-tls
+      allowedRoutes:
+        namespaces:
+          from: Same
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: bankapp-route
+  namespace: bankapp
+spec:
+  hostnames:
+    - 52.43.73.130.nip.io
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: bankapp-gateway
+      sectionName: https
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: bankapp-gateway
+      sectionName: http
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - group: ""
+          kind: Service
+          name: bankapp-service
+          port: 8080
+          weight: 1
+---
+# Session persistence: Envoy Gateway bypasses K8s Service sessionAffinity and
+# load-balances directly to pod endpoints. Without this policy, requests from
+# the same browser can hit different pods, breaking in-memory sessions (CSRF
+# tokens, login state). Cookie-based consistent hashing pins a browser to one pod.
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: BackendTrafficPolicy
+metadata:
+  name: bankapp-session
+  namespace: bankapp
+spec:
+  targetRefs:
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      name: bankapp-route
+  loadBalancer:
+    type: ConsistentHash
+    consistentHash:
+      type: Cookie
+      cookie:
+        name: BANKAPP_AFFINITY
+        ttl: 3600s

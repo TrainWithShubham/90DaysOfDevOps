@@ -1,0 +1,4 @@
+---
+nginx_http_port: 80
+nginx_upstream_port: 8080
+nginx_server_name: "_"

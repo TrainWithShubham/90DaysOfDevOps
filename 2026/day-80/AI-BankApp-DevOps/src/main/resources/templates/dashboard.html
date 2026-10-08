@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" data-theme="dark">
+<head th:replace="~{fragments/layout :: head('Dashboard - BankApp')}"></head>
+<body>
+<div class="d-flex flex-column min-vh-100">
+    <nav th:replace="~{fragments/layout :: navbar-auth}"></nav>
+
+    <div class="dashboard-wrapper fade-in">
+        <!-- Balance Card -->
+        <div class="glass-card balance-card fade-in">
+            <div class="balance-label">Total Balance</div>
+            <div class="balance-amount">
+                <span class="currency">$</span><span th:text="${#numbers.formatDecimal(account.balance, 1, 2)}">0.00</span>
+            </div>
+            <div class="account-info">
+                <span><i class="bi bi-person-circle"></i> <span th:text="${account.username}">user</span></span>
+                <span><i class="bi bi-hash"></i> Account #<span th:text="${account.id}">1</span></span>
+                <span><i class="bi bi-wallet2"></i> Savings</span>
+            </div>
+        </div>
+
+        <!-- Error Message -->
+        <div th:if="${error}" class="alert alert-glass mb-4 text-center fade-in">
+            <i class="bi bi-exclamation-triangle"></i> <span th:text="${error}"></span>
+        </div>
+
+        <!-- Action Cards -->
+        <div class="action-cards">
+            <!-- Deposit -->
+            <div class="glass-card action-card fade-in fade-in-delay-1">
+                <h5><i class="bi bi-plus-circle text-success"></i> Deposit</h5>
+                <form th:action="@{/deposit}" method="post">
+                    <div class="mb-3">
+                        <label class="form-label" for="depositAmount">Amount</label>
+                        <input type="number" class="form-control" id="depositAmount" name="amount"
+                               step="0.01" min="0.01" placeholder="0.00" required>
+                    </div>
+                    <button type="submit" class="btn btn-accent w-100">
+                        <i class="bi bi-arrow-down-circle"></i> Deposit
+                    </button>
+                </form>
+            </div>
+
+            <!-- Withdraw -->
+            <div class="glass-card action-card fade-in fade-in-delay-2">
+                <h5><i class="bi bi-dash-circle text-danger"></i> Withdraw</h5>
+                <form th:action="@{/withdraw}" method="post">
+                    <div class="mb-3">
+                        <label class="form-label" for="withdrawAmount">Amount</label>
+                        <input type="number" class="form-control" id="withdrawAmount" name="amount"
+                               step="0.01" min="0.01" placeholder="0.00" required>
+                    </div>
+                    <button type="submit" class="btn btn-accent w-100">
+                        <i class="bi bi-arrow-up-circle"></i> Withdraw
+                    </button>
+                </form>
+            </div>
+
+            <!-- Transfer -->
+            <div class="glass-card action-card fade-in fade-in-delay-3">
+                <h5><i class="bi bi-arrow-left-right text-info"></i> Transfer</h5>
+                <form th:action="@{/transfer}" method="post">
+                    <div class="mb-3">
+                        <label class="form-label" for="toUsername">Recipient Username</label>
+                        <input type="text" class="form-control" id="toUsername" name="toUsername"
+                               placeholder="Enter username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="transferAmount">Amount</label>
+                        <input type="number" class="form-control" id="transferAmount" name="amount"
+                               step="0.01" min="0.01" placeholder="0.00" required>
+                    </div>
+                    <button type="submit" class="btn btn-accent w-100">
+                        <i class="bi bi-send"></i> Transfer
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer th:replace="~{fragments/layout :: footer}"></footer>
+</div>
+
+<!-- Chat Widget -->
+<button class="chat-fab" id="chatFab" title="AI Assistant">
+    <i class="bi bi-chat-dots-fill"></i>
+</button>
+
+<div class="chat-panel" id="chatPanel">
+    <div class="chat-header">
+        <i class="bi bi-robot"></i> AI Assistant
+    </div>
+    <div class="chat-messages" id="chatMessages">
+        <div class="chat-msg bot">Hi! I'm your banking assistant. Ask me about your balance, transactions, or anything else.</div>
+    </div>
+    <div class="chat-input-area">
+        <input type="text" id="chatInput" placeholder="Type a message..." autocomplete="off">
+        <button id="chatSend"><i class="bi bi-send-fill"></i></button>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script th:inline="javascript">
+    const csrfToken = document.querySelector('meta[name="_csrf"]')?.content
+        || document.cookie.match(/XSRF-TOKEN=([^;]+)/)?.[1] || '';
+    const csrfHeader = document.querySelector('meta[name="_csrf_header"]')?.content || 'X-CSRF-TOKEN';
+
+    document.getElementById('chatFab').addEventListener('click', function () {
+        document.getElementById('chatPanel').classList.toggle('open');
+        document.getElementById('chatInput').focus();
+    });
+
+    function sendMessage() {
+        const input = document.getElementById('chatInput');
+        const msg = input.value.trim();
+        if (!msg) return;
+
+        const messages = document.getElementById('chatMessages');
+        messages.innerHTML += '<div class="chat-msg user">' + escapeHtml(msg) + '</div>';
+        input.value = '';
+        messages.scrollTop = messages.scrollHeight;
+
+        const loading = document.createElement('div');
+        loading.className = 'chat-msg bot loading';
+        loading.textContent = 'Thinking...';
+        messages.appendChild(loading);
+        messages.scrollTop = messages.scrollHeight;
+
+        fetch('/api/chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                [csrfHeader]: csrfToken
+            },
+            body: JSON.stringify({ message: msg })
+        })
+        .then(r => r.json())
+        .then(data => {
+            loading.remove();
+            messages.innerHTML += '<div class="chat-msg bot">' + escapeHtml(data.reply) + '</div>';
+            messages.scrollTop = messages.scrollHeight;
+        })
+        .catch(() => {
+            loading.remove();
+            messages.innerHTML += '<div class="chat-msg bot">Sorry, something went wrong.</div>';
+            messages.scrollTop = messages.scrollHeight;
+        });
+    }
+
+    document.getElementById('chatSend').addEventListener('click', sendMessage);
+    document.getElementById('chatInput').addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') sendMessage();
+    });
+
+    function escapeHtml(text) {
+        const d = document.createElement('div');
+        d.textContent = text;
+        return d.innerHTML;
+    }
+</script>
+</body>
+</html>

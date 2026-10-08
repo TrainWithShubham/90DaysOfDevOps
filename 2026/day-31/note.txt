@@ -1,0 +1,47 @@
+What happened internally?
+
+Docker read instructions line by line.
+
+Each instruction created a new layer.
+
+
+t asma-file
+craete the tag name image, image name = asma-file
+tag = latest
+
+
+. (dot)
+
+Very important interview question.
+
+Means:
+
+Current folder is the build context, Docker sends all files from current folder to Docker daemon.
+
+
+Difference between RUN and CMD?
+
+Very important.
+
+Human answer:
+
+RUN	CMD
+Executes during image build	Executes when container starts
+
+Example:
+
+RUN installs curl
+CMD prints message
+
+Container stops because the main process finished execution. In this case echo command completed and container exited.
+
+Docker uses layers for caching, faster builds, and storage optimization.
+
+Docker executes Dockerfile instructions one by one and creates layers for each instruction to build the final image.
+
+Container exited because the main process completed execution. Docker containers stay alive only while the main process is running. 
+In this case the cat message.txt command finished immediately, so the container stopped automatically.
+
+
+CMD provides a default command that can be overridden during container runtime. ENTRYPOINT defines the main executable for the container and additional arguments passed during docker run are appended to ENTRYPOINT. 
+CMD is used for default behavior while ENTRYPOINT is used when the container should behave like a dedicated executable.

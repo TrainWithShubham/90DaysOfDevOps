@@ -1,0 +1,15 @@
+apiVersion: v2
+name: bankapp
+description: AI-BankApp -- Spring Boot banking application with MySQL and Ollama AI chatbot
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+maintainers:
+  - name: TrainWithShubham
+    url: https://github.com/TrainWithShubham
+keywords:
+  - bankapp
+  - spring-boot
+  - mysql
+  - ollama
+  - ai

@@ -1,0 +1,57 @@
+
+docker image pull --create docker volume--mount it 
+
+
+first docker run means create and start a container 
+here Docker creates container , starts MYSQL process 
+-d means detached mode, container run in background, so your terminal become free gain. 
+without -d terminal stays attched tp container logs
+-name mysql-no-volume means give custom name to container, you can give any name
+-e MYSQL_ROOT_PASSWORD=root123 -e means environment variable,
+MYSQL_ROOT_PASSWORD sets MySql root user password, Password becomes root123
+-e MYSQL_DATABASE=testdb thia automatically creates database testdb when MySql container starts first time
+mysql  this is a image , docker checks local images if not found , pulls from Docker Hub
+then craete container from image
+********************************************************************************************************************************
+WHat internally dodcker do ?
+pulls image if image not alredy downloaded , creates writable container layer
+, image is read only, container get writable layer , Mysql database files currently store inside writable layer
+main process becaome mysqld, Container now has linux filesystem, MySQL binaries,DB directories, temp writable storage
+container gets interna; IP, netwrok interface
+****************************************************************************************************************************************
+
+database data is NOT persistent
+Because:data stored inside container writable layer, if container deleted writable layer deleted, database deleted
+
+so whever container gets deleted data might be lose so docker volume exist to solve this problem
+
+Without volumes, database data is stored inside the container writable layer. 
+When the container is removed, the writable layer is deleted and the data is lost.
+
+*********************************************************************************************************
+docker container prune removes all stopped containers and frees Docker storage space. Running containers are not affected.
+********************************************************************************************************
+Difference between anonymous volume(withoy name number ) and named volume?
+Anonymous volumes are automatically created by Docker with random names,
+ while named volumes are manually created by users with meaningful names and are easier to manage in production.
+ 
+******************************************************************************************************
+I created a named Docker volume called mysql-data and attached it to the MySQL container using:
+
+-v mysql-data:/var/lib/mysql
+
+This stores database files inside the Docker volume instead of the temporary container layer. After deleting the container and creating a new one with the same volume, my old database data was still available.
+
+I learned that Docker volumes provide persistent storage and keep data safe even if containers are removed.
+**********************************************************************************************************
+I created a local folder with an index.html file and bind mounted it into an Nginx container using:
+
+docker run -d --name bind-nginx -p 8080:80 -v ${PWD}:/usr/share/ngi
+${PWD} represents my current local folder and /usr/share/nginx/html is the Nginx web directory inside the container.
+
+When I edited the index.html file on my Windows machine and refreshed the browser, the changes appeared immediately without rebuilding the image.
+
+I learned that bind mounts directly connect the host machine folder with the container folder and are mostly used during development for live file synchronization.
+***************************************************************************************************
+I created a custom Docker bridge network so containers could communicate with each other using container names instead of IP addresses. I tested connectivity by pinging one container from another container on the same network.
+Docker automatically provided internal DNS resolution on the custom network.

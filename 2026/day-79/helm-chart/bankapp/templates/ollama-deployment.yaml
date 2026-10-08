@@ -1,0 +1,57 @@
+{{- if .Values.ollama.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "bankapp.fullname" . }}-ollama
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "bankapp.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ include "bankapp.fullname" . }}-ollama
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: {{ include "bankapp.fullname" . }}-ollama
+    spec:
+      containers:
+        - name: ollama
+          image: "{{ .Values.ollama.image.repository }}:{{ .Values.ollama.image.tag }}"
+          ports:
+            - containerPort: 11434
+          {{- with .Values.ollama.resources }}
+          resources:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          volumeMounts:
+            - name: ollama-storage
+              mountPath: /root/.ollama
+          lifecycle:
+            postStart:
+              exec:
+                command:
+                  - /bin/sh
+                  - -c
+                  - |
+                    until ollama list > /dev/null 2>&1; do sleep 2; done
+                    ollama pull {{ .Values.ollama.model }}
+          readinessProbe:
+            exec:
+              command: ["/bin/sh", "-c", "ollama list | grep -q {{ .Values.ollama.model }}"]
+            initialDelaySeconds: 30
+            failureThreshold: 30
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 11434
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            failureThreshold: 5
+      volumes:
+        - name: ollama-storage
+          persistentVolumeClaim:
+            claimName: {{ include "bankapp.fullname" . }}-ollama-pvc
+{{- end }}

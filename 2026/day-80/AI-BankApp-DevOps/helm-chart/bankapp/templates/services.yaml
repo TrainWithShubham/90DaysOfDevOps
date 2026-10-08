@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "bankapp.fullname" . }}-mysql
+  namespace: {{ .Release.Namespace }}
+spec:
+  selector:
+    app: {{ include "bankapp.fullname" . }}-mysql
+  ports:
+    - port: 3306
+---
+{{- if .Values.ollama.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "bankapp.fullname" . }}-ollama
+  namespace: {{ .Release.Namespace }}
+spec:
+  selector:
+    app: {{ include "bankapp.fullname" . }}-ollama
+  ports:
+    - port: 11434
+{{- end }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "bankapp.fullname" . }}-service
+  namespace: {{ .Release.Namespace }}
+spec:
+  type: {{ .Values.bankapp.service.type }}
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 3600
+  selector:
+    app: {{ include "bankapp.fullname" . }}
+  ports:
+    - port: {{ .Values.bankapp.service.port }}
+      targetPort: 8080

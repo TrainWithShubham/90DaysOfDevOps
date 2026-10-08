@@ -1,0 +1,35 @@
+services:
+  app:
+    build: ./app
+    container_name: day36-flask-app
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - day36-network
+
+  db:
+    image: postgres:16-alpine
+    container_name: day36-postgres-db
+    env_file:
+      - .env
+    volumes:
+      - day36-postgres-data:/var/lib/postgresql/data
+    networks:
+      - day36-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U asma -d asma_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  day36-postgres-data:
+
+networks:
+  day36-network:
+    driver: bridge

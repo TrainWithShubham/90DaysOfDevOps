@@ -1,0 +1,4 @@
+---
+db_port: 3306
+db_packages:
+  - mysql-server

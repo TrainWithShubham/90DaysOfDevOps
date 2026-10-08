@@ -1,0 +1,21 @@
+---
+- name: Install and start Nginx on web servers
+  hosts: web
+  become: true
+
+  tasks:
+    - name: Install Nginx
+      yum:
+        name: nginx
+        state: present
+
+    - name: Start and enable Nginx
+      service:
+        name: nginx
+        state: started
+        enabled: true
+
+    - name: Create a custom index page
+      copy:
+        content: "<h1>Deployed by Ansible - TerraWeek Server</h1>"
+        dest: /usr/share/nginx/html/index.html

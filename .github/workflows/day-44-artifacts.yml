@@ -1,0 +1,25 @@
+name: Day 44 - Upload Artifacts
+
+on:
+  push:
+    branches:
+      - DevOps-practice
+
+  workflow_dispatch:
+
+jobs:
+  upload-artifact-demo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Generate report file
+        run: |
+          mkdir reports
+          echo "Day 44 test report" > reports/test-report.txt
+          echo "Workflow completed successfully" >> reports/test-report.txt
+
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: day-44-test-report
+          path: reports/test-report.txt

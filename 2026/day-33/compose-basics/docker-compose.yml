@@ -1,0 +1,6 @@
+services:
+  nginx:
+    image: nginx
+    container_name: compose-nginx
+    ports:
+      - "8080:80"

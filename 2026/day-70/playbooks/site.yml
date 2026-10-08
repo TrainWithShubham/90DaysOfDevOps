@@ -1,0 +1,27 @@
+---
+- name: Apply common config
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Install common packages
+      yum:
+        name: "{{ common_packages }}"
+        state: present
+
+    - name: Show environment
+      debug:
+        msg: "Environment: {{ app_env }}"
+
+- name: Configure web servers
+  hosts: web
+  become: true
+
+  tasks:
+    - name: Show web config
+      debug:
+        msg: "HTTP port: {{ http_port }}, Max connections: {{ max_connections }}"
+
+    - name: Show host-specific message
+      debug:
+        msg: "{{ custom_message }}"

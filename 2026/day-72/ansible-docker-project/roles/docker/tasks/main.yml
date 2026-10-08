@@ -1,0 +1,56 @@
+---
+- name: Install Docker
+  dnf:
+    name: docker
+    state: present
+  tags: docker
+
+- name: Start and enable Docker
+  service:
+    name: docker
+    state: started
+    enabled: true
+  tags: docker
+
+- name: Add deploy user to docker group
+  user:
+    name: deploy
+    groups: docker
+    append: true
+  tags: docker
+    
+- name: Log in to Docker Hub
+  community.docker.docker_login:
+    username: "{{ vault_docker_username }}"
+    password: "{{ vault_docker_password }}"
+  become_user: deploy
+  when: vault_docker_username is defined
+  no_log: true  
+  tags: docker    
+
+- name: Pull application image
+  community.docker.docker_image:
+    name: "{{ docker_app_image }}"
+    tag: "{{ docker_app_tag }}"
+    source: pull
+  tags: docker
+
+- name: Run application container
+  community.docker.docker_container:
+    name: "{{ docker_app_name }}"
+    image: "{{ docker_app_image }}:{{ docker_app_tag }}"
+    state: started
+    restart_policy: always
+    ports:
+      - "{{ docker_app_port }}:{{ docker_container_port }}"
+  tags: docker
+
+- name: Wait for container to respond
+  uri:
+    url: "http://localhost:{{ docker_app_port }}"
+    status_code: 200
+  register: health_check
+  until: health_check.status == 200
+  retries: 5
+  delay: 3
+  tags: docker

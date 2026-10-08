@@ -1,0 +1,9 @@
+AI-BankApp Helm Release
+
+Release Name: {{ .Release.Name }}
+Namespace: {{ .Release.Namespace }}
+
+BankApp Service:
+{{ include "bankapp.fullname" . }}-service
+
+Thank you for installing AI-BankApp.

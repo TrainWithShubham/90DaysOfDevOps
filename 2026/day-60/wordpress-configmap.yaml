@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+
+metadata:
+  name: wordpress-config
+
+data:
+  WORDPRESS_DB_HOST: mysql-0.mysql.capstone.svc.cluster.local:3306
+  WORDPRESS_DB_NAME: wordpress

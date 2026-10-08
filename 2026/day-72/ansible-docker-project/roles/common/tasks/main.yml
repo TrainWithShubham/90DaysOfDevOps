@@ -1,0 +1,29 @@
+---
+- name: Update package cache
+  yum:
+    update_cache: true
+  tags: common
+
+- name: Install common packages
+  yum:
+    name: "{{ common_packages }}"
+    state: present
+  tags: common
+
+- name: Set hostname
+  hostname:
+    name: "{{ inventory_hostname }}"
+  tags: common
+
+- name: Set timezone
+  timezone:
+    name: "{{ timezone }}"
+  tags: common
+
+- name: Create deploy user
+  user:
+    name: deploy
+    groups: wheel
+    shell: /bin/bash
+    state: present
+  tags: common

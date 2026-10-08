@@ -1,0 +1,39 @@
+---
+- name: Deploy Nginx with template
+  hosts: web
+  become: true
+
+  vars:
+    app_name: terraweek-app
+    http_port: 80
+  
+  tasks:
+    - name: Install Nginx
+      yum:
+        name: nginx
+        state: present
+    
+    - name: Create web root
+      file:
+        path: "/var/www/{{ app_name }}"
+        state: directory
+        mode: '0755' 
+    
+    - name: Deploy vhost config from template
+      template:
+        src: templates/nginx-vhost.conf.j2
+        dest: "/etc/nginx/conf.d/{{ app_name }}.conf"
+        owner: root
+        mode: '0644'
+      notify: Restart Nginx 
+       
+    - name: Deploy index page
+      copy:
+        content: "<h1>{{ app_name }}</h1><p>Host: {{ ansible_hostname }} | IP: {{ ansible_default_ipv4.address }}</p>"
+        dest: "/var/www/{{ app_name }}/index.html"
+  
+  handlers:
+    - name: Restart Nginx
+      service:
+        name: nginx
+        state: restarted

@@ -1,0 +1,28 @@
+---
+- name: Install Nginx
+  dnf:
+    name: nginx
+    state: present
+  tags: nginx
+
+- name: Deploy reverse proxy configuration
+  template:
+    src: app-proxy.conf.j2
+    dest: /etc/nginx/conf.d/app-proxy.conf
+    owner: root
+    group: root
+    mode: '0644'
+  notify: Reload Nginx
+  tags: nginx
+
+- name: Test Nginx configuration
+  command: nginx -t
+  changed_when: false
+  tags: nginx
+
+- name: Start and enable Nginx
+  service:
+    name: nginx
+    state: started
+    enabled: true
+  tags: nginx

@@ -1,0 +1,24 @@
+name: Conditionals Demo
+
+on: push
+
+jobs:
+  main-only-job:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    steps:
+      - name: Runs only on main branch
+        if: github.ref == 'refs/heads/DevOps-practice'
+        run: echo "This is the main working branch"
+
+      - name: A step that will fail on purpose
+        id: fail-step
+        run: exit 1
+        continue-on-error: true
+
+      - name: Runs only if previous step failed
+        if: steps.fail-step.outcome == 'failure'
+        run: echo "The previous step failed, so this one runs"
+
+      - name: This step continues even after failure
+        run: echo "Workflow keeps going because of continue-on-error"

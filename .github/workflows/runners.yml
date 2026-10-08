@@ -1,0 +1,38 @@
+name: Runner Info
+
+on: push
+
+jobs:
+  ubuntu-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print info
+        run: |
+          echo "OS: ubuntu-latest"
+          echo "Hostname: $(hostname)"
+          echo "Current user: $(whoami)"
+
+      - name: Check installed tools
+        run: |
+          docker --version
+          python --version
+          node --version
+          git --version
+
+  windows-job:
+    runs-on: windows-latest
+    steps:
+      - name: Print info
+        run: |
+          echo "OS: windows-latest"
+          echo "Hostname: $env:COMPUTERNAME"
+          echo "Current user: $env:USERNAME"
+
+  macos-job:
+    runs-on: macos-latest
+    steps:
+      - name: Print info
+        run: |
+          echo "OS: macos-latest"
+          echo "Hostname: $(hostname)"
+          echo "Current user: $(whoami)"

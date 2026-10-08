@@ -1,0 +1,10 @@
+services:
+  backend:
+    image: nginx
+    container_name: backend
+
+  frontend:
+    image: ubuntu
+    container_name: frontend
+    tty: true
+

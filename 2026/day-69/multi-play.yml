@@ -1,0 +1,52 @@
+---
+- name: Configure web servers
+  hosts: web
+  become: true
+
+  tasks:
+    - name: Install Nginx
+      yum:
+        name: nginx
+        state: present
+
+    - name: Start Nginx
+      service:
+        name: nginx
+        state: started
+        enabled: true
+
+
+- name: Configure application servers
+  hosts: app
+  become: true
+
+  tasks:
+    - name: Install development tools
+      yum:
+        name:
+          - gcc
+          - make
+        state: present
+
+    - name: Create application directory
+      file:
+        path: /opt/app
+        state: directory
+        mode: '0755'
+
+
+- name: Configure database servers
+  hosts: db
+  become: true
+
+  tasks:
+    - name: Install MySQL client
+      yum:
+        name: mariadb105
+        state: present
+
+    - name: Create application data directory
+      file:
+        path: /var/lib/appdata
+        state: directory
+        mode: '0755'

@@ -1,0 +1,147 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #020617, #0f172a, #111827);
+    color: #e5e7eb;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 86%;
+    max-width: 1200px;
+    margin: 45px auto;
+}
+
+h1 {
+    text-align: center;
+    font-size: 42px;
+    background: linear-gradient(to right, #3b82f6, #a855f7);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.quote {
+    text-align: center;
+    font-size: 20px;
+    color: #fde68a;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 20px;
+    border: 1px solid rgba(253, 230, 138, 0.4);
+    border-radius: 12px;
+}
+
+.card,
+.goal-card {
+    background: rgba(15, 23, 42, 0.92);
+    padding: 28px;
+    margin: 25px 0;
+    border-radius: 16px;
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    background: #020617;
+    color: #e5e7eb;
+    font-size: 15px;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #94a3b8;
+}
+
+button {
+    background: linear-gradient(to right, #2563eb, #7c3aed);
+    color: white;
+    border: none;
+    padding: 13px 22px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.section-title {
+    margin-top: 35px;
+    font-size: 30px;
+}
+
+.goal-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.goal-content {
+    flex: 1;
+}
+
+.goal-card h3 {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.date {
+    color: #22c55e;
+    font-weight: bold;
+}
+
+.progress-container {
+    width: 100%;
+    background: #334155;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 12px;
+}
+
+.progress-bar {
+    background: linear-gradient(to right, #2563eb, #22c55e);
+    color: white;
+    padding: 7px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.progress-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.progress-form input {
+    width: 90px;
+}
+
+.delete-btn {
+    color: #f87171;
+    border: 1px solid #ef4444;
+    padding: 12px 18px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.delete-btn:hover {
+    background: #7f1d1d;
+    color: white;
+}
+
+footer {
+    text-align: center;
+    color: #94a3b8;
+    padding: 25px;
+}

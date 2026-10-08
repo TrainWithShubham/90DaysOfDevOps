@@ -40,3 +40,4 @@ crash.log
 .pytest_cache/
 coverage/
 CLAUDE.md
+*.tgz

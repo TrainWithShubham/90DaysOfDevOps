@@ -1,0 +1,14 @@
+Log Analysis Report
+Date: Fri Jun  5 12:25:05 EDT 2026
+Log File: Apache_2k.log
+Total Lines: 1999
+Total Error Count: 595
+
+Top 5 Errors:
+    368 mod_jk child workerEnv in error state 6
+    101 mod_jk child workerEnv in error state 7
+     44 mod_jk child workerEnv in error state 8
+     20 mod_jk child workerEnv in error state 9
+     12 mod_jk child init 1 -2
+
+Critical Events:

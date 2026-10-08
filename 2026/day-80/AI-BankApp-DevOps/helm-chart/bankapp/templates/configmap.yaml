@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "bankapp.fullname" . }}-config
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "bankapp.labels" . | nindent 4 }}
+data:
+  MYSQL_HOST: {{ include "bankapp.fullname" . }}-mysql
+  MYSQL_PORT: "3306"
+  MYSQL_DATABASE: {{ .Values.config.mysqlDatabase | quote }}
+  OLLAMA_URL: {{ default (printf "http://%s-ollama:11434" (include "bankapp.fullname" .)) .Values.config.ollamaUrl | quote }}
+  SERVER_FORWARD_HEADERS_STRATEGY: "native"

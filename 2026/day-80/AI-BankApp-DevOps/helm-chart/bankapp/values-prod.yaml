@@ -1,0 +1,56 @@
+bankapp:
+  replicaCount: 4
+  image:
+    repository: trainwithshubham/ai-bankapp-eks
+    tag: "v1.2.0"
+    pullPolicy: IfNotPresent
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "250m"
+    limits:
+      memory: "512Mi"
+      cpu: "500m"
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 4
+    targetCPUUtilization: 70
+
+mysql:
+  enabled: true
+  resources:
+    requests:
+      memory: "512Mi"
+      cpu: "500m"
+    limits:
+      memory: "1Gi"
+      cpu: "1000m"
+  persistence:
+    size: 20Gi
+    storageClass: gp3
+
+ollama:
+  enabled: true
+  model: tinyllama
+  resources:
+    requests:
+      memory: "2Gi"
+      cpu: "900m"
+    limits:
+      memory: "2.5Gi"
+      cpu: "1500m"
+  persistence:
+    size: 10Gi
+    storageClass: gp3
+
+secrets:
+  mysqlRootPassword: ProdSecure@789
+  mysqlUser: root
+  mysqlPassword: ProdSecure@789
+
+storageClass:
+  create: true
+
+gateway:
+  enabled: true

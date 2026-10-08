@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" data-theme="dark">
+<head th:replace="~{fragments/layout :: head('Transactions - BankApp')}"></head>
+<body>
+<div class="d-flex flex-column min-vh-100">
+    <nav th:replace="~{fragments/layout :: navbar-auth}"></nav>
+
+    <div class="transactions-wrapper fade-in">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="mb-0" style="font-weight:700;">Transaction History</h2>
+            <a th:href="@{/dashboard}" class="btn btn-glass btn-sm">
+                <i class="bi bi-arrow-left"></i> Dashboard
+            </a>
+        </div>
+
+        <div class="glass-card" style="padding:0; overflow:hidden;">
+            <!-- Table for when transactions exist -->
+            <div th:if="${transactions != null and !transactions.isEmpty()}">
+                <div class="table-responsive">
+                    <table class="table-glass">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Type</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="transaction : ${transactions}">
+                            <td th:text="${transaction.id}"></td>
+                            <td>
+                                <span class="badge-type"
+                                      th:classappend="${transaction.type == 'Deposit'} ? 'badge-deposit' : (${transaction.type == 'Transfer In'} ? 'badge-transfer-in' : (${transaction.type == 'Transfer Out'} ? 'badge-transfer-out' : 'badge-withdrawal'))"
+                                      th:text="${transaction.type}"></span>
+                            </td>
+                            <td th:classappend="${transaction.type == 'Deposit' or transaction.type == 'Transfer In'} ? 'amount-positive' : 'amount-negative'"
+                                th:text="${(transaction.type == 'Deposit' or transaction.type == 'Transfer In') ? '+$' + #numbers.formatDecimal(transaction.amount, 1, 2) : '-$' + #numbers.formatDecimal(transaction.amount, 1, 2)}">
+                            </td>
+                            <td th:text="${#temporals.format(transaction.timestamp, 'MMM dd, yyyy HH:mm')}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Empty state -->
+            <div th:if="${transactions == null or transactions.isEmpty()}" class="empty-state">
+                <i class="bi bi-inbox d-block"></i>
+                <h5>No transactions yet</h5>
+                <p class="text-muted">Your transaction history will appear here once you make your first deposit.</p>
+                <a th:href="@{/dashboard}" class="btn btn-accent btn-sm">
+                    <i class="bi bi-plus-circle"></i> Make a Deposit
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer th:replace="~{fragments/layout :: footer}"></footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

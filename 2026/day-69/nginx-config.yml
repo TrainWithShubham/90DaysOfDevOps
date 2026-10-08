@@ -1,0 +1,25 @@
+---
+- name: Configure Nginx with handler
+  hosts: web
+  become: true
+
+  tasks:
+    - name: Update Nginx configuration
+      copy:
+        content: |
+          server {
+              listen 80;
+              server_name _;
+              location / {
+                  root /usr/share/nginx/html;
+                  index index.html;
+              }
+          }
+        dest: /etc/nginx/conf.d/custom.conf
+      notify: Restart Nginx
+
+  handlers:
+    - name: Restart Nginx
+      service:
+        name: nginx
+        state: restarted

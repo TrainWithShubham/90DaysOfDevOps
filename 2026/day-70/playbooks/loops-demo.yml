@@ -1,0 +1,43 @@
+---
+- name: Loops demo
+  hosts: all
+  become: true
+
+  vars:
+    users:
+      - alice
+      - bob
+      - charlie
+
+    directories:
+      - /opt/app
+      - /opt/app/logs
+      - /opt/app/config
+
+  tasks:
+    - name: Create multiple users
+      user:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ users }}"
+
+    - name: Create multiple directories
+      file:
+        path: "{{ item }}"
+        state: directory
+        mode: '0755'
+      loop: "{{ directories }}"
+
+    - name: Install multiple packages
+      yum:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - git
+        - wget
+        - tree
+
+    - name: Show user and directory combinations
+      debug:
+        msg: "User {{ item.0 }} -> Directory {{ item.1 }}"
+      loop: "{{ users | product(directories) | list }}"

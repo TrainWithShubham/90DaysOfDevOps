@@ -1,0 +1,7 @@
+---
+ntp_server: pool.ntp.org
+app_env: development
+common_packages:
+  - vim
+  - htop
+  - tree

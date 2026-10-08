@@ -1,0 +1,5 @@
+---
+http_port: 80
+max_connections: 1000
+web_packages:
+  - nginx

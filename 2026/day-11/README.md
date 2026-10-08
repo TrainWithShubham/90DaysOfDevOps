@@ -1,6 +1,7 @@
 # Day 11 – File Ownership Challenge (chown & chgrp)
 
 ## Task
+
 Master file and directory ownership in Linux.
 
 - Understand file ownership (user and group)
@@ -11,6 +12,7 @@ Master file and directory ownership in Linux.
 ---
 
 ## Expected Output
+
 - A markdown file: `day-11-file-ownership.md`
 - Screenshots showing ownership changes
 
@@ -39,6 +41,7 @@ Document: What's the difference between owner and group?
 5. Verify the changes
 
 **Try:**
+
 ```bash
 sudo chown tokyo devops-file.txt
 ```
@@ -65,12 +68,12 @@ Using `chown` you can change both owner and group together:
 4. Change its owner to `berlin` and group to `heist-team`
 
 **Syntax:** `sudo chown owner:group filename`
-
----
+sudo chown berlin : heist-team project-config.yml---
 
 ### Task 5: Recursive Ownership (20 minutes)
 
 1. Create directory structure:
+
    ```
    mkdir -p heist-project/vault
    mkdir -p heist-project/plans
@@ -95,6 +98,7 @@ Using `chown` you can change both owner and group together:
 2. Create groups: `vault-team`, `tech-team`
 3. Create directory: `bank-heist/`
 4. Create 3 files inside:
+
    ```
    touch bank-heist/access-codes.txt
    touch bank-heist/blueprints.pdf
@@ -152,18 +156,23 @@ Create `day-11-file-ownership.md`:
 # Day 11 Challenge
 
 ## Files & Directories Created
+
 [list all files/directories]
 
 ## Ownership Changes
+
 [before/after for each file]
 
 Example:
+
 - devops-file.txt: user:user → tokyo:heist-team
 
 ## Commands Used
+
 [your commands here]
 
 ## What I Learned
+
 [3 key points about file ownership]
 ```
 
@@ -172,12 +181,15 @@ Example:
 ## Troubleshooting
 
 **Permission denied?**
+
 - Use `sudo` for chown/chgrp operations
 
 **Group doesn't exist?**
+
 - Create it first: `sudo groupadd groupname`
 
 **User doesn't exist?**
+
 - Create it first: `sudo useradd username`
 
 ---
@@ -195,6 +207,7 @@ In real DevOps scenarios, you need proper file ownership for:
 ---
 
 ## Submission
+
 1. Navigate to `2026/day-11/` folder
 2. Add `day-11-file-ownership.md` with screenshots
 3. Commit and push to your fork
@@ -206,6 +219,7 @@ In real DevOps scenarios, you need proper file ownership for:
 Share on LinkedIn about mastering file ownership.
 
 Use hashtags:
+
 ```
 #90DaysOfDevOps
 #DevOpsKaJosh

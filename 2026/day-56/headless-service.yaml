@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: nginx-headless
+
+spec:
+  clusterIP: None
+
+  selector:
+    app: demo
+
+  ports:
+    - port: 80
+      targetPort: 80

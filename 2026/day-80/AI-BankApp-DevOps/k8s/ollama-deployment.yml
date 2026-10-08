@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ollama
+  namespace: bankapp
+spec:
+  selector:
+    matchLabels:
+      app: ollama
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: ollama
+    spec:
+      containers:
+        - name: ollama
+          image: ollama/ollama:latest
+          ports:
+            - containerPort: 11434
+          resources:
+            requests:
+              memory: "2Gi"
+              cpu: "900m"
+            limits:
+              memory: "2.5Gi"
+              cpu: "1500m"
+          volumeMounts:
+            - name: ollama-storage
+              mountPath: /root/.ollama
+          lifecycle:
+            postStart:
+              exec:
+                command:
+                  - /bin/sh
+                  - -c
+                  - |
+                    until ollama list > /dev/null 2>&1; do sleep 2; done
+                    ollama pull tinyllama
+          readinessProbe:
+            exec:
+              command: ["/bin/sh", "-c", "ollama list | grep -q tinyllama"]
+            initialDelaySeconds: 30
+            failureThreshold: 30
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 11434
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            failureThreshold: 5
+      volumes:
+        - name: ollama-storage
+          persistentVolumeClaim:
+            claimName: ollama-pvc

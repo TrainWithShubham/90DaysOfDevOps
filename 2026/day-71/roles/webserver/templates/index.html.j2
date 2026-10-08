@@ -1,0 +1,4 @@
+<h1>{{ app_name }}</h1>
+<p>Host: {{ ansible_hostname }}</p>
+<p>IP: {{ ansible_default_ipv4.address }}</p>
+<p>Environment: {{ env | default('development') }}</p>

@@ -1,0 +1,9 @@
+FROM golang:1.24
+
+WORKDIR /app
+
+COPY . .
+
+RUN go build -o asma-app .
+
+CMD ["./asma-app"]

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Asma Motivation Tracker</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/script.js" defer></script>
+</head>
+<body>
+
+<div class="container">
+    <h1>Asma Motivation Tracker 🚀</h1>
+
+    <p class="quote">“{{ quote }}”</p>
+
+    <form action="/add" method="POST" class="card">
+        <h2>🎯 Create New Goal</h2>
+
+        <input type="text" name="title" placeholder="Goal title" required>
+
+        <textarea name="description" placeholder="Goal description"></textarea>
+
+        <input type="date" name="target_date" required>
+
+        <button type="submit">+ Add Goal</button>
+    </form>
+
+    <h2 class="section-title">📋 My Goals</h2>
+
+    {% for goal in goals %}
+    <div class="goal-card">
+        <div class="goal-content">
+            <h3>{{ goal.title }}</h3>
+            <p>{{ goal.description }}</p>
+
+            <p class="date">
+                Target Date: {{ goal.target_date }}
+            </p>
+
+            <div class="progress-container">
+                <div class="progress-bar" style="width: {{ goal.progress }}%;">
+                    {{ goal.progress }}%
+                </div>
+            </div>
+        </div>
+
+        <form action="/update/{{ goal.id }}" method="POST" class="progress-form">
+            <input type="number" name="progress" min="0" max="100" value="{{ goal.progress }}">
+            <span>%</span>
+            <button type="submit">Update</button>
+        </form>
+
+        <a href="/delete/{{ goal.id }}" class="delete-btn">Delete</a>
+    </div>
+    {% endfor %}
+</div>
+
+<footer>
+    © 2026 Asma Motivation Tracker. Keep pushing forward! 💪
+</footer>
+
+</body>
+</html>

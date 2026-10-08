@@ -1,0 +1,43 @@
+---
+- name: Conditional demo
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Install Nginx only on web servers
+      yum:
+        name: nginx
+        state: present
+      when: "'web' in group_names"
+
+    - name: Database server conditional test
+      debug:
+       msg: "This task runs only on the database server"
+      when: "'db' in group_names"
+
+    - name: Warn about low memory
+      debug:
+        msg: "WARNING: This server has less than 1GB RAM"
+      when: ansible_memtotal_mb < 1024
+
+    - name: Message for Amazon Linux
+      debug:
+        msg: "This server is running Amazon Linux"
+      when: ansible_distribution == "Amazon"
+
+    - name: Message for Ubuntu
+      debug:
+        msg: "This server is running Ubuntu"
+      when: ansible_distribution == "Ubuntu"
+
+    - name: Production web server check
+      debug:
+        msg: "This is a production web server"
+      when:
+        - "'web' in group_names"
+        - app_env == "production"
+
+    - name: Web or app server check
+      debug:
+        msg: "This is a web or application server"
+      when: "'web' in group_names or 'app' in group_names"

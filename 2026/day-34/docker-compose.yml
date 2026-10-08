@@ -1,0 +1,75 @@
+services:
+  web:
+    build: ./app
+    container_name: day34-web
+    ports:
+      - "5000:5000"
+
+    environment:
+      DB_HOST: db
+      DB_NAME: asma_db
+      DB_USER: asma
+      DB_PASSWORD: asma123
+      REDIS_HOST: redis
+
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+
+    networks:
+      - day34-network
+
+    labels:
+      project: "90DaysOfDevOps"
+      day: "34"
+      service: "web"
+
+  db:
+    image: postgres:16
+    container_name: day34-postgres
+
+    restart: always
+
+    environment:
+      POSTGRES_DB: asma_db
+      POSTGRES_USER: asma
+      POSTGRES_PASSWORD: asma123
+
+    volumes:
+      - day34-postgres-data:/var/lib/postgresql/data
+
+    networks:
+      - day34-network
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U asma -d asma_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+    labels:
+      project: "90DaysOfDevOps"
+      day: "34"
+      service: "database"
+
+  redis:
+    image: redis:7
+    container_name: day34-redis
+
+    networks:
+      - day34-network
+
+    labels:
+      project: "90DaysOfDevOps"
+      day: "34"
+      service: "cache"
+
+networks:
+  day34-network:
+    name: day34-network
+
+volumes:
+  day34-postgres-data:
+    name: day34-postgres-data

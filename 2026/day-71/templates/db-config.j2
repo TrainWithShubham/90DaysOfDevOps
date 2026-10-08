@@ -1,0 +1,5 @@
+# Database Configuration -- Managed by Ansible
+DB_HOST={{ ansible_default_ipv4.address }}
+DB_PORT={{ db_port | default(3306) }}
+DB_PASSWORD={{ vault_db_password }}
+DB_ROOT_PASSWORD={{ vault_db_root_password }}

@@ -1,0 +1,11 @@
+when you pull image from docker hub , its only read only image layers but when you run docker run nginx , so docker create extra writable layer on top of image layers, 
+This is called writable container layer
+
+Overlay Filesystem: Docker image has mutiple layers, example ubuntu base has packages, app files, config, Docker merge them into one virtual filesysetm using Overlays
+layer 1
+layer 2
+layer 3
+Writable layer
+
+Docker overlays them into single filesystem view isnide container 
+WHy? it saves storage, faster builds ,layer reusue, efficient conatiners
