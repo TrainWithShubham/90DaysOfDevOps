@@ -1,0 +1,4 @@
+Flask==3.0.3
+redis==5.0.8
+psycopg2-binary==2.9.9
+

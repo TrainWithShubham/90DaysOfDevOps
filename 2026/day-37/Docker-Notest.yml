@@ -1,0 +1,59 @@
+# Docker Cheat Sheet
+
+## 1. Container Commands
+
+* `docker run` — Run a container.
+* `docker ps` — List running containers.
+* `docker stop` — Stop a container.
+* `docker rm` — Remove a container.
+* `docker exec` — Execute a command inside a running container.
+* `docker logs` — View container logs.
+
+## 2. Image Commands
+
+* `docker build` — Build an image.
+* `docker pull` — Download an image.
+* `docker push` — Upload an image to a registry.
+* `docker tag` — Assign a tag to an image.
+* `docker images` — List images.
+* `docker rmi` — Remove an image.
+
+## 3. Volume Commands
+
+* `docker volume create` — Create a volume.
+* `docker volume ls` — List volumes.
+* `docker volume inspect` — Inspect a volume.
+* `docker volume rm` — Remove a volume.
+
+## 4. Network Commands
+
+* `docker network create` — Create a network.
+* `docker network ls` — List networks.
+* `docker network inspect` — Inspect a network.
+* `docker network connect` — Connect a container to a network.
+
+## 5. Docker Compose Commands
+
+* `docker compose up` — Start services.
+* `docker compose down` — Stop and remove services.
+* `docker compose ps` — List services.
+* `docker compose logs` — View service logs.
+* `docker compose build` — Build service images.
+
+## 6. Cleanup Commands
+
+* `docker system prune` — Remove unused Docker resources.
+* `docker system df` — Check Docker disk usage.
+* `docker container prune` — Remove stopped containers.
+* `docker image prune` — Remove dangling images.
+* `docker volume prune` — Remove unused volumes.
+
+## 7. Dockerfile Instructions
+
+* `FROM` — Select a base image.
+* `RUN` — Execute commands during the build.
+* `COPY` — Copy files into the image.
+* `WORKDIR` — Set the working directory.
+* `EXPOSE` — Document the container port.
+* `CMD` — Set the default command.
+* `ENTRYPOINT` — Set the main executable.

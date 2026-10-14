@@ -1,0 +1,14 @@
+
+
+## set -e : stop execution if your scrpt have error 
+
+## set -x : before executing the cmd print into terminal
+
+## set -u : catch type of missing variable
+
+## set -o pipeline: catch hidden error in the pipeline
+
+
+
+
+## set -euo : stop if any error in the script dont run anyhting ahed of this

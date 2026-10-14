@@ -1,0 +1,21 @@
+server:
+  name: devops-server
+  ip: 192.168.1.1
+  port: 80
+
+Database:
+  host: localhost
+  name: devops-database
+  credentials:
+    username: chaitya_devops
+    password: chaitya_Gods_plan
+
+install-software:
+ - sudo apt-get update
+ - sudo apt-get install -y mysql-server
+ - sudo systemctl start mysql
+
+description: >
+  This server is configured for DevOps tasks and is set up with necessary tools and software.
+  It is intended for use in development and testing environments.
+  The server is secured with proper credentials and access controls.
