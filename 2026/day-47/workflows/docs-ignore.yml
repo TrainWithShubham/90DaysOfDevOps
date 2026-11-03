@@ -1,0 +1,19 @@
+name: Ignore Documentation Changes
+
+on:
+  push:
+    branches:
+      - main
+      - 'release/*'
+
+    paths-ignore:
+      - '*.md'
+      - 'docs/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Build application
+        run: echo "Application workflow triggered!"
