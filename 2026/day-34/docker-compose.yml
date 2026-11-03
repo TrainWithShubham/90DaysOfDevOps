@@ -1,0 +1,58 @@
+
+services:
+
+  backend:
+    build: ./python_app
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      5000:5000
+    labels:
+      devops-label: task-34-label
+    networks:
+      - task-34
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:16-alpine
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    labels:
+      devops-label: task-34-label
+    networks:
+      - task-34
+    volumes:
+      - task-34-volume:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    networks:
+      - task-34
+    labels:
+      devops-label: task-34-label
+    depends_on:
+      - backend
+
+volumes:
+  task-34-volume:
+
+networks:
+  task-34:
+
+

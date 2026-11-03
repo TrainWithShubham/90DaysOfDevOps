@@ -1,0 +1,42 @@
+name: day-43-env
+
+on:
+    workflow_dispatch
+
+env:
+     APP_NAME: myapp
+
+
+jobs: 
+    
+    environment:
+        runs-on: ubuntu-latest
+
+        env:
+            ENVIRONMENT: staging
+
+
+        steps:
+
+            - name: print env
+
+              env:
+                VERSION: 1.0.0
+                STEP_SHA: ${{ github.sha }}
+                STEP_ACTOR: ${{ github.actor }}
+
+
+              run: |
+                echo "APP: $APP_NAME"
+                echo "ENVIRONMENT: $ENVIRONMENT"
+                echo "VERSION: $VERSION"
+                echo "STEP_SHA: $STEP_SHA"
+                echo "STEP_ACTOR: $STEP_ACTOR"
+
+                
+
+
+
+
+
+

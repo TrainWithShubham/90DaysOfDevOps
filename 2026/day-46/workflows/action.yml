@@ -1,0 +1,44 @@
+name: my Reasuble composite Action
+description: 'greets a user in a specific language'
+outputs:
+  greeted:
+   value: ${{ steps.set-greeting-output.outputs.greeted }}
+
+inputs:
+  name: 
+   description: The name of the user
+   required: true
+   default: world
+
+  language:
+    description: the langue to use 
+    required: false
+    default: 'en'
+
+
+runs:
+  using: "composite"
+  steps:
+    - name: print Greeting
+      shell: bash
+      run: |
+        LANG_CODE="${{ inputs.language }}"
+        case "$LANG_CODE" in
+          es) echo "¡Hola! Welcome." ;;
+          fr) echo "Bonjour! Welcome." ;;
+          de) echo "Hallo! Welcome." ;;
+          hi) echo "नमस्ते! Welcome." ;;
+          en | *) echo "Hello! Welcome." ;;
+        esac
+
+    - name: current date
+      shell: bash
+      run: |
+        echo "Current Date: $(date)"
+        echo "Runner OS: $RUNNER_OS"
+
+    - name: set output
+      id: set-greeting-output
+      shell: bash
+      run: echo "greeted=true" >> $GITHUB_OUTPUT
+

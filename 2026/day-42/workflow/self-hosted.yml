@@ -1,0 +1,38 @@
+name: self-hosted
+
+on:
+  workflow_dispatch:
+
+jobs:
+  self-hosted:
+    runs-on: [self-hosted, my-linux-runner]
+
+    steps:
+
+      - run: echo "Running on a self-hosted runner"
+
+      - name: print host name
+        run: hostname
+
+      - name: print working directory
+        run: echo "working directory is $(pwd)"
+
+      - name: Create file & Test
+        run: |
+          echo "hey file crated" > self-host.txt
+          echo "file has been successfully created"
+
+      - name: verify the file
+        run: |
+          ls -l self-host.txt
+          cat self-host.txt
+          if test -f self-host.txt; then
+          echo "SUCESS: file exist"
+          else
+          echo "FAILURE : not exist"    
+          fi
+
+
+
+
+

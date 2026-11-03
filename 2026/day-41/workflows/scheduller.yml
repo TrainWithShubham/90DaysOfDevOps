@@ -1,0 +1,22 @@
+name: scheduller workflow
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  scheduller:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+
+      - name: scheduller running message
+        run: echo "scheduller workflow running for branch ${{ github.head_ref }}"
+
+      - name: print date
+        run: date
+
+      - name: os name
+        run: uname -a

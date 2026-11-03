@@ -1,0 +1,20 @@
+name: conditional workflow
+
+on:
+    push:
+        branches: [main]
+
+jobs:
+    condition:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: print message
+              if: github.ref_name == 'main'
+              run: echo "this is main"
+
+            - name: failuare step
+              if: failure()
+              run: echo "priviouse was fail"
+
+        

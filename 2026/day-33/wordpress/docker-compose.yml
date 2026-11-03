@@ -1,0 +1,36 @@
+services:
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_container
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: devops
+      MYSQL_DATABASE: devops-db
+      MYSQL_USER: devops
+      MYSQL_PASSWORD: devops
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+
+  wordpress:
+    image: wordpress:latest
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: mysql:3306
+      WORDPRESS_DB_USER: devops
+      WORDPRESS_DB_PASSWORD: devops
+      WORDPRESS_DB_NAME: devops-db
+    ports:
+     - "8888:80"
+
+    
+
+volumes:
+  mysql_data:
+
+
+

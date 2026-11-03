@@ -1,0 +1,44 @@
+name: workflow_call
+
+on:
+  workflow_call:
+    outputs:
+      version:
+        description: "pass the ouput in caller"
+        value: ${{ jobs.deploy.outputs.version_output}}
+    inputs:
+      app_name:
+        required: true
+        type: string
+      environment:
+        required: true
+        type: string
+    secrets:
+      API_TOKEN:
+        required: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    outputs: 
+      version_output: ${{ steps.set-sha.outputs.short_sha}}
+    env:
+      API_TOKEN: ${{ secrets.API_TOKEN }}
+
+    steps:
+
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: print message
+        run: |
+          echo "Building ${{ inputs.app_name }} for ${{ inputs.environment }}"
+          if [ -n "$API_TOKEN" ]; then
+            echo "true"
+          fi
+
+      - name: calculate short sha with version
+        id: set-sha
+        run: |
+          SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7) 
+          echo "short_sha=v1.0.0-$SHORT_SHA" >> $GITHUB_OUTPUT

@@ -1,0 +1,20 @@
+name: environment workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+       description: 'select environment'
+       required: true
+       type: choice
+       options:
+          - staging
+          - production
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: print Environment
+        run: echo "The environment is ${{ github.event.inputs.environment }}"

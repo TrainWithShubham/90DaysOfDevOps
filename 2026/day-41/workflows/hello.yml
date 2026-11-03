@@ -1,0 +1,33 @@
+name: Hello workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  hello-world:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Print Hello World
+        run: echo "Hello from GitHub Actions!"
+
+      - name: current date & time
+        run: echo "$(date "+%Y-%m-%d %H:%M:%S")"
+
+      - name: Display Branch Name
+        run: echo "The current branch is ${{ github.ref_name }}"
+
+
+      - name: List files in the repository
+        run: ls -R ${{ github.workspace }}
+
+      - name: Print Runner OS
+        run: echo "OS is $RUNNER_OS"
+
+      
+
+  

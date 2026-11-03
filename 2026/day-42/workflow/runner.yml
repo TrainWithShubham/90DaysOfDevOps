@@ -1,0 +1,60 @@
+name: Runner Workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  ubuntu:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: print os name
+        run: echo "Os name is ${{ runner.os }}"
+
+      - name: Show System Hostname
+        run: hostname
+
+      - name: Current user running the job
+        run: whoami
+
+      - name: Docker version
+        run: docker --version
+
+      - name: python version
+        run: python --version
+
+      - name: node version
+        run: node --version
+
+      - name: Git version 
+        run: git version
+        
+      
+
+
+  windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: print os name
+        run: echo "Os name is ${{ runner.os }}"
+
+      - name: Show System Hostname
+        run: hostname
+
+      - name: Current user running the job
+        run: whoami
+
+
+  mac:
+    runs-on: macos-latest
+
+    steps:
+      - name: print os name
+        run: echo "Os name is ${{ runner.os }}"
+
+      - name: Show System Hostname
+        run: hostname
+
+      - name: current user running the job
+        run: whoami

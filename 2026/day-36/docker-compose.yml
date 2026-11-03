@@ -1,0 +1,41 @@
+services:
+  db:
+    image: chaitanya057/mysql:v1
+    container_name: my_mysql
+
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./db:/docker-entrypoint-initdb.d/:ro
+
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-umyuser", "-pmypassword"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    image: chaitanya057/flask:v2
+    container_name: my_app
+
+    depends_on:
+      db:
+        condition: service_healthy
+
+    environment:
+      MYSQL_HOST: db
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
+
+    ports:
+      - "8000:5000"
+
+volumes:
+  mysql_data:
