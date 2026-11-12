@@ -1,0 +1,34 @@
+# Wordpress & MySQL Stack with Persistent Storage 
+# This compose file sets up a Wordpress frontend connected to a MySQL Backend, ensuring data persistence using named volumes.
+
+
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+
+
+  wordpress:
+    image: wordpress:latest
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: ${MYSQL_USER}
+      WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
+    depends_on:
+      - db
+
+
+volumes:
+  db_data:
+

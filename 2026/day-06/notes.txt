@@ -1,0 +1,3 @@
+Line 1: Initializing Linux File I/O Practice
+Line 2: Appending logs using standard redirection
+Line 3: Writing and displaying live via tee
