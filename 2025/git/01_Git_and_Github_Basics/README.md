@@ -1,212 +1,545 @@
-# Week 4: Git and GitHub Challenge
+# 📝 Week 4 Challenge — Solution & Implementation
 
-Welcome to the Week 4 Challenge! In this task you will practice the essential Git and GitHub commands and concepts taught by Shubham Bhaiya. This includes:
+### 90 Days of DevOps | Git & GitHub | DevOps Batch 9
 
-- **Git Basics:** `git init`, `git add`, `git commit`
-- **Repository Management:** `git clone`, forking a repository, and understanding how a GitHub repo is made
-- **Branching:** Creating branches (`git branch`), switching between branches (`git switch` / `git checkout`), and viewing commit history (`git log`)
-- **Authentication:** Pushing and pulling using a Personal Access Token (PAT)
-- **Critical Thinking:** Explaining why branching strategies are important in collaborative development
+<p align="center">
+  <img src="https://img.shields.io/badge/Week-04-orange?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Topic-Git%20%26%20GitHub-blue?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Type-Hands--On%20Implementation-green?style=for-the-badge" />
+</p>
 
-To make this challenge more difficult, additional steps have been added. You will also be required to explore SSH authentication as a bonus task. Complete all the tasks and document every step in `solution.md`. Finally, share your experience on LinkedIn (details provided at the end).
+## 📌 Introduction
 
----
+This document contains the practical implementation of the **Week 4 Git & GitHub Challenge** as part of the 90 Days of DevOps journey.
 
-## Challenge Tasks
+The objective was to understand Git fundamentals, repository management, branching, remote operations, authentication, commit history, and collaboration through Pull Requests.
 
-### Task 1: Fork and Clone the Repository
-1. **Fork the Repository:**  
-   - Visit [this repository](https://github.com/LondheShubham153/90DaysOfDevOps) and fork it to your own GitHub account. If not done yet.
-  
-2. **Clone Your Fork Locally:**  
-   - Clone the forked repository using HTTPS:
-     ```bash
-     git clone <your-fork-url>
-     ```
-   - Change directory into the cloned repository:
-     ```bash
-     cd 2025/git/01_Git_and_Github_Basics
-     ```
+Instead of simply learning commands, I performed hands-on exercises to understand how Git works in real-world development workflows.
 
 ---
 
-### Task 2: Initialize a Local Repository and Create a File
-1. **Set Up Your Challenge Directory:**  
-   - Inside the cloned repository, create a new directory for this challenge:
-     ```bash
-     mkdir week-4-challenge
-     cd week-4-challenge
-     ```
+## 🛠️ Environment Setup
 
-2. **Initialize a Git Repository:**  
-   - Initialize the directory as a new Git repository:
-     ```bash
-     git init
-     ```
+| Component | Details |
+|---|---|
+| Operating System | Linux / Ubuntu / Windows (update accordingly) |
+| Version Control | Git |
+| Repository Hosting | GitHub |
+| Authentication | HTTPS / PAT and SSH |
+| Code Editor | VS Code |
+| Challenge Repository | 90DaysOfDevOps |
 
-3. **Create a File:**  
-   - Create a file named `info.txt` and add some initial content (for example, your name and a brief introduction).
+### Verify Git Installation
 
-4. **Stage and Commit Your File:**  
-   - Stage the file:
-     ```bash
-     git add info.txt
-     ```
-   - Commit the file with a descriptive message:
-     ```bash
-     git commit -m "Initial commit: Add info.txt with introductory content"
-     ```
+```bash
+git --version
+```
+
+**Observation:** Verified that Git is installed and ready to use.
 
 ---
 
-## Task 3: Configure Remote URL with PAT and Push/Pull
+# 🚀 Task 1 — Fork & Clone Repository
 
-1. **Configure Remote URL with Your PAT:**  
-   To avoid entering your Personal Access Token (PAT) every time you push or pull, update your remote URL to include your credentials.  
+### Objective
+Create a personal copy of the original repository and clone it to the local machine.
 
-   **⚠️ Note:** Embedding your PAT in the URL is only for this exercise. It is not recommended for production use.  
-   
-   Replace `<your-username>`, `<your-PAT>`, and `<repository-name>` with your actual GitHub username, your PAT, and the repository name respectively:
-   
-   ```bash
-   git remote add origin https://<your-username>:<your-PAT>@github.com/<your-username>/90DaysOfDevOps.git
-   ```
-   If a remote named `origin` already exists, update it with:
-   ```bash
-   git remote set-url origin https://<your-username>:<your-PAT>@github.com/<your-username>/90DaysOfDevOps.git
-   ```
-2. **Push Your Commit to Remote:**  
-   - Push your current branch (typically `main`) and set the upstream:
-     ```bash
-     git push -u origin main
-     ```
-3. **(Optional) Pull Remote Changes:**  
-   - Verify your configuration by pulling changes:
-     ```bash
-     git pull origin main
-     ```
+### Step 1: Fork Repository
 
----
+Original repository:
 
-### Task 4: Explore Your Commit History
-1. **View the Git Log:**  
-   - Check your commit history using:
-     ```bash
-     git log
-     ```
-   - Take note of the commit hash and details as you will reference these in your documentation.
+[90DaysOfDevOps — GitHub](https://github.com/LondheShubham153/90DaysOfDevOps)
 
----
+Forked the repository into my GitHub account.
 
-### Task 5: Advanced Branching and Switching
-1. **Create a New Branch:**  
-   - Create a branch called `feature-update`:
-     ```bash
-     git branch feature-update
-     ```
-  
-2. **Switch to the New Branch:**  
-   - Switch using `git switch`:
-     ```bash
-     git switch feature-update
-     ```
-   - Alternatively, you can use:
-     ```bash
-     git checkout feature-update
-     ```
+### Step 2: Clone Repository
 
-3. **Modify the File and Commit Changes:**  
-   - Edit `info.txt` (for example, add more details or improvements).
-   - Stage and commit your changes:
-     ```bash
-     git add info.txt
-     git commit -m "Feature update: Enhance info.txt with additional details"
-     git push origin feature-update
-     ```
-   - Merge this branch to `main` via a Pull Request on GitHub.
-   
-4. **(Advanced) Optional Extra Challenge:**  
-   - If you feel confident, create another branch (e.g., `experimental`) from your main branch, make a conflicting change to `info.txt`, then switch back to `feature-update` and merge `experimental` to simulate a merge conflict. Resolve the conflict manually, then commit the resolution.  
-   > *Note: This extra step is optional and intended for those looking for an additional challenge.*
+```bash
+git clone https://github.com/<username>/90DaysOfDevOps.git
+```
+
+### Step 3: Navigate to the Project Directory
+
+```bash
+cd 90DaysOfDevOps/2025/git/01_Git_and_Github_Basics
+```
+
+### Step 4: Verify Repository
+
+```bash
+git status
+git remote -v
+```
+
+**Key Learning:**
+
+- Fork creates a copy of another user's repository on GitHub.
+- Clone downloads a repository to the local machine.
+- Remote connects a local repository with a hosted repository.
+
+### 📸 Evidence
+
+Add your fork and clone screenshots here.
+
+```text
+screenshots/
+├── fork.png
+└── clone.png
+```
 
 ---
 
-### Task 6: Explain Branching Strategies
-1. **Document Your Process:**  
-   - Create (or update) a file named `solution.md` in your repository.
-   - List all the Git commands you used in Tasks 1–4.
-   - **Explain:** Write a brief explanation on **why branching strategies are important** in collaborative development. Consider addressing:
-     - Isolating features and bug fixes
-     - Facilitating parallel development
-     - Reducing merge conflicts
-     - Enabling effective code reviews
+# 📁 Task 2 — Create Files and Commit Changes
+
+### Objective
+Practice creating files, staging changes, and saving them as commits.
+
+### Step 1: Create Challenge Directory
+
+```bash
+mkdir week-4-challenge
+cd week-4-challenge
+```
+
+### Step 2: Create an Information File
+
+```bash
+touch info.txt
+```
+
+Added introductory information to the file.
+
+### Step 3: Check Repository Status
+
+```bash
+git status
+```
+
+### Step 4: Stage Changes
+
+```bash
+git add info.txt
+```
+
+### Step 5: Commit Changes
+
+```bash
+git commit -m "Initial commit: Add introductory information"
+```
+
+**Key Learning:**
+
+- `git add` moves changes into the staging area.
+- `git commit` saves staged changes in the repository history.
+- `git status` displays the current state of the working directory.
+
+### 📸 Evidence
+
+Add screenshots showing file creation, staging, and commit.
+
+```text
+screenshots/
+├── file-creation.png
+└── initial-commit.png
+```
 
 ---
 
-### Bonus Task: Explore SSH Authentication
-1. **Generate an SSH Key (if not already set up):**
-   - Create an SSH key pair:
-     ```bash
-     ssh-keygen
-     ```
-   - Follow the prompts and then locate your public key (typically found at `~/.ssh/id_ed25519.pub`).
+# 🔐 Task 3 — Remote Configuration and Authentication
 
-2. **Add Your SSH Public Key to GitHub:**  
-   - Copy the contents of your public key and add it to your GitHub account under **SSH and GPG keys**.  
-     (See [Connecting to GitHub with SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh) for help.)
+### Objective
+Understand how local repositories communicate with GitHub using HTTPS authentication.
 
-3. **Switch Your Remote URL to SSH:**  
-   - Change the remote URL from HTTPS to SSH:
-     ```bash
-     git remote set-url origin git@github.com:<your-username>/90DaysOfDevOps.git
-     ```
+### Step 1: Verify Remote URL
 
-4. **Push Your Branch Using SSH:**  
-   - Test the SSH connection by pushing your branch:
-     ```bash
-     git push origin feature-update
-     ```
+```bash
+git remote -v
+```
 
----
+The `origin` remote should point to my fork.
 
-## 📢 How to Submit
+### Step 2: HTTPS Authentication
 
-1. **Push Your Final Work:**  
-   - Ensure your branch (e.g., `feature-update`) with the updated `solution.md` file is pushed to your fork.
+Used GitHub authentication through Git Credential Manager or a Personal Access Token when prompted.
 
-2. **Create a Pull Request (PR):**  
-   - Open a PR from your branch to the main repository.
-   - Use a clear title such as:
-     ```
-     Week 4 Challenge - DevOps Batch 9: Git & GitHub Advanced Challenge
-     ```
-   - In the PR description, summarize your process and list the Git commands you used.
+**Note:** PATs should never be exposed in remote URLs, screenshots, command history, or committed files.
 
-3. **Share Your Experience on LinkedIn:**  
-   - Write a LinkedIn post summarizing your Week 4 experience.
-   - Include screenshots or logs of your tasks.
-   - Use hashtags: **#90DaysOfDevOps #GitGithub #DevOps**
-   - Optionally, share any blog posts, GitHub repos, or articles you create about this challenge.
+### Step 3: Push Changes
 
----
+```bash
+git push origin <branch-name>
+```
 
-## Additional Resources
+### Step 4: Fetch Remote Updates
 
-- **Git Documentation:**  
-  [https://git-scm.com/docs](https://git-scm.com/docs)
+```bash
+git fetch origin
+```
 
-- **Creating a Personal Access Token:**  
-  [GitHub PAT Setup](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+### Step 5: Pull Remote Changes
 
-- **Forking and Cloning Repositories:**  
-  [Fork a Repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo) | [Cloning a Repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
+```bash
+git pull origin main
+```
 
-- **SSH Authentication with GitHub:**  
-  [Connecting to GitHub with SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)
+**Key Learning:**
 
-- **Understanding Branching Strategies:**  
-  [Git Branching Strategies](https://www.atlassian.com/git/tutorials/comparing-workflows)
+| Command | Purpose |
+|---|---|
+| `git remote -v` | Displays configured remotes |
+| `git push` | Uploads local commits to remote |
+| `git fetch` | Downloads remote updates without merging |
+| `git pull` | Fetches and integrates remote changes |
+
+### 📸 Evidence
+
+```text
+screenshots/
+├── remote-configuration.png
+└── push-operation.png
+```
 
 ---
 
-Happy coding and best of luck with this challenge! Document your journey thoroughly and be sure to explore the additional resources if you get stuck.
+# 📜 Task 4 — Explore Git Commit History
+
+### Objective
+Understand how Git maintains the history of project changes.
+
+### Commands Executed
+
+```bash
+git log
+git log --oneline
+git log --oneline --graph --all
+git show <commit-id>
+```
+
+### Observations
+
+Git commit history provides information about:
+
+1. Commit hash — unique identifier of a commit.
+2. Author — person who created the commit.
+3. Date — when the commit was created.
+4. Commit message — description of the changes.
+5. Changes — files and code modifications introduced.
+
+**Key Learning:**
+
+Git maintains a history of changes, making it easier to track development and investigate previous modifications.
+
+### 📸 Evidence
+
+```text
+screenshots/
+└── git-log.png
+```
+
+---
+
+# 🌿 Task 5 — Branching and Switching
+
+### Objective
+Understand how branches allow developers to work independently without directly modifying the main branch.
+
+### Step 1: Create and Switch to a Feature Branch
+
+```bash
+git switch -c feature-update
+```
+
+### Step 2: Modify the File
+
+Updated `info.txt` with additional information.
+
+### Step 3: Stage and Commit
+
+```bash
+git add info.txt
+git commit -m "Feature update: Enhance introductory information"
+```
+
+### Step 4: Push Feature Branch
+
+```bash
+git push -u origin feature-update
+```
+
+### Step 5: Verify Branches
+
+```bash
+git branch
+git branch -a
+```
+
+**Key Learning:**
+
+- Branches isolate development work.
+- Multiple developers can work on different branches.
+- Feature branches help maintain stability in the main branch.
+
+### 📸 Evidence
+
+```text
+screenshots/
+├── feature-branch.png
+└── feature-push.png
+```
+
+---
+
+# 🔀 Task 6 — Merge Conflict Resolution (Optional)
+
+### Objective
+Understand how Git handles incompatible changes made to the same file.
+
+### Step 1: Create Experimental Branch
+
+```bash
+git switch main
+git pull origin main
+git switch -c experimental
+```
+
+### Step 2: Modify the Same Line
+
+Updated the same line in `info.txt` with different content.
+
+### Step 3: Commit Experimental Changes
+
+```bash
+git add info.txt
+git commit -m "Experimental update"
+```
+
+### Step 4: Switch to Feature Branch
+
+```bash
+git switch feature-update
+```
+
+### Step 5: Merge Experimental Branch
+
+```bash
+git merge experimental
+```
+
+### Step 6: Resolve Conflict
+
+When Git identifies incompatible changes:
+
+- Open the conflicting file.
+- Review both versions.
+- Select or combine the required changes.
+- Remove Git conflict markers.
+
+### Step 7: Complete the Merge
+
+```bash
+git add info.txt
+git commit -m "Resolve merge conflict"
+```
+
+### Verify the Result
+
+```bash
+git status
+git log --oneline --graph --all
+```
+
+**Key Learning:**
+
+A merge conflict occurs when Git cannot automatically combine changes. Manual resolution is required before completing the merge.
+
+### 📸 Evidence
+
+```text
+screenshots/
+├── merge-conflict.png
+└── conflict-resolution.png
+```
+
+---
+
+# ⭐ Bonus Task — SSH Authentication
+
+### Objective
+Configure SSH authentication to communicate securely with GitHub.
+
+### Step 1: Generate SSH Key
+
+```bash
+ssh-keygen -t ed25519 -C "your-email@example.com"
+```
+
+### Step 2: Start SSH Agent
+
+```bash
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+```
+
+### Step 3: Display Public Key
+
+```bash
+cat ~/.ssh/id_ed25519.pub
+```
+
+### Step 4: Add SSH Key to GitHub
+
+Navigate to:
+
+**GitHub → Settings → SSH and GPG keys → New SSH key**
+
+Paste the public key and save it.
+
+### Step 5: Test SSH Connection
+
+```bash
+ssh -T git@github.com
+```
+
+### Step 6: Update Remote URL
+
+```bash
+git remote set-url origin git@github.com:<username>/90DaysOfDevOps.git
+```
+
+### Step 7: Push Using SSH
+
+```bash
+git push origin feature-update
+```
+
+**Key Learning:**
+
+SSH provides key-based authentication, allowing GitHub communication without repeatedly entering HTTPS credentials.
+
+### 📸 Evidence
+
+```text
+screenshots/
+├── ssh-key-generation.png
+├── github-ssh-key.png
+└── ssh-authentication.png
+```
+
+---
+
+# 🧠 Critical Thinking — Importance of Branching Strategies
+
+Branching strategies play an important role in collaborative software development.
+
+### 1. Feature Isolation
+Developers can implement new features without affecting the main branch.
+
+### 2. Parallel Development
+Multiple developers can work on different tasks simultaneously.
+
+### 3. Conflict Management
+Separate branches help organize changes and make integration conflicts easier to identify.
+
+### 4. Code Reviews
+Pull Requests allow developers to review and discuss changes before merging.
+
+### 5. Production Stability
+The main branch can remain stable while new features and bug fixes are developed independently.
+
+---
+
+# 📤 Pull Request Submission
+
+### Objective
+Contribute the completed challenge work to the original repository.
+
+### Pull Request Details
+
+| Field | Details |
+|---|---|
+| Original Repository | LondheShubham153/90DaysOfDevOps |
+| Source Repository | Your GitHub fork |
+| Source Branch | `feature-update` |
+| Target Branch | `main` |
+| PR Title | Week 4 Challenge - DevOps Batch 9: Git & GitHub |
+
+### Pull Request Workflow
+
+```text
+Original Repository
+        |
+       Fork
+        |
+     Your Fork
+        |
+      Clone
+        |
+   Create Branch
+        |
+    Make Changes
+        |
+      Commit
+        |
+      Push
+        |
+   Pull Request
+        |
+   Code Review
+        |
+      Merge
+```
+
+**Pull Request Link:** [Add your PR URL here]
+
+---
+
+# 💡 Key Learnings & Takeaways
+
+Through this challenge, I gained practical knowledge of:
+
+- Git repository initialization and management.
+- Forking and cloning open-source repositories.
+- Staging and committing changes.
+- Branch creation and switching.
+- Understanding commit history.
+- Remote repository operations.
+- HTTPS and SSH authentication.
+- Merge conflicts and resolution.
+- Pull Request creation and collaboration.
+
+The biggest takeaway was understanding that Git is not just about storing code; it is about managing changes and enabling effective collaboration between developers.
+
+---
+
+# 📸 Challenge Screenshots
+
+Add your actual screenshots here to showcase the implementation.
+
+| Task | Screenshot |
+|---|---|
+| Fork & Clone | `screenshots/fork.png` |
+| Initial Commit | `screenshots/initial-commit.png` |
+| Remote Configuration | `screenshots/remote-configuration.png` |
+| Git Log | `screenshots/git-log.png` |
+| Branch Creation | `screenshots/feature-branch.png` |
+| Merge Conflict | `screenshots/merge-conflict.png` |
+| SSH Authentication | `screenshots/ssh-authentication.png` |
+| Pull Request | `screenshots/pull-request.png` |
+
+---
+
+# 🔗 Learning Resources
+
+- [Official Git Documentation](https://git-scm.com/docs)
+- [GitHub Documentation](https://docs.github.com/)
+- [GitHub Forking Guide](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
+- [GitHub SSH Authentication](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)
+- [Git Branching Strategies](https://www.atlassian.com/git/tutorials/comparing-workflows)
+
+---
+
+<p align="center">
+  <b>WEEK 04 — COMPLETED THROUGH PRACTICAL LEARNING 🚀</b><br/><br/>
+  <i>Learn by doing. Break things. Fix them. Grow every day.</i><br/><br/>
+  <b>#90DaysOfDevOps #Git #GitHub #DevOps #LearningInPublic</b>
+</p>
