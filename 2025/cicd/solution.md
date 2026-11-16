@@ -198,3 +198,125 @@ After correcting the service name, the deployment stage executed successfully.
 This task helped me understand how Jenkins automates the software delivery process using CI/CD pipelines and how Docker and Docker Compose can be integrated with Jenkins for application deployment.
 
 ---
+
+# Jenkins Pipeline – Interview Questions
+
+## 1. How do Declarative Pipelines streamline the CI/CD process compared to Scripted Pipelines?
+
+Declarative Pipelines streamline the CI/CD process by providing a predefined, structured, and easy-to-understand syntax.
+
+They make pipeline creation, management, and maintenance easier compared to Scripted Pipelines.
+
+### Key Benefits
+
+1. **Simple Syntax:** Declarative Pipelines follow a predefined structure, making them easier to write and understand.
+
+2. **Better Readability:** Developers can easily identify different stages like Build, Test, and Deploy.
+
+3. **Easy Maintenance:** Because of their structured format, modifying and debugging pipelines becomes easier.
+
+4. **Error Handling:** They provide built-in features like `post`, `success`, and `failure` to handle pipeline results.
+
+5. **Consistency:** Teams can follow the same pipeline structure across different projects.
+
+### Example
+
+```groovy
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building application'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Testing application'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying application'
+            }
+        }
+    }
+}
+```
+
+**In Simple Words:** Declarative Pipeline makes CI/CD automation easier because it follows a fixed structure and requires less complex programming.
+
+---
+
+## 2. What are the benefits of breaking the pipeline into distinct stages?
+
+Breaking a Jenkins Pipeline into distinct stages helps organize the CI/CD process into smaller, manageable steps.
+
+For example, a pipeline can have the following stages:
+
+- Code Checkout
+- Build
+- Test
+- Deploy
+
+### Key Benefits
+
+1. **Easy Troubleshooting:** If a pipeline fails, we can quickly identify which stage caused the problem.
+
+2. **Better Visibility:** Jenkins displays each stage separately, making pipeline progress easier to understand.
+
+3. **Easy Debugging:** Developers can investigate and fix problems in a particular stage.
+
+4. **Improved Organization:** Each stage performs a specific task, keeping the pipeline clean and structured.
+
+5. **Time Saving:** Jenkins normally skips later stages when an earlier stage fails, depending on the pipeline configuration.
+
+6. **Parallel Execution:** Independent tasks, such as different test suites, can run simultaneously to reduce execution time.
+
+### Example: Jenkins Pipeline Flow
+
+```text
+        Jenkins Pipeline
+               |
+               v
+        Code Checkout
+               |
+               v
+          Build Stage
+               |
+               v
+          Test Stage
+               |
+               v
+         Deploy Stage
+               |
+               v
+       Application Ready
+```
+
+### Practical Scenario
+
+Suppose my Java application fails during the Test stage.
+
+- Jenkins identifies the Test stage as failed.
+- Jenkins marks the pipeline as failed.
+- The normal pipeline execution stops.
+- The Deploy stage does not execute.
+
+This prevents an application with failing tests from being deployed.
+
+---
+
+## Quick Interview Revision
+
+| Question | Short Answer |
+|---|---|
+| Why Declarative Pipeline? | Simple syntax, predefined structure, and easy maintenance. |
+| Why separate stages? | Better organization, visibility, debugging, and troubleshooting. |
+| What happens if Build fails? | Normally, subsequent stages do not execute. |
+| Can stages run in parallel? | Yes, using the `parallel` directive. |
+
+---
