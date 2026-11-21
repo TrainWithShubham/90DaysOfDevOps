@@ -1,0 +1,35 @@
+name: main pipeline
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  
+    build-and-test:
+        uses: ./.github/workflows/reusable-build-test.yml
+        with:
+          python_version: '3.12'
+          run_tests: true
+
+    docker-build-and-push:
+        needs: build-and-test
+        uses: ./.github/workflows/reusable-docker.yml
+        with:
+          image_name: chaitanya057/devops-health-api
+        secrets: 
+          docker_username: ${{ secrets.DOCKERHUB_USERNAME }}
+          docker_token: ${{ secrets.DOCKERHUB_TOKEN }}  
+
+          
+     
+    deploy:
+       needs: docker-build-and-push
+       runs-on: ubuntu-latest
+       environment:
+         name: production
+
+       steps:
+          - name: image output print
+            run: |
+              echo "Docker image URL: ${{ needs.docker-build-and-push.outputs.image_url }}"

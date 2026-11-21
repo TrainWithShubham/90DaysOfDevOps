@@ -1,0 +1,53 @@
+name: Reusable Build and Test
+
+on:
+  workflow_call:
+    inputs:
+      python_version:
+        description: Python version to use
+        required: false
+        type: string
+        default: '3.12'
+
+      run_tests:
+        description: Whether to run tests
+        required: false
+        type: boolean
+        default: true
+
+    outputs:
+      test_result:
+        description: Test execution result
+        value: ${{ jobs.build.outputs.test_result }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    outputs:
+      test_result: ${{ steps.tests.outputs.test_result }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ inputs.python_version }}
+
+      - name: Install dependencies
+        working-directory: ./app
+        run: pip install -r requirements.txt
+
+      - name: Run tests
+        id: tests
+        if: inputs.run_tests
+        continue-on-error: true
+        run: |
+          if pytest; then
+            echo "test_result=passed" >> "$GITHUB_OUTPUT"
+          else
+            echo "test_result=failed" >> "$GITHUB_OUTPUT"
+            exit 1
+          fi

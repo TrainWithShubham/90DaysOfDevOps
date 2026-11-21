@@ -1,0 +1,52 @@
+name: health check
+
+on:
+  schedule:
+    - cron: '0 */12 * * *'
+  workflow_dispatch:
+
+
+jobs:
+
+    health-checking:
+        runs-on: ubuntu-latest
+        
+
+        steps:
+
+            - name: pull the image
+              run: |
+                docker pull chaitanya057/devops-health-api:latest
+                docker run -d --name my-app -p 8080:5000 chaitanya057/devops-health-api:latest
+            
+            - name: Wait 5 seconds and check endpoint
+              id: health-check
+              run: |
+                sleep 5
+                
+                # Capture the HTTP status code
+                STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/health)
+                
+                if [ "$STATUS" -eq 200 ]; then
+                    echo "PASS: Endpoint returned HTTP $STATUS"
+                    echo "status=PASSED" >> "$GITHUB_OUTPUT"
+
+                else
+                    echo "FAIL: Endpoint returned HTTP $STATUS"
+                    echo "status=FAILED" >> "$GITHUB_OUTPUT"
+
+                    exit 1
+                fi
+
+            - name: Stop and remove the container
+              run: |
+                docker stop my-app
+                docker rm my-app
+
+            - name: print all summary
+              if: always()
+              run: |
+                echo "## Health Check REport" >> "$GITHUB_STEP_SUMMARY"
+                echo "- Imaage: chaitanya057/devops-health-api:latest" >> "$GITHUB_STEP_SUMMARY"
+                echo "- status: ${{ steps.health-check.outputs.status }}" >> "$GITHUB_STEP_SUMMARY"
+                echo "- time: $(date)" >> "$GITHUB_STEP_SUMMARY"
