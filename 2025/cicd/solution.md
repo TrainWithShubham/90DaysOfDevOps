@@ -320,3 +320,130 @@ This prevents an application with failing tests from being deployed.
 | Can stages run in parallel? | Yes, using the `parallel` directive. |
 
 ---
+
+# Task 4: Implement and Test RBAC in a Multi-Team Environment
+
+**Scenario:**  
+In a large organization, different teams (developers, testers, and operations) require different levels of access to Jenkins. You need to configure RBAC to secure your CI/CD pipeline.
+
+1. **Configure RBAC:**  
+   - Use Matrix-based security or the Role Strategy Plugin to create roles (e.g., Admin, Developer, Tester).
+   - Define permissions for each role.
+
+   we will use Role Based Security
+
+   First we will login to our Jenkins account with our credentials
+Step 1: Install Role Strategy Plugin
+1. Open Jenkins in your browser:
+   http://localhost:8080
+2. Log in using your Jenkins administrator account.
+3. Navigate to:
+4. Manage Jenkins → Plugins → Available plugins
+5. Search for:
+   Role-based Authorization Strategy
+6. Select the plugin.
+
+![Application Running](images/Screenshot67.png)
+
+6. Click Install.
+7. Restart Jenkins if required.
+
+Step 2: Enable Role-Based Authorization
+After installing the plugin:
+1. Go to Manage Jenkins.
+2. Open Security or Configure Global Security (depending on your Jenkins version).
+3. Find the Authorization section.
+4. Select:
+   Role-Based Strategy
+![Application Running](images/Screenshot68.png)
+
+5. Click Save.
+
+Step 3: Create Roles
+Navigate to:
+
+Manage Jenkins → Manage and Assign Roles → Manage Roles
+
+You should see a Global Roles section.
+
+Below that find Role to Add Section.
+Inside that typr the role which you want to create and click Add.
+After this the role will be added to the Global Roles Section.
+Now you can assign the permission that you need.
+
+Create these three roles:
+A. Admin
+Admin should have all permissions.
+
+Select:
+
+- Overall → Administer
+This gives the administrator complete control over Jenkins.
+B. Developer
+Developers need permission to view projects and execute builds.
+
+Select:
+
+Permission	Access
+Overall → Read	Yes
+Job → Read	Yes
+Job → Build	Yes
+Job → Cancel	Yes
+Job → Workspace	Yes
+View → Read	Yes
+
+
+Do not give developers Overall → Administer.
+C. Tester
+Testers mainly need to view projects and check build results.
+
+Select:
+
+Permission	Access
+Overall → Read	Yes
+Job → Read	Yes
+Job → Workspace	Yes
+View → Read	Yes
+![Application Running](images/Screenshot69.png)
+
+After creating all three roles, Click Save.
+
+Step 4: Create Test Accounts
+Now we need to create separate Jenkins users to simulate different employees.
+
+Navigate to:
+
+Manage Jenkins → Users → Create User
+
+Create the following accounts:
+Username	Password	Role
+admin	Your password	Admin
+developer	Your password	Developer
+tester	Your password	Tester
+
+
+Use separate strong passwords for each account.
+
+You should now have three test accounts.
+
+![Application Running](images/Screenshot70.png)
+
+Step 5: Assign Roles to Users
+Navigate to:
+
+Manage Jenkins → Manage and Assign Roles → Assign Roles
+
+Under Global Roles, you should see your three roles.
+
+Enter the usernames and assign permissions:
+User	Admin	Developer	Tester
+admin_user	✓		
+developer_user		✓	
+tester_user			✓
+
+
+Click Save.
+
+Your RBAC configuration is now ready.
+
+
