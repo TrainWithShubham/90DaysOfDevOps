@@ -1,0 +1,4 @@
+FROM alpine:latest
+
+ENTRYPOINT ["echo", "Strict Entrypoint says:"]
+

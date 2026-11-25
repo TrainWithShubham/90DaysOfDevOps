@@ -1,0 +1,5 @@
+43.248.243.0 - - [12/Aug/2026:22:28:54 +0000] "GET / HTTP/1.1" 200 409 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.0 Safari/605.1.15"
+43.248.243.0 - - [12/Aug/2026:22:28:55 +0000] "GET /favicon.ico HTTP/1.1" 404 134 "http://100.53.20.2/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.0 Safari/605.1.15"
+146.190.169.94 - - [12/Aug/2026:22:35:24 +0000] "GET / HTTP/1.1" 200 409 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+205.210.31.242 - - [12/Aug/2026:22:46:58 +0000] "GET / HTTP/1.0" 200 615 "-" "Hello from Palo Alto Networks, find out more about our scans in https://docs-cortex.paloaltonetworks.com/r/1/Cortex-Xpanse/Scanning-activity"
+::1 - - [12/Aug/2026:23:32:42 +0000] "GET / HTTP/1.1" 200 615 "-" "curl/8.18.0"

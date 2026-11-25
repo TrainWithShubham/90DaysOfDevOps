@@ -1,0 +1,53 @@
+# This is Master Orchestration Docker-Compose.yml File
+
+networks:
+  day34-net:
+    driver: bridge
+
+volumes:
+  db-data:
+
+services:
+  web:
+    build: .
+    restart: on-failure
+    ports:
+      - "3000:3000"
+    networks:
+      - day34-net
+    labels:
+      - "tier=frontend"
+    depends_on:
+      db:
+        condition: service_healthy
+      cache:
+        condition: service_started
+
+  db:
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: testdb
+    networks:
+      - day34-net
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    labels:
+      - "tier=database"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d testdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+  
+  cache:
+    image: redis:alpine
+    networks:
+      - day34-net
+    labels:
+      - "tier=cache"
+
+
+

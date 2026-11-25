@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataPilot - Cluster Monitor</title>
+    <style>
+        body { background-color: #0d1117; color: #00ff00; font-family: 'Courier New', Courier, monospace; margin: 0; padding: 30px; }
+        .header { border-bottom: 2px solid #3fb950; padding-bottom: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .blink { animation: blinker 1.5s linear infinite; color: #ff4444; }
+        @keyframes blinker { 50% { opacity: 0; } }
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .card { border: 1px solid #3fb950; padding: 20px; border-radius: 5px; background: #161b22; box-shadow: 0 0 15px rgba(63, 185, 80, 0.15); text-align: center; }
+        .card h3 { margin-top: 0; color: #58a6ff; font-size: 1.2rem; }
+        .card h2 { font-size: 2rem; margin: 10px 0 0 0; }
+        .terminal { margin-top: 30px; background: #000; padding: 20px; border-left: 4px solid #58a6ff; height: 180px; overflow-y: hidden; font-size: 0.9rem; line-height: 1.5; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🚀 DataPilot | Autonomous Cluster Monitor</h1>
+        <h2>System Status: <span class="blink">LIVE - SECURE TUNNEL</span></h2>
+    </div>
+    <div class="grid">
+        <div class="card"><h3>CPU Load (EC2)</h3><h2 id="cpu">42%</h2></div>
+        <div class="card"><h3>Active AI Agents</h3><h2>7 Nodes</h2></div>
+        <div class="card"><h3>Network Traffic</h3><h2 id="net">1.2 GB/s</h2></div>
+    </div>
+    <div class="terminal" id="term">
+        > Initializing DataPilot Core Engine...<br>
+        > Connecting to AWS EC2 instances...<br>
+        > Authentication successful. Tunnel established.<br>
+    </div>
+    <script>
+        setInterval(() => {
+            document.getElementById('cpu').innerText = Math.floor(Math.random() * 20 + 30) + '%';
+            document.getElementById('net').innerText = (Math.random() * 2 + 1).toFixed(1) + ' GB/s';
+            const term = document.getElementById('term');
+            term.innerHTML += "> Ping received from Agent-Node-" + Math.floor(Math.random() * 100) + " at " + new Date().toLocaleTimeString() + " (Status: Healthy)<br>";
+            term.scrollTop = term.scrollHeight; // Auto-scroll
+        }, 2000);
+    </script>
+</body>
+</html>
