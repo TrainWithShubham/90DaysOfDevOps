@@ -359,6 +359,9 @@ After installing the plugin:
 
 5. Click Save.
 
+2. **Create Test Accounts:**  
+   - Simulate real-world usage by creating user accounts for each role and verifying access.
+   
 Step 3: Create Roles
 Navigate to:
 
@@ -441,9 +444,18 @@ admin_user	✓
 developer_user		✓	
 tester_user			✓
 
+![Application Running](images/Screenshot71.png)
 
 Click Save.
 
 Your RBAC configuration is now ready.
+
+verify by login as a Developer:
+
+![Application Running](images/Screenshot72.png)
+
+I am now logged in as a Developer and not able to see the Manage Jenkins settings:
+![Application Running](images/Screenshot73.png)
+
 
 
