@@ -457,5 +457,84 @@ verify by login as a Developer:
 I am now logged in as a Developer and not able to see the Manage Jenkins settings:
 ![Application Running](images/Screenshot73.png)
 
+**Interview Questions:**
+- Why is RBAC essential in a CI/CD environment, and what are the consequences of weak access control?
+
+RBAC (Role-Based Access Control) is essential in a CI/CD environment because it ensures that users, developers, testers, and administrators have access only to the resources and operations required for their specific roles.
+
+It follows the principle of Least Privilege, meaning users should receive only the minimum permissions necessary to perform their tasks.
+
+For example:
+
+Developers: Can push code and trigger development pipelines.
+
+Testers: Can execute test pipelines and view test results.
+
+DevOps Engineers: Can manage CI/CD pipelines and deployment configurations.
+
+Administrators: Have permissions to manage users, roles, and security policies.
+
+Auditors: Have read-only access to logs and reports.
+
+Consequences of weak access control:
+
+Unauthorized access: Users may access sensitive environments or resources.
+
+Privilege escalation: A developer might gain administrative permissions.
+
+Secrets exposure: Unauthorized users could access passwords, API tokens, and SSH keys.
+
+Malicious deployments: Attackers could modify pipelines and deploy malicious code.
+
+Data breaches: Sensitive application or infrastructure data could be exposed.
+
+Compliance issues: Weak access controls can violate security standards and audit requirements.
+
+- Can you describe a scenario where inadequate RBAC could lead to security issues?
+
+Yes. Consider a company using Jenkins for its CI/CD pipeline.
+
+Suppose the company does not implement proper RBAC, and all developers have administrator-level permissions.
+
+Scenario:
+
+A developer has access to Jenkins with administrative privileges, even though they only need permission to build and test applications.
+
+The developer's account gets compromised through a phishing attack.
+
+The attacker logs into Jenkins using the compromised account.
+
+Since the account has administrator permissions, the attacker can modify pipeline configurations.
+
+The attacker injects a malicious script into the deployment pipeline.
+
+When the pipeline runs, the malicious script can steal credentials or secrets stored in Jenkins.
+
+The attacker may use those credentials to access production servers or cloud infrastructure.
+
+Security impact
+
+Potential consequences
+
+Production environment compromise.
+
+Exposure of sensitive credentials.
+
+Unauthorized application deployments.
+
+Data leakage and service disruption.
+
+How RBAC could prevent this
+
+Give developers build and test permissions only.
+
+Restrict pipeline configuration changes to authorized DevOps engineers.
+
+Limit production deployment permissions to approved personnel.
+
+Enforce multi-factor authentication and audit logging.
+
+Regularly review and remove unnecessary permissions.
+
 
 
