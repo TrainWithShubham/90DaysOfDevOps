@@ -323,218 +323,279 @@ This prevents an application with failing tests from being deployed.
 
 # Task 4: Implement and Test RBAC in a Multi-Team Environment
 
-**Scenario:**  
-In a large organization, different teams (developers, testers, and operations) require different levels of access to Jenkins. You need to configure RBAC to secure your CI/CD pipeline.
+## Overview
 
-1. **Configure RBAC:**  
-   - Use Matrix-based security or the Role Strategy Plugin to create roles (e.g., Admin, Developer, Tester).
-   - Define permissions for each role.
+In a large organization, different teams such as Developers, Testers, and Operations require different levels of access to Jenkins.
 
-   we will use Role Based Security
+The objective of this task is to implement **Role-Based Access Control (RBAC)** in Jenkins using the Role Strategy Plugin.
 
-   First we will login to our Jenkins account with our credentials
-Step 1: Install Role Strategy Plugin
+RBAC ensures that users have access only to the resources and operations required for their respective roles.
+
+### Objectives
+
+- Install and configure the Role Strategy Plugin.
+- Create Admin, Developer, and Tester roles.
+- Assign appropriate permissions to each role.
+- Create separate Jenkins user accounts.
+- Assign roles to users.
+- Verify access restrictions by logging in with different accounts.
+
+---
+
+## Step 1: Install Role Strategy Plugin
+
 1. Open Jenkins in your browser:
-   http://localhost:8080
+
+   `http://localhost:8080`
+
 2. Log in using your Jenkins administrator account.
 3. Navigate to:
-4. Manage Jenkins → Plugins → Available plugins
-5. Search for:
-   Role-based Authorization Strategy
-6. Select the plugin.
 
-![Application Running](images/Screenshot67.png)
+   **Manage Jenkins → Plugins → Available plugins**
 
-6. Click Install.
-7. Restart Jenkins if required.
+4. Search for:
 
-Step 2: Enable Role-Based Authorization
+   `Role-based Authorization Strategy`
+
+5. Select the plugin and click **Install**.
+6. Restart Jenkins if required.
+
+### Screenshot
+
+![Role Strategy Plugin](images/Screenshot67.png)
+
+---
+
+## Step 2: Enable Role-Based Authorization
+
 After installing the plugin:
-1. Go to Manage Jenkins.
-2. Open Security or Configure Global Security (depending on your Jenkins version).
+
+1. Navigate to **Manage Jenkins**.
+2. Open **Security / Configure Global Security**.
 3. Find the Authorization section.
 4. Select:
-   Role-Based Strategy
-![Application Running](images/Screenshot68.png)
 
-5. Click Save.
+   `Role-Based Strategy`
 
-2. **Create Test Accounts:**  
-   - Simulate real-world usage by creating user accounts for each role and verifying access.
-   
-Step 3: Create Roles
-Navigate to:
+5. Click **Save**.
 
-Manage Jenkins → Manage and Assign Roles → Manage Roles
+### Screenshot
 
-You should see a Global Roles section.
+![Enable Role Based Strategy](images/Screenshot68.png)
 
-Below that find Role to Add Section.
-Inside that typr the role which you want to create and click Add.
-After this the role will be added to the Global Roles Section.
-Now you can assign the permission that you need.
+---
 
-Create these three roles:
-A. Admin
-Admin should have all permissions.
-
-Select:
-
-- Overall → Administer
-This gives the administrator complete control over Jenkins.
-B. Developer
-Developers need permission to view projects and execute builds.
-
-Select:
-
-Permission	Access
-Overall → Read	Yes
-Job → Read	Yes
-Job → Build	Yes
-Job → Cancel	Yes
-Job → Workspace	Yes
-View → Read	Yes
-
-
-Do not give developers Overall → Administer.
-C. Tester
-Testers mainly need to view projects and check build results.
-
-Select:
-
-Permission	Access
-Overall → Read	Yes
-Job → Read	Yes
-Job → Workspace	Yes
-View → Read	Yes
-![Application Running](images/Screenshot69.png)
-
-After creating all three roles, Click Save.
-
-Step 4: Create Test Accounts
-Now we need to create separate Jenkins users to simulate different employees.
+## Step 3: Create Roles and Assign Permissions
 
 Navigate to:
 
-Manage Jenkins → Users → Create User
+**Manage Jenkins → Manage and Assign Roles → Manage Roles**
+
+Under Global Roles, create the following three roles:
+
+### 1. Admin Role
+
+The Admin role should have complete control over Jenkins.
+
+Permission:
+
+| Permission | Access |
+|---|---|
+| Overall → Administer | Yes |
+
+The Admin role can manage Jenkins configuration, users, security settings, jobs, and plugins.
+
+### 2. Developer Role
+
+Developers need permission to view projects, execute builds, and access workspaces.
+
+Assign the following permissions:
+
+| Permission | Access |
+|---|---|
+| Overall → Read | Yes |
+| Job → Read | Yes |
+| Job → Build | Yes |
+| Job → Cancel | Yes |
+| Job → Workspace | Yes |
+| View → Read | Yes |
+| Overall → Administer | No |
+
+Developers cannot access administrative settings or manage Jenkins security configurations.
+
+### 3. Tester Role
+
+Testers mainly need read-only access to projects and build information.
+
+Assign the following permissions:
+
+| Permission | Access |
+|---|---|
+| Overall → Read | Yes |
+| Job → Read | Yes |
+| Job → Workspace | Yes |
+| View → Read | Yes |
+| Job → Build | No |
+| Overall → Administer | No |
+
+Testers can view projects and inspect workspaces but cannot execute builds or modify Jenkins configurations.
+
+### Screenshot
+
+![Global Roles Configuration](images/Screenshot69.png)
+
+After creating all three roles and configuring their permissions, click **Save**.
+
+---
+
+## Step 4: Create Test User Accounts
+
+Now create separate Jenkins accounts to simulate different employees in an organization.
+
+Navigate to:
+
+**Manage Jenkins → Users → Create User**
 
 Create the following accounts:
-Username	Password	Role
-admin	Your password	Admin
-developer	Your password	Developer
-tester	Your password	Tester
 
+| Username | Role | Description |
+|---|---|---|
+| admin | Admin | Complete Jenkins access |
+| developer | Developer | Build and workspace access |
+| tester | Tester | Read-only access |
 
 Use separate strong passwords for each account.
 
-You should now have three test accounts.
+**Note:** Never upload actual passwords or credentials to GitHub.
 
-![Application Running](images/Screenshot70.png)
+### Screenshot
 
-Step 5: Assign Roles to Users
+![Jenkins User Accounts](images/Screenshot70.png)
+
+---
+
+## Step 5: Assign Roles to Users
+
 Navigate to:
 
-Manage Jenkins → Manage and Assign Roles → Assign Roles
+**Manage Jenkins → Manage and Assign Roles → Assign Roles**
 
-Under Global Roles, you should see your three roles.
+Under Global Roles, assign the previously created roles to their respective users.
 
-Enter the usernames and assign permissions:
-User	Admin	Developer	Tester
-admin_user	✓		
-developer_user		✓	
-tester_user			✓
+| Username | Admin | Developer | Tester |
+|---|---|---|---|
+| admin | ✓ | | |
+| developer | | ✓ | |
+| tester | | | ✓ |
 
-![Application Running](images/Screenshot71.png)
+Click **Save** after assigning the roles.
 
-Click Save.
+### Screenshot
 
-Your RBAC configuration is now ready.
+![Assign Roles to Users](images/Screenshot71.png)
 
-verify by login as a Developer:
+The RBAC configuration is now complete.
 
-![Application Running](images/Screenshot72.png)
+---
 
-I am now logged in as a Developer and not able to see the Manage Jenkins settings:
-![Application Running](images/Screenshot73.png)
+## Step 6: Verify RBAC Configuration
 
-**Interview Questions:**
-- Why is RBAC essential in a CI/CD environment, and what are the consequences of weak access control?
+To verify that RBAC is working correctly, log out of the administrator account and log in using the Developer account.
 
-RBAC (Role-Based Access Control) is essential in a CI/CD environment because it ensures that users, developers, testers, and administrators have access only to the resources and operations required for their specific roles.
+### Developer Login
 
-It follows the principle of Least Privilege, meaning users should receive only the minimum permissions necessary to perform their tasks.
+Log in using the Developer credentials.
 
-For example:
+![Developer Login](images/Screenshot72.png)
 
-Developers: Can push code and trigger development pipelines.
+### Access Verification
 
-Testers: Can execute test pipelines and view test results.
+After logging in as a Developer, verify that the user cannot access administrative settings.
 
-DevOps Engineers: Can manage CI/CD pipelines and deployment configurations.
+The Manage Jenkins option is not available to the Developer account because it does not have administrative permissions.
 
-Administrators: Have permissions to manage users, roles, and security policies.
+![Developer Access Restrictions](images/Screenshot73.png)
 
-Auditors: Have read-only access to logs and reports.
+### Verification Results
 
-Consequences of weak access control:
+| Test Case | Expected Result | Status |
+|---|---|---|
+| Admin can access Manage Jenkins | Allowed | Passed |
+| Developer can view Jenkins jobs | Allowed | Passed |
+| Developer can trigger builds | Allowed | Passed |
+| Developer can access administrative settings | Denied | Passed |
+| Tester can view Jenkins jobs | Allowed | Passed |
+| Tester can trigger builds | Denied | Passed |
 
-Unauthorized access: Users may access sensitive environments or resources.
+**Result:** RBAC was successfully implemented in Jenkins. Different users have different levels of access based on their assigned roles.
 
-Privilege escalation: A developer might gain administrative permissions.
+---
 
-Secrets exposure: Unauthorized users could access passwords, API tokens, and SSH keys.
+# Interview Questions and Answers
 
-Malicious deployments: Attackers could modify pipelines and deploy malicious code.
+## 1. Why is RBAC essential in a CI/CD environment, and what are the consequences of weak access control?
 
-Data breaches: Sensitive application or infrastructure data could be exposed.
+RBAC (Role-Based Access Control) is essential in a CI/CD environment because it ensures that users have access only to the resources and operations required for their specific roles.
 
-Compliance issues: Weak access controls can violate security standards and audit requirements.
+It follows the **Principle of Least Privilege**, meaning users should receive only the minimum permissions necessary to perform their tasks.
 
-- Can you describe a scenario where inadequate RBAC could lead to security issues?
+### Example
+
+- **Developers:** Can access projects and trigger development builds.
+- **Testers:** Can view projects and check build results.
+- **DevOps Engineers:** Can manage CI/CD pipelines and deployment configurations.
+- **Administrators:** Have complete control over Jenkins.
+- **Auditors:** Have read-only access to logs and reports.
+
+### Consequences of Weak Access Control
+
+1. **Unauthorized Access:** Users may access sensitive environments or resources.
+2. **Privilege Escalation:** A developer might gain administrative permissions.
+3. **Secrets Exposure:** Unauthorized users could access passwords, API tokens, and SSH keys.
+4. **Malicious Deployments:** Attackers could modify pipelines and deploy malicious code.
+5. **Data Breaches:** Sensitive application and infrastructure data could be exposed.
+6. **Compliance Issues:** Weak access controls can violate security standards and audit requirements.
+
+Therefore, RBAC helps improve security, accountability, and access management in CI/CD environments.
+
+## 2. Can you describe a scenario where inadequate RBAC could lead to security issues?
 
 Yes. Consider a company using Jenkins for its CI/CD pipeline.
 
 Suppose the company does not implement proper RBAC, and all developers have administrator-level permissions.
 
-Scenario:
+### Scenario
 
-A developer has access to Jenkins with administrative privileges, even though they only need permission to build and test applications.
+1. A developer has administrator privileges, even though they only need permission to build and test applications.
+2. The developer's account gets compromised through a phishing attack.
+3. The attacker logs into Jenkins using the compromised account.
+4. Since the account has administrator permissions, the attacker can modify pipeline configurations.
+5. The attacker injects a malicious script into the deployment pipeline.
+6. When the pipeline runs, the malicious script can steal credentials or secrets stored in Jenkins.
+7. The attacker may use those credentials to access production servers or cloud infrastructure.
 
-The developer's account gets compromised through a phishing attack.
+### Security Impact
 
-The attacker logs into Jenkins using the compromised account.
+- Production environment compromise.
+- Exposure of sensitive credentials.
+- Unauthorized application deployments.
+- Data leakage.
+- Service disruption.
 
-Since the account has administrator permissions, the attacker can modify pipeline configurations.
+### How RBAC Could Prevent This
 
-The attacker injects a malicious script into the deployment pipeline.
+- Give developers build and test permissions only.
+- Restrict pipeline configuration changes to authorized DevOps engineers.
+- Limit production deployment permissions to approved personnel.
+- Enforce multi-factor authentication.
+- Enable audit logging.
+- Regularly review and remove unnecessary permissions.
 
-When the pipeline runs, the malicious script can steal credentials or secrets stored in Jenkins.
+**Conclusion:** Proper RBAC reduces the risk of unauthorized access and prevents compromised user accounts from gaining unnecessary control over critical CI/CD infrastructure.
 
-The attacker may use those credentials to access production servers or cloud infrastructure.
+---
 
-Security impact
 
-Potential consequences
-
-Production environment compromise.
-
-Exposure of sensitive credentials.
-
-Unauthorized application deployments.
-
-Data leakage and service disruption.
-
-How RBAC could prevent this
-
-Give developers build and test permissions only.
-
-Restrict pipeline configuration changes to authorized DevOps engineers.
-
-Limit production deployment permissions to approved personnel.
-
-Enforce multi-factor authentication and audit logging.
-
-Regularly review and remove unnecessary permissions.
 
 
 
